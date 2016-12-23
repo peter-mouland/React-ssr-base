@@ -1,0 +1,12 @@
+.idea/
+node_modules/
+dist
+compiled
+.DS_Store
+.swp
+.divshot-cache/
+*.iml
+*.log
+tests_output
+webpack-assets.json
+webpack-stats.json

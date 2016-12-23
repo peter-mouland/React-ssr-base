@@ -1,0 +1,12 @@
+{
+  "sourceMaps": true,
+  "presets": ["react", "es2015"],
+  "plugins": [
+    "add-module-exports",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-object-assign",
+    "transform-async-to-generator",
+    "react-hot-loader/babel"
+  ]
+}
