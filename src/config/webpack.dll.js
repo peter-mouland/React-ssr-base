@@ -7,8 +7,7 @@ module.exports = {
   },
   output: {
     path: path.join(process.cwd(), 'compiled', 'dist'),
-    filename: '[name].dll.js',
-    library: '[name]'
+    filename: '[name].dll.js'
   },
   plugins: [
     new webpack.DllPlugin({
@@ -16,9 +15,5 @@ module.exports = {
       name: '[name]',
       context: path.resolve(process.cwd(), 'src')
     }),
-  ],
-  resolve: {
-    modules: ['node_modules'],
-    extensions: ['.js', '.jsx', '.scss']
-  }
+  ]
 };
