@@ -1,10 +1,9 @@
-const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const AssetsPlugin = require('assets-webpack-plugin');
 const cssnano = require('cssnano');
 
 const { SRC, DIST } = require('./paths');
-const vendorManifest = require('../../compiled/vendor-manifest.json');
 
 module.exports = {
   devtool: 'eval',
@@ -12,22 +11,19 @@ module.exports = {
   context: SRC,
   output: {
     path: DIST,
-    filename: '[name].js',
-    chunkFilename: '[name].js',
+    filename: '[name]-[hash].js',
     publicPath: '/'
   },
   plugins: [
-    new webpack.DllReferencePlugin({
-      context: path.join(process.cwd(), 'src'),
-      manifest: vendorManifest
-    }),
-    new ExtractTextPlugin('[name].css'),
-    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({ names: ['vendor'], minChunks: Infinity }),
+    new ExtractTextPlugin('[name]-[hash].css'),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.PORT': JSON.stringify(process.env.PORT),
       'process.env.DEBUG': JSON.stringify(process.env.DEBUG),
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
+    new AssetsPlugin({ filename: 'src/webpack-assets.json' }),
     new webpack.NamedModulesPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {

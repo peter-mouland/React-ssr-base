@@ -2,7 +2,9 @@ import { Match, Miss, Redirect } from 'react-router';
 import { sinon, React } from '../support/test.helper';
 import supertest from 'supertest';
 import * as routes from '../../src/app/routes';
+import mapWebpackAssets from '../../src/server/utils/mapWebpackAssets';
 import server from '../../src/server/server';
+const webpackAssets = require('../../src/webpack-assets.json');
 
 const AppRoute = ({ children }) => <div><h2>App</h2>{children}</div>;
 const TestRoute = () => <div>Test Route</div>;
@@ -22,13 +24,9 @@ const ReactRoutes = (
     <Miss component={NotFound} />
   </AppRoute>
 );
+const assets = mapWebpackAssets(webpackAssets);
 
 describe('Server', function () {
-  const assets = {
-    javascript: ["/app.js"],
-    styles: ["/app.css"]
-  };
-
   before(() => {
     sinon.stub(routes, 'makeRoutes').returns(ReactRoutes);
   });
@@ -65,14 +63,15 @@ describe('Server', function () {
       .expect('Content-Type', 'text/html; charset=utf-8')
       .expect(/<!doctype html>/)
       .expect(/<html lang="en"/)
-      .expect(/<link href="\/app.css/)
-      .expect(/<script src="\/app.js/)
+      .expect(/<link href="\/app-/)
+      .expect(/<script src="\/vendor-/)
+      .expect(/<script src="\/app-/)
       .end(done);
   });
 
   it('Should gzip koaStatic assets', (done) => {
     supertest(server(assets).callback())
-      .get('/app.js')
+      .get(assets.javascript[0])
       .expect(200)
       .expect('Content-Encoding', 'gzip')
       .end(done);

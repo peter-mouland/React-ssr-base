@@ -10,7 +10,8 @@ const devConfig = Object.assign({}, defaultConfig, {
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       `${SRC}/client-entry.js`
-    ]
+    ],
+    vendor: [`${SRC}/vendor.js`]
   },
 });
 
