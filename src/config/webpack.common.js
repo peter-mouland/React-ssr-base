@@ -55,12 +55,12 @@ module.exports = {
     extensions: ['.js', '.jsx', '.scss']
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         include: [/src/],
         loader: 'babel-loader',
-        query: {
+        options: {
           cacheDirectory: true
         }
       },
@@ -75,7 +75,10 @@ module.exports = {
       {
         test: /\.svg$/,
         include: [/src/],
-        loaders: ['svg-inline-loader']
+        loader: 'svg-inline-loader',
+        options: {
+          removeSVGTagAttrs: false
+        }
       }
     ]
   }

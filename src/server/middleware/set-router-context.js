@@ -20,7 +20,7 @@ async function getContext(dispatch, req) {
   const needs = [];
   matchedRoutes.filter((route) => route.component.needs)
     .map((route) => route.component.needs.forEach((need) => needs.push(need)));
-  return await Promise.all(needs.map((need) => dispatch(need(params))));
+  await Promise.all(needs.map((need) => dispatch(need(params))));
 }
 
 function setRouterContext() {
