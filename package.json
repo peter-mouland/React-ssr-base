@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "rm -rf compiled && npm run build:server && npm run build && node scripts/copyAssets.js",
     "prestart:dev": "npm run build:dev",
-    "pretest:e2e": "npm run build",
+    "pretest:e2e": "npm run build && node scripts/copyAssets.js",
     "build": "NODE_ENV=production webpack --config src/config/webpack.config.prod.js -p",
     "build:dev": "webpack --config src/config/webpack.config.dev.js",
     "build:server": "NODE_ENV=production babel src -d compiled",
