@@ -8,6 +8,8 @@ import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
 import Game from './containers/Game/Game';
 import NotFound from './containers/NotFound/NotFound';
+import LoginPage from './containers/LoginPage/LoginPage';
+import SignUpPage from './containers/SignUpPage/SignUpPage';
 
 debug('lego:routes');
 
@@ -19,15 +21,29 @@ export const routes = [
     exactly: true,
     pattern: '/',
     label: 'About React Lego',
-    title: `${siteTitle} - About React Lego`,
+    title: 'About React Lego',
     component: Homepage
   },
   {
     name: 'game',
-    pattern: '/game/',
+    pattern: '/game(/)?',
     label: 'Star Wars Trivia',
-    title: `${siteTitle} - Star Wars Trivia`,
+    title: 'Star Wars Trivia',
     component: Game
+  },
+  {
+    name: 'login',
+    pattern: '/login(/)?',
+    label: 'Login',
+    title: 'Login',
+    component: LoginPage
+  },
+  {
+    name: 'signup',
+    pattern: '/signup(/)?',
+    label: 'Sign Up',
+    title: 'Sign Up',
+    component: SignUpPage
   }
 ];
 

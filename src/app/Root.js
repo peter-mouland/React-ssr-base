@@ -1,6 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { MemoryRouter, BrowserRouter } from 'react-router';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import debug from 'debug';
 
 import { makeRoutes } from './routes';
@@ -17,9 +19,11 @@ export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Router {...this.props} >
-          {makeRoutes()}
-        </Router>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Router {...this.props} >
+            {makeRoutes()}
+          </Router>
+        </MuiThemeProvider>
       </Provider>
     );
   }

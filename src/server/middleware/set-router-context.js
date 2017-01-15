@@ -3,15 +3,19 @@ import { renderToString } from 'react-dom/server';
 import { ServerRouter, createServerRenderContext } from 'react-router';
 import { Provider } from 'react-redux';
 import { matchRoutesToLocation } from 'react-router-addons-routes';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import configureStore from '../../app/store/configure-store';
 import { makeRoutes, routes } from '../../app/routes';
 
 const createMarkup = (req, context, store) => renderToString(
   <Provider store={store}>
-    <ServerRouter location={req.url} context={context} >
-      {makeRoutes()}
-    </ServerRouter>
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <ServerRouter location={req.url} context={context} >
+        {makeRoutes()}
+      </ServerRouter>
+    </MuiThemeProvider>
   </Provider>
 );
 

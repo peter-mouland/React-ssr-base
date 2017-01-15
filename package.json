@@ -62,9 +62,11 @@
     "koa-router": "^7.0.1",
     "koa-static": "^3.0.0",
     "lodash": "^4.1.0",
+    "material-ui": "^0.16.6",
     "node-hook": "^0.4.0",
     "node-sass": "^4.3.0",
     "postcss-loader": "^1.2.1",
+    "progress-bar-webpack-plugin": "^1.9.2",
     "react": "^15.1.0",
     "react-document-meta": "^2.0.2",
     "react-dom": "^15.1.0",
@@ -72,6 +74,7 @@
     "react-router": "^4.0.0-5",
     "react-router-addons-routes": "^0.0.3",
     "react-router-redux": "^4.0.5",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-promise-middleware": "^4.1.0",
@@ -79,7 +82,9 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.0",
     "svg-inline-loader": "^0.7.1",
-    "webpack": "^2.2.0-rc.4",
+    "validator": "^6.2.1",
+    "webpack": "^2.2.0",
+    "webpack-visualizer-plugin": "^0.1.10",
     "yargs": "^6.0.0"
   },
   "devDependencies": {
@@ -115,7 +120,7 @@
     "react-addons-test-utils": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "sass-lint": "^1.5.1",
-    "selenium-standalone": "^5.6.4",
+    "selenium-standalone": "^5.11.0",
     "sinon": "^1.17.3",
     "supertest": "^2.0.0"
   }

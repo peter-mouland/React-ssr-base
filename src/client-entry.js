@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import debug from 'debug';
 
 import HmrContainer from './app/containers/HmrContainer/HmrContainer';
@@ -17,6 +18,9 @@ const App = (
     <Root />
   </HmrContainer>
 );
+
+// remove tap delay, essential for MaterialUI to work properly
+injectTapEventPlugin();
 
 try {
   ReactDOM.render(App, rootEl);

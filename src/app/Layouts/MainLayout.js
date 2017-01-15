@@ -22,6 +22,9 @@ export default class MainLayout extends Component {
           <span className="layout__nav-header">React Lego</span>
           <LinkHelper to='homepage' { ...navLinkProps } />
           <LinkHelper to="game" { ...navLinkProps } />
+          <LinkHelper to="login" { ...navLinkProps } />
+          <LinkHelper to="signup" { ...navLinkProps } />
+
         </nav>
         <div className="layout__content">
           {children}
