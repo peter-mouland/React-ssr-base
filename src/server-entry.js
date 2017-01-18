@@ -1,6 +1,9 @@
 require('babel-polyfill');
 const hook = require('node-hook').hook;
 const SvgLoader = require('svg-inline-loader');
+
+const connect = require('./server/models').connect;
+const config = require('./config/db.json');
 const webpackAssets = require('./webpack-assets.json');
 const mapWebpackAssets = require('./server/utils/mapWebpackAssets');
 require('./config/environment');
@@ -11,6 +14,7 @@ hook('.svg', (source) => {
   return `module.exports =  ${JSON.stringify(markup)}`;
 });
 
+connect(config.dbUri);
 
 const assets = mapWebpackAssets(webpackAssets);
 const createServer = require('./server/server'); //eslint-disable-line

@@ -1,18 +1,34 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import Redirect from 'react-router/Redirect';
 
+import Auth from '../../modules/Auth';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import localStorage from '../../utils/local-storage';
+
+const ReferrerMessage = ({ from }) => (
+  <p>
+    You must log in to view the page at
+    <code>{from.pathname}</code>
+  </p>
+);
 
 class LoginPage extends React.Component {
 
-  /**
-   * Class constructor.
-   */
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
-    // set the initial component state
+    const storedMessage = localStorage.getItem('successMessage');
+    let successMessage = '';
+
+    if (storedMessage) {
+      successMessage = storedMessage;
+      localStorage.removeItem('successMessage');
+    }
+
     this.state = {
       errors: {},
+      redirectToReferrer: false,
+      successMessage,
       user: {
         email: '',
         password: ''
@@ -23,79 +39,49 @@ class LoginPage extends React.Component {
     this.changeUser = this.changeUser.bind(this);
   }
 
-  /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
   processForm(event) {
-    // prevent default action. in this case, action is the form submission event
     event.preventDefault();
-
-    // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
-
-    // create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
-
-        // change the component-container state
-        this.setState({
-          errors: {}
-        });
-
-        // console.log('The form is valid');
+    Auth.login(this.state.user, (errors) => {
+      const { location } = this.props;
+      if (errors) {
+        this.setState({ errors });
+      } else if (location.state && location.state.from) {
+        this.setState({ redirectToReferrer: location.state.from });
       } else {
-        // failure
-
-        // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
-        this.setState({
-          errors
-        });
+        this.setState({ redirectToReferrer: '/' });
       }
     });
-    xhr.send(formData);
   }
 
-  /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
   changeUser(event) {
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
 
-    this.setState({
-      user
-    });
+    this.setState({ user });
   }
 
-  /**
-   * Render the component.
-   */
   render() {
-    return (
-      <LoginForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
-    );
-  }
+    const { from } = this.props.location.state || '/';
+    const { redirectToReferrer } = this.state;
 
+    const redirect = redirectToReferrer ? (<Redirect to={from || '/'}/>) : null;
+    const referrerMessage = from ? <ReferrerMessage from={from} /> : null;
+    const form = (
+      <div>
+        {referrerMessage}
+        <LoginForm
+          onSubmit={this.processForm}
+          onChange={this.changeUser}
+          errors={this.state.errors}
+          successMessage={this.state.successMessage}
+          user={this.state.user}
+        />
+      </div>
+    );
+
+    return redirect || form;
+  }
 }
 
 export default LoginPage;

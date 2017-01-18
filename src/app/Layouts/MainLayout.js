@@ -1,16 +1,55 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import bemHelper from 'react-bem-helper';
 
+import Auth from '../modules/Auth';
 import { LinkHelper } from '../routes';
 import './mainLayout.scss';
 
-export default class MainLayout extends Component {
+const bem = bemHelper('my-account');
 
-  static propTypes = {
-    location: PropTypes.object
-  };
+class MyAccount extends React.Component {
+
+  render() {
+    const { navLinkProps, className, isUserAuthenticated, ...props } = this.props;
+    const loggedOut = (
+      <span>
+        <LinkHelper to="login" { ...navLinkProps } />
+        <LinkHelper to="signup" { ...navLinkProps } />
+      </span>
+    );
+    const loggedIn = <LinkHelper to="logout" { ...navLinkProps } />;
+    return (
+      <div {...bem(null, null, className)} { ...props } >
+        { isUserAuthenticated
+          ? loggedIn
+          : loggedOut
+        }
+      </div>
+    );
+  }
+}
+
+export default class MainLayout extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isUserAuthenticated: Auth.isUserAuthenticated()
+    };
+    this.updateAuth = this.updateAuth.bind(this);
+  }
+
+  updateAuth(isUserAuthenticated) {
+    this.setState({ isUserAuthenticated });
+  }
+
+  componentWillMount() {
+    Auth.onChange = this.updateAuth;
+  }
 
   render() {
     const { children } = this.props;
+    const { isUserAuthenticated } = this.state;
     const navLinkProps = {
       className: 'layout__nav-link',
       activeClassName: 'layout__nav-link--selected'
@@ -22,13 +61,12 @@ export default class MainLayout extends Component {
           <span className="layout__nav-header">React Lego</span>
           <LinkHelper to='homepage' { ...navLinkProps } />
           <LinkHelper to="game" { ...navLinkProps } />
-          <LinkHelper to="login" { ...navLinkProps } />
-          <LinkHelper to="signup" { ...navLinkProps } />
-
+          <LinkHelper to="dashboard" { ...navLinkProps } />
+          <MyAccount navLinkProps={ navLinkProps } isUserAuthenticated={ isUserAuthenticated }/>
         </nav>
-        <div className="layout__content">
+        <main className="layout__content">
           {children}
-        </div>
+        </main>
         <footer className="layout__footer">
           Hosted at <a href="http://github.com/peter-mouland/react-lego">github.com/peter-mouland/react-lego</a>
         </footer>

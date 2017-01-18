@@ -1,19 +1,47 @@
 import React from 'react';
-import { Miss, Match } from 'react-router';
-import { NamedLink, RoutesProvider, MatchWithRoutes } from 'react-router-addons-routes';
+import Match from 'react-router/Match';
+import Miss from 'react-router/Miss';
+import Redirect from 'react-router/Redirect';
+import NamedLink from 'react-router-addons-routes/NamedLink';
+import RoutesProvider from 'react-router-addons-routes/RoutesProvider';
+import MatchWithRoutes from 'react-router-addons-routes/MatchWithRoutes';
 import DocumentMeta from 'react-document-meta';
 import debug from 'debug';
 
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
+import DashboardPage from './containers/DashboardPage/DashboardPage';
 import Game from './containers/Game/Game';
 import NotFound from './containers/NotFound/NotFound';
 import LoginPage from './containers/LoginPage/LoginPage';
 import SignUpPage from './containers/SignUpPage/SignUpPage';
+import Auth from './modules/Auth';
 
 debug('lego:routes');
 
 const siteTitle = 'React Lego';
+
+const LogOut = React.createClass({
+  componentDidMount() {
+    Auth.logout();
+  },
+
+  render() {
+    return <p>You are now logged out</p>;
+  }
+});
+
+const MatchWhenAuthorized = ({ component: Component, ...rest }) => (
+  <Match {...rest} render={(props) => (
+    Auth.isUserAuthenticated()
+      ? (<Component {...props}/>)
+      : (<Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }}/>
+      )
+  )}/>
+);
 
 export const routes = [
   {
@@ -32,6 +60,13 @@ export const routes = [
     component: Game
   },
   {
+    name: 'logout',
+    pattern: '/logout(/)?',
+    label: 'Logout',
+    title: 'Logout',
+    component: LogOut
+  },
+  {
     name: 'login',
     pattern: '/login(/)?',
     label: 'Login',
@@ -44,6 +79,14 @@ export const routes = [
     label: 'Sign Up',
     title: 'Sign Up',
     component: SignUpPage
+  },
+  {
+    name: 'dashboard',
+    pattern: '/dashboard(/)?',
+    requiresAuthentication: true,
+    label: 'Dashboard',
+    title: 'Dashboard',
+    component: DashboardPage
   }
 ];
 
@@ -60,10 +103,12 @@ export const LinkHelper = ({ to, ...props }) => {
 };
 
 const Route = ({ route }) => (
-  <span>
-    <Match {...route} render={() => <DocumentMeta title={ route.title }/>}/>
-    <MatchWithRoutes {...route} />
-  </span>
+  route.requiresAuthentication
+    ? <MatchWhenAuthorized { ...route }/>
+    : <span>
+        <Match {...route} render={() => <DocumentMeta title={ route.title }/> } />
+        <MatchWithRoutes {...route} />
+      </span>
 );
 
 export function makeRoutes() {
