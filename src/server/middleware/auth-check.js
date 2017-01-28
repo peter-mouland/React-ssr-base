@@ -1,34 +1,34 @@
 /* eslint-disable consistent-return */
-const jwt = require('jsonwebtoken');
+
+const jwt = require('koa-jwt');
 const User = require('mongoose').model('User');
 const config = require('../../config/db.json');
 
-export default function errorHandler() {
-  return async (ctx, next) => {
+export default function authCheck() {
+  return (ctx, next) => {
+    console.log(ctx.request.headers.authorization)
     if (!ctx.request.headers.authorization) {
       ctx.response.status = 401;
+      ctx.response.body = { message: 'unauthorized'};
     } else {
-      // get the last part from a authorization header string like "bearer token-value"
-      const token = ctx.request.headers.authorization.split(' ')[1];
+      return jwt({secret: config.jwtSecret})(ctx, next)
+    }
+  }
+}
 
-      // decode the token using a secret key-phrase
-      return jwt.verify(token, config.jwtSecret, (err, decoded) => {
-        // the 401 code is for unauthorized status
-        if (err) {
+export function getUser(){
+  return (ctx, next) => {
+    // check if a user exists
+    if (ctx.state.user){
+      const userId = ctx.state.user.sub;
+      return User.findById(userId, (err, user) => {
+        if (err || !user) {
           ctx.response.status = 401;
-        } else {
-          const userId = decoded.sub;
-
-          // check if a user exists
-          return User.findById(userId, (userErr, user) => {
-            if (userErr || !user) {
-              ctx.response.status = 401;
-            }
-
-            return next();
-          });
+          ctx.response.body = { message: 'unauthorized'};
         }
+        return next({ message: 'logged in' });
       });
     }
-  };
+  }
 }
+

@@ -2,12 +2,8 @@ import React from 'react';
 import Auth from '../../modules/Auth';
 import Dashboard from '../../components/Dashboard/Dashboard';
 
-
 class DashboardPage extends React.Component {
 
-  /**
-   * Class constructor.
-   */
   constructor(props) {
     super(props);
 
@@ -16,14 +12,10 @@ class DashboardPage extends React.Component {
     };
   }
 
-  /**
-   * This method will be executed after initial rendering.
-   */
   componentDidMount() {
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/api/dashboard');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // set the authorization HTTP header
     xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
@@ -36,9 +28,6 @@ class DashboardPage extends React.Component {
     xhr.send();
   }
 
-  /**
-   * Render the component.
-   */
   render() {
     return (<Dashboard secretData={this.state.secretData} />);
   }

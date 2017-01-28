@@ -2,6 +2,7 @@ require('babel-core/register')({
   only: [/src/, /tests/, /config/]
 });
 require("babel-polyfill");
+require('../../src/app/utils/local-storage');
 const jsdom = require('jsdom');
 const hook = require('node-hook').hook;
 hook('.scss', (source, filename) => 'console.log("' + filename + '");');
@@ -15,10 +16,6 @@ const doc = jsdom.jsdom(`
   </body>
 </html>`);
 
-if (typeof localStorage === "undefined" || localStorage === null) {
-  var LocalStorage = require('node-localstorage').LocalStorage;
-  global.localStorage = new LocalStorage('./scratch');
-}
 
 // get the window object out of the document and set globals for mocha
 const win = doc.defaultView;

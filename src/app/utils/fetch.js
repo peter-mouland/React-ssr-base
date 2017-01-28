@@ -6,8 +6,8 @@ import { localUrl } from '../utils';
 const log = debug('lego:api/index');
 
 export function checkStatus(response) {
-  if (response.status < 200 || response.status >= 300) {
-    const error = new Error(response.statustext);
+  if (response.status < 200 || response.status >= 500) {
+    const error = new Error(response.statusText);
     error.response = response;
     throw error;
   }

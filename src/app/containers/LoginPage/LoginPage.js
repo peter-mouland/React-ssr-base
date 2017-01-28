@@ -14,6 +14,14 @@ const ReferrerMessage = ({ from }) => (
 
 class LoginPage extends React.Component {
 
+  static propTypes = {
+    location: React.PropTypes.object
+  };
+
+  static defaultProps = {
+    location: { }
+  };
+
   constructor(props, context) {
     super(props, context);
 
@@ -68,7 +76,7 @@ class LoginPage extends React.Component {
     const redirect = redirectToReferrer ? (<Redirect to={from || '/'}/>) : null;
     const referrerMessage = from ? <ReferrerMessage from={from} /> : null;
     const form = (
-      <div>
+      <div id="login-page">
         {referrerMessage}
         <LoginForm
           onSubmit={this.processForm}
