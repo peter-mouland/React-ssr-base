@@ -5,7 +5,6 @@ import Auth from '../../modules/Auth';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import localStorage from '../../utils/local-storage';
 
-
 class SignUpPage extends React.Component {
 
   constructor(props, context) {

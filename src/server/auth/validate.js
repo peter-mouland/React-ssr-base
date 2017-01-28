@@ -71,3 +71,60 @@ export function validateLoginForm(payload) {
   };
 }
 
+export function validateSignupResponse(err) {
+  const res = {
+    status: 200,
+    body: {
+      success: true,
+      message: 'You have successfully signed up! Now you should be able to log in.'
+    }
+  };
+  if (err) {
+    if (err.name === 'MongoError' && err.code === 11000) {
+      res.status = 409;
+      res.body = {
+        success: false,
+        message: 'Check the form for errors.',
+        errors: {
+          email: 'This email is already taken.'
+        }
+      };
+    } else {
+      res.status = 400;
+      res.body = {
+        success: false,
+        message: 'Could not process the form.'
+      };
+    }
+  }
+  return res;
+}
+
+export function validateLoginResponse(err, token, userData) {
+  const res = {
+    status: 200,
+    body: {
+      success: true,
+      message: 'You have successfully logged in!',
+      token,
+      user: userData
+    }
+  };
+  if (err) {
+    if (err.name === 'IncorrectCredentialsError') {
+      res.status = 400;
+      res.body = {
+        success: false,
+        message: err.message
+      };
+    } else {
+      res.status = 400;
+      res.body = {
+        success: false,
+        message: 'Could not process the form.'
+      };
+    }
+  }
+  return res;
+}
+

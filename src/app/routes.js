@@ -31,8 +31,7 @@ const LogOut = React.createClass({
   }
 });
 
-const MatchWhenAuthorized = ({ component: Component, ...rest }) => {
-  return (
+const MatchWhenAuthorized = ({ component: Component, ...rest }) => (
     <Match {...rest} render={(props) => (
       Auth.isUserAuthenticated()
         ? (<Component {...props}/>)
@@ -42,8 +41,7 @@ const MatchWhenAuthorized = ({ component: Component, ...rest }) => {
         }}/>
         )
     )}/>
-  )
-};
+  );
 
 export const routes = [
   {

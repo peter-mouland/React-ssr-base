@@ -8,24 +8,19 @@ class DashboardPage extends React.Component {
     super(props);
 
     this.state = {
+      errors: {},
       secretData: ''
     };
   }
 
   componentDidMount() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('get', '/api/dashboard');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        this.setState({
-          secretData: xhr.response.message
-        });
+    Auth.get('/api/dashboard', (errors, success) => {
+      if (errors) {
+        this.setState({ errors });
+      } else {
+        this.setState({ secretData: success.message });
       }
     });
-    xhr.send();
   }
 
   render() {

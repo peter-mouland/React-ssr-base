@@ -3,7 +3,7 @@ import router from 'koa-router';
 import koaBody from 'koa-body';
 import passport from 'koa-passport';
 
-import { validateLoginForm, validateSignupForm } from './validate';
+import { validateLoginForm, validateSignupForm, validateSignupResponse, validateLoginResponse } from './validate';
 import handleError from '../middleware/handle-error';
 import localSignupStrategy from '../passport/local-signup';
 import localLoginStrategy from '../passport/local-login';
@@ -15,8 +15,8 @@ passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
 authRouter.post('/signup', parseBody, (ctx, next) => {
-  const validationResult = validateSignupForm(ctx.request.body);
   ctx.type = 'json';
+  const validationResult = validateSignupForm(ctx.request.body);
   if (!validationResult.success) {
     ctx.status = 400;
     ctx.response.body = {
@@ -26,37 +26,16 @@ authRouter.post('/signup', parseBody, (ctx, next) => {
     };
   } else {
     return passport.authenticate('local-signup', (err) => {
-      if (err) {
-        if (err.name === 'MongoError' && err.code === 11000) {
-          ctx.status = 409;
-          ctx.response.body = {
-            success: false,
-            message: 'Check the form for errors.',
-            errors: {
-              email: 'This email is already taken.'
-            }
-          };
-        } else {
-          ctx.status = 400;
-          ctx.response.body = {
-            success: false,
-            message: 'Could not process the form.'
-          };
-        }
-      } else {
-        ctx.status = 200;
-        ctx.response.body = {
-          success: true,
-          message: 'You have successfully signed up! Now you should be able to log in.'
-        };
-      }
+      const res = validateSignupResponse(err);
+      ctx.status = res.status;
+      ctx.response.body = res.body;
     })(ctx, next);
   }
 });
 
 authRouter.post('/login', parseBody, async (ctx, next) => {
-  const validationResult = validateLoginForm(ctx.request.body);
   ctx.type = 'json';
+  const validationResult = validateLoginForm(ctx.request.body);
   if (!validationResult.success) {
     ctx.status = 400;
     ctx.response.body = {
@@ -66,33 +45,12 @@ authRouter.post('/login', parseBody, async (ctx, next) => {
     };
   } else {
     return passport.authenticate('local-login', (err, token, userData) => {
-      if (err) {
-        if (err.name === 'IncorrectCredentialsError') {
-          ctx.status = 400;
-          ctx.response.body = {
-            success: false,
-            message: err.message
-          };
-        } else {
-          ctx.status = 400;
-          ctx.response.body = {
-            success: false,
-            message: 'Could not process the form.'
-          };
-        }
-      } else {
-        ctx.status = 200;
-        ctx.response.body = {
-          success: true,
-          message: 'You have successfully logged in!',
-          token,
-          user: userData
-        };
-      }
+      const res = validateLoginResponse(err, token, userData);
+      ctx.status = res.status;
+      ctx.response.body = res.body;
     })(ctx, next);
   }
 });
-
 
 authRouter.use(handleError());
 

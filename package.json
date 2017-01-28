@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server-entry.js",
   "scripts": {
-    "startdb": "mongod  --dbpath mongodb",
+    "mongo": "mongod  --dbpath mongodb",
     "prestart": "rm -rf compiled && npm run build:server && npm run build && node scripts/copyAssets.js",
     "prestart:dev": "npm run build:dev",
     "pretest:e2e": "npm run build && node scripts/copyAssets.js",

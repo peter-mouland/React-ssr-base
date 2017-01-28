@@ -12,6 +12,17 @@ const ReferrerMessage = ({ from }) => (
   </p>
 );
 
+const getAndRemoveMessage = (key) => {
+  const storedMessage = localStorage.getItem(key);
+  let successMessage = '';
+
+  if (storedMessage) {
+    successMessage = storedMessage;
+    localStorage.removeItem(key);
+  }
+  return successMessage;
+};
+
 class LoginPage extends React.Component {
 
   static propTypes = {
@@ -24,19 +35,10 @@ class LoginPage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
-
-    const storedMessage = localStorage.getItem('successMessage');
-    let successMessage = '';
-
-    if (storedMessage) {
-      successMessage = storedMessage;
-      localStorage.removeItem('successMessage');
-    }
-
     this.state = {
       errors: {},
       redirectToReferrer: false,
-      successMessage,
+      successMessage: getAndRemoveMessage('successMessage'),
       user: {
         email: '',
         password: ''
@@ -71,8 +73,7 @@ class LoginPage extends React.Component {
 
   render() {
     const { from } = this.props.location.state || '/';
-    const { redirectToReferrer } = this.state;
-
+    const { redirectToReferrer, errors, successMessage, user } = this.state;
     const redirect = redirectToReferrer ? (<Redirect to={from || '/'}/>) : null;
     const referrerMessage = from ? <ReferrerMessage from={from} /> : null;
     const form = (
@@ -81,9 +82,9 @@ class LoginPage extends React.Component {
         <LoginForm
           onSubmit={this.processForm}
           onChange={this.changeUser}
-          errors={this.state.errors}
-          successMessage={this.state.successMessage}
-          user={this.state.user}
+          errors={errors}
+          successMessage={successMessage}
+          user={user}
         />
       </div>
     );
