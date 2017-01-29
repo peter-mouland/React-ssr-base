@@ -31,17 +31,18 @@ const LogOut = React.createClass({
   }
 });
 
-const MatchWhenAuthorized = ({ component: Component, ...rest }) => (
-    <Match {...rest} render={(props) => (
-      Auth.isUserAuthenticated()
-        ? (<Component {...props}/>)
-        : (<Redirect to={{
-          pathname: '/login',
-          state: { from: props.location }
-        }}/>
-        )
-    )}/>
-  );
+const MatchWhenAuthorized = ({ component: Component, ...rest }) => {
+  debug('routes', Auth.isUserAuthenticated());
+  return <Match {...rest} render={(props) => (
+    Auth.isUserAuthenticated()
+      ? (<Component {...props}/>)
+      : (<Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }}/>
+      )
+  )}/>;
+};
 
 export const routes = [
   {
@@ -102,14 +103,15 @@ export const LinkHelper = ({ to, ...props }) => {
   );
 };
 
-const Route = ({ route }) => (
-  route.requiresAuthentication
+const Route = ({ route }) => {
+  debug('routes', route);
+  return route.requiresAuthentication
     ? <MatchWhenAuthorized { ...route }/>
     : <span>
-        <Match {...route} render={() => <DocumentMeta title={ route.title }/> } />
+        <Match {...route} render={() => <DocumentMeta title={ route.title }/> }/>
         <MatchWithRoutes {...route} />
-      </span>
-);
+      </span>;
+};
 
 export function makeRoutes() {
   return (

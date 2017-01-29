@@ -1,5 +1,9 @@
-import localStorage from '../utils/local-storage';
+import cookie from 'react-cookie';
+import debug from 'debug';
+
 import { validateLoginForm, validateSignupForm } from '../../server/auth/validate';
+
+const log = debug('lego:Auth');
 
 function buildErrors(response) {
   const errors = response.errors || {};
@@ -94,7 +98,7 @@ class Auth {
     const xhr = new XMLHttpRequest();
     xhr.open('get', url);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.setRequestHeader('Authorization', `bearer ${Auth.getToken()}`);
+    xhr.setRequestHeader('Authorization', `Bearer ${Auth.getToken()}`);
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
@@ -110,36 +114,22 @@ class Auth {
 
   static onChange() {}
 
-  /**
-   * Authenticate a user. Save a token string in Local Storage
-   * @param {string} token
-   */
   static authenticateUser(token) {
-    localStorage.setItem('token', token);
+    log('authenticateUser', token);
+    cookie.save('token', token);
   }
 
-  /**
-   * Check if a user is authenticated - check if a token is saved in Local Storage
-   * @returns {boolean}
-   */
   static isUserAuthenticated() {
-    return localStorage.getItem('token') !== null;
+    log('isUserAuthenticated', cookie.load('token'));
+    return !!cookie.load('token');
   }
 
-  /**
-   * Deauthenticate a user. Remove a token from Local Storage.
-   */
   static deauthenticateUser() {
-    localStorage.removeItem('token');
+    cookie.remove('token');
   }
-
-  /**
-   * Get a token value.
-   * @returns {string}
-   */
 
   static getToken() {
-    return localStorage.getItem('token');
+    return cookie.load('token');
   }
 
 }

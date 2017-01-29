@@ -1,11 +1,13 @@
 import React from 'react';
 import bemHelper from 'react-bem-helper';
+import debug from 'debug';
 
 import Auth from '../modules/Auth';
 import { LinkHelper } from '../routes';
 import './mainLayout.scss';
 
 const bem = bemHelper('my-account');
+const log = debug('lego:mainLayout');
 
 class MyAccount extends React.Component {
 
@@ -36,6 +38,7 @@ export default class MainLayout extends React.Component {
     this.state = {
       isUserAuthenticated: Auth.isUserAuthenticated()
     };
+    log('setState', { isUserAuthenticated: this.state.isUserAuthenticated });
     this.updateAuth = this.updateAuth.bind(this);
   }
 

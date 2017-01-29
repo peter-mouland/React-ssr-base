@@ -1,9 +1,10 @@
 import router from 'koa-router';
 import koaBody from 'koa-body';
-
+import debug from 'debug';
 import fetchCards from './fetch-cards';
-import authCheck, { getUser } from '../middleware/auth-check';
+import authCheck from '../middleware/auth-check';
 
+const log = debug('lego:api');
 const parseBody = koaBody();
 const apiRouter = router({ prefix: '/api' });
 
@@ -21,9 +22,12 @@ apiRouter.get('/game/:gameType(people|films)/:card1/:card2', parseBody, async (c
 });
 
 apiRouter.use(authCheck());
-apiRouter.use(getUser());
 
 apiRouter.get('/dashboard', (ctx) => {
+  log('dashboard', { ctx });
+  log('dashboard', { session: ctx.session });
+  log('dashboard', { cookie: ctx.cookies.get('session') });
+
   ctx.type = 'json';
   ctx.status = 200;
   ctx.response.body = { message: "You're authorized to see this secret message." };
