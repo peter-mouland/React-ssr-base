@@ -1,9 +1,8 @@
-import get from 'lodash/get';
-
 export { fetch, json } from './fetch';
 export { randomRange } from './randomRange';
 
-const navigator = get(global, 'navigator.userAgent');
+const navigator = global.navigator && global.navigator.userAgent;
+
 // hasWindow = true for tests + client
 export const hasWindow = typeof window !== 'undefined';
 // isBrowser = true for client only

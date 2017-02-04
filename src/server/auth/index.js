@@ -16,10 +16,10 @@ const parseBody = koaBody();
 const authRouter = router({ prefix: '/auth' });
 
 passport.serializeUser((user, done) => done(null, user.id));
-passport.deserializeUser(async function(userId, done) {
+passport.deserializeUser(async (userId, done) => {
   await checkUser(userId)
     .then((user) => done(null, user))
-    .catch(done)
+    .catch(done);
 });
 passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);

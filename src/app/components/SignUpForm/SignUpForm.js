@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Card, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-
 
 const SignUpForm = ({
   onSubmit,
@@ -11,50 +7,49 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
-  <Card className="container">
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+      <h2 >Sign Up</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
-        <TextField
-          floatingLabelText="Name"
+        <label>Name</label>
+        <input
           name="name"
-          errorText={errors.name}
+          type="text"
           onChange={onChange}
           value={user.name}
         />
+        <p className="error-text">{errors.email}</p>
       </div>
-
       <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
+        <label>Email</label>
+        <input
           name="email"
-          errorText={errors.email}
+          type="email"
           onChange={onChange}
           value={user.email}
         />
+        <p className="error-text">{errors.email}</p>
       </div>
 
       <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
+        <label>Password</label>
+        <input
           type="password"
           name="password"
           onChange={onChange}
-          errorText={errors.password}
           value={user.password}
         />
+        <p className="error-text">{errors.password}</p>
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+        <button type="submit">Create New Account</button>
       </div>
 
-      <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
+      <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
     </form>
-  </Card>
 );
 
 SignUpForm.propTypes = {

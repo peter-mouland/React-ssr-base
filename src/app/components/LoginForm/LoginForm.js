@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Card, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-
 
 const LoginForm = ({
   onSubmit,
@@ -12,41 +8,38 @@ const LoginForm = ({
   successMessage,
   user
 }) => (
-  <Card className="container">
     <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2>
+      <h2>Login</h2>
 
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
+        <label>Email</label>
+        <input
+          type="email"
           name="email"
-          errorText={errors.email}
           onChange={onChange}
           value={user.email}
         />
+        <p className="error-text">{errors.email}</p>
       </div>
 
       <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
+        <label>Password</label>
+        <input
           type="password"
           name="password"
           onChange={onChange}
-          errorText={errors.password}
           value={user.password}
         />
+        <p className="error-text">{errors.password}</p>
       </div>
 
-      <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
-      </div>
+      <button type="submit">Log In</button>
 
-      <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
+      <p>Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
     </form>
-  </Card>
 );
 
 LoginForm.propTypes = {
