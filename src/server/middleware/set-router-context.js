@@ -12,7 +12,7 @@ function getMatch(url) {
     .find((route) => matchPath(url, route.path, { exact: true, strict: false }))
 }
 
-async function getContext(dispatch, req) {
+async function getRouteData(dispatch, req) {
   const needs = [];
   routes
     .filter((route) => route.component.needs)
@@ -38,17 +38,17 @@ class Markup  extends React.Component {
   }
 }
 
-function setRouterContext() {
+function setRouterMarkup() {
   return async (ctx, next) => {
     const store = configureStore();
+    await getRouteData(store.dispatch, ctx.request);
     const markup = renderToString(<Markup req={ ctx.request } store={store} />);
-    await getContext(store.dispatch, ctx.request);
     const match = getMatch(ctx.request.url);
     ctx.status = match ? 200 : 404;
     ctx.initialState = store.getState();
-    ctx.routerContext = markup;
+    ctx.markup = markup;
     await next();
   };
 }
 
-export default setRouterContext;
+export default setRouterMarkup;

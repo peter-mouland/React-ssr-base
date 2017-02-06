@@ -18,9 +18,9 @@ export default class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-          <Router {...this.props} >
-            {makeRoutes()}
-          </Router>
+        <Router {...this.props} >
+          {makeRoutes()}
+        </Router>
       </Provider>
     );
   }

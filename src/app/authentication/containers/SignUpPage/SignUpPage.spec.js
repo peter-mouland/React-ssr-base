@@ -1,4 +1,4 @@
-import { expect, shallow, React } from '../../../../tests/support/test.helper';
+import { expect, shallow, React } from '../../../../../tests/support/test.helper';
 import SignUpPage from './SignUpPage';
 
 const baseProps = {};

@@ -5,6 +5,7 @@ const debug = require('debug');
 const User = require('mongoose').model('User');
 
 const config = require('../../config/db.json');
+const Auth = require('../../app/authentication/auth-helper');
 
 const log = debug('lego:auth-check');
 
@@ -41,8 +42,15 @@ export const checkUser = (userId) => new Promise((resolve, reject) => {
   });
 });
 
+const isAuthorised = (ctx) => new Promise((resolve, reject) => {
+  return Auth.isUserAuthenticated()
+    ? resolve(ctx)
+    : reject();
+});
+
 export default function authCheck() {
   return (ctx, next) => hasAuthorizationHeader(ctx)
+      .then(isAuthorised)
       .then(setJwt)
       .then(() => checkUser(ctx.state.user.sub))
       .catch(() => catcher(ctx))

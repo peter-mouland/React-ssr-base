@@ -2,7 +2,7 @@ import router from 'koa-router';
 import koaBody from 'koa-body';
 import debug from 'debug';
 import fetchCards from './fetch-cards';
-import authCheck from '../middleware/auth-check';
+import authCheck from '../authentication/auth-check-middleware';
 
 const log = debug('lego:api');
 const parseBody = koaBody();

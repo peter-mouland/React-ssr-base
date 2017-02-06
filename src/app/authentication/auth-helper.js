@@ -116,7 +116,7 @@ class Auth {
 
   static authenticateUser(token) {
     log('authenticateUser', token);
-    cookie.save('token', token);
+    cookie.save('token', token, { path: '/' });
   }
 
   static isUserAuthenticated() {

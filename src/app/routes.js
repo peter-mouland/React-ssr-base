@@ -52,14 +52,14 @@ export const routes = [
   },
   {
     name: 'signup',
-    path: '/signup',
+    path: '/signup/',
     label: 'Sign Up',
     title: 'Sign Up',
     component: SignUpPage
   },
   {
     name: 'dashboard',
-    path: '/dashboard',
+    path: '/dashboard/',
     requiresAuthentication: true,
     label: 'Dashboard',
     title: 'Dashboard',

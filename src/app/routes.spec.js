@@ -4,16 +4,15 @@ import { routes } from './routes';
 describe('routes', ()=>{
   it('should always start with /', () => {
     Object.keys(routes).forEach(route => {
-      expect(routes[route].pattern.substr(0,1)).to.equal('/', 'route does not start with /')
+      expect(routes[route].path.substr(0,1)).to.equal('/', 'route does not start with /')
     })
   });
 
-  it('should always end with (/)? to allow both routes to work', () => {
+  it('should always end with / to allow both routes to work', () => {
     Object.keys(routes)
-      .filter(route => routes[route].pattern !== '/')
       .forEach(route => {
-      const pattern = routes[route].pattern;
-      expect(pattern.substr(-4)).to.equal('(/)?', 'route does not end with (/)?')
+      const pattern = routes[route].path;
+      expect(pattern.substr(-1)).to.equal('/', 'route does not end with /')
     })
   });
 });
