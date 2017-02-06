@@ -4,12 +4,12 @@ import koaBody from 'koa-body';
 import passport from 'koa-passport';
 import debug from 'debug';
 
-import { validateLoginForm, validateSignupForm, validateSignupResponse, validateLoginResponse } from './validate';
+import { validateLoginForm, validateSignupForm, validateSignupResponse, validateLoginResponse } from '../../app/authentication/auth-validation';
 import { checkUser } from '../middleware/auth-check';
 import handleError from '../middleware/handle-error';
-import localSignupStrategy from '../passport/local-signup';
-import localLoginStrategy from '../passport/local-login';
-import Auth from '../../app/modules/Auth';
+import localSignupStrategy from './passport/local-signup';
+import localLoginStrategy from './passport/local-login';
+import Auth from '../../app/authentication/auth-helper';
 
 const log = debug('lego: auth');
 const parseBody = koaBody();

@@ -1,24 +1,32 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import Link from 'react-router-dom/Link';
 
-const LoginForm = ({
+const SignUpForm = ({
   onSubmit,
   onChange,
   errors,
-  successMessage,
-  user
+  user,
 }) => (
     <form action="/" onSubmit={onSubmit}>
-      <h2>Login</h2>
+      <h2 >Sign Up</h2>
 
-      {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
+        <label>Name</label>
+        <input
+          name="name"
+          type="text"
+          onChange={onChange}
+          value={user.name}
+        />
+        <p className="error-text">{errors.email}</p>
+      </div>
+      <div className="field-line">
         <label>Email</label>
         <input
-          type="email"
           name="email"
+          type="email"
           onChange={onChange}
           value={user.email}
         />
@@ -36,18 +44,19 @@ const LoginForm = ({
         <p className="error-text">{errors.password}</p>
       </div>
 
-      <button type="submit">Log In</button>
+      <div className="button-line">
+        <button type="submit">Create New Account</button>
+      </div>
 
-      <p>Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
+      <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
     </form>
 );
 
-LoginForm.propTypes = {
+SignUpForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  successMessage: PropTypes.string.isRequired,
   user: PropTypes.object.isRequired
 };
 
-export default LoginForm;
+export default SignUpForm;

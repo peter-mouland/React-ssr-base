@@ -2,8 +2,8 @@ import React from 'react';
 import bemHelper from 'react-bem-helper';
 import debug from 'debug';
 
-import Auth from '../modules/Auth';
-import { LinkHelper } from '../routes';
+import Auth from '../authentication/auth-helper';
+import { NamedLink } from '../routes';
 import './mainLayout.scss';
 
 const bem = bemHelper('my-account');
@@ -15,11 +15,11 @@ class MyAccount extends React.Component {
     const { navLinkProps, className, isUserAuthenticated, ...props } = this.props;
     const loggedOut = (
       <span>
-        <LinkHelper to="login" { ...navLinkProps } />
-        <LinkHelper to="signup" { ...navLinkProps } />
+        <NamedLink to="login" { ...navLinkProps } />
+        <NamedLink to="signup" { ...navLinkProps } />
       </span>
     );
-    const loggedIn = <LinkHelper to="logout" { ...navLinkProps } />;
+    const loggedIn = <NamedLink to="logout" { ...navLinkProps } />;
     return (
       <div {...bem(null, null, className)} { ...props } >
         { isUserAuthenticated
@@ -62,9 +62,9 @@ export default class MainLayout extends React.Component {
       <div className="layout layout--main">
         <nav className="layout__nav">
           <span className="layout__nav-header">React Lego</span>
-          <LinkHelper to='homepage' { ...navLinkProps } />
-          <LinkHelper to="game" { ...navLinkProps } />
-          <LinkHelper to="dashboard" { ...navLinkProps } />
+          <NamedLink to='homepage' { ...navLinkProps } />
+          <NamedLink to="game" { ...navLinkProps } />
+          <NamedLink to="dashboard" { ...navLinkProps } />
           <MyAccount navLinkProps={ navLinkProps } isUserAuthenticated={ isUserAuthenticated }/>
         </nav>
         <main className="layout__content">

@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from '../../modules/Auth';
+import Auth from '../../authentication/auth-helper';
 import Dashboard from '../../components/Dashboard/Dashboard';
 
 class DashboardPage extends React.Component {

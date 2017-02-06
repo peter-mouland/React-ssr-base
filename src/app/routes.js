@@ -1,11 +1,8 @@
 import React from 'react';
-import Match from 'react-router/Match';
-import Miss from 'react-router/Miss';
-import Redirect from 'react-router/Redirect';
-import NamedLink from 'react-router-addons-routes/NamedLink';
-import RoutesProvider from 'react-router-addons-routes/RoutesProvider';
-import MatchWithRoutes from 'react-router-addons-routes/MatchWithRoutes';
-import DocumentMeta from 'react-document-meta';
+import Route from 'react-router-dom/Route';
+import Link from 'react-router-dom/Link';
+import Switch from 'react-router-dom/Switch';
+// import DocumentMeta from 'react-document-meta';
 import debug from 'debug';
 
 import MainLayout from './Layouts/MainLayout';
@@ -13,77 +10,56 @@ import Homepage from './containers/Homepage/Homepage';
 import DashboardPage from './containers/DashboardPage/DashboardPage';
 import Game from './containers/Game/Game';
 import NotFound from './containers/NotFound/NotFound';
-import LoginPage from './containers/LoginPage/LoginPage';
-import SignUpPage from './containers/SignUpPage/SignUpPage';
-import Auth from './modules/Auth';
+
+import LoginPage from './authentication/containers/LoginPage/LoginPage';
+import LogOut from './authentication/components/LogOut/LogOut';
+import SignUpPage from './authentication/containers/SignUpPage/SignUpPage';
+import PrivateRoute from './authentication/components/PrivateRoute/PrivateRoute';
 
 debug('lego:routes');
 
 const siteTitle = 'React Lego';
 
-const LogOut = React.createClass({
-  componentDidMount() {
-    Auth.logout();
-  },
-
-  render() {
-    return <p>You are now logged out</p>;
-  }
-});
-
-const MatchWhenAuthorized = ({ component: Component, ...rest }) => {
-  debug('routes', Auth.isUserAuthenticated());
-  return <Match {...rest} render={(props) => (
-    Auth.isUserAuthenticated()
-      ? (<Component {...props}/>)
-      : (<Redirect to={{
-        pathname: '/login',
-        state: { from: props.location }
-      }}/>
-      )
-  )}/>;
-};
-
 export const routes = [
   {
     name: 'homepage',
-    exactly: true,
-    pattern: '/',
+    exact: true,
+    path: '/',
     label: 'About React Lego',
     title: 'About React Lego',
     component: Homepage
   },
   {
     name: 'game',
-    pattern: '/game(/)?',
+    path: '/game/',
     label: 'Star Wars Trivia',
     title: 'Star Wars Trivia',
     component: Game
   },
   {
     name: 'logout',
-    pattern: '/logout(/)?',
+    path: '/logout/',
     label: 'Logout',
     title: 'Logout',
     component: LogOut
   },
   {
     name: 'login',
-    pattern: '/login(/)?',
+    path: '/login/',
     label: 'Login',
     title: 'Login',
     component: LoginPage
   },
   {
     name: 'signup',
-    pattern: '/signup(/)?',
+    path: '/signup',
     label: 'Sign Up',
     title: 'Sign Up',
     component: SignUpPage
   },
   {
     name: 'dashboard',
-    pattern: '/dashboard(/)?',
+    path: '/dashboard',
     requiresAuthentication: true,
     label: 'Dashboard',
     title: 'Dashboard',
@@ -93,33 +69,29 @@ export const routes = [
 
 export const findRoute = (to) => routes.find((rt) => rt.name === to);
 
-export const LinkHelper = ({ to, ...props }) => {
+export const NamedLink = ({ index, onlyActiveOnIndex, activeClassName, to, children, ...props }) => {
   const route = findRoute(to);
   if (!route) throw new Error(`Route to '${to}' not found`);
   return (
-    <NamedLink to={ to } { ...props }>
-      { props.children || route.label }
-    </NamedLink>
+    <Link to={ route.path } { ...props }>
+      { children || route.label }
+    </Link>
   );
-};
-
-const Route = ({ route }) => {
-  debug('routes', route);
-  return route.requiresAuthentication
-    ? <MatchWhenAuthorized { ...route }/>
-    : <span>
-        <Match {...route} render={() => <DocumentMeta title={ route.title }/> }/>
-        <MatchWithRoutes {...route} />
-      </span>;
 };
 
 export function makeRoutes() {
   return (
-    <RoutesProvider routes={routes}>
-      <MainLayout>
-        {routes.map((route) => (<Route key={route.name} route={ route }/>))}
-        <Miss title={`${siteTitle} - Page Not Found`} component={ NotFound }/>
-      </MainLayout>
-    </RoutesProvider>
+    <MainLayout>
+      <Switch>
+        {routes.map((route) => {
+          return (
+            route.requiresAuthentication
+              ? <PrivateRoute { ...route } key={ route.name } />
+              : <Route {...route} key={ route.name } />
+          );
+        })}
+        <Route title={`${siteTitle} - Page Not Found`} component={ NotFound }/>
+      </Switch>
+    </MainLayout>
   );
 }

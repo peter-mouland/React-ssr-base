@@ -5,7 +5,7 @@ import debug from 'debug';
 import setRouterContext from './middleware/set-router-context';
 import renderApp from './middleware/render-app';
 import apiRouter from './api';
-import authRouter from './auth';
+import authRouter from './authentication/auth-router';
 import { DIST, PUBLIC } from '../config/paths';
 
 const log = debug('lego:router');

@@ -2,7 +2,7 @@ require('babel-core/register')({
   only: [/src/, /tests/, /config/]
 });
 require("babel-polyfill");
-require('../../src/app/utils/local-storage');
+require('../../src/app/authentication/local-storage');
 const jsdom = require('jsdom');
 const hook = require('node-hook').hook;
 hook('.scss', (source, filename) => 'console.log("' + filename + '");');

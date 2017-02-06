@@ -1,7 +1,7 @@
 import cookie from 'react-cookie';
 import debug from 'debug';
 
-import { validateLoginForm, validateSignupForm } from '../../server/auth/validate';
+import { validateLoginForm, validateSignupForm } from './auth-validation';
 
 const log = debug('lego:Auth');
 

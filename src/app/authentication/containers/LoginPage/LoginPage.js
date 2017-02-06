@@ -1,9 +1,9 @@
 import React from 'react';
-import Redirect from 'react-router/Redirect';
+import Redirect from 'react-router-dom/Redirect';
 
-import Auth from '../../modules/Auth';
+import Auth from '../../auth-helper';
 import LoginForm from '../../components/LoginForm/LoginForm';
-import localStorage from '../../utils/local-storage';
+import localStorage from '../../local-storage';
 
 const ReferrerMessage = ({ from }) => (
   <p>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { MemoryRouter, BrowserRouter } from 'react-router';
+import BrowserRouter from 'react-router-dom/BrowserRouter';
+import MemoryRouter from 'react-router-dom/MemoryRouter';
 import debug from 'debug';
 
 import { makeRoutes } from './routes';

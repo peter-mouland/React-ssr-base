@@ -1,4 +1,3 @@
-
 function storageMock() {
   const storage = {};
 
