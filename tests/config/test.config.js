@@ -2,11 +2,17 @@ require('babel-core/register')({
   only: [/src/, /tests/, /config/]
 });
 require("babel-polyfill");
+const connect = require('../../src/server/models').connect;
+const config = require('./db.json');
 require('../../src/app/authentication/local-storage');
 const jsdom = require('jsdom');
 const hook = require('node-hook').hook;
 hook('.scss', (source, filename) => 'console.log("' + filename + '");');
 hook('.svg', (source, filename) => 'console.log("' + filename + '");');
+
+// Connect to test DB (needed for functional tests)
+connect(config.dbUri);
+
 // setup the simplest document possible
 const doc = jsdom.jsdom(`
 <!doctype html>

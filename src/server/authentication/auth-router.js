@@ -5,8 +5,7 @@ import passport from 'koa-passport';
 import debug from 'debug';
 
 import { validateLoginForm, validateSignupForm, validateSignupResponse, validateLoginResponse } from '../../app/authentication/auth-validation';
-import { checkUser } from '../middleware/auth-check';
-import handleError from '../middleware/handle-error';
+import { checkUser } from './auth-check-middleware';
 import localSignupStrategy from './passport/local-signup';
 import localLoginStrategy from './passport/local-login';
 import Auth from '../../app/authentication/auth-helper';
@@ -75,6 +74,22 @@ authRouter.post('/logout', parseBody, (ctx, next) => {
   next();
 });
 
-authRouter.use(handleError());
+authRouter.use(function errorHandler() {
+  return async (ctx, next) => {
+    try {
+      await next(); // attempt to invoke the next middleware downstream
+    } catch (err) {
+      if (process.env.NODE_ENV === 'production') {
+        log(err); // send to real logging system
+      } else {
+        log(err);
+      }
+      ctx.response.status = err.status || 500;
+      ctx.type = 'json';
+      ctx.body = { error: err };
+      ctx.app.emit('error', err, ctx);
+    }
+  };
+});
 
 export default authRouter;
