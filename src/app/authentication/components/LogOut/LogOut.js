@@ -12,4 +12,4 @@ const LogOutPage = React.createClass({
   }
 });
 
-export default LogOutPage
+export default LogOutPage;

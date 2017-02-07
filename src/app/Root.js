@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import BrowserRouter from 'react-router-dom/BrowserRouter';
-import MemoryRouter from 'react-router-dom/MemoryRouter';
+import StaticRouter from 'react-router-dom/StaticRouter';
 import debug from 'debug';
 
 import { makeRoutes } from './routes';
@@ -11,7 +11,7 @@ import { isBrowser } from './utils';
 debug('lego:Root');
 
 // exported to be used in tests
-export const Router = isBrowser ? BrowserRouter : MemoryRouter;
+export const Router = isBrowser ? BrowserRouter : StaticRouter;
 const store = configureStore(window.__INITIAL_STATE__); // eslint-disable-line
 
 export default class Root extends React.Component {

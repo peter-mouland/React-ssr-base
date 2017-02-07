@@ -6,20 +6,20 @@ import Auth from '../authentication/auth-helper';
 import { NamedLink } from '../routes';
 import './mainLayout.scss';
 
-const bem = bemHelper('my-account');
 const log = debug('lego:mainLayout');
 
 class MyAccount extends React.Component {
 
   render() {
-    const { navLinkProps, className, isUserAuthenticated, ...props } = this.props;
+    const bem = bemHelper({ name: 'my-account' });
+    const { className, isUserAuthenticated, ...props } = this.props;
     const loggedOut = (
       <span>
-        <NamedLink to="login" { ...navLinkProps } />
-        <NamedLink to="signup" { ...navLinkProps } />
+        <NamedLink to="login" />
+        <NamedLink to="signup" />
       </span>
     );
-    const loggedIn = <NamedLink to="logout" { ...navLinkProps } />;
+    const loggedIn = <NamedLink to="logout" />;
     return (
       <div {...bem(null, null, className)} { ...props } >
         { isUserAuthenticated
@@ -51,21 +51,18 @@ export default class MainLayout extends React.Component {
   }
 
   render() {
+    const bem = bemHelper({ name: 'layout' });
     const { children } = this.props;
     const { isUserAuthenticated } = this.state;
-    const navLinkProps = {
-      className: 'layout__nav-link',
-      activeClassName: 'layout__nav-link--selected'
-    };
 
     return (
-      <div className="layout layout--main">
-        <nav className="layout__nav">
-          <span className="layout__nav-header">React Lego</span>
-          <NamedLink to='homepage' { ...navLinkProps } />
-          <NamedLink to="game" { ...navLinkProps } />
-          <NamedLink to="dashboard" { ...navLinkProps } />
-          <MyAccount navLinkProps={ navLinkProps } isUserAuthenticated={ isUserAuthenticated }/>
+      <div {...bem(null, 'main')}>
+        <nav {...bem('nav')}>
+          <span {...bem('nav', 'header')}>React Lego</span>
+          <NamedLink to='homepage' {...bem('nav', 'link')} />
+          <NamedLink to="game" {...bem('nav', 'link')} />
+          <NamedLink to="dashboard" {...bem('nav', 'link')} />
+          <MyAccount isUserAuthenticated={ isUserAuthenticated } />
         </nav>
         <main className="layout__content">
           {children}

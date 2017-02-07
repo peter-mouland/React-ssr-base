@@ -20,7 +20,7 @@
     "test:e2e": "npm run nightwatch -- --env local",
     "test:e2e-smoke": "npm run nightwatch -- --env chrome_win --tag smoke",
     "test:e2e-xb": "npm run nightwatch -- --env safari_osx,chrome_osx,firefox_win,firefox_osx,IE10,IE11,edge",
-    "prenightwatch": "selenium-standalone install --version=2.53.1 && npm run prestart",
+    "prenightwatch": "selenium-standalone install --version=3.0.1 && npm run prestart",
     "nightwatch": "NODE_ENV=production nightwatch -o ./tests/e2e/tests_output -c ./tests/config/nightwatch.conf.js",
     "mocha": "mocha --opts ./tests/config/mocha.opts "
   },
@@ -111,12 +111,12 @@
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-babel": "^4.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.2.2",
     "fs-extra": "^1.0.0",
     "glob": "^7.1.1",
     "jsdom": "^9.2.1",
-    "koa-webpack": "^0.1.9",
+    "koa-webpack": "^0.2.1",
     "koa-webpack-dev-middleware": "^1.2.2",
     "koa-webpack-hot-middleware": "^1.0.3",
     "koa-webpack-middleware": "^1.0.3",
@@ -129,7 +129,7 @@
     "react-addons-test-utils": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "sass-lint": "^1.5.1",
-    "selenium-standalone": "^5.11.0",
+    "selenium-standalone": "^6.0.0",
     "sinon": "^1.17.3",
     "supertest": "^2.0.0"
   }

@@ -25,7 +25,7 @@ describe('Game Route', function () {
     });
 
     it('Should contain a title', () => {
-      expect(document.title).to.equal(findRoute('game').title);
+      expect(document.title).to.equal(findRoute('game').meta.title);
     });
 
     it('should have a nav', () => {

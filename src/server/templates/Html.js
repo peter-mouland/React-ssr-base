@@ -11,7 +11,7 @@ export default class Html extends React.Component {
   };
 
   render() {
-    const { initialState, scripts, stylesheets, content } = this.props;
+    const { initialState, scripts, stylesheets, markup } = this.props;
     return (
       <html lang="en">
       <head>
@@ -25,7 +25,7 @@ export default class Html extends React.Component {
       <script dangerouslySetInnerHTML={{
         __html: `window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}`
       }} />
-      <div id="html" dangerouslySetInnerHTML={{ __html: content }} />
+      <div id="html" dangerouslySetInnerHTML={{ __html: markup }} />
       {scripts.map((script, i) => <script src={script} key={ i } />)}
       </body>
       </html>
