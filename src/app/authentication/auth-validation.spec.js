@@ -17,16 +17,16 @@ describe('auth-validation', ()=>{
       });
 
       it('should return an email error', () => {
-        expect(result.errors.email).to.equal(text.errors.email)
+        expect(result.errors.email).to.equal(text.signup.errors.email)
       });
       it('should return an password error', () => {
-        expect(result.errors.password).to.equal(text.errors.password)
+        expect(result.errors.password).to.equal(text.signup.errors.password)
       });
       it('should return an name error', () => {
-        expect(result.errors.name).to.equal(text.errors.name)
+        expect(result.errors.name).to.equal(text.signup.errors.name)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.errors.message)
+        expect(result.message).to.equal(text.signup.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -42,13 +42,13 @@ describe('auth-validation', ()=>{
         expect(result.errors.email).to.equal(undefined)
       });
       it('should return an password error', () => {
-        expect(result.errors.password).to.equal(text.errors.password)
+        expect(result.errors.password).to.equal(text.signup.errors.password)
       });
       it('should return an name error', () => {
-        expect(result.errors.name).to.equal(text.errors.name)
+        expect(result.errors.name).to.equal(text.signup.errors.name)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.errors.message)
+        expect(result.message).to.equal(text.signup.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -61,16 +61,16 @@ describe('auth-validation', ()=>{
       });
 
       it('should return an email error', () => {
-        expect(result.errors.email).to.equal(text.errors.email)
+        expect(result.errors.email).to.equal(text.signup.errors.email)
       });
       it('should return an password error', () => {
-        expect(result.errors.password).to.equal(text.errors.password)
+        expect(result.errors.password).to.equal(text.signup.errors.password)
       });
       it('should return an name error', () => {
         expect(result.errors.name).to.equal(undefined)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.errors.message)
+        expect(result.message).to.equal(text.signup.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -83,16 +83,16 @@ describe('auth-validation', ()=>{
       });
 
       it('should return an email error', () => {
-        expect(result.errors.email).to.equal(text.errors.email)
+        expect(result.errors.email).to.equal(text.signup.errors.email)
       });
       it('should return an password error', () => {
         expect(result.errors.password).to.equal(undefined)
       });
       it('should return an name error', () => {
-        expect(result.errors.name).to.equal(text.errors.name)
+        expect(result.errors.name).to.equal(text.signup.errors.name)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.errors.message)
+        expect(result.message).to.equal(text.signup.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -113,6 +113,86 @@ describe('auth-validation', ()=>{
       });
       it('should return an name error', () => {
         expect(result.errors.name).to.equal(undefined)
+      });
+      it('should return an error message', () => {
+        expect(result.message).to.equal('')
+      });
+      it('should return success = false', () => {
+        expect(result.success).to.equal(true);
+      });
+    });
+  });
+
+  describe('validateLoginForm',  () => {
+
+    context('with no payload', ()=>{
+      beforeEach(()=>{
+        result = validateLoginForm();
+      });
+
+      it('should return an email error', () => {
+        expect(result.errors.email).to.equal(text.login.errors.email)
+      });
+      it('should return an password error', () => {
+        expect(result.errors.password).to.equal(text.login.errors.password)
+      });
+      it('should return an error message', () => {
+        expect(result.message).to.equal(text.login.errors.message)
+      });
+      it('should return success = false', () => {
+        expect(result.success).to.equal(false);
+      });
+    });
+
+    context('with a valid email', ()=>{
+      beforeEach(()=>{
+        result = validateLoginForm({ email: chance.email() });
+      });
+
+      it('should return an email error', () => {
+        expect(result.errors.email).to.equal(undefined)
+      });
+      it('should return an password error', () => {
+        expect(result.errors.password).to.equal(text.login.errors.password)
+      });
+      it('should return an error message', () => {
+        expect(result.message).to.equal(text.login.errors.message)
+      });
+      it('should return success = false', () => {
+        expect(result.success).to.equal(false);
+      });
+    });
+
+    context('with a valid password', ()=>{
+      beforeEach(()=>{
+        result = validateLoginForm({ password: chance.word({length: 8}) });
+      });
+
+      it('should return an email error', () => {
+        expect(result.errors.email).to.equal(text.login.errors.email)
+      });
+      it('should return an password error', () => {
+        expect(result.errors.password).to.equal(undefined)
+      });
+      it('should return an error message', () => {
+        expect(result.message).to.equal(text.login.errors.message)
+      });
+      it('should return success = false', () => {
+        expect(result.success).to.equal(false);
+      });
+    });
+
+    context('with a valid details', ()=>{
+
+      beforeEach(()=>{
+        result = validateLoginForm({ password: chance.word({length: 8}), name:chance.word(), email:chance.email() });
+      });
+
+      it('should return an email error', () => {
+        expect(result.errors.email).to.equal(undefined)
+      });
+      it('should return an password error', () => {
+        expect(result.errors.password).to.equal(undefined)
       });
       it('should return an error message', () => {
         expect(result.message).to.equal('')

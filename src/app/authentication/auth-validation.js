@@ -1,11 +1,20 @@
 const validator = require('validator');
 
 export const text = {
-  errors: {
-    email: 'Please provide a correct email address.',
-    password: 'Password must have at least 8 characters.',
-    name: 'Please provide your name.',
-    message: 'Check the form for errors.'
+  signup: {
+    errors: {
+      email: 'Please provide a correct email address.',
+      password: 'Password must have at least 8 characters.',
+      name: 'Please provide your name.',
+      message: 'Check the form for errors.'
+    }
+  },
+  login: {
+    errors: {
+      email: 'Please provide your email address.',
+      password: 'Please provide your password.',
+      message: 'Check the form for errors.'
+    }
   }
 };
 
@@ -23,21 +32,21 @@ export function validateSignupForm(payload) {
 
   if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
     isFormValid = false;
-    errors.email = text.errors.email;
+    errors.email = text.signup.errors.email;
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
     isFormValid = false;
-    errors.password = text.errors.password;
+    errors.password = text.signup.errors.password;
   }
 
   if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
     isFormValid = false;
-    errors.name = text.errors.name;
+    errors.name = text.signup.errors.name;
   }
 
   if (!isFormValid) {
-    message = text.errors.message;
+    message = text.signup.errors.message;
   }
 
   return {
@@ -61,16 +70,16 @@ export function validateLoginForm(payload) {
 
   if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
     isFormValid = false;
-    errors.email = 'Please provide your email address.';
+    errors.email = text.login.errors.email;
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
     isFormValid = false;
-    errors.password = 'Please provide your password.';
+    errors.password = text.login.errors.password;
   }
 
   if (!isFormValid) {
-    message = 'Check the form for errors.';
+    message = text.login.errors.message;
   }
 
   return {
