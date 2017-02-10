@@ -18,9 +18,9 @@ hook('.svg', (source) => {
 });
 
 // Connect to test DB (needed for functional tests)
-const connect = require('../../src/server/models').connect;
+const db = require('../../src/server/models');
 const config = require('./db.json');
-connect(config.dbUri);
+db.connect(config.dbUri);
 
 // build assets array from webpack bundle for test pages
 const webpackAssets = require('../../src/webpack-assets.json');
@@ -48,7 +48,7 @@ module.exports = (function(settings) {
       });
     },
     after: function(done) {
-      return openServer.close(done);
+      return openServer.close(() => db.connection.close(done));
     }
   };
   settings.test_settings.default.desiredCapabilities['browserstack.user'] = argv.bsuser || process.env.BROWSERSTACK_USER;

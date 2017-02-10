@@ -1,7 +1,7 @@
 const validator = require('validator');
 
 export const text = {
-  signup: {
+  signupForm: {
     errors: {
       email: 'Please provide a correct email address.',
       password: 'Password must have at least 8 characters.',
@@ -9,12 +9,24 @@ export const text = {
       message: 'Check the form for errors.'
     }
   },
-  login: {
+  signupResponse: {
+    success: 'You have successfully signed up! Now you should be able to log in.',
+    error400: 'Could not process the form.',
+    errors: {
+      message: 'Check the form for errors.',
+      email: 'This email is already taken.'
+    }
+  },
+  loginForm: {
     errors: {
       email: 'Please provide your email address.',
       password: 'Please provide your password.',
       message: 'Check the form for errors.'
     }
+  },
+  loginResponse: {
+    success: 'You have successfully logged in!',
+    error400: 'Could not process the form.'
   }
 };
 
@@ -32,21 +44,21 @@ export function validateSignupForm(payload) {
 
   if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
     isFormValid = false;
-    errors.email = text.signup.errors.email;
+    errors.email = text.signupForm.errors.email;
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
     isFormValid = false;
-    errors.password = text.signup.errors.password;
+    errors.password = text.signupForm.errors.password;
   }
 
   if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
     isFormValid = false;
-    errors.name = text.signup.errors.name;
+    errors.name = text.signupForm.errors.name;
   }
 
   if (!isFormValid) {
-    message = text.signup.errors.message;
+    message = text.signupForm.errors.message;
   }
 
   return {
@@ -70,16 +82,16 @@ export function validateLoginForm(payload) {
 
   if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
     isFormValid = false;
-    errors.email = text.login.errors.email;
+    errors.email = text.loginForm.errors.email;
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
     isFormValid = false;
-    errors.password = text.login.errors.password;
+    errors.password = text.loginForm.errors.password;
   }
 
   if (!isFormValid) {
-    message = text.login.errors.message;
+    message = text.loginForm.errors.message;
   }
 
   return {
@@ -94,7 +106,7 @@ export function validateSignupResponse(err) {
     status: 200,
     body: {
       success: true,
-      message: 'You have successfully signed up! Now you should be able to log in.'
+      message: text.signupResponse.success
     }
   };
   if (err) {
@@ -102,16 +114,16 @@ export function validateSignupResponse(err) {
       res.status = 409;
       res.body = {
         success: false,
-        message: 'Check the form for errors.',
+        message: text.signupResponse.errors.message,
         errors: {
-          email: 'This email is already taken.'
+          email: text.signupResponse.errors.email
         }
       };
     } else {
       res.status = 400;
       res.body = {
         success: false,
-        message: 'Could not process the form.'
+        message: text.signupResponse.error400
       };
     }
   }
@@ -123,7 +135,7 @@ export function validateLoginResponse(err, token, userData) {
     status: 200,
     body: {
       success: true,
-      message: 'You have successfully logged in!',
+      message: text.loginResponse.success,
       token,
       user: userData
     }
@@ -139,7 +151,7 @@ export function validateLoginResponse(err, token, userData) {
       res.status = 400;
       res.body = {
         success: false,
-        message: 'Could not process the form.'
+        message: text.loginResponse.error400
       };
     }
   }
