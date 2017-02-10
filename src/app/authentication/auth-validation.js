@@ -1,5 +1,14 @@
 const validator = require('validator');
 
+export const text = {
+  errors: {
+    email: 'Please provide a correct email address.',
+    password: 'Password must have at least 8 characters.',
+    name: 'Please provide your name.',
+    message: 'Check the form for errors.'
+  }
+};
+
 /**
  * Validate the sign up form
  *
@@ -14,21 +23,21 @@ export function validateSignupForm(payload) {
 
   if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
     isFormValid = false;
-    errors.email = 'Please provide a correct email address.';
+    errors.email = text.errors.email;
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
     isFormValid = false;
-    errors.password = 'Password must have at least 8 characters.';
+    errors.password = text.errors.password;
   }
 
   if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
     isFormValid = false;
-    errors.name = 'Please provide your name.';
+    errors.name = text.errors.name;
   }
 
   if (!isFormValid) {
-    message = 'Check the form for errors.';
+    message = text.errors.message;
   }
 
   return {
