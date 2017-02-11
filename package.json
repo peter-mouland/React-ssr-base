@@ -132,6 +132,7 @@
     "sass-lint": "^1.5.1",
     "selenium-standalone": "^6.0.0",
     "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
     "supertest": "^2.0.0"
   }
 }

@@ -13,16 +13,16 @@ module.exports.connect = (uri) => {
     process.exit(1);
   });
 
-  mongoose.connection.on('connected', function () {
-    log('Mongoose default connection open to ' + uri);
+  mongoose.connection.on('connected', () => {
+    log(`Mongoose default connection open to ${uri}`);
   });
-  mongoose.connection.on('disconnected', function () {
+  mongoose.connection.on('disconnected', () => {
     log('Mongoose default connection disconnected');
   });
 
 // If the Node process ends, close the Mongoose connection
-  process.on('SIGINT', function() {
-    mongoose.connection.close(function () {
+  process.on('SIGINT', () => {
+    mongoose.connection.close(() => {
       log('Mongoose default connection disconnected through app termination');
       process.exit(0);
     });
