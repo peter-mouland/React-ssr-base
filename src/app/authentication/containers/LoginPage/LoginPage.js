@@ -5,6 +5,7 @@ import Auth from '../../auth-helper';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import localStorage from '../../local-storage';
 
+const actions = { signUp: 'signUp', login: 'login', default: 'login' };
 const ReferrerMessage = ({ from }) => (
   <p>
     You must log in to view the page at
@@ -41,8 +42,10 @@ class LoginPage extends React.Component {
       successMessage: getAndRemoveMessage('successMessage'),
       user: {
         email: '',
-        password: ''
-      }
+        password: '',
+        action: actions.default
+      },
+      loginAttemptCount: 0
     };
 
     this.processForm = this.processForm.bind(this);
@@ -51,14 +54,16 @@ class LoginPage extends React.Component {
 
   processForm(event) {
     event.preventDefault();
-    Auth.login(this.state.user, (errors) => {
+    const { user } = this.state;
+    Auth[user.action](user, (errors) => {
       const { location } = this.props;
+      const { loginAttemptCount } = this.state;
       if (errors) {
-        this.setState({ errors });
+        this.setState({ errors, loginAttemptCount: loginAttemptCount + 1 });
       } else if (location.state && location.state.from) {
-        this.setState({ redirectToReferrer: location.state.from });
+        this.setState({ redirectToReferrer: location.state.from, loginAttemptCount: 0 });
       } else {
-        this.setState({ redirectToReferrer: '/' });
+        this.setState({ redirectToReferrer: '/', loginAttemptCount: 0 });
       }
     });
   }
@@ -85,6 +90,7 @@ class LoginPage extends React.Component {
           errors={errors}
           successMessage={successMessage}
           user={user}
+          actions={actions}
         />
       </div>
     );

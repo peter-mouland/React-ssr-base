@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
-import Link from 'react-router-dom/Link';
 
 const LoginForm = ({
   onSubmit,
   onChange,
   errors,
   successMessage,
-  user
+  user,
+  actions
 }) => (
-    <form action="/" onSubmit={onSubmit}>
-      <h2>Login</h2>
+    <form action="/" onSubmit={onSubmit} method="post">
+      <h2>Login or Create and Account</h2>
 
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
@@ -36,9 +36,27 @@ const LoginForm = ({
         <p className="error-text">{errors.password}</p>
       </div>
 
-      <button type="submit">Log In</button>
+      <div className="field-line">
+        <label><input
+          type="radio"
+          name="action"
+          value={actions.login}
+          defaultChecked={actions.default === actions.login}
+          onChange={onChange}
+        /> I am an existing User</label>
+      </div>
 
-      <p>Don't have an account? <Link to={'/signup'}>Create one</Link>.</p>
+      <div className="field-line">
+        <label><input
+          type="radio"
+          name="action"
+          value={actions.signUp}
+          defaultChecked={actions.default === actions.signUp}
+          onChange={onChange}
+        /> I'm new here, please create an account!</label>
+      </div>
+
+      <button type="submit" >Log In</button>
     </form>
 );
 

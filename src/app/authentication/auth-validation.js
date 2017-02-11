@@ -1,15 +1,14 @@
 const validator = require('validator');
 
 export const text = {
-  signupForm: {
+  signUpForm: {
     errors: {
       email: 'Please provide a correct email address.',
       password: 'Password must have at least 8 characters.',
-      name: 'Please provide your name.',
       message: 'Check the form for errors.'
     }
   },
-  signupResponse: {
+  signUpResponse: {
     success: 'You have successfully signed up! Now you should be able to log in.',
     error400: 'Could not process the form.',
     errors: {
@@ -37,28 +36,23 @@ export const text = {
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
-export function validateSignupForm(payload) {
+export function validateSignUpForm(payload) {
   const errors = {};
   let isFormValid = true;
   let message = '';
 
   if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
     isFormValid = false;
-    errors.email = text.signupForm.errors.email;
+    errors.email = text.signUpForm.errors.email;
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
     isFormValid = false;
-    errors.password = text.signupForm.errors.password;
-  }
-
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
-    isFormValid = false;
-    errors.name = text.signupForm.errors.name;
+    errors.password = text.signUpForm.errors.password;
   }
 
   if (!isFormValid) {
-    message = text.signupForm.errors.message;
+    message = text.signUpForm.errors.message;
   }
 
   return {
@@ -101,12 +95,12 @@ export function validateLoginForm(payload) {
   };
 }
 
-export function validateSignupResponse(err) {
+export function validateSignUpResponse(err) {
   const res = {
     status: 200,
     body: {
       success: true,
-      message: text.signupResponse.success
+      message: text.signUpResponse.success
     }
   };
   if (err) {
@@ -114,16 +108,16 @@ export function validateSignupResponse(err) {
       res.status = 409;
       res.body = {
         success: false,
-        message: text.signupResponse.errors.message,
+        message: text.signUpResponse.errors.message,
         errors: {
-          email: text.signupResponse.errors.email
+          email: text.signUpResponse.errors.email
         }
       };
     } else {
       res.status = 400;
       res.body = {
         success: false,
-        message: text.signupResponse.error400
+        message: text.signUpResponse.error400
       };
     }
   }

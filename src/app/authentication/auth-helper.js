@@ -1,7 +1,7 @@
 import cookie from 'react-cookie';
 import debug from 'debug';
 
-import { validateLoginForm, validateSignupForm } from './auth-validation';
+import { validateLoginForm, validateSignUpForm } from './auth-validation';
 
 const log = debug('lego:Auth');
 
@@ -41,20 +41,31 @@ function requestLogin(user, cb) {
 }
 
 function requestSignUp(user, cb) {
-  const validationResult = validateSignupForm(user);
+  const validationResult = validateSignUpForm(user);
   if (!validationResult.success) {
     const errors = buildErrors(validationResult);
     cb({ errors });
   } else {
-    const name = encodeURIComponent(user.name);
     const email = encodeURIComponent(user.email);
     const password = encodeURIComponent(user.password);
-    const formData = `name=${name}&email=${email}&password=${password}`;
+    const formData = `email=${email}&password=${password}`;
     sendXhr(formData, '/auth/signup', cb);
   }
 }
 
+
 class Auth {
+
+  static responseCallback(res, cb) {
+    if (res.authenticated) {
+      this.authenticateUser(res.token);
+      if (cb) cb(false, { message: res.message });
+      this.onChange(true);
+    } else {
+      if (cb) cb(res.errors);
+      this.onChange(false);
+    }
+  }
 
   static login(user, cb) {
     if (this.getToken()) {
@@ -62,30 +73,11 @@ class Auth {
       this.onChange(true);
       return;
     }
-    requestLogin(user, (res) => {
-      if (res.authenticated) {
-        this.authenticateUser(res.token);
-        if (cb) cb(false, { message: res.message });
-        this.onChange(true);
-      } else {
-        if (cb) cb(res.errors);
-        this.onChange(false);
-      }
-    });
+    requestLogin(user, (res) => this.responseCallback(res, cb));
   }
 
-
   static signUp(user, cb) {
-    requestSignUp(user, (res) => {
-      if (res.authenticated) {
-        this.authenticateUser(res.token);
-        if (cb) cb(false, { message: res.message });
-        this.onChange(true);
-      } else {
-        if (cb) cb(res.errors);
-        this.onChange(false);
-      }
-    });
+    requestSignUp(user, (res) => this.responseCallback(res, cb));
   }
 
   static logout(cb) {
@@ -125,7 +117,7 @@ class Auth {
   }
 
   static deauthenticateUser() {
-    cookie.remove('token');
+    cookie.remove('token', { path: '/' });
   }
 
   static getToken() {

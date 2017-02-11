@@ -1,7 +1,7 @@
 import Chance from 'chance';
 import { expect } from '../../../tests/support/test.helper';
 import {
-  validateSignupForm, validateLoginForm, validateSignupResponse, validateLoginResponse, text
+  validateSignUpForm, validateLoginForm, validateSignUpResponse, validateLoginResponse, text
 } from './auth-validation';
 
 const chance = new Chance();
@@ -13,20 +13,20 @@ describe('auth-validation', ()=>{
 
     context('with no payload', ()=>{
       beforeEach(()=>{
-        result = validateSignupForm();
+        result = validateSignUpForm();
       });
 
       it('should return an email error', () => {
-        expect(result.errors.email).to.equal(text.signupForm.errors.email)
+        expect(result.errors.email).to.equal(text.signUpForm.errors.email)
       });
       it('should return an password error', () => {
-        expect(result.errors.password).to.equal(text.signupForm.errors.password)
+        expect(result.errors.password).to.equal(text.signUpForm.errors.password)
       });
       it('should return an name error', () => {
-        expect(result.errors.name).to.equal(text.signupForm.errors.name)
+        expect(result.errors.name).to.equal(text.signUpForm.errors.name)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.signupForm.errors.message)
+        expect(result.message).to.equal(text.signUpForm.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -35,20 +35,20 @@ describe('auth-validation', ()=>{
 
     context('with a valid email', ()=>{
       beforeEach(()=>{
-        result = validateSignupForm({ email: chance.email() });
+        result = validateSignUpForm({ email: chance.email() });
       });
 
       it('should return an email error', () => {
         expect(result.errors.email).to.equal(undefined)
       });
       it('should return an password error', () => {
-        expect(result.errors.password).to.equal(text.signupForm.errors.password)
+        expect(result.errors.password).to.equal(text.signUpForm.errors.password)
       });
       it('should return an name error', () => {
-        expect(result.errors.name).to.equal(text.signupForm.errors.name)
+        expect(result.errors.name).to.equal(text.signUpForm.errors.name)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.signupForm.errors.message)
+        expect(result.message).to.equal(text.signUpForm.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -57,20 +57,20 @@ describe('auth-validation', ()=>{
 
     context('with a valid name', ()=>{
       beforeEach(()=>{
-        result = validateSignupForm({ name: chance.word() });
+        result = validateSignUpForm({ name: chance.word() });
       });
 
       it('should return an email error', () => {
-        expect(result.errors.email).to.equal(text.signupForm.errors.email)
+        expect(result.errors.email).to.equal(text.signUpForm.errors.email)
       });
       it('should return an password error', () => {
-        expect(result.errors.password).to.equal(text.signupForm.errors.password)
+        expect(result.errors.password).to.equal(text.signUpForm.errors.password)
       });
       it('should return an name error', () => {
         expect(result.errors.name).to.equal(undefined)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.signupForm.errors.message)
+        expect(result.message).to.equal(text.signUpForm.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -79,20 +79,20 @@ describe('auth-validation', ()=>{
 
     context('with a valid password', ()=>{
       beforeEach(()=>{
-        result = validateSignupForm({ password: chance.word({length: 8}) });
+        result = validateSignUpForm({ password: chance.word({length: 8}) });
       });
 
       it('should return an email error', () => {
-        expect(result.errors.email).to.equal(text.signupForm.errors.email)
+        expect(result.errors.email).to.equal(text.signUpForm.errors.email)
       });
       it('should return an password error', () => {
         expect(result.errors.password).to.equal(undefined)
       });
       it('should return an name error', () => {
-        expect(result.errors.name).to.equal(text.signupForm.errors.name)
+        expect(result.errors.name).to.equal(text.signUpForm.errors.name)
       });
       it('should return an error message', () => {
-        expect(result.message).to.equal(text.signupForm.errors.message)
+        expect(result.message).to.equal(text.signUpForm.errors.message)
       });
       it('should return success = false', () => {
         expect(result.success).to.equal(false);
@@ -102,7 +102,7 @@ describe('auth-validation', ()=>{
     context('with a valid details', ()=>{
 
       beforeEach(()=>{
-        result = validateSignupForm({ password: chance.word({length: 8}), name:chance.word(), email:chance.email() });
+        result = validateSignUpForm({ password: chance.word({length: 8}), name:chance.word(), email:chance.email() });
       });
 
       it('should return an email error', () => {
@@ -206,25 +206,25 @@ describe('auth-validation', ()=>{
   describe('validateSignupResponse',  () => {
 
     it('returns a successful 200 status if no error is passed', () => {
-      const successResponse = validateSignupResponse();
+      const successResponse = validateSignUpResponse();
       expect(successResponse.status).to.equal(200);
       expect(successResponse.body.success).to.equal(true);
-      expect(successResponse.body.message).to.equal(text.signupResponse.success);
+      expect(successResponse.body.message).to.equal(text.signUpResponse.success);
     });
 
     it('returns a 409 status for MongoError 11000', () => {
-      const successResponse = validateSignupResponse({ name: 'MongoError', code: 11000 });
+      const successResponse = validateSignUpResponse({ name: 'MongoError', code: 11000 });
       expect(successResponse.status).to.equal(409);
       expect(successResponse.body.success).to.equal(false);
-      expect(successResponse.body.message).to.equal(text.signupResponse.errors.message);
-      expect(successResponse.body.errors.email).to.equal(text.signupResponse.errors.email);
+      expect(successResponse.body.message).to.equal(text.signUpResponse.errors.message);
+      expect(successResponse.body.errors.email).to.equal(text.signUpResponse.errors.email);
     });
 
     it('returns a 400 status for other errors', () => {
-      const successResponse = validateSignupResponse({ name: chance.word() });
+      const successResponse = validateSignUpResponse({ name: chance.word() });
       expect(successResponse.status).to.equal(400);
       expect(successResponse.body.success).to.equal(false);
-      expect(successResponse.body.message).to.equal(text.signupResponse.error400);
+      expect(successResponse.body.message).to.equal(text.signUpResponse.error400);
     });
 
   });

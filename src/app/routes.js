@@ -13,7 +13,6 @@ import NotFound from './containers/NotFound/NotFound';
 
 import LoginPage from './authentication/containers/LoginPage/LoginPage';
 import LogOut from './authentication/components/LogOut/LogOut';
-import SignUpPage from './authentication/containers/SignUpPage/SignUpPage';
 import RouteWithAuthCheck from './authentication/components/RouteWithAuthCheck/RouteWithAuthCheck';
 
 debug('lego:routes');
@@ -71,16 +70,6 @@ export function getRoutesConfig() {
         title: 'Login',
       },
       component: LoginPage
-    },
-    {
-      name: 'signup',
-      path: '/signup/',
-      label: 'Sign Up',
-      meta: {
-        ...baseMetaData,
-        title: 'Sign Up',
-      },
-      component: SignUpPage
     },
     {
       name: 'dashboard',

@@ -14,11 +14,16 @@ const fakeEvent = {
 };
 
 describe('Login Page', () => {
+  let fakeLogin;
+  let fakeSignUp;
 
   context('Auth login without errors', () => {
 
     beforeEach(()=>{
-      sandbox.stub(Auth, 'login', function(user, cb){
+      fakeLogin = sandbox.stub(Auth, 'login', function(user, cb){
+        cb();
+      });
+      fakeSignUp = sandbox.stub(Auth, 'signUp', function(user, cb){
         cb();
       });
     });
@@ -65,7 +70,7 @@ describe('Login Page', () => {
     const error = chance.word();
 
     beforeEach(()=>{
-      sandbox.stub(Auth, 'login', function(user, cb){
+      fakeLogin = sandbox.stub(Auth, 'login', function(user, cb){
         cb(error);
       });
     });

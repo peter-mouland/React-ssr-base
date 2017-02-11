@@ -4,7 +4,7 @@ import koaBody from 'koa-body';
 import passport from 'koa-passport';
 import debug from 'debug';
 
-import { validateLoginForm, validateSignupForm, validateSignupResponse, validateLoginResponse } from '../../app/authentication/auth-validation';
+import { validateLoginForm, validateSignUpForm, validateSignUpResponse, validateLoginResponse } from '../../app/authentication/auth-validation';
 import { checkUser } from './auth-check-middleware';
 import localSignupStrategy from './passport/local-signup';
 import localLoginStrategy from './passport/local-login';
@@ -25,7 +25,7 @@ passport.use('local-login', localLoginStrategy);
 
 authRouter.post('/signup', parseBody, (ctx, next) => {
   ctx.type = 'json';
-  const validationResult = validateSignupForm(ctx.request.body);
+  const validationResult = validateSignUpForm(ctx.request.body);
   if (!validationResult.success) {
     ctx.status = 400;
     ctx.response.body = {
@@ -34,10 +34,19 @@ authRouter.post('/signup', parseBody, (ctx, next) => {
       errors: validationResult.errors
     };
   } else {
-    return passport.authenticate('local-signup', (err) => {
-      const res = validateSignupResponse(err);
-      ctx.status = res.status;
-      ctx.response.body = res.body;
+    return passport.authenticate('local-signup', (signUpError) => {
+      const signUpResponse = validateSignUpResponse(signUpError);
+      if (signUpResponse.status === 200) {
+        return passport.authenticate('local-login', (loginError, token, userData) => {
+          const loginResponse = validateLoginResponse(loginError, token, userData);
+          ctx.status = loginResponse.status;
+          ctx.response.body = loginResponse.body;
+          ctx.session.authorization = `Bearer ${token}`;
+          Auth.authenticateUser(token);
+        })(ctx, next);
+      }
+      ctx.status = signUpResponse.status;
+      ctx.response.body = signUpResponse.body;
     })(ctx, next);
   }
 });

@@ -16,7 +16,6 @@ class MyAccount extends React.Component {
     const loggedOut = (
       <span>
         <NamedLink to="login" />
-        <NamedLink to="signup" />
       </span>
     );
     const loggedIn = <NamedLink to="logout" />;
