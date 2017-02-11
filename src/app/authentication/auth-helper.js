@@ -107,13 +107,11 @@ class Auth {
   static onChange() {}
 
   static authenticateUser(token) {
-    log('authenticateUser', token);
     cookie.save('token', token, { path: '/' });
   }
 
   static isUserAuthenticated() {
-    log('isUserAuthenticated', cookie.load('token'));
-    return !!cookie.load('token');
+    return !!this.getToken();
   }
 
   static deauthenticateUser() {
@@ -121,7 +119,7 @@ class Auth {
   }
 
   static getToken() {
-    return cookie.load('token');
+    return cookie.load('token', { path: '/' });
   }
 
 }

@@ -24,10 +24,6 @@ apiRouter.get('/game/:gameType(people|films)/:card1/:card2', parseBody, async (c
 apiRouter.use(authCheck());
 
 apiRouter.get('/dashboard', (ctx) => {
-  log('dashboard', { ctx });
-  log('dashboard', { session: ctx.session });
-  log('dashboard', { cookie: ctx.cookies.get('session') });
-
   ctx.type = 'json';
   ctx.status = 200;
   ctx.response.body = { message: "You're authorized to see this secret message." };

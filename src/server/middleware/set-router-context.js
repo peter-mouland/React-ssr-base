@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import StaticRouter from 'react-router-dom/StaticRouter';
 import { Provider } from 'react-redux';
+import { plugToRequest } from 'react-cookie';
 import matchPath from 'react-router-dom/matchPath';
 
 import configureStore from '../../app/store/configure-store';
@@ -45,6 +46,7 @@ function setRouterMarkup() {
   const routesArray = getRoutesConfig();
   return async (ctx, next) => {
     const store = configureStore();
+    plugToRequest(ctx.request, ctx.response); // essential for universal cookies
     await getRouteData(routesArray, ctx.request.url, store.dispatch);
     const markup = renderToString(<Markup req={ ctx.request } store={store} />);
     const match = getMatch(routesArray, ctx.request.url);
