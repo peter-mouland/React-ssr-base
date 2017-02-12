@@ -2,14 +2,14 @@ import React from 'react';
 
 import Auth from '../../auth-helper';
 
-const LogOutPage = React.createClass({
+class LogOutPage extends React.Component {
   componentDidMount() {
     Auth.logout();
-  },
+  }
 
   render() {
     return <p>You are now logged out</p>;
   }
-});
+}
 
 export default LogOutPage;
