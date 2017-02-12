@@ -20,5 +20,6 @@ export {
   sinon,
   shallow,
   mount,
-  render
+  render,
+  assert
 };
