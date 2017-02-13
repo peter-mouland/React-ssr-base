@@ -8,8 +8,7 @@ machine:
 general:
   artifacts:
     - test/reports
-    - test/nightwatch/report
-    - test/nightwatch/screenshots
+    - test/screenshots
 dependencies:
   cache_directories:
     - browserstack

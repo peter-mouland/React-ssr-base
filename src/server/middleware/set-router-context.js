@@ -29,30 +29,31 @@ async function getRouteData(routesArray, url, dispatch) {
   await Promise.all(needs);
 }
 
-class Markup extends React.Component {
-  render() {
-    const { req, store } = this.props;
-    return (
-      <Provider store={store}>
-        <StaticRouter location={req.url} context={{}} >
-          {makeRoutes()}
-        </StaticRouter>
-      </Provider>
-    );
-  }
-}
+const Markup = ({ req, store, context }) => (
+  <Provider store={store}>
+    <StaticRouter location={req.url} context={ context } >
+      {makeRoutes()}
+    </StaticRouter>
+  </Provider>
+);
 
 function setRouterContext() {
   const routesArray = getRoutesConfig();
   return async (ctx, next) => {
+    const routerContext = {};
     const store = configureStore();
     cookie.plugToRequest(ctx.request, ctx.response); // essential for universal cookies
     await getRouteData(routesArray, ctx.request.url, store.dispatch);
-    const markup = renderToString(<Markup req={ ctx.request } store={store} />);
+    const markup = renderToString(Markup({ req: ctx.request, store, context: routerContext }));
     const match = getMatch(routesArray, ctx.request.url);
-    ctx.status = match ? 200 : 404;
-    ctx.initialState = store.getState();
-    ctx.markup = markup;
+    if (routerContext.url) {
+      ctx.status = 301;
+      ctx.redirect(routerContext.location.pathname + routerContext.location.search);
+    } else {
+      ctx.status = match ? 200 : 404;
+      ctx.initialState = store.getState();
+      ctx.markup = markup;
+    }
     await next();
   };
 }

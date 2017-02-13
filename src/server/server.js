@@ -19,22 +19,14 @@ log('starting');
 
 
 server.keys = ['Shh, its a session!'];
-server.use(convert(session(server, {
+server.use(convert(session({
   key: 'session', /** (string) cookie key (default is koa:sess) */
   maxAge: 86400000, /** (number) maxAge in ms (default is 1 days) */
   overwrite: true, /** (boolean) can overwrite or not (default true) */
   httpOnly: true, /** (boolean) httpOnly or not (default true) */
   signed: true, /** (boolean) signed or not (default true) */
-})));
+}, server)));
 
-server.use(async (ctx, next) => {
-  if (ctx.session.isNew) {
-    log(' new user session ');
-  } else {
-    log(' existing user session');
-  }
-  await next();
-});
 server.use(passport.initialize());
 server.use(passport.session());
 server.use(handleError('render500'));

@@ -6,10 +6,11 @@ import DocumentMeta from 'react-document-meta';
 
 import Auth from '../../auth-helper';
 
-debug('lego:RouteWithAuthCheck');
+const log = debug('lego:RouteWithAuthCheck');
 
 const RouteWithAuthCheck = ({ component: Component, requiresAuthentication, meta, ...props }) => {
   const redirect = requiresAuthentication && !Auth.isUserAuthenticated();
+  log('redirect', redirect);
   return (
     <Route {...props} render={(matchProps) => (
       <span>
