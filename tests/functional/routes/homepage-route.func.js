@@ -25,7 +25,7 @@ describe('Homepage Route', function () {
     });
 
     it('Should contain a title', () => {
-      expect(document.title).to.equal(findRoute('homepage').title);
+      expect(document.title).to.equal(findRoute('homepage').meta.title);
     });
 
     it('should have a nav', () => {

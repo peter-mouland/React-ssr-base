@@ -1,44 +1,58 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { ServerRouter, createServerRenderContext } from 'react-router';
+import StaticRouter from 'react-router-dom/StaticRouter';
 import { Provider } from 'react-redux';
-import { matchRoutesToLocation } from 'react-router-addons-routes';
+import cookie from 'react-cookie';
+import matchPath from 'react-router-dom/matchPath';
 
 import configureStore from '../../app/store/configure-store';
-import { makeRoutes, routes } from '../../app/routes';
+import { makeRoutes, getRoutesConfig } from '../../app/routes';
 
-const createMarkup = (req, context, store) => renderToString(
+function getMatch(routesArray, url) {
+  return routesArray
+    .find((route) => matchPath(url, route.path, { exact: true, strict: false }));
+}
+
+async function getRouteData(routesArray, url, dispatch) {
+  const needs = [];
+  routesArray
+    .filter((route) => route.component.needs)
+    .forEach((route) => {
+      const match = matchPath(url, route.path, { exact: true, strict: false });
+      if (match) {
+        route.component.needs.forEach((need) => {
+          const result = need(match.params);
+          needs.push(dispatch(result));
+        });
+      }
+    });
+  await Promise.all(needs);
+}
+
+const Markup = ({ req, store, context }) => (
   <Provider store={store}>
-    <ServerRouter location={req.url} context={context} >
+    <StaticRouter location={req.url} context={ context } >
       {makeRoutes()}
-    </ServerRouter>
+    </StaticRouter>
   </Provider>
 );
 
-async function getContext(dispatch, req) {
-  const { matchedRoutes, params } = matchRoutesToLocation(routes, { pathname: req.url });
-  const needs = [];
-  matchedRoutes.filter((route) => route.component.needs)
-    .map((route) => route.component.needs.forEach((need) => needs.push(need)));
-  await Promise.all(needs.map((need) => dispatch(need(params))));
-}
-
 function setRouterContext() {
+  const routesArray = getRoutesConfig();
   return async (ctx, next) => {
+    const routerContext = {};
     const store = configureStore();
-    const context = createServerRenderContext();
-    const markup = createMarkup(ctx.request, context, store);
-    const result = context.getResult();
-    if (result.redirect) {
+    cookie.plugToRequest(ctx.request, ctx.response); // essential for universal cookies
+    await getRouteData(routesArray, ctx.request.url, store.dispatch);
+    const markup = renderToString(Markup({ req: ctx.request, store, context: routerContext }));
+    const match = getMatch(routesArray, ctx.request.url);
+    if (routerContext.url) {
       ctx.status = 301;
-      ctx.redirect(result.redirect.pathname + result.redirect.search);
+      ctx.redirect(routerContext.location.pathname + routerContext.location.search);
     } else {
-      await getContext(store.dispatch, ctx.request);
-      ctx.status = result.missed ? 404 : 200;
+      ctx.status = match ? 200 : 404;
       ctx.initialState = store.getState();
-      ctx.routerContext = (result.missed)
-            ? createMarkup(ctx.request, context, store)
-            : markup;
+      ctx.markup = markup;
     }
     await next();
   };

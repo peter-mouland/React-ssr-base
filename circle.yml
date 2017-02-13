@@ -8,8 +8,7 @@ machine:
 general:
   artifacts:
     - test/reports
-    - test/nightwatch/report
-    - test/nightwatch/screenshots
+    - test/screenshots
 dependencies:
   cache_directories:
     - browserstack
@@ -18,7 +17,7 @@ dependencies:
     - npm run build
 test:
   override:
-    - npm run test:unit  -- --reporter mocha-junit-reporter:
+    - npm run test:unit  -- --reporter mocha-junit-reporter
     - npm run test:func
     - npm run test:e2e
   post:
