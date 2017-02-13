@@ -8,7 +8,7 @@ import apiRouter from './api';
 import authRouter from './authentication/auth-router';
 import { DIST, PUBLIC } from '../config/paths';
 
-const log = debug('lego:router');
+const log = debug('base:router');
 // const oneDay = 1000 * 60 * 60 * 24;
 export const router = new Router();
 

@@ -8,11 +8,11 @@ const setEnvDefault = (key, val) => {
   setEnvs[key] = process.env[key];
 };
 
-setEnvDefault('DEBUG', 'lego:*');
+setEnvDefault('DEBUG', 'base:*');
 setEnvDefault('NODE_ENV', 'development');
 setEnvDefault('PORT', 3000);
 
 debug.enable(process.env.DEBUG);
-const log = debug('lego: Environment:');
+const log = debug('base: Environment:');
 
 log(setEnvs);

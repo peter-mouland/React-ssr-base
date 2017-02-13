@@ -6,7 +6,7 @@ import { randomRange } from '../utils';
 import * as actions from '../actions';
 import getQuestionAndAnswer from './get-question-and-answers';
 
-const log = debug('lego:reducers/index');
+const log = debug('base:reducers/index');
 
 function game(state = {}, action) {
   const answerInt = randomRange(0, 1, 1)[0];

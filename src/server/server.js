@@ -14,7 +14,7 @@ import headers from './middleware/headers';
 import { router, setRoutes } from './router';
 
 const server = new Koa();
-const log = debug('lego:server.js');
+const log = debug('base:server.js');
 log('starting');
 
 

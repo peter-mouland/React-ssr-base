@@ -4,7 +4,7 @@ import debug from 'debug';
 import fetchCards from './fetch-cards';
 import authCheck from '../authentication/auth-check-middleware';
 
-const log = debug('lego:api');
+const log = debug('base:api');
 const parseBody = koaBody();
 const apiRouter = router({ prefix: '/api' });
 

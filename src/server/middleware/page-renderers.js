@@ -4,7 +4,7 @@ import debug from 'debug';
 
 import Error500 from '../templates/Error500';
 
-const log = debug('lego:server.js');
+const log = debug('base:server.js');
 
 export default function pageRenderers() {
   return async (ctx, next) => {

@@ -7,7 +7,7 @@ const User = require('mongoose').model('User');
 const config = require('../../config/db.json');
 const Auth = require('../../app/authentication/auth-helper');
 
-const log = debug('lego:auth-check');
+const log = debug('base:auth-check');
 
 const catcher = (ctx) => {
   ctx.response.status = 401;

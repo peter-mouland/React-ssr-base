@@ -8,7 +8,7 @@ import { makeRoutes } from './routes';
 import configureStore from './store/configure-store';
 import { isBrowser } from './utils';
 
-debug('lego:Root');
+debug('base:Root');
 
 // exported to be used in tests
 export const Router = isBrowser ? BrowserRouter : StaticRouter;

@@ -1,5 +1,5 @@
 {
-  "name": "react-lego",
+  "name": "react-ssr-base",
   "version": "0.0.0",
   "description": "",
   "main": "src/server-entry.js",

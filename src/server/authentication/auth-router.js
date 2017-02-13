@@ -10,7 +10,7 @@ import localSignupStrategy from './passport/local-signup';
 import localLoginStrategy from './passport/local-login';
 import Auth from '../../app/authentication/auth-helper';
 
-const log = debug('lego: auth');
+const log = debug('base: auth');
 const parseBody = koaBody();
 const authRouter = router({ prefix: '/auth' });
 

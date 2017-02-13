@@ -3,7 +3,7 @@ import debug from 'debug';
 
 import { validateLoginForm, validateSignUpForm } from './auth-validation';
 
-const log = debug('lego:Auth');
+const log = debug('base:Auth');
 
 function buildErrors(response) {
   const errors = response.errors || {};

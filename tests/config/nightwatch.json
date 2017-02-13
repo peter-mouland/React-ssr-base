@@ -22,7 +22,7 @@
         "path" : ""
       },
       "desiredCapabilities": {
-        "project": "React Lego",
+        "project": "React SSR Base",
         "build": "build ",
         "browserName": "firefox",
         "javascriptEnabled": true,

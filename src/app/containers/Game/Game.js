@@ -8,7 +8,7 @@ import { fetchPeopleCards } from '../../actions';
 import chevron from '../../../assets/chevron.svg';
 import Svg from '../../components/Svg/Svg';
 
-debug('lego:Game');
+debug('base:Game');
 
 const Error = () => <p>Error Loading cards!</p>;
 const Dealing = () => <p>Loading cards....</p>;

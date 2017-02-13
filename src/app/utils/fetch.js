@@ -3,7 +3,7 @@ import debug from 'debug';
 
 import { localUrl } from '../utils';
 
-const log = debug('lego:api/index');
+const log = debug('base:api/index');
 
 export function checkStatus(response) {
   if (response.status < 200 || response.status >= 500) {

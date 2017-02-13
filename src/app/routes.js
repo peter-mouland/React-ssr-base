@@ -15,11 +15,11 @@ import LoginPage from './authentication/containers/LoginPage/LoginPage';
 import LogOut from './authentication/components/LogOut/LogOut';
 import RouteWithAuthCheck from './authentication/components/RouteWithAuthCheck/RouteWithAuthCheck';
 
-debug('lego:routes');
+debug('base:routes');
 
 const baseMetaData = {
-  title: 'React Lego',
-  description: 'React-lego : incrementally add more cool stuff to your react app',
+  title: 'React SSR Base',
+  description: 'React-SSR-Base : incrementally add more cool stuff to your react app',
   meta: {
     charset: 'utf-8',
     name: {
@@ -36,9 +36,9 @@ export function getRoutesConfig() {
       path: '/',
       meta: {
         ...baseMetaData,
-        title: 'About React Lego'
+        title: 'About React SSR Base'
       },
-      label: 'About React Lego',
+      label: 'About SSR Base',
       component: Homepage
     },
     {
@@ -107,7 +107,7 @@ export function makeRoutes() {
     <MainLayout>
       <Switch>
         {getRoutesConfig().map((route) => <RouteWithAuthCheck {...route} key={ route.name } />)}
-        <Route title={'Page Not Found - React Lego'} component={ NotFound }/>
+        <Route title={'Page Not Found - React SSR Base'} component={ NotFound }/>
       </Switch>
     </MainLayout>
   );

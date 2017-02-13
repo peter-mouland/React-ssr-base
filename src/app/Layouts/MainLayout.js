@@ -6,7 +6,7 @@ import Auth from '../authentication/auth-helper';
 import { NamedLink } from '../routes';
 import './mainLayout.scss';
 
-const log = debug('lego:mainLayout');
+const log = debug('base:mainLayout');
 
 class MyAccount extends React.Component {
 
@@ -57,7 +57,7 @@ export default class MainLayout extends React.Component {
     return (
       <div {...bem(null, 'main')}>
         <nav {...bem('nav')}>
-          <span {...bem('nav', 'header')}>React Lego</span>
+          <span {...bem('nav', 'header')}>React SSR Base</span>
           <NamedLink to='homepage' {...bem('nav', 'link')} />
           <NamedLink to="game" {...bem('nav', 'link')} />
           <NamedLink to="dashboard" {...bem('nav', 'link')} />
@@ -67,7 +67,7 @@ export default class MainLayout extends React.Component {
           {children}
         </main>
         <footer className="layout__footer">
-          Hosted at <a href="http://github.com/peter-mouland/react-lego">github.com/peter-mouland/react-lego</a>
+          Hosted at <a href="http://github.com/peter-mouland/react-ssr-base">github.com/peter-mouland/react-srr-base</a>
         </footer>
       </div>
     );

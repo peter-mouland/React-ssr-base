@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const debug = require('debug');
 
-const log = debug('lego:models');
+const log = debug('base:models');
 
 module.exports.connect = (uri) => {
   mongoose.connect(uri);
