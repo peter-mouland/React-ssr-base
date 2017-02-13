@@ -1,4 +1,4 @@
-# React SSR Base [![CircleCI](https://circleci.com/gh/peter-mouland/react-ssr-base.svg?style=svg)](https://circleci.com/gh/peter-mouland/react-ssr-base)
+# React SSR Base [![CircleCI](https://circleci.com/gh/peter-mouland/React-ssr-base.svg?style=svg)](https://circleci.com/gh/peter-mouland/React-ssr-base)
 
 > A Production ready SSR React App
 
