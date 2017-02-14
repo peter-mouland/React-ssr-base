@@ -1,9 +1,8 @@
 // https://github.com/nightwatchjs/nightwatch/wiki/Page-Object-API
 // http://nightwatchjs.org/guide#using-page-objects
-import { findRoute } from '../../../src/app/routes';
+const { findRoute } = require('../../../src/app/routes');
 
-
-var commands = {
+const commands = {
   login: function(email, password) {
     // this.api.pause(1000);
     return this.section.main.waitForElementVisible('@actionInput', 1000)
@@ -21,6 +20,11 @@ var commands = {
       .click('@actionSignUpInput')
       .click('@submitButton')
       // .waitForElementNotPresent('@submitButton', 1000);
+  },
+  thenDisplays: function(element) {
+    return this.section.main
+      .waitForElementPresent(element, 1000)
+      .assert.visible(element);
   }
 };
 
@@ -32,6 +36,7 @@ module.exports = {
   },
 
   commands: [commands],
+
   sections: {
 
     main: {
@@ -40,6 +45,7 @@ module.exports = {
       locateStrategy: 'css selector',
 
       elements: [{
+        error: '.form__error',
         submitButton: 'button[type=submit]',
         emailInput: 'input[type=email]',
         passwordInput: 'input[type=password]',

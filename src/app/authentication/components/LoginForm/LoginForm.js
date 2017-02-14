@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 
+import './loginForm.scss';
+
 const LoginForm = ({
   onSubmit,
   onChange,
@@ -8,13 +10,13 @@ const LoginForm = ({
   user,
   actions
 }) => (
-    <form action="/" onSubmit={onSubmit} method="post">
+    <form action="/" onSubmit={onSubmit} method="post" className="form">
       <h2>Login or Create and Account</h2>
 
-      {successMessage && <p className="success-message">{successMessage}</p>}
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+      {successMessage && <p className="form__success">{successMessage}</p>}
+      {errors.summary && <p className="form__error">{errors.summary}</p>}
 
-      <div className="field-line">
+      <div className="field">
         <label>Email</label>
         <input
           type="email"
@@ -22,10 +24,10 @@ const LoginForm = ({
           onChange={onChange}
           value={user.email}
         />
-        <p className="error-text">{errors.email}</p>
+        <p className="field__error">{errors.email}</p>
       </div>
 
-      <div className="field-line">
+      <div className="field">
         <label>Password</label>
         <input
           type="password"
@@ -33,10 +35,10 @@ const LoginForm = ({
           onChange={onChange}
           value={user.password}
         />
-        <p className="error-text">{errors.password}</p>
+        <p className="field__error">{errors.password}</p>
       </div>
 
-      <div className="field-line">
+      <div className="field">
         <label><input
           type="radio"
           name="action"
@@ -46,7 +48,7 @@ const LoginForm = ({
         /> I am an existing User</label>
       </div>
 
-      <div className="field-line">
+      <div className="field">
         <label><input
           type="radio"
           name="action"
@@ -56,7 +58,7 @@ const LoginForm = ({
         /> I'm new here, please create an account!</label>
       </div>
 
-      <button type="submit" >Log In</button>
+      <button type="submit" className="form__action" >Log In</button>
     </form>
 );
 

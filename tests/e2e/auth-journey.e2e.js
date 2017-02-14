@@ -34,6 +34,7 @@ module.exports = {
     nav.click('@dashboardLink');
     loginPage.login('night.watch@ssr.com', 'nightwatch');
     loginPage.expect.section('@main').to.be.visible;
+    loginPage.thenDisplays('@error');
   },
 
   ['should be able to sign-up, which would then go straight to the dashboard page'](browser) {
@@ -58,8 +59,8 @@ module.exports = {
     const nav = pageLayout.section.nav;
     nav.click('@dashboardLink');
     loginPage.signUp('night.watch@ssr.com', 'nightwatch');
-    // confirm error message appears
     loginPage.expect.section('@main').to.be.visible;
+    loginPage.thenDisplays('@error');
   },
   ['can now log in as the previously signed up user'](browser) {
     const nav = pageLayout.section.nav;

@@ -1,0 +1,18 @@
+$darkgreen: #006400;
+$darkred: #8B0000;
+
+.form {
+  &__success {
+    color: $darkgreen;
+  }
+
+  &__error {
+    color: $darkred;
+  }
+}
+
+.field {
+  &__error {
+    color: $darkred;
+  }
+}
