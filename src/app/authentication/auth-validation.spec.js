@@ -1,5 +1,5 @@
 import Chance from 'chance';
-import { expect } from '../../../tests/support/test.helper';
+import { expect } from '../../../tests/config/test.helper';
 import {
   validateSignUpForm, validateLoginForm, validateSignUpResponse, validateLoginResponse, text
 } from './auth-validation';

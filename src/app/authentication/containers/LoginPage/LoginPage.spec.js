@@ -1,6 +1,6 @@
 import Chance from 'chance';
 
-import { expect, shallow, React, sinon } from '../../../../../tests/support/test.helper';
+import { expect, shallow, React, sinon } from '../../../../../tests/config/test.helper';
 import LoginPage from './LoginPage';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import Auth from '../../auth-helper';

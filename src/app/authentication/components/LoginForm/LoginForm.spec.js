@@ -1,4 +1,4 @@
-import { expect, sinon, shallow, render, React } from '../../../../../tests/support/test.helper';
+import { expect, sinon, shallow, render, React } from '../../../../../tests/config/test.helper';
 import Chance from 'chance';
 import LoginForm from './LoginForm';
 

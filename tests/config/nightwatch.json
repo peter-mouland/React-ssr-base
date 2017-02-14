@@ -8,8 +8,8 @@
     "start_process" : true,
     "server_path" : "node_modules/selenium-standalone/.selenium/selenium-server/3.0.1-server.jar"
   },
-  "custom_commands_path" : "./tests/support/nightwatch-commands",
-  "page_objects_path" : "./tests/support/nightwatch-pages",
+  "custom_commands_path" : "./tests/config/nightwatch-commands",
+  "page_objects_path" : "./tests/config/nightwatch-pages",
 
   "test_settings" : {
     "default" : {

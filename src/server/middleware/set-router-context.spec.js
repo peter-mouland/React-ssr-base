@@ -3,7 +3,7 @@ import Chance from 'chance';
 import { Route } from 'react-router-dom';
 import proxyquire from 'proxyquire';
 
-import { expect, sinon, assert, React } from '../../../tests/support/test.helper';
+import { expect, sinon, assert, React } from '../../../tests/config/test.helper';
 import * as routes from '../../app/routes';
 
 const chance = new Chance();

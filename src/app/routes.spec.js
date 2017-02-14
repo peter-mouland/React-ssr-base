@@ -1,4 +1,4 @@
-import { expect } from '../../tests/support/test.helper';
+import { expect } from '../../tests/config/test.helper';
 import { getRoutesConfig } from './routes';
 
 describe('routes', ()=>{

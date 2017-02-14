@@ -8,7 +8,11 @@ class LogOutPage extends React.Component {
   }
 
   render() {
-    return <p>You are now logged out</p>;
+    return (
+      <section id="logout-page">
+        <p>You are now logged out</p>
+      </section>
+    );
   }
 }
 

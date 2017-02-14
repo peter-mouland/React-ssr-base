@@ -1,4 +1,4 @@
-import { expect, sinon, mount, render, shallow, React } from '../../../../../tests/support/test.helper';
+import { expect, sinon, mount, render, shallow, React } from '../../../../../tests/config/test.helper';
 import Redirect from 'react-router-dom/Redirect';
 import StaticRouter from 'react-router-dom/StaticRouter';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount, expect } from '../../../../tests/support/test.helper';
+import { shallow, mount, expect } from '../../../../tests/config/test.helper';
 import NotFound from './NotFound';
 import { copy } from './notFound-copy';
 

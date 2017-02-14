@@ -1,4 +1,4 @@
-import { React, mount, expect } from '../support/test.helper';
+import { React, mount, expect } from '../config/test.helper';
 import Root, { Router } from '../../src/app/Root';
 import Homepage from '../../src/app/containers/Homepage/Homepage';
 import NotFound from '../../src/app/containers/NotFound/NotFound';

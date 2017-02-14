@@ -1,4 +1,4 @@
-import { expect, sinon, mount, render, React } from '../../../../../tests/support/test.helper';
+import { expect, sinon, mount, render, React } from '../../../../../tests/config/test.helper';
 
 import LogOut from './LogOut';
 import Auth from '../../auth-helper';

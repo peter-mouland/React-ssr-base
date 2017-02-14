@@ -1,7 +1,7 @@
 import { Route, Redirect, Switch } from 'react-router-dom';
 import supertest from 'supertest';
 
-import { sinon, React } from '../support/test.helper';
+import { sinon, React } from '../config/test.helper';
 import * as routes from '../../src/app/routes';
 import mapWebpackAssets from '../../src/server/utils/mapWebpackAssets';
 import server from '../../src/server/server';

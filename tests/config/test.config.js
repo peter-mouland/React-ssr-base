@@ -7,8 +7,8 @@ const config = require('./db.json');
 require('../../src/app/authentication/local-storage');
 const jsdom = require('jsdom');
 const hook = require('node-hook').hook;
-hook('.scss', (source, filename) => 'console.log("' + filename + '");');
-hook('.svg', (source, filename) => 'console.log("' + filename + '");');
+hook('.scss', (source, filename) => '');
+hook('.svg', (source, filename) => '');
 
 // Connect to test DB (needed for functional tests)
 connect(config.dbUri);

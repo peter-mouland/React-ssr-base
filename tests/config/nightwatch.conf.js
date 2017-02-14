@@ -11,7 +11,7 @@ require("babel-polyfill");
 
 const SvgLoader = require('svg-inline-loader');
 const hook = require('node-hook').hook;
-hook('.scss', (source, filename) => `console.log("${filename}");`);
+hook('.scss', (source, filename) => ``);
 hook('.svg', (source) => {
   const markup = SvgLoader.getExtractedSVG(source, { removeSVGTagAttrs: false });
   return `module.exports =  ${JSON.stringify(markup)}`;
@@ -21,6 +21,7 @@ hook('.svg', (source) => {
 const db = require('../../src/server/models');
 const config = require('./db.json');
 db.connect(config.dbUri);
+const loadFixtures = require('./fixtures');
 
 // build assets array from webpack bundle for test pages
 const webpackAssets = require('../../src/webpack-assets.json');
@@ -41,10 +42,12 @@ module.exports = (function(settings) {
   settings.test_settings.default.globals = {
     TARGET_PATH : argv.target || `http://localhost:${process.env.PORT}`,
     before:  function(done) {
-      const createServer = require('../../src/server/server'); //eslint-disable-line
-      openServer = createServer(assets).listen(process.env.PORT, () => {
-        console.log(`listening at http://localhost:${process.env.PORT}`); // eslint-disable-line
-        done()
+      loadFixtures().then(()=>{
+        const createServer = require('../../src/server/server'); //eslint-disable-line
+        openServer = createServer(assets).listen(process.env.PORT, () => {
+          console.log(`listening at http://localhost:${process.env.PORT}`); // eslint-disable-line
+          done()
+        });
       });
     },
     after: function(done) {
