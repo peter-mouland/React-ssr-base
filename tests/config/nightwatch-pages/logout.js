@@ -8,6 +8,10 @@ module.exports = {
     return findRoute('logout').path;
   },
 
+  elements: [{
+    main: "#logout-page"
+  }],
+
   sections: {
 
     main: {

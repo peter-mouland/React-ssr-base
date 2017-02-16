@@ -8,6 +8,10 @@ module.exports = {
     return findRoute('homepage').path;
   },
 
+  elements: [{
+    main: "#homepage"
+  }],
+
   sections: {
 
     main: {

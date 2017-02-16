@@ -1,9 +1,14 @@
 import { findRoute } from '../../src/app/routes';
+let homePage;
+let pageLayout;
 
 module.exports = {
   '@tags': ['smoke'],
   before(browser) {
-    browser.pageLoaded(findRoute('homepage').path, 'body');
+    console.log('HOME PAGE TESTING')
+    homePage = browser.page.homepage();
+    pageLayout = browser.page.layout();
+    browser.pageLoaded(findRoute('homepage').path, '#homepage');
   },
   after(browser) {
     browser.end();

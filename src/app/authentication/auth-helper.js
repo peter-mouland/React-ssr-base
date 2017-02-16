@@ -1,5 +1,6 @@
 import cookie from 'react-cookie';
 import debug from 'debug';
+import jwtDecode from 'jwt-decode';
 
 import { validateLoginForm, validateSignUpForm } from './auth-validation';
 
@@ -98,6 +99,7 @@ class Auth {
       } else {
         const errors = xhr.response ? xhr.response.errors || {} : {};
         errors.summary = xhr.response ? xhr.response.message : xhr.statusText;
+        errors.status = xhr.status;
         cb(errors);
       }
     });
@@ -106,15 +108,27 @@ class Auth {
 
   static onChange() {}
 
-  static authenticateUser(token) {
+  static authenticateUser(token, ctx) {
+    if (ctx) {
+      ctx.session.authorization = `Bearer ${token}`;
+    }
     cookie.save('token', token, { path: '/' });
   }
 
   static isUserAuthenticated() {
-    return !!this.getToken();
+    try {
+      jwtDecode(this.getToken());
+      return true;
+    } catch (e) {
+      this.deauthenticateUser();
+      return false;
+    }
   }
 
-  static deauthenticateUser() {
+  static deauthenticateUser(ctx) {
+    if (ctx) {
+      ctx.session.authorization = false;
+    }
     cookie.remove('token', { path: '/' });
   }
 

@@ -37,6 +37,10 @@ module.exports = {
 
   commands: [commands],
 
+  elements: [{
+    main: "#login-page"
+  }],
+
   sections: {
 
     main: {

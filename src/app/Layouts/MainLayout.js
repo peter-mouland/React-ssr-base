@@ -37,7 +37,6 @@ export default class MainLayout extends React.Component {
     this.state = {
       isUserAuthenticated: Auth.isUserAuthenticated()
     };
-    log('setState', { isUserAuthenticated: this.state.isUserAuthenticated });
     this.updateAuth = this.updateAuth.bind(this);
   }
 

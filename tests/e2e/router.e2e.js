@@ -3,7 +3,7 @@ import { findRoute } from '../../src/app/routes';
 module.exports = {
   '@tags': ['smoke'],
   before(browser) {
-    browser.pageLoaded(findRoute('homepage').path, 'body');
+    browser.pageLoaded(findRoute('homepage').path, '#homepage');
   },
   after(browser) {
     browser.end();

@@ -9,7 +9,7 @@ module.exports = {
 
   sections: {
     nav: {
-      selector: 'nav',
+      selector: 'nav.layout__nav',
       locateStrategy: 'css selector',
       elements: {
         aboutLink: 'a[href="/about/"]',
@@ -20,11 +20,11 @@ module.exports = {
       },
     },
     main: {
-      selector: 'main',
+      selector: 'main.layout__content',
       locateStrategy: 'css selector',
     },
     footer: {
-      selector: 'footer',
+      selector: 'footer.layout__footer',
       locateStrategy: 'css selector',
     },
   }
