@@ -3,7 +3,7 @@ const hook = require('node-hook').hook;
 const SvgLoader = require('svg-inline-loader');
 
 const connect = require('./server/models').connect;
-const config = require('./config/db.json');
+const config = require('./config/db.js');
 const webpackAssets = require('./webpack-assets.json');
 const mapWebpackAssets = require('./server/utils/mapWebpackAssets');
 require('./config/environment');

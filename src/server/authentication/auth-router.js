@@ -12,7 +12,7 @@ import localLoginStrategy from './passport/local-login';
 import Auth from '../../app/authentication/auth-helper';
 import handleError from '../middleware/handle-error';
 
-const config = require('../../config/db.json');
+const config = require('../../config/db.js');
 
 const log = debug('base: auth');
 const parseBody = koaBody();

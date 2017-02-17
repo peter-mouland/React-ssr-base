@@ -7,7 +7,7 @@ import fetchCards from './fetch-cards';
 import authCheck from '../authentication/auth-check-middleware';
 import handleError from '../middleware/handle-error';
 
-const config = require('../../config/db.json');
+const config = require('../../config/db.js');
 
 const log = debug('base:api');
 const parseBody = koaBody();
