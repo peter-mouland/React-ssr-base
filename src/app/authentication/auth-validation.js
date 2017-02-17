@@ -1,4 +1,4 @@
-const validator = require('validator');
+const isEmail = require('validator/lib/isEmail');
 
 export const text = {
   signUpForm: {
@@ -41,7 +41,7 @@ export function validateSignUpForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
+  if (!payload || typeof payload.email !== 'string' || !isEmail(payload.email)) {
     isFormValid = false;
     errors.email = text.signUpForm.errors.email;
   }
