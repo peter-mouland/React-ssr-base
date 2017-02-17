@@ -16,6 +16,9 @@ export default function errorHandler(renderer) {
       if (renderer) {
         ctx.type = 'html';
         ctx.body = ctx[renderer](err);
+      } else if (err.status === 401) {
+        ctx.status = 401;
+        ctx.body = { message: 'Protected resource, you are unauthorized', error: err };
       } else {
         ctx.type = 'json';
         ctx.body = { error: err };

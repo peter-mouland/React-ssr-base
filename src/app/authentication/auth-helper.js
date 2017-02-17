@@ -87,25 +87,6 @@ class Auth {
     this.onChange(false);
   }
 
-  static get(url, cb) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('get', url);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.setRequestHeader('Authorization', `Bearer ${Auth.getToken()}`);
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        cb(false, { message: xhr.response.message });
-      } else {
-        const errors = xhr.response ? xhr.response.errors || {} : {};
-        errors.summary = xhr.response ? xhr.response.message : xhr.statusText;
-        errors.status = xhr.status;
-        cb(errors);
-      }
-    });
-    xhr.send();
-  }
-
   static onChange() {}
 
   static authenticateUser(token, ctx) {

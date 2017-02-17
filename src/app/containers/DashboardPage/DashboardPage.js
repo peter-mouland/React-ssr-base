@@ -1,12 +1,15 @@
 import React from 'react';
-import Auth from '../../authentication/auth-helper';
+import { connect } from 'react-redux';
+
 import Dashboard from '../../components/Dashboard/Dashboard';
+import { fetchDashboardData } from '../../actions';
 
 class DashboardPage extends React.Component {
 
+  static needs = [fetchDashboardData];
+
   constructor(props) {
     super(props);
-
     this.state = {
       errors: {},
       secretData: ''
@@ -14,19 +17,24 @@ class DashboardPage extends React.Component {
   }
 
   componentDidMount() {
-    Auth.get('/api/dashboard', (errors, success) => {
-      if (errors) {
-        this.setState({ errors });
-      } else {
-        this.setState({ secretData: success.message });
-      }
-    });
+    if (this.props.secretData) return;
+    this.props.fetchDashboardData();
   }
 
   render() {
-    return (<Dashboard id="dashboard-page" secretData={this.state.secretData} />);
+    const { secretData, loading = false } = this.props;
+    return (<Dashboard id="dashboard-page" loading={loading} secretData={secretData} />);
   }
-
 }
 
-export default DashboardPage;
+function mapStateToProps(state) {
+  return {
+    secretData: state.dashboard.secretData,
+    loading: state.dashboard.loading,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { fetchDashboardData }
+)(DashboardPage);

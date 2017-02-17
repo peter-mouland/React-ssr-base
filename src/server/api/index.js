@@ -5,6 +5,7 @@ import jwt from 'koa-jwt';
 
 import fetchCards from './fetch-cards';
 import authCheck from '../authentication/auth-check-middleware';
+import handleError from '../middleware/handle-error';
 
 const config = require('../../config/db.json');
 
@@ -12,27 +13,7 @@ const log = debug('base:api');
 const parseBody = koaBody();
 const apiRouter = router({ prefix: '/api' });
 
-apiRouter.use(async (ctx, next) => {
-  try {
-    await next(); // attempt to invoke the next middleware downstream
-  } catch (err) {
-    if (process.env.NODE_ENV === 'production') {
-      log(err); // send to real logging system
-    } else {
-      log(err);
-    }
-    ctx.response.status = err.status || 500;
-    ctx.type = 'json';
-    ctx.body = { error: err };
-
-    if (err.status === 401) {
-      ctx.status = 401;
-      ctx.body = { message: 'Protected resource, you are unauthorized', error: err };
-    } else {
-      ctx.app.emit('error', err, ctx);
-    }
-  }
-});
+apiRouter.use(handleError());
 
 apiRouter.get('/', (ctx) => {
   ctx.type = 'json';

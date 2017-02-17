@@ -20,6 +20,7 @@ function game(state = {}, action) {
     case `${actions.FETCH_PEOPLE_CARDS}_FULFILLED`:
       return {
         ...state,
+        loading: false,
         cards: action.payload,
         QandA: getQuestionAndAnswer({ cards: action.payload, answerInt, factInt }),
         status: action.status
@@ -29,7 +30,27 @@ function game(state = {}, action) {
   }
 }
 
+function dashboard(state = {}, action) {
+  switch (action.type) {
+    case `${actions.FETCH_DASHBOARD_DATA}_PENDING`:
+      return {
+        ...state,
+        loading: true
+      };
+    case `${actions.FETCH_DASHBOARD_DATA}_FULFILLED`:
+      return {
+        ...state,
+        loading: false,
+        secretData: action.payload.message,
+        status: action.status
+      };
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   game,
+  dashboard,
   routing
 });
