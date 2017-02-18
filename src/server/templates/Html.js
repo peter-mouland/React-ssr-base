@@ -27,6 +27,8 @@ export default class Html extends React.Component {
       }} />
       <div id="html" dangerouslySetInnerHTML={{ __html: markup }} />
       {scripts.map((script, i) => <script src={script} key={ i } />)}
+      {/* recommend `google-analytics-debugger` chrome extension for debugging */}
+      <script async src="https://www.google-analytics.com/analytics.js"></script>
       </body>
       </html>
     );
