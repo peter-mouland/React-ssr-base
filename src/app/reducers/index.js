@@ -8,7 +8,7 @@ import getQuestionAndAnswer from './get-question-and-answers';
 
 const log = debug('base:reducers/index');
 
-function game(state = {}, action) {
+export function game(state = {}, action) {
   const answerInt = randomRange(0, 1, 1)[0];
   const factInt = randomRange(0, 7, 1)[0];
   switch (action.type) {
@@ -30,7 +30,7 @@ function game(state = {}, action) {
   }
 }
 
-function dashboard(state = {}, action) {
+export function dashboard(state = {}, action) {
   switch (action.type) {
     case `${actions.FETCH_DASHBOARD_DATA}_PENDING`:
       return {
