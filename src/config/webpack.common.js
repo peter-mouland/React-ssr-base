@@ -31,7 +31,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.GA_KEY': JSON.stringify(process.env.GA_KEY)
     }),
-    new AssetsPlugin({ filename: 'src/webpack-assets.json' }),
+    new AssetsPlugin({ filename: 'compiled/webpack-assets.json' }),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [

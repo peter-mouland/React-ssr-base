@@ -15,7 +15,7 @@
     "lint": "sass-lint -v -q -c ./sass-lint.yml && eslint 'src/**/*.js'",
     "test": "npm run test:unit && npm run test:func",
     "test:unit": "npm run mocha -- 'src/**/*.spec.js'",
-    "test:func": "npm run mocha -- 'tests/functional/**/*.func.js'",
+    "test:func": "NODE_ENV=production npm run mocha -- 'tests/**/*.func.js'",
     "test:e2e": "npm run nightwatch -- --env local",
     "test:e2e-smoke": "RUN_ON_BSTACK=true BSTACK_LOCAL=true npm run nightwatch -- --env chrome_win --tag smoke",
     "test:e2e-xb": "RUN_ON_BSTACK=true  BSTACK_LOCAL=true npm run nightwatch -- --env safari_osx,chrome_osx,firefox_win,firefox_osx,IE11,edge",

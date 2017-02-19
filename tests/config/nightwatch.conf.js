@@ -25,7 +25,7 @@ db.connect(config.dbUri);
 const loadFixtures = require('./fixtures');
 
 // build assets array from webpack bundle for test pages
-const webpackAssets = require('../../src/webpack-assets.json');
+const webpackAssets = require('../../compiled/webpack-assets.json');
 const mapWebpackAssets = require('../../src/server/utils/mapWebpackAssets');
 const assets = mapWebpackAssets(webpackAssets);
 

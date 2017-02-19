@@ -4,7 +4,7 @@ const SvgLoader = require('svg-inline-loader');
 
 const connect = require('./server/models').connect;
 const config = require('./config/db.js');
-const webpackAssets = require('./webpack-assets.json');
+const webpackAssets = require('../compiled/webpack-assets.json'); // eslint-disable-line import/no-unresolved
 const mapWebpackAssets = require('./server/utils/mapWebpackAssets');
 require('./config/environment');
 
