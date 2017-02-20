@@ -5,7 +5,6 @@ let pageLayout;
 module.exports = {
   '@tags': ['smoke'],
   before(browser) {
-    console.log('HOME PAGE TESTING')
     homePage = browser.page.homepage();
     pageLayout = browser.page.layout();
     browser.pageLoaded(findRoute('homepage').path, '#homepage');

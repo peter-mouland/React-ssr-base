@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const assert = require('assert');
 
 const User = mongoose.model('User');
-
 const data = [{
   email: 'test@ssr.com',
   password: 'test@ssr.com',
@@ -18,11 +17,11 @@ module.exports = () => new Promise((resolve, reject) => {
     console.log('inserting test users....');
     User.collection.insertMany(data, function (err, r) {
       assert.equal(null, err);
-      assert.equal(1, r.insertedCount);
+      assert.equal(data.length, r.insertedCount);
       if (err){
         reject(err);
       } else {
-        resolve();
+        resolve(r.insertedIds);
       }
     });
   });

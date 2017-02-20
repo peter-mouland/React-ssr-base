@@ -32,7 +32,6 @@ const assets = mapWebpackAssets(webpackAssets);
 let openServer;
 
 module.exports = (function(settings) {
-
   settings.test_settings.default.globals = {
     TARGET_PATH : argv.target || `http://localhost:${process.env.PORT}`,
     before:  function(done) {

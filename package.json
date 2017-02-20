@@ -5,9 +5,8 @@
   "main": "src/server-entry.js",
   "scripts": {
     "mongo": "mongod  --dbpath mongodb",
-    "prestart": "rm -rf compiled && npm run build:server && npm run build && node scripts/copyAssets.js",
-    "prestart:dev": "npm run build:dev",
-    "build": "NODE_ENV=production webpack --config src/config/webpack.config.prod.js -p",
+    "build": "rm -rf compiled && npm run build:server && npm run build:prod && node scripts/copyAssets.js",
+    "build:prod": "NODE_ENV=production webpack --config src/config/webpack.config.prod.js -p",
     "build:dev": "webpack --config src/config/webpack.config.dev.js",
     "build:server": "NODE_ENV=production babel src -d compiled",
     "start": "NODE_ENV=production node compiled/server-entry.js",
@@ -32,7 +31,7 @@
     "test"
   ],
   "pre-push": [
-    "prestart",
+    "build",
     "test:e2e"
   ],
   "author": "Peter Mouland",
@@ -59,7 +58,7 @@
     "debug": "^2.2.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.5",
     "isomorphic-fetch": "^2.2.1",
-    "jsonwebtoken": "^7.2.1",
+    "jsonwebtoken": "^7.3.0",
     "jwt-decode": "^2.1.0",
     "koa": "^2.0.0-alpha.7",
     "koa-body": "^2.0.0",
@@ -137,6 +136,6 @@
     "selenium-standalone": "^6.0.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
-    "supertest": "^2.0.0"
+    "supertest": "^3.0.0"
   }
 }

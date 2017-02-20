@@ -74,9 +74,9 @@ module.exports = {
       {
         test: /\.scss$/,
         include: [/src/],
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: ['css-loader', 'postcss-loader', 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
       },
       {
@@ -89,7 +89,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        loaders: [
+        use: [
           'file-loader?name=[name]-[hash].[ext]'
         ]
       }

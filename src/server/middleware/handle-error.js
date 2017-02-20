@@ -13,11 +13,16 @@ export default function errorHandler(renderer) {
         log(err);
       }
       ctx.response.status = err.status || 500;
+
+      if (err.name === 'JsonWebTokenError') {
+        err.status = 403;
+      }
+
       if (renderer) {
         ctx.type = 'html';
         ctx.body = ctx[renderer](err);
-      } else if (err.status === 401) {
-        ctx.status = 401;
+      } else if (err.status === 401 || err.status === 403) {
+        ctx.status = err.status;
         ctx.body = { message: 'Protected resource, you are unauthorized', error: err };
       } else {
         ctx.type = 'json';

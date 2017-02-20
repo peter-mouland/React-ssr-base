@@ -1,6 +1,6 @@
 import cookie from 'react-cookie';
 import debug from 'debug';
-import jwtDecode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
 
 import { validateLoginForm, validateSignUpForm } from './auth-validation';
 
@@ -96,12 +96,11 @@ class Auth {
     cookie.save('token', token, { path: '/' });
   }
 
-  static isUserAuthenticated() {
+  static isUserAuthenticated(ctx) {
     try {
-      jwtDecode(this.getToken());
-      return true;
+      return jwt.decode(this.getToken(ctx));
     } catch (e) {
-      this.deauthenticateUser();
+      this.deauthenticateUser(ctx);
       return false;
     }
   }
@@ -113,8 +112,11 @@ class Auth {
     cookie.remove('token', { path: '/' });
   }
 
-  static getToken() {
-    return cookie.load('token', { path: '/' });
+  static getToken(ctx) {
+    const authHeader = ctx && ctx.session && ctx.session.authorization;
+    return authHeader
+      ? authHeader.split(' ')[1]
+      : cookie.load('token', { path: '/' });
   }
 
 }
