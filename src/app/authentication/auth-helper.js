@@ -1,6 +1,6 @@
 import cookie from 'react-cookie';
 import debug from 'debug';
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 
 import { validateLoginForm, validateSignUpForm } from './auth-validation';
 
@@ -98,7 +98,7 @@ class Auth {
 
   static isUserAuthenticated(ctx) {
     try {
-      return jwt.decode(this.getToken(ctx));
+      return jwtDecode(this.getToken(ctx));
     } catch (e) {
       this.deauthenticateUser(ctx);
       return false;
