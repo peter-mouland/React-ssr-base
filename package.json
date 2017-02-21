@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/server-entry.js",
   "scripts": {
+    "postinstall": "npm run build",
     "mongo": "mongod  --dbpath mongodb",
     "build": "rm -rf compiled && npm run build:server && npm run build:prod && node scripts/copyAssets.js",
     "build:prod": "NODE_ENV=production webpack --config src/config/webpack.config.prod.js -p",
