@@ -74,7 +74,6 @@ module.exports = {
     dashboardPage.waitForElementPresent('@main', 1000);
     dashboardPage.expect.section('@main').to.be.visible;
   },
-  // temp skip to enable circle ci
   ['the system isnt fooled by a fake token cookie'](browser){
     return browser.setCookie({
         name: "token",
