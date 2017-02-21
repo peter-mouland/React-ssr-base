@@ -10,7 +10,7 @@
   },
   "custom_commands_path" : "./tests/config/nightwatch-commands",
   "page_objects_path" : "./tests/config/nightwatch-pages",
-
+  "globals_path": "./tests/config/nightwatchGlobals.js",
   "test_settings" : {
     "default" : {
       "launch_url" : "http://hub.browserstack.com",
