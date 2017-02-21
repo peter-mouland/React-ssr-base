@@ -77,7 +77,7 @@ module.exports = {
     loginPage.waitForElementPresent('@main', 1000);
     loginPage.expect.section('@main').to.be.visible;
   },
-  ['hitting url with incorrect params return error, not unautherised'](){
+  // ['hitting url with incorrect params return error, not unautherised'](){
     //  http://localhost:3000/api/game/:gameType(people%7Cfilms)/:card1/:card2
-  }
+  // }
 };

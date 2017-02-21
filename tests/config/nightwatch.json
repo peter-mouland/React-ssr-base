@@ -6,7 +6,7 @@
   },
   "selenium" : {
     "start_process" : true,
-    "server_path" : "node_modules/selenium-standalone/.selenium/selenium-server/2.53.1-server.jar"
+    "server_path" : "node_modules/selenium-standalone/.selenium/selenium-server/3.0.1-server.jar"
   },
   "custom_commands_path" : "./tests/config/nightwatch-commands",
   "page_objects_path" : "./tests/config/nightwatch-pages",
@@ -14,6 +14,8 @@
   "test_settings" : {
     "default" : {
       "launch_url" : "http://hub.browserstack.com",
+      "selenium_port"  : 80,
+      "selenium_host"  : "hub.browserstack.com",
       "silent": true,
       "screenshots" : {
         "enabled" : true,
@@ -41,7 +43,9 @@
       "desiredCapabilities": {
         "build": "build local",
         "browserName": "chrome",
-        "browserstack.local" : false
+        "browserstack.local" : false,
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
       }
     },
     "chrome_win" : {
@@ -77,14 +81,6 @@
         "os": "OS X",
         "os_version": "El Capitan",
         "browserName": "firefox"
-      }
-    },
-    "IE10" : {
-      "desiredCapabilities": {
-        "os": "Windows",
-        "os_version": "7",
-        "browserName": "IE",
-        "browser_version": "10.0"
       }
     },
     "IE11" : {

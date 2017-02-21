@@ -18,7 +18,7 @@
     "test:e2e": "npm run nightwatch -- --env local",
     "test:e2e-smoke": "RUN_ON_BSTACK=true BSTACK_LOCAL=true npm run nightwatch -- --env chrome_win --tag smoke",
     "test:e2e-xb": "RUN_ON_BSTACK=true  BSTACK_LOCAL=true npm run nightwatch -- --env safari_osx,chrome_osx,firefox_win,firefox_osx,IE11,edge",
-    "prenightwatch": "selenium-standalone install --version=2.53.1",
+    "prenightwatch": "selenium-standalone install --version=3.0.1",
     "nightwatch": "NODE_ENV=production nightwatch -o ./tests/e2e/tests_output -c ./tests/config/nightwatch.conf.js",
     "mocha": "mocha --opts ./tests/config/mocha.opts "
   },
