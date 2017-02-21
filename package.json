@@ -102,7 +102,6 @@
     "babel-eslint": "^7.0.0",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
-    "browserstack-automate": "^1.0.1",
     "browserstack-local": "^1.1.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
