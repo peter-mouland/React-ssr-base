@@ -16,7 +16,7 @@
       "launch_url" : "http://hub.browserstack.com",
       "selenium_port"  : 80,
       "selenium_host"  : "hub.browserstack.com",
-      "silent": true,
+      "silent": false,
       "screenshots" : {
         "enabled" : true,
         "path" : ""
