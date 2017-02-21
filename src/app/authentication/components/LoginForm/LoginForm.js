@@ -10,7 +10,7 @@ const LoginForm = ({
   user,
   actions
 }) => (
-    <form action="/" onSubmit={onSubmit} method="post" className="form">
+    <form action="/nojs-login" onSubmit={onSubmit} method="post" className="form">
       <h2>Login or Create and Account</h2>
 
       {successMessage && <p className="form__success">{successMessage}</p>}
