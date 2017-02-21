@@ -14,12 +14,11 @@ export function fetchPeopleCards() {
 }
 
 export function fetchDashboardData() {
+  const token = Auth.getToken();
   return {
     type: FETCH_DASHBOARD_DATA,
     payload: json.get('api/dashboard', {
-      headers: {
-        Authorization: `Bearer ${Auth.getToken()}`
-      }
+      headers: token ? { Authorization: `Bearer ${token}` } : false
     })
   };
 }

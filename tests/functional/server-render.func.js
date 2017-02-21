@@ -93,7 +93,8 @@ describe('Server', function () {
       .expect(200)
       .expect('Content-Encoding', 'gzip')
       .end(()=>{
-        fs.removeSync(DIST);
+        // remove only files that were added
+        // fs.removeSync(DIST);
         done();
       });
   });

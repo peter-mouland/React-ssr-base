@@ -47,6 +47,8 @@ module.exports = (function(settings) {
       return openServer.close(() => db.connection.close(done));
     }
   };
+  settings.test_settings.default.desiredCapabilities['browserstack.user'] = argv.bsuser || process.env.BROWSERSTACK_USER;
+  settings.test_settings.default.desiredCapabilities['browserstack.key'] = argv.bskey || process.env.BROWSERSTACK_KEY;
   settings.test_settings.default.desiredCapabilities['build'] = (argv.sha) ? argv.sha : ' local ';
   return settings;
 })(require('./nightwatch.json'));

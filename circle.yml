@@ -17,9 +17,9 @@ dependencies:
     - node_modules
 test:
   override:
-    - npm run build
     - npm run test:unit  -- --reporter mocha-junit-reporter
     - npm run test:func
+    - npm run build
     - npm run test:e2e
   post:
     - git config --global user.name "Peter Mouland"

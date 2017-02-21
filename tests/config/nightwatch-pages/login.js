@@ -5,7 +5,7 @@ const { findRoute } = require('../../../src/app/routes');
 const commands = {
   login: function(email, password) {
     // this.api.pause(1000);
-    return this.section.main.waitForElementVisible('@actionInput', 1000)
+    return this.section.main.waitForElementVisible('@emailInput', 1000)
       .setValue('@emailInput', email)
       .setValue('@passwordInput', password)
       .click('@actionLoginInput')
@@ -14,7 +14,7 @@ const commands = {
   },
   signUp: function(email, password) {
     // this.api.pause(1000);
-    return this.section.main.waitForElementVisible('@actionInput', 1000)
+    return this.section.main.waitForElementVisible('@emailInput', 1000)
       .setValue('@emailInput', email)
       .setValue('@passwordInput', password)
       .click('@actionSignUpInput')

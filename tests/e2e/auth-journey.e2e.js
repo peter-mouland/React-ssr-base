@@ -15,11 +15,12 @@ module.exports = {
     dashboardPage = browser.page.dashboard();
     logoutPage = browser.page.logout();
     browser.pageLoaded(findRoute('homepage').path, '#homepage');
+    browser.deleteCookies();
   },
 
   after(browser) {
-    browser.end();
     browser.deleteCookies();
+    browser.end();
   },
 
   ['should not be able to see a the dashboard without logging in'](browser) {
@@ -31,7 +32,8 @@ module.exports = {
   },
 
   ['should not be able to log in with an unknown user'](browser) {
-    pageLayout.section.nav.click('@dashboardLink');
+    const nav = pageLayout.section.nav;
+    nav.click('@dashboardLink');
     loginPage.login('night.watch@ssr.com', 'nightwatch');
     loginPage.expect.section('@main').to.be.visible;
     loginPage.thenDisplays('@error');
@@ -77,7 +79,8 @@ module.exports = {
     loginPage.waitForElementPresent('@main', 1000);
     loginPage.expect.section('@main').to.be.visible;
   },
+
   // ['hitting url with incorrect params return error, not unautherised'](){
-    //  http://localhost:3000/api/game/:gameType(people%7Cfilms)/:card1/:card2
+  //    http://localhost:3000/api/game/:gameType(people%7Cfilms)/:card1/:card2
   // }
 };
