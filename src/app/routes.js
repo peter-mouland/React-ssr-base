@@ -8,7 +8,7 @@ import debug from 'debug';
 
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
-import Game from './containers/Game/Game';
+import Products from './containers/Products/Products';
 import NotFound from './containers/NotFound/NotFound';
 
 debug('base:routes');
@@ -38,14 +38,14 @@ export function getRoutesConfig() {
       component: Homepage
     },
     {
-      name: 'game',
-      path: '/game/',
-      label: 'Star Wars Trivia',
+      name: 'products',
+      path: '/products/',
+      label: 'Credit Suisse Products',
       meta: {
         ...baseMetaData,
-        title: 'Star Wars Trivia',
+        title: 'Credit Suisse Products',
       },
-      component: Game
+      component: Products
     },
   ];
 }

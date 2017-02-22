@@ -18,7 +18,7 @@ export default class MainLayout extends React.Component {
         <nav {...bem('nav')}>
           <span {...bem('nav', 'header')}>React SSR Base</span>
           <NamedLink to='homepage' {...bem('nav', 'link')} />
-          <NamedLink to="game" {...bem('nav', 'link')} />
+          <NamedLink to="products" {...bem('nav', 'link')} />
         </nav>
         <main className="layout__content">
           {children}

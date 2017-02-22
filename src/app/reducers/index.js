@@ -2,27 +2,22 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 import debug from 'debug';
 
-import { randomRange } from '../utils';
 import * as actions from '../actions';
-import getQuestionAndAnswer from './get-question-and-answers';
 
 const log = debug('base:reducers/index');
 
-export function game(state = {}, action) {
-  const answerInt = randomRange(0, 1, 1)[0];
-  const factInt = randomRange(0, 7, 1)[0];
+export function products(state = {}, action) {
   switch (action.type) {
-    case `${actions.FETCH_PEOPLE_CARDS}_PENDING`:
+    case `${actions.FETCH_PRODUCTS}_PENDING`:
       return {
         ...state,
         loading: true
       };
-    case `${actions.FETCH_PEOPLE_CARDS}_FULFILLED`:
+    case `${actions.FETCH_PRODUCTS}_FULFILLED`:
       return {
         ...state,
         loading: false,
-        cards: action.payload,
-        QandA: getQuestionAndAnswer({ cards: action.payload, answerInt, factInt }),
+        products: action.payload,
         status: action.status
       };
     default:
@@ -31,6 +26,6 @@ export function game(state = {}, action) {
 }
 
 export default combineReducers({
-  game,
+  products,
   routing
 });

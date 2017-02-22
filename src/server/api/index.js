@@ -2,7 +2,7 @@ import router from 'koa-router';
 import koaBody from 'koa-body';
 import debug from 'debug';
 
-import fetchCards from './fetch-cards';
+import fetchProducts from './fetch-products';
 import handleError from '../middleware/handle-error';
 
 const log = debug('base:api');
@@ -17,13 +17,10 @@ apiRouter.get('/', (ctx) => {
   ctx.response.body = { status: 'healthy' };
 });
 
-apiRouter.get('/game/:gameType(people|films)/:card1/:card2', parseBody, async (ctx) => {
-  const cards = [ctx.params.card1, ctx.params.card2];
+apiRouter.get('/products', parseBody, async (ctx) => {
   ctx.type = 'json';
   ctx.status = 200;
-  ctx.response.body = await fetchCards(ctx.params.gameType, cards);
+  ctx.response.body = await fetchProducts();
 });
-
-apiRouter.use(handleError());
 
 export default apiRouter;
