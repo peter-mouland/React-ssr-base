@@ -1,8 +1,9 @@
-const debug = require('debug');
-const User = require('mongoose').model('User');
+import debug from 'debug';
+import mongoose from 'mongoose';
 
-const Auth = require('../../app/authentication/auth-helper');
+import Auth from '../../app/authentication/auth-helper';
 
+const User = mongoose.model('User');
 const log = debug('base:auth-check');
 
 const catcher = (ctx) => {

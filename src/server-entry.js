@@ -18,6 +18,6 @@ connect(config.dbUri);
 
 const assets = mapWebpackAssets(webpackAssets);
 const createServer = require('./server/server'); //eslint-disable-line
-createServer(assets).listen(process.env.PORT, () => {
+createServer(assets, process.env.NODE_ENV === 'development').listen(process.env.PORT, () => {
   console.log(`listening at http://localhost:${process.env.PORT}`); // eslint-disable-line
 });

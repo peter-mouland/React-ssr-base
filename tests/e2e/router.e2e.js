@@ -5,9 +5,6 @@ module.exports = {
   before(browser) {
     browser.pageLoaded(findRoute('homepage').path, '#homepage');
   },
-  after(browser) {
-    browser.end();
-  },
 
   // if this test fails  because the url ends with '/', then the js may have an error.
   // This test, with BrowserStack, helped catch ie10/11 errors,

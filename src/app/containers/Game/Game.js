@@ -20,9 +20,6 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: [],
-      error: false,
-      dealing: false,
       showAnswer: false,
       attempt: null
     };
@@ -33,37 +30,15 @@ class Game extends React.Component {
 
   componentDidMount() {
     if (this.props.cards) return;
-    this.fetchCards();
-  }
-
-  fetchCards() {
-    this.props.fetchPeopleCards()
-      .then(() => {
-        this.setState({
-          error: false,
-          dealing: false
-        });
-      })
-      .catch(() => {
-        this.setState({
-          error: true,
-          dealing: false
-        });
-      });
+    this.props.fetchPeopleCards();
   }
 
   deal() {
-    const cards = this.props.cards;
-    const QandA = this.props.QandA;
     this.setState({
-      QandA,
-      cards,
-      dealing: false,
-      error: false,
       showAnswer: false,
       attempt: null
     });
-    this.fetchCards();
+    this.props.fetchPeopleCards();
   }
 
   setAttempt(attempt) {
@@ -75,22 +50,22 @@ class Game extends React.Component {
   }
 
   render() {
-    const {
-      cards, dealing, error, showAnswer, attempt, QandA: { answerCard, question, answer } = {},
-    } = this.state;
-
+    const { cards = [], error, loading, QandA: { answerCard, question, answer } = {} } = this.props;
+    const { showAnswer, attempt } = this.state;
     return (
       <div id="game">
         <banner className="header">
           <h1>Star Wars Trivia</h1>
           <p><Svg markup={chevron} />A simple game using <a href="http://www.swapi.com" target="_blank">SWAPI</a>.</p>
         </banner>
-        <button onClick={() => this.deal()}>Deal 'People' cards!</button>
+        <button onClick={() => this.deal()}>Ask another!</button>
         {error && <Error />}
-        {dealing && <Dealing />}
-        <Question { ...{ showAnswer, answer, cards, attempt, onClick: this.setAttempt } }>
-          {question}
-        </Question>
+        {loading
+          ? <Dealing />
+          : <Question { ...{ showAnswer, answer, cards, attempt, onClick: this.setAttempt } }>
+            {question}
+          </Question>
+        }
         {!!cards.length && <button onClick={() => this.viewAnswer()}>View Answer</button>}
         <Answer cards={ cards } answerCard={ answerCard } showAnswer={ showAnswer } />
       </div>
@@ -100,6 +75,8 @@ class Game extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    error: state.game.error,
+    loading: state.game.loading,
     cards: state.game.cards,
     QandA: state.game.QandA
   };

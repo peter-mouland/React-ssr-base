@@ -15,12 +15,12 @@ let fakeValue;
 let fakeToken;
 
 // Add fixture data -> Needed to get a valid token that points to a valid user in the test db
-  const insertUsers = () => {
-    return fixtures().then(([insertedUsers]) => {
-      const payload = { sub: insertedUsers[0] };
-      return jwt.sign(payload, config.jwtSecret);
-    });
-  };
+const insertUsers = () => {
+  return fixtures().then(([insertedUsers]) => {
+    const payload = { sub: insertedUsers[0] };
+    return jwt.sign(payload, config.jwtSecret);
+  });
+};
 // end Add fixture data
 
 const server = new Koa();

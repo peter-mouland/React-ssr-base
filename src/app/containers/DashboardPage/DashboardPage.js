@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Dashboard from '../../components/Dashboard/Dashboard';
@@ -7,6 +7,11 @@ import { fetchDashboardData } from '../../actions';
 class DashboardPage extends React.Component {
 
   static needs = [fetchDashboardData];
+
+  static propTypes = {
+    loading: PropTypes.bool,
+    secretData: PropTypes.string
+  };
 
   constructor(props) {
     super(props);

@@ -36,12 +36,10 @@ server.use(logger());
 server.use(headers());
 server.use(pageRenderers());
 
-
-if (process.env.NODE_ENV === 'development') {
-  hotReload(server);
-}
-
-export default (assets) => {
+export default (assets, hmr) => {
+  if (hmr === true) {
+    hotReload(server);
+  }
   setRoutes(assets);
   server.use(router.routes());
   return server;
