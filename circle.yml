@@ -5,11 +5,12 @@ machine:
     Europe/London
   node:
     version: v6.6
+  java:
+    version: openjdk8
 general:
   artifacts:
     - test/reports
-    - test/nightwatch/report
-    - test/nightwatch/screenshots
+    - test/screenshots
 dependencies:
   cache_directories:
     - browserstack
@@ -18,22 +19,25 @@ dependencies:
     - npm run build
 test:
   override:
-    - npm run test:unit  -- --reporter mocha-junit-reporter:
+    - npm run test:unit  -- --reporter mocha-junit-reporter
     - npm run test:func
+    - npm run build
     - npm run test:e2e
   post:
     - git config --global user.name "Peter Mouland"
     - git config --global user.email "peter.mouland@gmail.com"
 deployment:
   main:
-    branch: master
+    branch: credit-suisse
     commands:
       - wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
       - unzip BrowserStackLocal-linux-x64.zip
       - ./BrowserStackLocal $BROWSERSTACK_KEY -force:
           background: true
       - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
-      - git push git@heroku.com:react-lego-preprod.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
-      - npm run test:e2e-xb -- --sha=$CIRCLE_BUILD_NUM --target=http://react-lego-preprod.herokuapp.com --retries 4
-      - git push git@heroku.com:react-lego.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
-      - npm run test:e2e-smoke -- --sha=$CIRCLE_BUILD_NUM --target=http://react-lego.herokuapp.com --retries 4
+      - git push git@heroku.com:react-ssr-base-staging.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
+      - npm run test:e2e-staging -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base-staging.herokuapp.com --retries 4
+      - git push git@heroku.com:react-ssr-base-preprod.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
+      - npm run test:e2e-production -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base-preprod.herokuapp.com --retries 4
+      - git push git@heroku.com:react-ssr-base.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
+      - npm run test:e2e-production -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base.herokuapp.com --retries 4

@@ -1,4 +1,4 @@
-import { expect } from '../../../tests/support/test.helper';
+import { expect } from '../../../tests/config/test.helper';
 import { randomRange } from './randomRange';
 
 describe('randomRange', ()=>{

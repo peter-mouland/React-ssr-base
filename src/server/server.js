@@ -11,7 +11,7 @@ import headers from './middleware/headers';
 import { router, setRoutes } from './router';
 
 const server = new Koa();
-const log = debug('lego:server.js');
+const log = debug('base:server.js');
 log('starting');
 
 server.use(handleError('render500'));
@@ -21,12 +21,10 @@ server.use(logger());
 server.use(headers());
 server.use(pageRenderers());
 
-
-if (process.env.NODE_ENV === 'development') {
-  hotReload(server);
-}
-
-export default (assets) => {
+export default (assets, hmr) => {
+  if (hmr === true) {
+    hotReload(server);
+  }
   setRoutes(assets);
   server.use(router.routes());
   return server;

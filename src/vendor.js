@@ -3,5 +3,4 @@ require('react-dom');
 require('react-router');
 require('react-document-meta');
 require('debug');
-require('lodash/get');
 require('isomorphic-fetch');

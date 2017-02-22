@@ -1,6 +1,8 @@
 import React from 'react';
-import { Miss, Match } from 'react-router';
-import { NamedLink, RoutesProvider, MatchWithRoutes } from 'react-router-addons-routes';
+import Route from 'react-router-dom/Route';
+import Link from 'react-router-dom/Link';
+import Switch from 'react-router-dom/Switch';
+import bemHelper from 'react-bem-helper';
 import DocumentMeta from 'react-document-meta';
 import debug from 'debug';
 
@@ -9,54 +11,79 @@ import Homepage from './containers/Homepage/Homepage';
 import Game from './containers/Game/Game';
 import NotFound from './containers/NotFound/NotFound';
 
-debug('lego:routes');
+debug('base:routes');
 
-const siteTitle = 'React Lego';
-
-export const routes = [
-  {
-    name: 'homepage',
-    exactly: true,
-    pattern: '/',
-    label: 'About React Lego',
-    title: `${siteTitle} - About React Lego`,
-    component: Homepage
-  },
-  {
-    name: 'game',
-    pattern: '/game/',
-    label: 'Star Wars Trivia',
-    title: `${siteTitle} - Star Wars Trivia`,
-    component: Game
+const baseMetaData = {
+  title: 'React SSR Base',
+  description: 'React-SSR-Base : incrementally add more cool stuff to your react app',
+  meta: {
+    charset: 'utf-8',
+    name: {
+      keywords: 'react,example'
+    }
   }
-];
+};
 
-export const findRoute = (to) => routes.find((rt) => rt.name === to);
+export function getRoutesConfig() {
+  return [
+    {
+      name: 'homepage',
+      exact: true,
+      path: '/',
+      meta: {
+        ...baseMetaData,
+        title: 'About React SSR Base'
+      },
+      label: 'About SSR Base',
+      component: Homepage
+    },
+    {
+      name: 'game',
+      path: '/game/',
+      label: 'Star Wars Trivia',
+      meta: {
+        ...baseMetaData,
+        title: 'Star Wars Trivia',
+      },
+      component: Game
+    },
+  ];
+}
 
-export const LinkHelper = ({ to, ...props }) => {
+// test this. no failing test if getRoutesConfig instead of getRoutesConfig()
+export const findRoute = (to) => getRoutesConfig().find((rt) => rt.name === to);
+
+// test this active link and route matching
+export const NamedLink = ({ className, to, children, ...props }) => {
+  const bem = bemHelper({ name: 'link' });
   const route = findRoute(to);
   if (!route) throw new Error(`Route to '${to}' not found`);
   return (
-    <NamedLink to={ to } { ...props }>
-      { props.children || route.label }
-    </NamedLink>
+    <Route path={ route.path } exact children={({ match }) => (
+      <Link to={ route.path } { ...props } { ...bem(null, { active: match }, className) }>
+        { children || route.label }
+      </Link>
+    )} />
   );
 };
 
-const Route = ({ route }) => (
-  <span>
-    <Match {...route} render={() => <DocumentMeta title={ route.title }/>}/>
-    <MatchWithRoutes {...route} />
-  </span>
-);
+
+const RouteWithMeta = ({ component: Component, meta, ...props }) => (
+    <Route {...props} render={(matchProps) => (
+      <span>
+        <DocumentMeta { ...meta }/>
+        <Component {...matchProps}/>
+      </span>
+    )}/>
+  );
 
 export function makeRoutes() {
   return (
-    <RoutesProvider routes={routes}>
-      <MainLayout>
-        {routes.map((route) => (<Route key={route.name} route={ route }/>))}
-        <Miss title={`${siteTitle} - Page Not Found`} component={ NotFound }/>
-      </MainLayout>
-    </RoutesProvider>
+    <MainLayout>
+      <Switch>
+        {getRoutesConfig().map((route) => <RouteWithMeta {...route} key={ route.name } />)}
+        <Route title={'Page Not Found - React SSR Base'} component={ NotFound }/>
+      </Switch>
+    </MainLayout>
   );
 }

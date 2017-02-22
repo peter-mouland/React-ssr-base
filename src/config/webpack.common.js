@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const cssnano = require('cssnano');
+const Visualizer = require('webpack-visualizer-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const { SRC, DIST } = require('./paths');
 
@@ -15,6 +17,11 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new ProgressBarPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
+    new Visualizer({
+      filename: '../webpack-stats.html'
+    }),
     new webpack.optimize.CommonsChunkPlugin({ names: ['vendor'], minChunks: Infinity }),
     new ExtractTextPlugin('[name]-[hash].css'),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -23,8 +30,7 @@ module.exports = {
       'process.env.DEBUG': JSON.stringify(process.env.DEBUG),
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new AssetsPlugin({ filename: 'src/webpack-assets.json' }),
-    new webpack.NamedModulesPlugin(),
+    new AssetsPlugin({ filename: 'compiled/webpack-assets.json' }),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [
@@ -67,9 +73,9 @@ module.exports = {
       {
         test: /\.scss$/,
         include: [/src/],
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: ['css-loader', 'postcss-loader', 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
       },
       {
@@ -79,6 +85,12 @@ module.exports = {
         options: {
           removeSVGTagAttrs: false
         }
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        use: [
+          'file-loader?name=[name]-[hash].[ext]'
+        ]
       }
     ]
   }

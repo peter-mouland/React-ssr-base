@@ -1,7 +1,7 @@
 require('babel-polyfill');
 const hook = require('node-hook').hook;
 const SvgLoader = require('svg-inline-loader');
-const webpackAssets = require('./webpack-assets.json');
+const webpackAssets = require('../compiled/webpack-assets.json'); // eslint-disable-line import/no-unresolved
 const mapWebpackAssets = require('./server/utils/mapWebpackAssets');
 require('./config/environment');
 
@@ -14,6 +14,6 @@ hook('.svg', (source) => {
 
 const assets = mapWebpackAssets(webpackAssets);
 const createServer = require('./server/server'); //eslint-disable-line
-createServer(assets).listen(process.env.PORT, () => {
+createServer(assets, process.env.NODE_ENV === 'development').listen(process.env.PORT, () => {
   console.log(`listening at http://localhost:${process.env.PORT}`); // eslint-disable-line
 });

@@ -1,33 +1,30 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import bemHelper from 'react-bem-helper';
+import debug from 'debug';
 
-import { LinkHelper } from '../routes';
+import { NamedLink } from '../routes';
 import './mainLayout.scss';
 
-export default class MainLayout extends Component {
+const log = debug('base:mainLayout');
 
-  static propTypes = {
-    location: PropTypes.object
-  };
+export default class MainLayout extends React.Component {
 
   render() {
+    const bem = bemHelper({ name: 'layout' });
     const { children } = this.props;
-    const navLinkProps = {
-      className: 'layout__nav-link',
-      activeClassName: 'layout__nav-link--selected'
-    };
 
     return (
-      <div className="layout layout--main">
-        <nav className="layout__nav">
-          <span className="layout__nav-header">React Lego</span>
-          <LinkHelper to='homepage' { ...navLinkProps } />
-          <LinkHelper to="game" { ...navLinkProps } />
+      <div {...bem(null, 'main')}>
+        <nav {...bem('nav')}>
+          <span {...bem('nav', 'header')}>React SSR Base</span>
+          <NamedLink to='homepage' {...bem('nav', 'link')} />
+          <NamedLink to="game" {...bem('nav', 'link')} />
         </nav>
-        <div className="layout__content">
+        <main className="layout__content">
           {children}
-        </div>
+        </main>
         <footer className="layout__footer">
-          Hosted at <a href="http://github.com/peter-mouland/react-lego">github.com/peter-mouland/react-lego</a>
+          Hosted at <a href="http://github.com/peter-mouland/react-ssr-base">github.com/peter-mouland/react-srr-base</a>
         </footer>
       </div>
     );

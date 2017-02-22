@@ -8,8 +8,9 @@
     "start_process" : true,
     "server_path" : "node_modules/selenium-standalone/.selenium/selenium-server/2.53.1-server.jar"
   },
-  "custom_commands_path" : "./tests/support/nightwatch-commands",
-
+  "custom_commands_path" : "./tests/config/nightwatch-commands",
+  "page_objects_path" : "./tests/config/nightwatch-pages",
+  "globals_path": "./tests/config/nightwatch-globals.js",
   "test_settings" : {
     "default" : {
       "launch_url" : "http://hub.browserstack.com",
@@ -21,7 +22,7 @@
         "path" : ""
       },
       "desiredCapabilities": {
-        "project": "React Lego",
+        "project": "React SSR Base",
         "build": "build ",
         "browserName": "firefox",
         "javascriptEnabled": true,

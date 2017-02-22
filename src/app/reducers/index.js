@@ -6,9 +6,9 @@ import { randomRange } from '../utils';
 import * as actions from '../actions';
 import getQuestionAndAnswer from './get-question-and-answers';
 
-const log = debug('lego:reducers/index');
+const log = debug('base:reducers/index');
 
-function game(state = {}, action) {
+export function game(state = {}, action) {
   const answerInt = randomRange(0, 1, 1)[0];
   const factInt = randomRange(0, 7, 1)[0];
   switch (action.type) {
@@ -20,6 +20,7 @@ function game(state = {}, action) {
     case `${actions.FETCH_PEOPLE_CARDS}_FULFILLED`:
       return {
         ...state,
+        loading: false,
         cards: action.payload,
         QandA: getQuestionAndAnswer({ cards: action.payload, answerInt, factInt }),
         status: action.status

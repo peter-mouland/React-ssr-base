@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-const log = debug('lego:handleError.js');
+const log = debug('base:handleError.js');
 
 export default function errorHandler(renderer) {
   return async (ctx, next) => {
@@ -13,9 +13,17 @@ export default function errorHandler(renderer) {
         log(err);
       }
       ctx.response.status = err.status || 500;
+
+      if (err.name === 'JsonWebTokenError') {
+        err.status = 403;
+      }
+
       if (renderer) {
         ctx.type = 'html';
         ctx.body = ctx[renderer](err);
+      } else if (err.status === 401 || err.status === 403) {
+        ctx.status = err.status;
+        ctx.body = { message: 'Protected resource, you are unauthorized', error: err };
       } else {
         ctx.type = 'json';
         ctx.body = { error: err };

@@ -1,11 +1,12 @@
 {
-  "name": "react-lego",
+  "name": "react-ssr-base",
   "scripts": {
   },
   "env": {
     "NODE_ENV": {
       "required": true
-    }
+    },
+    "NPM_CONFIG_PRODUCTION": false,
   },
   "addons": [
   ]

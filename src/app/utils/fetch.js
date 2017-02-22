@@ -3,24 +3,26 @@ import debug from 'debug';
 
 import { localUrl } from '../utils';
 
-const log = debug('lego:api/index');
+const log = debug('base:fetch');
 
 export function checkStatus(response) {
-  if (response.status < 200 || response.status >= 300) {
-    const error = new Error(response.statustext);
+  if (response.status < 200 || response.status >= 500) {
+    const error = new Error(response.statusText);
     error.response = response;
     throw error;
   }
   return response;
 }
 
-const jsonOpts = (method, data) => ({
+const jsonOpts = (method, data, options = {}) => ({
   method,
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    credentials: 'same-origin',
+    ...options.headers
   },
-  body: JSON.stringify(data)
+  body: data && JSON.stringify(data)
 });
 
 const fetchUrl = (url, opts) => {
@@ -35,7 +37,7 @@ const fetchUrl = (url, opts) => {
     });
 };
 
-const getJSON = (url) => fetchUrl(url, jsonOpts('GET'));
+const getJSON = (url, options) => fetchUrl(url, jsonOpts('GET', null, options));
 const postJSON = (url, data) => fetchUrl(url, jsonOpts('POST', data));
 
 export const fetch = {

@@ -8,7 +8,7 @@ import './styles/app.scss';
 
 debug.enable(process.env.DEBUG);
 
-const log = debug('lego:client-entry');
+const log = debug('base::client-entry');
 log('Client environment', process.env);
 
 const rootEl = document.getElementById('html');

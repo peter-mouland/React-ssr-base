@@ -10,7 +10,7 @@ export default function renderApp(assets) {
           initialState={ctx.initialState}
           scripts={assets.javascript}
           stylesheets={assets.styles}
-          content={ctx.routerContext}
+          markup={ctx.markup}
         />
       );
     } catch (error) {

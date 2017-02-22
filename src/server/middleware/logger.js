@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-const log = debug('lego:server-logger');
+const log = debug('base:server-logger');
 
 export default function logger() {
   return async (ctx, next) => {

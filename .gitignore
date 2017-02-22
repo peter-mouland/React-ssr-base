@@ -8,6 +8,5 @@ compiled
 *.iml
 *.log
 tests_output
-webpack-assets.json
 webpack-stats.json
 vendor-manifest.json

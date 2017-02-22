@@ -8,11 +8,16 @@ const setEnvDefault = (key, val) => {
   setEnvs[key] = process.env[key];
 };
 
-setEnvDefault('DEBUG', 'lego:*');
-setEnvDefault('NODE_ENV', 'development');
+setEnvDefault('DEBUG', 'base:*');
 setEnvDefault('PORT', 3000);
 
 debug.enable(process.env.DEBUG);
-const log = debug('lego: Environment:');
+const log = debug('base: Environment:');
+
+// explicitly set vars that webpack can help us with
+if (!process.env.NODE_ENV) { process.env.NODE_ENV = 'development'; }
+setEnvs.NODE_ENV = process.env.NODE_ENV;
 
 log(setEnvs);
+
+module.exports = setEnvs;
