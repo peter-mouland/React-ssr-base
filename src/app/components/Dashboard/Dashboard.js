@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 
-const Dashboard = ({ secretData, loading, ...props }) => (
+const Dashboard = ({ secretData, loading = false, ...props }) => (
   <section {...props} >
     <h2>Dashboard</h2>
     <p>You should get access to this page only after authentication.</p>
@@ -14,8 +14,8 @@ const Dashboard = ({ secretData, loading, ...props }) => (
 );
 
 Dashboard.propTypes = {
-  loading: PropTypes.string.isRequired,
-  secretData: PropTypes.boolean
+  loading: PropTypes.bool,
+  secretData: PropTypes.string
 };
 
 export default Dashboard;

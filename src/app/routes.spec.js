@@ -16,12 +16,4 @@ describe('routes', ()=>{
       expect(pattern.substr(-1)).to.equal('/', 'route does not end with /')
     })
   });
-
-  context('NamedLink', () => {
-    it('should render with active classes if routes match exactly')
-
-    it('should throw and error if the name doesnt match a known route')
-
-  })
-
 });

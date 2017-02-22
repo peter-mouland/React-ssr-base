@@ -12,16 +12,19 @@ function buildErrors(response) {
   return errors;
 }
 
-function sendXhr(formData, url, cb) {
+export function sendXhr(formData, url, cb) {
   const xhr = new XMLHttpRequest();
   xhr.open('post', url);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.responseType = 'json';
   xhr.addEventListener('load', () => {
+    const response = xhr.response;
+    // JSON.parse needed for ie11.
+    const jsonResponse = (typeof response === 'string') ? JSON.parse(response) : response;
     if (xhr.status === 200) {
-      cb({ authenticated: true, token: xhr.response.token, message: xhr.response.message });
+      cb({ authenticated: true, token: jsonResponse.token, message: jsonResponse.message });
     } else {
-      const errors = buildErrors(xhr.response);
+      const errors = buildErrors(jsonResponse);
       cb({ errors });
     }
   });
@@ -58,7 +61,7 @@ function requestSignUp(user, cb) {
 class Auth {
 
   static responseCallback(res, cb) {
-    if (res.authenticated) {
+    if (res.authenticated && res.token) { // prevent undefined getting saved
       this.authenticateUser(res.token);
       if (cb) cb(false, { message: res.message });
       this.onChange(true);
@@ -97,6 +100,7 @@ class Auth {
   }
 
   static isUserAuthenticated(ctx) {
+    if (!this.getToken(ctx)) return false; // do this first to stop ie11 breaking
     try {
       return jwtDecode(this.getToken(ctx));
     } catch (e) {

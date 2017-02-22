@@ -1,3 +1,6 @@
+import './promise'; // ie11
+import './find'; // ie11
+
 export { fetch, json } from './fetch';
 export { randomRange } from './randomRange';
 

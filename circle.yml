@@ -9,8 +9,8 @@ machine:
     version: openjdk8
 general:
   artifacts:
-    - test/reports
-    - test/screenshots
+    - tests/e2e/tests_output
+    - tests/e2e/tests_screenshots
 dependencies:
   cache_directories:
     - browserstack
@@ -20,7 +20,7 @@ test:
     - npm run test:unit  -- --reporter mocha-junit-reporter
     - npm run test:func
     - npm run build
-    - npm run test:e2e-local
+    - npm run test:e2e
   post:
     - git config --global user.name "Peter Mouland"
     - git config --global user.email "peter.mouland@gmail.com"
@@ -33,9 +33,9 @@ deployment:
       - ./BrowserStackLocal $BROWSERSTACK_KEY -force:
           background: true
       - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
-      - git push git@heroku.com:react-ssr-base-staging.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
-      - npm run test:e2e-staging -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base-staging.herokuapp.com --retries 4
+#      - git push git@heroku.com:react-ssr-base-staging.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
+#      - npm run test:e2e-staging -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base-staging.herokuapp.com --retries 2
       - git push git@heroku.com:react-ssr-base-preprod.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
-      - npm run test:e2e-production -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base-preprod.herokuapp.com --retries 4
+      - npm run test:e2e-production -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base-preprod.herokuapp.com --retries 2
       - git push git@heroku.com:react-ssr-base.git $CIRCLE_SHA1:refs/heads/master -f --no-verify
-      - npm run test:e2e-production -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base.herokuapp.com --retries 4
+      - npm run test:e2e-production -- --sha=$CIRCLE_BUILD_NUM --target=http://react-ssr-base.herokuapp.com --retries 2

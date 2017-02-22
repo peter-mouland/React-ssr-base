@@ -9,9 +9,6 @@ module.exports = {
     pageLayout = browser.page.layout();
     browser.pageLoaded(findRoute('homepage').path, '#homepage');
   },
-  after(browser) {
-    browser.end();
-  },
 
   ['homepage layout should include nav, footer and content blocks'](browser) {
     browser.expect.element('.layout.layout--main').to.be.present;
