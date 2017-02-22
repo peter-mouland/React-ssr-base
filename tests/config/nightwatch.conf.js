@@ -16,34 +16,45 @@ hook('.svg', (source) => {
   const markup = SvgLoader.getExtractedSVG(source, { removeSVGTagAttrs: false });
   return `module.exports =  ${JSON.stringify(markup)}`;
 });
-const needLocalServer = !argv.target;
-let db;
 
+const TARGET_PATH = argv.target || `http://localhost:${process.env.PORT}`;
+const needLocalServer = TARGET_PATH.indexOf('localhost') > -1;
 
 // build assets array from webpack bundle for test pages
 const webpackAssets = require('../../compiled/webpack-assets.json');
 const mapWebpackAssets = require('../../src/server/utils/mapWebpackAssets');
 const assets = mapWebpackAssets(webpackAssets);
+
+
+// Connect to test DB (needed for functional tests)
+const dbConfig = require('./db.json');
+const db = require('../../src/server/models');
+db.connect(dbConfig.dbUri);
+
 const startLocalServers = (done) => {
-  // Connect to test DB (needed for functional tests)
-  db = require('../../src/server/models');
-  const config = require('./db.json');
-  db.connect(config.dbUri);
   const loadFixtures = require('./fixtures');
   loadFixtures().then(()=> {
-    const createServer = require('../../src/server/server');
+    const createServer = require('../../compiled/server/server');
     openServer = createServer(assets).listen(process.env.PORT, () => {
       console.log(`listening at http://localhost:${process.env.PORT}`);
       done()
     });
+  }).catch(e => {
+    console.log(e);
+    process.exit(0);
+    done();
   });
 };
 const stopLocalServers = (done) => {
   console.log('Closing server...');
-  openServer.close(() => db.connection.close(done));
+  openServer.close(() => {
+    db.connection.close(() => {
+      done();
+      process.exit(0);
+    })
+  });
 };
 const noop = (done) => { done(); };
-const TARGET_PATH = argv.target || `http://localhost:${process.env.PORT}`;
 let openServer;
 
 module.exports = (function(settings) {
@@ -60,7 +71,7 @@ module.exports = (function(settings) {
     before:  needLocalServer ? startLocalServers : noop,
     after: needLocalServer ? stopLocalServers : noop
   };
-  settings.test_settings.default.desiredCapabilities['browserstack.local'] = TARGET_PATH.indexOf('localhost') > -1;
+  settings.test_settings.default.desiredCapabilities['browserstack.local'] = needLocalServer;
   settings.test_settings.default.desiredCapabilities['browserstack.user'] = argv.bsuser || process.env.BROWSERSTACK_USER;
   settings.test_settings.default.desiredCapabilities['browserstack.key'] = argv.bskey || process.env.BROWSERSTACK_KEY;
   settings.test_settings.default.desiredCapabilities['build'] = buildString;

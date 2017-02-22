@@ -7,20 +7,23 @@ let dashboardPage;
 let logoutPage;
 
 module.exports = {
-  '@tags': ['smoke'],
+  '@tags': ['staging'],
   before(browser) {
     loginPage = browser.page.login();
     pageLayout = browser.page.layout();
     homePage = browser.page.homepage();
     dashboardPage = browser.page.dashboard();
     logoutPage = browser.page.logout();
-    browser.pageLoaded(findRoute('homepage').path, '#homepage');
-    browser.deleteCookies();
+    browser
+      .url(browser.globals.TARGET_PATH + '/api/nuke')
+      .pageLoaded(findRoute('homepage').path, '#homepage')
+      .deleteCookies();
   },
 
   after(browser) {
-    browser.deleteCookies();
-    browser.end();
+    browser
+      .deleteCookies()
+      .end();
   },
 
   ['should not be able to see a the dashboard without logging in'](browser) {

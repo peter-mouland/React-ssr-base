@@ -7,7 +7,7 @@ const log = debug('base:models');
 module.exports.connect = (uri) => {
   mongoose.connect(uri);
   mongoose.Promise = global.Promise;
-
+  console.log(uri);
   mongoose.connection.on('error', (err) => {
     log(`Mongoose connection error: ${err}`);
     process.exit(1);

@@ -1,7 +1,7 @@
 import { findRoute } from '../../src/app/routes';
 
 module.exports = {
-  '@tags': ['smoke'],
+  '@tags': ['staging', 'production'],
   before(browser) {
     browser.pageLoaded(findRoute('homepage').path, '#homepage');
   },
