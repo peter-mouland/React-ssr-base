@@ -8,6 +8,7 @@ import authCheck from '../authentication/auth-check-middleware';
 import handleError from '../middleware/handle-error';
 
 const config = require('../../config/db.js');
+const loadFixtures = require('../../../tests/config/fixtures');
 
 const log = debug('base:api');
 const parseBody = koaBody();
@@ -19,6 +20,18 @@ apiRouter.get('/', (ctx) => {
   ctx.type = 'json';
   ctx.status = 200;
   ctx.response.body = { status: 'healthy' };
+});
+
+apiRouter.get('/nuke', async (ctx) => {
+  ctx.type = 'json';
+  await loadFixtures()
+    .then(([insertedUsers]) => {
+      ctx.status = 200;
+      ctx.response.body = { status: `nuked +  puked ${insertedUsers}` };
+    }).catch((err) => {
+      ctx.status = 500;
+      ctx.response.body = { err };
+    });
 });
 
 apiRouter.get('/game/:gameType(people|films)/:card1/:card2', parseBody, async (ctx) => {

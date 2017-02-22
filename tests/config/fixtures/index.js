@@ -7,8 +7,8 @@ let results;
 module.exports = () => {
   if (results) return results;
   const db = mongoose.connections[0];
-  if (db.name.indexOf('--test') < 0){
-    results = Promise.reject('Connected to ' + db.name);
+  if (process.env.NODE_ENV === 'production'){
+    results = Promise.reject(`Cant load fixtures as you are on 'production'. Connected to ${db.name}`);
   } else {
     console.log('Loading fixtures....');
     const fixturePromises = [

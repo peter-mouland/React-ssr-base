@@ -27,27 +27,32 @@ const assets = mapWebpackAssets(webpackAssets);
 
 
 // Connect to test DB (needed for functional tests)
-const localDbConfig = require('./db.json');
-const appDbConfig = require('../../src/config/db.js');
+const dbConfig = require('./db.json');
 const db = require('../../src/server/models');
-const dbConfig = needLocalServer ? localDbConfig : appDbConfig;
 db.connect(dbConfig.dbUri);
-// fixtures must come after the db.connect
-const fixtures = require('./fixtures');
-const loadFixtures = argv.tag === 'staging' ? fixtures : Promise.resolve;
 
 const startLocalServers = (done) => {
+  const loadFixtures = require('./fixtures');
   loadFixtures().then(()=> {
-    const createServer = require('../../src/server/server');
+    const createServer = require('../../compiled/server/server');
     openServer = createServer(assets).listen(process.env.PORT, () => {
       console.log(`listening at http://localhost:${process.env.PORT}`);
       done()
     });
+  }).catch(e => {
+    console.log(e);
+    process.exit(0);
+    done();
   });
 };
 const stopLocalServers = (done) => {
   console.log('Closing server...');
-  openServer.close(() => db.connection.close(done));
+  openServer.close(() => {
+    db.connection.close(() => {
+      done();
+      process.exit(0);
+    })
+  });
 };
 const noop = (done) => { done(); };
 let openServer;
