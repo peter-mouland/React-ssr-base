@@ -3,7 +3,7 @@ let homePage;
 let pageLayout;
 
 module.exports = {
-  '@tags': ['smoke'],
+  '@tags': ['staging', 'production'],
   before(browser) {
     homePage = browser.page.homepage();
     pageLayout = browser.page.layout();
