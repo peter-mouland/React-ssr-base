@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore": ["compiled"],
+  "watch": ["src/server"],
+  "ext": "svg js json",
+  "exec": "babel-node"
+}

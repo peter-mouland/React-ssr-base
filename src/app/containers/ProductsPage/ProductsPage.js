@@ -5,23 +5,15 @@ import { connect } from 'react-redux';
 import { fetchProducts } from '../../actions';
 import chevron from '../../../assets/chevron.svg';
 import Svg from '../../components/Svg/Svg';
+import Products from '../../components/Products/Products';
 
 debug('base:Products');
 
-const Error = () => <p>Error Loading products!</p>;
 const Loading = () => <p>Loading products....</p>;
 
-class Products extends React.Component {
+class ProductsPage extends React.Component {
 
   static needs = [fetchProducts];
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [],
-      error: false
-    };
-  }
 
   componentDidMount() {
     if (this.props.products) return;
@@ -29,17 +21,15 @@ class Products extends React.Component {
   }
 
   render() {
-    const { loading, error, products } = this.state;
-
+    const { loading, products = [] } = this.props;
     return (
       <div id="products">
         <banner className="header">
           <h1>Credit Suisse Products</h1>
           <p><Svg markup={chevron} /> Jeans.</p>
         </banner>
-        {error && <Error />}
         {loading && <Loading />}
-        {products && <div></div>}
+        {products.length && <Products products={ products } />}
       </div>
     );
   }
@@ -47,11 +37,12 @@ class Products extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    products: state.products
+    products: state.products.products,
+    loading: state.products.loading
   };
 }
 
 export default connect(
   mapStateToProps,
   { fetchProducts }
-)(Products);
+)(ProductsPage);

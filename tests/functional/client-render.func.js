@@ -2,7 +2,7 @@ import { React, mount, expect } from '../config/test.helper';
 import Root, { Router } from '../../src/app/Root';
 import Homepage from '../../src/app/containers/Homepage/Homepage';
 import NotFound from '../../src/app/containers/NotFound/NotFound';
-import Products from '../../src/app/containers/Products/Products';
+import ProductsPage from '../../src/app/containers/ProductsPage/ProductsPage';
 
 describe('Client Render', function () {
   afterEach(() => {
@@ -25,7 +25,7 @@ describe('Client Render', function () {
   describe('products', () => {
     it('should render the Products page', () => {
       this.wrapper = mount(<Root location="/products/"/>);
-      expect(this.wrapper.find(Products).length).to.equal(1);
+      expect(this.wrapper.find(ProductsPage).length).to.equal(1);
       expect(this.wrapper.find('#products').length).to.equal(1);
     });
   });

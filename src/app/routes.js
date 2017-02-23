@@ -8,7 +8,7 @@ import debug from 'debug';
 
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
-import Products from './containers/Products/Products';
+import ProductsPage from './containers/ProductsPage/ProductsPage';
 import NotFound from './containers/NotFound/NotFound';
 
 debug('base:routes');
@@ -45,7 +45,7 @@ export function getRoutesConfig() {
         ...baseMetaData,
         title: 'Credit Suisse Products',
       },
-      component: Products
+      component: ProductsPage
     },
   ];
 }
