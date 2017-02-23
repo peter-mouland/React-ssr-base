@@ -3,8 +3,6 @@ import debug from 'debug';
 import { connect } from 'react-redux';
 
 import { fetchOrders } from '../../actions';
-import chevron from '../../../assets/chevron.svg';
-import Svg from '../../components/Svg/Svg';
 import Orders from '../../components/Orders/Orders';
 
 debug('base:OrdersPage');
@@ -15,21 +13,49 @@ class OrdersPage extends React.Component {
 
   static needs = [fetchOrders];
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedFilter: 'manufacturer'
+    };
+  }
+
   componentDidMount() {
     if (this.props.orders) return;
     this.props.fetchOrders();
   }
 
+  updateFilter(selectedFilter) {
+    this.setState({ selectedFilter });
+  }
+
   render() {
     const { loading, orders = [] } = this.props;
+    const { selectedFilter } = this.state;
+    const filters = ['manufacturer', 'gender', 'size', 'colour', 'style'];
     return (
       <div id="orders">
         <banner className="header">
           <h1>Credit Suisse Orders</h1>
-          <p><Svg markup={chevron} /> Jeans.</p>
         </banner>
         {loading && <Loading />}
-        {orders.length > 0 && <Orders orders={ orders } />}
+        <div>
+          <h2>Filter by: </h2>
+          <fieldset>
+            {filters.map((filter, i) => (
+                <span key={`filter-${i}`}>
+                  <input
+                    type="radio"
+                    name="filter"
+                    value={filter}
+                    id={`filter-${i}`}
+                    onChange={() => this.updateFilter(filter)} />
+                  <label htmlFor={`filter-${i}`}>{filter}</label>
+                </span>
+              ))}
+          </fieldset>
+        </div>
+        {orders.length > 0 && <Orders orders={ orders } filter={selectedFilter} />}
       </div>
     );
   }
