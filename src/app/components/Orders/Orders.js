@@ -5,7 +5,14 @@ import React from 'react';
 const Order = ({ order }) => (
     <div>
       <div>Order Date:</div>
-      <div>{order.OrderDate}</div>
+      <div>{order.orderDate}</div>
+      <div>{order.manufacturer}</div>
+      <div>{order.deliveryCountry}</div>
+      <div>{order.gender}</div>
+      <div>{order.size}</div>
+      <div>{order.colour}</div>
+      <div>{order.style}</div>
+      <div>{order.count}</div>
     </div>
   );
 

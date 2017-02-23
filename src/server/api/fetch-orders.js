@@ -1,64 +1,38 @@
 import debug from 'debug';
+import Chance from 'chance';
 
 const log = debug('base:fetch-orders');
+const chance = new Chance();
 
-const orders = [{
-  OrderDate: '01/01/2016',
-  DeliveryCountry: 'Germany',
-  Manufacturer: 'The Hipster Jeans Company',
-  Gender: 'F',
-  Size: '16',
-  Colour: 'Dark Blue',
-  Style: 'Relaxed',
-  Count: 3
-},
-{
-  OrderDate: '01/01/2016',
-  DeliveryCountry: 'United Kingdom',
-  Manufacturer: 'Denzil Jeans',
-  Gender: 'M',
-  Size: '32/32',
-  Colour: 'Light Blue',
-  Style: 'Skinny',
-  Count: 7
-},
-{
-  OrderDate: '02/01/2016',
-  DeliveryCountry: 'France',
-  Manufacturer: 'The Hipster Jeans',
-  Gender: 'M',
-  Size: '28/30',
-  Colour: 'Red',
-  Style: 'Skinny',
-  Count: 6
-},
-{
-  OrderDate: '02/01/2016',
-  DeliveryCountry: 'Austria',
-  Manufacturer: 'Wrangled Jeans',
-  Gender: 'F',
-  Size: '12',
-  Colour: 'Yellow',
-  Style: 'Boot Cut',
-  Count: 1
-},
-{
-  OrderDate: '03/01/2016',
-  DeliveryCountry: 'Austria',
-  Manufacturer: 'Wrangled Jeans',
-  Gender: 'F',
-  Size: '12',
-  Colour: 'Yellow',
-  Style: 'Boot Cut',
-  Count: 5
-}
-];
+const sizes = {
+  F: [14, 16, 18, 20], // eslint-disable-line id-length
+  M: ['28/28', '28/30', '30/30', '30/32', '32/32', '32/34', '34/34'] // eslint-disable-line id-length
+};
+const colours = ['blue', 'red', 'yellow', 'black', 'dark blue', 'dark red', 'dark yellow', 'dark black'];
+const styles = ['Relaxed', 'Fitted', 'Skinny', 'Boot Cut'];
+const genders = ['F', 'M'];
+const manufactureres = ['The Hipster Jeans Company', 'The Hipster Jeans', 'Wrangled Jeans'];
 
-const maxWaitInSeconds = 10;
-const fakeDelay = (resultsCb) => new Promise((resolve) => {
+const getMockOrders = () => {
+  const orderDate = chance.date({ year: 2017, month: 0, american: false });
+  const deliveryCountry = chance.country({ full: true });
+  const gender = chance.pickone(genders);
+  const size = chance.pickone(sizes[gender]);
+  const colour = chance.pickone(colours);
+  const style = chance.pickone(styles);
+  const count = chance.integer({ min: 0, max: 20 });
+  const manufacturer = chance.pickone(manufactureres);
+  return { orderDate, manufacturer, deliveryCountry, gender, size, colour, style, count };
+};
+
+const createArrayOfOrders = (orderCount) => Array(...Array(orderCount)).map(() => getMockOrders());
+
+const returnResultsAferDelay = ({ delayInSeconds, results }) => new Promise((resolve) => {
   setTimeout(() => {
-    resolve(resultsCb());
-  }, Math.random() * maxWaitInSeconds * 1000);
+    resolve(results);
+  }, Math.random() * delayInSeconds * 1000);
 });
 
-export default () => fakeDelay(() => orders);
+export default function fetchOrders() {
+  return returnResultsAferDelay({ delayInSeconds: 3, results: createArrayOfOrders(250) });
+}
