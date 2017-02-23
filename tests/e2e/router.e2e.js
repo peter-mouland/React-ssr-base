@@ -13,8 +13,8 @@ module.exports = {
   // This test, with BrowserStack, helped catch ie10/11 errors,
   // being caused by a cheeky Object.Assign being used in the router.
   ['Navigates displaying the route in the address bar (using the correct history API)'](browser) {
-    browser.safeClick('[href="/products/"]');
-    browser.expect.element('#products').to.be.present;
-    browser.assert.urlEquals(`${browser.globals.TARGET_PATH}/products/`);
+    browser.safeClick('[href="/orders/"]');
+    browser.expect.element('#orders').to.be.present;
+    browser.assert.urlEquals(`${browser.globals.TARGET_PATH}/orders/`);
   }
 };

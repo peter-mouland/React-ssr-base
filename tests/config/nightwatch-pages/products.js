@@ -5,18 +5,18 @@ import { findRoute } from '../../../src/app/routes';
 module.exports = {
 
   url: function () {
-    return findRoute('products').path;
+    return findRoute('orders').path;
   },
 
   elements: [{
-    main: "#products"
+    main: "#orders"
   }],
 
   sections: {
 
     main: {
 
-      selector: '#products',
+      selector: '#orders',
       locateStrategy: 'css selector'
 
     }

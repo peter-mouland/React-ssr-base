@@ -2,10 +2,10 @@ import { React, mount, expect } from '../../config/test.helper';
 import Root, { history } from '../../../src/app/Root';
 import { findRoute } from '../../../src/app/routes';
 
-describe('Products Route', function () {
+describe('Orders Route', function () {
 
   before(() => {
-    this.wrapper = mount(<Root location="/products/"/>);
+    this.wrapper = mount(<Root location="/orders/"/>);
   });
 
   after(() => {
@@ -13,8 +13,8 @@ describe('Products Route', function () {
   });
 
   describe(`should contain  markup`, () => {
-    it(`should contain the Products container`, () => {
-      expect(this.wrapper.find('#products')).to.be.present();
+    it(`should contain the Orders container`, () => {
+      expect(this.wrapper.find('#orders')).to.be.present();
     });
 
     it(`should contain the 'main' layout`, () => {
@@ -25,7 +25,7 @@ describe('Products Route', function () {
     });
 
     it('Should contain a title', () => {
-      expect(document.title).to.equal(findRoute('products').meta.title);
+      expect(document.title).to.equal(findRoute('orders').meta.title);
     });
 
     it('should have a nav', () => {

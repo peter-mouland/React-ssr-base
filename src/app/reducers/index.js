@@ -6,18 +6,18 @@ import * as actions from '../actions';
 
 const log = debug('base:reducers/index');
 
-export function products(state = {}, action) {
+export function orders(state = {}, action) {
   switch (action.type) {
-    case `${actions.FETCH_PRODUCTS}_PENDING`:
+    case `${actions.FETCH_ORDERS}_PENDING`:
       return {
         ...state,
         loading: true
       };
-    case `${actions.FETCH_PRODUCTS}_FULFILLED`:
+    case `${actions.FETCH_ORDERS}_FULFILLED`:
       return {
         ...state,
         loading: false,
-        products: action.payload,
+        orders: action.payload,
         status: action.status
       };
     default:
@@ -26,6 +26,6 @@ export function products(state = {}, action) {
 }
 
 export default combineReducers({
-  products,
+  orders,
   routing
 });

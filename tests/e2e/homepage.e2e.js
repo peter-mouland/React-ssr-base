@@ -16,8 +16,8 @@ module.exports = {
     browser.expect.element('.layout__footer').to.be.present;
   },
 
-  ['homepage can navigate to the products page'](browser) {
-    browser.safeClick('[href="/products/"]');
-    browser.expect.element('#products').to.be.present;
+  ['homepage can navigate to the orders page'](browser) {
+    browser.safeClick('[href="/orders/"]');
+    browser.expect.element('#orders').to.be.present;
   }
 };

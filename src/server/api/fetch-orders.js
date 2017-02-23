@@ -1,8 +1,8 @@
 import debug from 'debug';
 
-const log = debug('base:fetch-products');
+const log = debug('base:fetch-orders');
 
-const products = [{
+const orders = [{
   OrderDate: '01/01/2016',
   DeliveryCountry: 'Germany',
   Manufacturer: 'The Hipster Jeans Company',
@@ -41,7 +41,24 @@ const products = [{
   Colour: 'Yellow',
   Style: 'Boot Cut',
   Count: 1
+},
+{
+  OrderDate: '03/01/2016',
+  DeliveryCountry: 'Austria',
+  Manufacturer: 'Wrangled Jeans',
+  Gender: 'F',
+  Size: '12',
+  Colour: 'Yellow',
+  Style: 'Boot Cut',
+  Count: 5
 }
 ];
 
-export default () => Promise.resolve(products);
+const maxWaitInSeconds = 10;
+const fakeDelay = (resultsCb) => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(resultsCb());
+  }, Math.random() * maxWaitInSeconds * 1000);
+});
+
+export default () => fakeDelay(() => orders);
