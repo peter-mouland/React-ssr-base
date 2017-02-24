@@ -16,11 +16,12 @@ The main technologies are React, Koa v2, Babel and Webpack.
   
  > http://credit-suisse.herokuapp.com/orders/
 
-This page gathers 2500 orders and formats the data into a line graph.
+This page gathers 2500 orders and formats the data into a line graph and pie-chart.  
+To make the app more realistic I have included a random time delay before the data is returned.
 
-The graph will show overall sales by category;  (default), `gender`, `size`, `colour` and `style`.
+The graph will show overall sales by category; `manufacturer` (default), `gender`, `size`, `colour` and `style`.
 
-These results can be filtered manipulated by a specific `manufacturer`, `country` or `gender`.
+These results can be filtered by a specific `manufacturer`, `country` or `gender`.
 This filtering allows you to drill-down into the results and see the sales volume and a much more granular level.
 For example, You can see `Denzil Jeans` sales split by `gender` (i.e. M, F).
 
@@ -41,6 +42,17 @@ This optimisation can be done after a demo to the user to confirm we are going i
 ### React
 
 React Works well when creating responsive apps that update quickly as the user interacts with the site.
+
+### CircleCI
+
+I am using CircleCI to continuously test the app with every push to the git-repo.
+CircleCI also creates a new app on an external server once the tests pass so that i can then be tested in a real environment.
+
+Once these tests pass, CircleCI then makes the update live (which is then smoke-tested to make sure the final deployment went as planned).
+
+### Heroku
+
+Heroku is used as a deployment pipeline with pre-prod and production environments being hosted here.
 
 ## Assumptions
 
