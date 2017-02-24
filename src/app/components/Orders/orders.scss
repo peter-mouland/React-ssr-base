@@ -1,11 +1,7 @@
-$steelblue: #4682B4;
-
-.axis--x path {
-  display: none;
+.diagrams {
+  display: flex;
 }
 
-.line {
-  fill: none;
-  stroke: $steelblue;
-  stroke-width: 1.5px;
+.diagram {
+  flex: auto;
 }
