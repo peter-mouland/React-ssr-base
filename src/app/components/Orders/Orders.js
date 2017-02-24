@@ -5,11 +5,19 @@ import reactFauxDom from 'react-faux-dom';
 
 import './orders.scss';
 
-const OrderGraph = ({ orders, filter = 'manufacturer' }) => {
+const OrderGraph = ({
+  orders, category = 'manufacturer', manufacturerFilter = 'all', countryFilter = 'all', genderFilter = 'all'
+}) => {
   const nestedData = d3.nest()
     .key((d) => d.orderDate)
-    .key((d) => d[filter])
-    .rollup((d) => d3.sum(d, (g) => g.count))
+    .key((d) => d[category])
+    .rollup((d) => d3.sum(d, (g) => { // eslint-disable-line arrow-body-style
+      return (manufacturerFilter === 'all' || manufacturerFilter === g.manufacturer) &&
+      (countryFilter === 'all' || countryFilter === g.deliveryCountry) &&
+      (genderFilter === 'all' || genderFilter === g.gender)
+        ? g.count
+        : 0;
+    }))
     .entries(orders);
   const columns = new Set();
 
@@ -94,11 +102,16 @@ const OrderGraph = ({ orders, filter = 'manufacturer' }) => {
   return node.toReact();
 };
 
-export default ({ orders, className = '', filter, ...props }) => (
+export default ({ orders, className = '', category, manufacturerFilter, countryFilter, genderFilter, ...props }) => (
     <section className={ className } { ...props }>
       <h2>January Sales by Manufacturer</h2>
       <div className='graph'>
-        {<OrderGraph orders={ orders } filter={filter} />}
+        {<OrderGraph orders={ orders }
+                     category={category}
+                     manufacturerFilter={ manufacturerFilter }
+                     countryFilter={countryFilter}
+                     genderFilter={genderFilter}
+        />}
       </div>
     </section>
   );
