@@ -104,7 +104,7 @@ const OrderGraph = ({
 
 export default ({ orders, className = '', category, manufacturerFilter, countryFilter, genderFilter, ...props }) => (
     <section className={ className } { ...props }>
-      <h2>January Sales by Manufacturer</h2>
+      <h2>January Sales by {category}</h2>
       <div className='graph'>
         {<OrderGraph orders={ orders }
                      category={category}
