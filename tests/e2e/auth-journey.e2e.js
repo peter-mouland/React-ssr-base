@@ -73,20 +73,11 @@ module.exports = {
         httpOnly: false
       })
       .pageLoaded(findRoute('homepage').path, '#homepage')
-      .perform(()=> {
-        console.log('1')
-        browser.saveScreenshot(`tests/e2e/tests_screenshots/homepage1.png`)
-      }).perform(()=>{
-        console.log('click')
+      .perform(()=>{
         pageLayout.section.nav.click('@dashboardLink');
       }).perform(()=>{
-        console.log('save')
-        browser.saveScreenshot(`tests/e2e/tests_screenshots/homepage2.png`)
-      }).perform(()=>{
-        console.log('wait')
         loginPage.waitForElementPresent('@main', 1000);
       }).perform(()=>{
-        console.log('assert')
         loginPage.expect.section('@main').to.be.visible;
       })
   },
