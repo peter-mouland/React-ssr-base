@@ -1,9 +1,13 @@
 import { findRoute } from '../../src/app/routes';
+let homePage;
+let pageLayout;
 
 module.exports = {
   '@tags': ['staging', 'production'],
   before(browser) {
-    browser.pageLoaded(findRoute('homepage').path, 'body');
+    homePage = browser.page.homepage();
+    pageLayout = browser.page.layout();
+    browser.pageLoaded(findRoute('homepage').path, '#homepage');
   },
   after(browser) {
     browser.end();
