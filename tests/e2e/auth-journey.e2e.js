@@ -70,19 +70,19 @@ module.exports = {
     dashboardPage.expect.section('@main').to.be.visible;
   },
   // temp skip to enable circle ci
-  // ['the system isnt fooled by a fake token cookie'](browser){
-  //   browser.setCookie({
-  //     name: "token",
-  //     value: "test_value",
-  //     path: "/",
-  //     secure: false,
-  //     httpOnly: false
-  //   });
-  //
-  //   pageLayout.section.nav.click('@dashboardLink');
-  //   loginPage.waitForElementPresent('@main', 1000);
-  //   loginPage.expect.section('@main').to.be.visible;
-  // },
+  ['the system isnt fooled by a fake token cookie'](browser){
+    browser.setCookie({
+      name: "token",
+      value: "test_value",
+      path: "/",
+      secure: false,
+      httpOnly: false
+    });
+
+    pageLayout.section.nav.click('@dashboardLink');
+    loginPage.waitForElementPresent('@main', 1000);
+    loginPage.expect.section('@main').to.be.visible;
+  },
 
   // ['hitting url with incorrect params return error, not unautherised'](){
   //    http://localhost:3000/api/game/:gameType(people%7Cfilms)/:card1/:card2
