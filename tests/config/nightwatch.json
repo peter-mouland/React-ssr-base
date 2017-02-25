@@ -18,7 +18,7 @@
       "selenium_host"  : "hub.browserstack.com",
       "silent": true,
       "screenshots" : {
-        "enabled" : false,
+        "enabled" : true,
         "path" : ""
       },
       "desiredCapabilities": {
@@ -81,14 +81,6 @@
         "os": "OS X",
         "os_version": "El Capitan",
         "browserName": "firefox"
-      }
-    },
-    "IE10" : {
-      "desiredCapabilities": {
-        "os": "Windows",
-        "os_version": "7",
-        "browserName": "IE",
-        "browser_version": "10.0"
       }
     },
     "IE11" : {

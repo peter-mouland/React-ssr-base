@@ -15,7 +15,8 @@ const doc = jsdom.jsdom(`
   </body>
 </html>`);
 
-// get the window object out of the document and set globals for mocha 
+
+// get the window object out of the document and set globals for mocha
 const win = doc.defaultView;
 global.document = doc;
 global.window = win;
