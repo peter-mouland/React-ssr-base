@@ -69,7 +69,25 @@ module.exports = (function(settings) {
   settings.test_settings.default.globals = {
     TARGET_PATH : TARGET_PATH,
     before:  needLocalServer ? startLocalServers : noop,
-    after: needLocalServer ? stopLocalServers : noop
+    after: needLocalServer ? stopLocalServers : noop,
+    afterEach: function (client, done) {
+      var weHaveFailures = client.currentTest.results.errors > 0 || client.currentTest.results.failed > 0;
+      if (weHaveFailures && !client.sessionId) {
+        console.log('Session already ended.');
+        done();
+        return;
+      }
+      if (weHaveFailures) {
+        client.saveScreenshot(`${client.currentTest.name}.png`, function(result) {
+          if (!result || result.status !== 0)  {
+            console.log('Error saving screenshot...', result);
+          }
+          client.deleteCookies().end(done);
+        });
+      } else {
+        client.deleteCookies().end(done);
+      }
+    }
   };
   settings.test_settings.default.desiredCapabilities['browserstack.local'] = needLocalServer;
   settings.test_settings.default.desiredCapabilities['browserstack.user'] = argv.bsuser || process.env.BROWSERSTACK_USER;

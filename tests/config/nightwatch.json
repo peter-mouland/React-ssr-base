@@ -37,8 +37,10 @@
       "selenium_port"  : 4444,
       "selenium_host"  : "127.0.0.1",
       "screenshots" : {
-        "enabled" : false,
-        "path" : ""
+        "enabled" : true,
+        "on_failure" : true,
+        "on_error" : true,
+        "path" : "tests/e2e/tests_screenshots"
       },
       "desiredCapabilities": {
         "build": "build local",

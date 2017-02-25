@@ -9,8 +9,8 @@ machine:
     version: openjdk8
 general:
   artifacts:
-    - test/reports
-    - test/screenshots
+    - tests/e2e/tests_output
+    - tests/e2e/tests_screenshots
 dependencies:
   cache_directories:
     - browserstack

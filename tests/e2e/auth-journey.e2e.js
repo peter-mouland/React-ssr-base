@@ -20,12 +20,6 @@ module.exports = {
       .deleteCookies();
   },
 
-  after(browser) {
-    browser
-      .deleteCookies()
-      .end();
-  },
-
   ['should not be able to see a the dashboard without logging in'](browser) {
     const nav = pageLayout.section.nav;
     loginPage.expect.section('@main').not.to.be.present;
@@ -71,17 +65,30 @@ module.exports = {
   },
   // temp skip to enable circle ci
   ['the system isnt fooled by a fake token cookie'](browser){
-    browser.setCookie({
-      name: "token",
-      value: "test_value",
-      path: "/",
-      secure: false,
-      httpOnly: false
-    });
-
-    pageLayout.section.nav.click('@dashboardLink');
-    loginPage.waitForElementPresent('@main', 1000);
-    loginPage.expect.section('@main').to.be.visible;
+    return browser.setCookie({
+        name: "token",
+        value: "test_value",
+        path: "/",
+        secure: false,
+        httpOnly: false
+      })
+      .pageLoaded(findRoute('homepage').path, '#homepage')
+      .perform(()=> {
+        console.log('1')
+        browser.saveScreenshot(`tests/e2e/tests_screenshots/homepage1.png`)
+      }).perform(()=>{
+        console.log('click')
+        pageLayout.section.nav.click('@dashboardLink');
+      }).perform(()=>{
+        console.log('save')
+        browser.saveScreenshot(`tests/e2e/tests_screenshots/homepage2.png`)
+      }).perform(()=>{
+        console.log('wait')
+        loginPage.waitForElementPresent('@main', 1000);
+      }).perform(()=>{
+        console.log('assert')
+        loginPage.expect.section('@main').to.be.visible;
+      })
   },
 
   // ['hitting url with incorrect params return error, not unautherised'](){
