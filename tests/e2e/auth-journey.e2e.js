@@ -7,7 +7,7 @@ let dashboardPage;
 let logoutPage;
 
 module.exports = {
-  '@tags': ['skipped'],
+  '@tags': ['staging'],
   before(browser) {
     loginPage = browser.page.login();
     pageLayout = browser.page.layout();
