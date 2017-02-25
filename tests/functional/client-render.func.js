@@ -2,7 +2,7 @@ import { React, mount, expect } from '../config/test.helper';
 import Root, { Router } from '../../src/app/Root';
 import Homepage from '../../src/app/containers/Homepage/Homepage';
 import NotFound from '../../src/app/containers/NotFound/NotFound';
-import Products from '../../src/app/containers/Products/Products';
+import Game from '../../src/app/containers/Game/Game';
 
 describe('Client Render', function () {
   afterEach(() => {
@@ -22,11 +22,11 @@ describe('Client Render', function () {
     });
   });
 
-  describe('products', () => {
-    it('should render the Products page', () => {
-      this.wrapper = mount(<Root location="/products/"/>);
-      expect(this.wrapper.find(Products).length).to.equal(1);
-      expect(this.wrapper.find('#products').length).to.equal(1);
+  describe('game', () => {
+    it('should render the game page', () => {
+      this.wrapper = mount(<Root location="/game/"/>);
+      expect(this.wrapper.find(Game).length).to.equal(1);
+      expect(this.wrapper.find('#game').length).to.equal(1);
     });
   });
 });

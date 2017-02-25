@@ -13,7 +13,10 @@ module.exports = {
       locateStrategy: 'css selector',
       elements: {
         aboutLink: 'a[href="/about/"]',
-        gameLink: 'a[href="/products/"]',
+        gameLink: 'a[href="/game/"]',
+        dashboardLink: 'a[href="/dashboard/"]',
+        loginLink: 'a[href="/login/"]',
+        logoutLink: 'a[href="/logout/"]',
       },
     },
     main: {

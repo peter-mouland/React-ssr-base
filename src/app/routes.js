@@ -8,8 +8,14 @@ import debug from 'debug';
 
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
-import Products from './containers/Products/Products';
+import DashboardPage from './containers/DashboardPage/DashboardPage';
+import Game from './containers/Game/Game';
 import NotFound from './containers/NotFound/NotFound';
+
+// import LoginPage from './authentication/containers/LoginPage/LoginPage';
+// import LogOut from './authentication/components/LogOut/LogOut';
+// import RouteWithAuthCheck
+//        from './authentication/components/RouteWithAuthCheck/RouteWithAuthCheck';
 
 debug('base:routes');
 
@@ -38,15 +44,46 @@ export function getRoutesConfig() {
       component: Homepage
     },
     {
-      name: 'products',
-      path: '/products/',
-      label: 'Credit Suisse Products',
+      name: 'game',
+      path: '/game/',
+      label: 'Star Wars Trivia',
       meta: {
         ...baseMetaData,
-        title: 'Credit Suisse Products',
+        title: 'Star Wars Trivia',
       },
-      component: Products
+      component: Game
     },
+    // {
+    //   name: 'logout',
+    //   path: '/logout/',
+    //   label: 'Logout',
+    //   meta: {
+    //     ...baseMetaData,
+    //     title: 'Logout',
+    //   },
+    //   component: LogOut
+    // },
+    // {
+    //   name: 'login',
+    //   path: '/login/',
+    //   label: 'Login',
+    //   meta: {
+    //     ...baseMetaData,
+    //     title: 'Login',
+    //   },
+    //   component: LoginPage
+    // },
+    {
+      name: 'dashboard',
+      path: '/dashboard/',
+      requiresAuthentication: true,
+      label: 'Dashboard',
+      meta: {
+        ...baseMetaData,
+        title: 'Dashboard',
+      },
+      component: DashboardPage
+    }
   ];
 }
 

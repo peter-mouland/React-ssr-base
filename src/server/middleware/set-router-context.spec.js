@@ -46,8 +46,8 @@ describe('set-router-context', ()=>{
   it('calls plugToRequest to ensure cookies are universal', () => {
     middleWare = setRouterContext();
     return middleWare(ctx, () => {
-      expect(fakePlugToRequest).to.be.calledWith(ctx.request, ctx.response);
-    })
+        expect(fakePlugToRequest).to.be.calledWith(ctx.request, ctx.response);
+      })
       .catch(e => {
         assert(false, e.toString());
       });
@@ -57,8 +57,8 @@ describe('set-router-context', ()=>{
     fakeMakeRoutes = sandbox.stub(routes, 'makeRoutes').returns(ReactRoutes(ctx.request.url));
     middleWare = setRouterContext();
     return middleWare(ctx, () => {
-      expect(ctx.markup).to.be.contain('fake App Route</h2>');
-    })
+        expect(ctx.markup).to.be.contain('fake App Route</h2>');
+      })
       .catch(e => {
         assert(false, e.toString());
       });
@@ -72,8 +72,8 @@ describe('set-router-context', ()=>{
     }]);
     middleWare = setRouterContext();
     return middleWare(ctx, () => {
-      expect(ctx.status).to.be.equal(200);
-    })
+        expect(ctx.status).to.be.equal(200);
+      })
       .catch(e => {
         assert(false, e.toString());
       });
@@ -87,8 +87,8 @@ describe('set-router-context', ()=>{
     }]);
     middleWare = setRouterContext();
     return middleWare(ctx, () => {
-      expect(ctx.status).to.be.equal(404);
-    })
+        expect(ctx.status).to.be.equal(404);
+      })
       .catch(e => {
         assert(false, e.toString());
       });
