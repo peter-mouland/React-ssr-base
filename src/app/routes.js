@@ -3,7 +3,6 @@ import Route from 'react-router-dom/Route';
 import Link from 'react-router-dom/Link';
 import Switch from 'react-router-dom/Switch';
 import bemHelper from 'react-bem-helper';
-import DocumentMeta from 'react-document-meta';
 import debug from 'debug';
 
 import MainLayout from './Layouts/MainLayout';
@@ -12,10 +11,9 @@ import DashboardPage from './containers/DashboardPage/DashboardPage';
 import Game from './containers/Game/Game';
 import NotFound from './containers/NotFound/NotFound';
 
-// import LoginPage from './authentication/containers/LoginPage/LoginPage';
-// import LogOut from './authentication/components/LogOut/LogOut';
-// import RouteWithAuthCheck
-//        from './authentication/components/RouteWithAuthCheck/RouteWithAuthCheck';
+import LoginPage from './authentication/containers/LoginPage/LoginPage';
+import LogOut from './authentication/components/LogOut/LogOut';
+import RouteWithAuthCheck from './authentication/components/RouteWithAuthCheck/RouteWithAuthCheck';
 
 debug('base:routes');
 
@@ -53,26 +51,26 @@ export function getRoutesConfig() {
       },
       component: Game
     },
-    // {
-    //   name: 'logout',
-    //   path: '/logout/',
-    //   label: 'Logout',
-    //   meta: {
-    //     ...baseMetaData,
-    //     title: 'Logout',
-    //   },
-    //   component: LogOut
-    // },
-    // {
-    //   name: 'login',
-    //   path: '/login/',
-    //   label: 'Login',
-    //   meta: {
-    //     ...baseMetaData,
-    //     title: 'Login',
-    //   },
-    //   component: LoginPage
-    // },
+    {
+      name: 'logout',
+      path: '/logout/',
+      label: 'Logout',
+      meta: {
+        ...baseMetaData,
+        title: 'Logout',
+      },
+      component: LogOut
+    },
+    {
+      name: 'login',
+      path: '/login/',
+      label: 'Login',
+      meta: {
+        ...baseMetaData,
+        title: 'Login',
+      },
+      component: LoginPage
+    },
     {
       name: 'dashboard',
       path: '/dashboard/',
@@ -104,21 +102,11 @@ export const NamedLink = ({ className, to, children, ...props }) => {
   );
 };
 
-
-const RouteWithMeta = ({ component: Component, meta, ...props }) => (
-    <Route {...props} render={(matchProps) => (
-      <span>
-        <DocumentMeta { ...meta }/>
-        <Component {...matchProps}/>
-      </span>
-    )}/>
-  );
-
 export function makeRoutes() {
   return (
     <MainLayout>
       <Switch>
-        {getRoutesConfig().map((route) => <RouteWithMeta {...route} key={ route.name } />)}
+        {getRoutesConfig().map((route) => <RouteWithAuthCheck {...route} key={ route.name } />)}
         <Route title={'Page Not Found - React SSR Base'} component={ NotFound }/>
       </Switch>
     </MainLayout>

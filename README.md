@@ -10,6 +10,7 @@ Authentication is handled locally with MongoDB as well as Passport integration.
 
 ## Dependencies
  
+  * `brew instal mongodb`
   * `npm i`
 
 ## Testing

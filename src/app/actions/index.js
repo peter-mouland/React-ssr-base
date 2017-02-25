@@ -1,5 +1,5 @@
 import { randomRange, json } from '../utils';
-// import Auth from '../authentication/auth-helper';
+import Auth from '../authentication/auth-helper';
 
 export const FETCH_PEOPLE_CARDS = 'FETCH_PEOPLE_CARDS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
@@ -14,7 +14,7 @@ export function fetchPeopleCards() {
 }
 
 export function fetchDashboardData() {
-  const token = '';// Auth.getToken();
+  const token = Auth.getToken();
   return {
     type: FETCH_DASHBOARD_DATA,
     payload: json.get('api/dashboard', {

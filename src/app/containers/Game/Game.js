@@ -75,6 +75,7 @@ class Game extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    error: state.game.error,
     loading: state.game.loading,
     cards: state.game.cards,
     QandA: state.game.QandA

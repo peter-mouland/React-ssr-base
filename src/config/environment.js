@@ -10,6 +10,8 @@ const setEnvDefault = (key, val) => {
 
 setEnvDefault('DEBUG', 'base:*');
 setEnvDefault('PORT', 3000);
+setEnvDefault('MONGODB_URI', 'mongodb://localhost/react_app');
+setEnvDefault('JWT_SECRET', 'a secret phrase!!');
 
 debug.enable(process.env.DEBUG);
 const log = debug('base: Environment:');

@@ -1,6 +1,6 @@
 /* eslint-disable */
 const argv = require('yargs')
-  .usage('Usage: $0 --target=[string] --sha=[string] --bskey=[string] --bsuser=[string]')
+  .usage('Usage: $0 --target=[string] --sha=[string]')
   .argv;
 process.env.PORT = 3210;
 require('../../src/config/environment');
@@ -26,17 +26,32 @@ const mapWebpackAssets = require('../../src/server/utils/mapWebpackAssets');
 const assets = mapWebpackAssets(webpackAssets);
 
 
+// Connect to test DB (needed for functional tests)
+const dbConfig = require('./db.json');
+const db = require('../../src/server/models');
+
 const startLocalServers = (done) => {
-  const createServer = require('../../compiled/server/server');
-  openServer = createServer(assets).listen(process.env.PORT, () => {
-    console.log(`listening at http://localhost:${process.env.PORT}`);
-    done()
+  db.connect(dbConfig.dbUri);
+  const loadFixtures = require('./fixtures');
+  loadFixtures().then(()=> {
+    const createServer = require('../../compiled/server/server');
+    openServer = createServer(assets).listen(process.env.PORT, () => {
+      console.log(`listening at http://localhost:${process.env.PORT}`);
+      done()
+    });
+  }).catch(e => {
+    console.log(e);
+    process.exit(0);
+    done();
   });
 };
 const stopLocalServers = (done) => {
   console.log('Closing server...');
   openServer.close(() => {
-    done();
+    db.connection.close(() => {
+      done();
+      process.exit(0);
+    })
   });
 };
 const noop = (done) => { done(); };

@@ -2,7 +2,7 @@ import React from 'react';
 import bemHelper from 'react-bem-helper';
 import debug from 'debug';
 
-// import Auth from '../authentication/auth-helper';
+import Auth from '../authentication/auth-helper';
 import { NamedLink } from '../routes';
 import './mainLayout.scss';
 
@@ -15,7 +15,7 @@ class MyAccount extends React.Component {
     const { className, isUserAuthenticated, ...props } = this.props;
     const loggedOut = (
       <span>
-        {/* <NamedLink to="login" />*/}
+        <NamedLink to="login" />
       </span>
     );
     const loggedIn = <NamedLink to="logout" />;
@@ -35,7 +35,7 @@ export default class MainLayout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isUserAuthenticated: false // Auth.isUserAuthenticated()
+      isUserAuthenticated: Auth.isUserAuthenticated()
     };
     this.updateAuth = this.updateAuth.bind(this);
   }
@@ -45,7 +45,7 @@ export default class MainLayout extends React.Component {
   }
 
   componentWillMount() {
-    // Auth.onChange = this.updateAuth;
+    Auth.onChange = this.updateAuth;
   }
 
   render() {
