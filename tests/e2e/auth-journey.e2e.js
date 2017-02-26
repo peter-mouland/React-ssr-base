@@ -3,7 +3,6 @@ import Chance from 'chance';
 import { findRoute } from '../../src/app/routes';
 
 const chance = new Chance();
-
 const fakeEmail = `test-${chance.email()}`;
 const fakePassword = `test-${chance.sentence()}`;
 let loginPage;
