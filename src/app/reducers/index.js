@@ -25,6 +25,13 @@ export function game(state = {}, action) {
         QandA: getQuestionAndAnswer({ cards: action.payload, answerInt, factInt }),
         status: action.status
       };
+    case `${actions.FETCH_PEOPLE_CARDS}_REJECTED`:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        status: action.status
+      };
     default:
       return state;
   }
@@ -42,6 +49,13 @@ export function dashboard(state = {}, action) {
         ...state,
         loading: false,
         secretData: action.payload.message,
+        status: action.status
+      };
+    case `${actions.FETCH_PEOPLE_CARDS}_REJECTED`:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
         status: action.status
       };
     default:
