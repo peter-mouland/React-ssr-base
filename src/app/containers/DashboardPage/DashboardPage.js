@@ -9,7 +9,7 @@ class DashboardPage extends React.Component {
   static needs = [fetchDashboardData];
 
   static propTypes = {
-    loading: PropTypes.bool.isRequired,
+    loading: PropTypes.bool,
     secretData: PropTypes.string
   };
 

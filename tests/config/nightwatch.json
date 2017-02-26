@@ -44,7 +44,7 @@
       },
       "desiredCapabilities": {
         "build": "build local",
-        "browserName": "chrome",
+        "browserName": "phantomjs",
         "browserstack.local" : false,
         "javascriptEnabled": true,
         "acceptSslCerts": true
