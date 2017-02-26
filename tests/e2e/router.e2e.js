@@ -3,7 +3,7 @@ import { findRoute } from '../../src/app/routes';
 module.exports = {
   '@tags': ['staging', 'production'],
   before(browser) {
-    browser.pageLoaded(findRoute('homepage').path, '#homepage');
+    browser.pageLoaded(findRoute('homepage').path, { selector : '#homepage' });
   },
 
   // if this test fails  because the url ends with '/', then the js may have an error.
