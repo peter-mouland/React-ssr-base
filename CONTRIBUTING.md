@@ -1,13 +1,8 @@
 # Contributing
 
   * [Prerequisites](#prerequisites)
-  * [Workflow](#workflow)
-    * [Raise an Issue](#raise-an-issue)
-    * [Updating `Master` (Base app)](#updating-master-base-app)
-    * [Adding a new technology](#adding-a-new-technology)
-    * [Developing](#developing)
-    * [Testing](#testing)
-    * [Releasing](#releasing)
+  * [Developing](#developing)
+  * [Testing](#testing)
   * [Styleguides](#Styleguides)
 
 ## Prerequisites
@@ -19,39 +14,22 @@ PhantomJS v2 i required for tests.  If you haven't already got it installed plea
  * `brew install upx`
  * `npm run phantom:install`
 
-## Workflow
-
-### Updating `Master` (Base app)
-
-1. Raise an issue if there is not already one.
-3. Create a branch with your feature or fix and push it to GitHub.
-4. Ensure you branch includes at least one new test
-6. Create a pull request.
-
-### Adding a new technology
-
-1. Raise an issue if there is not already one.
-2. Only one new tech per branch (and PR)
-3. Create a new branch with your feature.
- * If there are prerequisites, branch of the required branch
- * if there is no branch that matches the prerequisite, you must create it fist
- * If there are no prerequisites, branch from master
-4. Ensure you branch includes at least one new test
-6. Create a pull request.
-
-### Developing
+###Developing
 
  * `npm run start:dev` : the app will be on http://localhost:3000
 
-### Testing
+## Testing
 
  * `npm test`
- * `npm start && npm run test:e2e-local`
+ * `npm run test:e2e`
 
 To run the full browserstack suite of feature tests, first start browserstack supplying the browserstack-key
 
  * `./bin/BrowserStackLocal-osx <PUT-THE-BROWSERSTACK-KEY-HERE>`
- * `npm start && npm run test:e2e -- --bskey=<PUT-THE-BROWSERSTACK-KEY-HERE>`
+ * `npm run test:e2e -- --bskey=<PUT-THE-BROWSERSTACK-KEY-HERE>`
+ 
+Testing using VMWare: on the host mac, in iTerm run the following to find the ip address of your localhost.
+ * `ifconfig vmnet8`
 
 ## Styleguides
 

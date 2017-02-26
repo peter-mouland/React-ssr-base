@@ -1,4 +1,4 @@
-import isoFetch from 'isomorphic-fetch';
+import axios from 'axios';
 import debug from 'debug';
 
 import { localUrl } from '../utils';
@@ -22,15 +22,14 @@ const jsonOpts = (method, data, options = {}) => ({
     credentials: 'same-origin',
     ...options.headers
   },
-  body: data && JSON.stringify(data)
+  data: data && JSON.stringify(data)
 });
 
-const fetchUrl = (url, opts) => {
-  const fullUrl = url.indexOf('//') > -1 ? url : `${localUrl}/${url}`;
-  return isoFetch(fullUrl, opts)
+const fetchUrl = (endpoint, opts) => {
+  const url = endpoint.indexOf('//') > -1 ? endpoint : `${localUrl}${endpoint}`;
+  return axios({ url, ...opts })
     .then(checkStatus)
-    .then((res) => res.json())
-    .then((json) => json)
+    .then((response) => response.data)
     .catch((error) => {
       log('request failed', error);
       throw new Error('request failed');
