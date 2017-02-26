@@ -1,5 +1,10 @@
+import Chance from 'chance';
+
 import { findRoute } from '../../src/app/routes';
 
+const chance = new Chance();
+let fakeEmail;
+let fakePassword;
 let loginPage;
 let pageLayout;
 let homePage;
@@ -9,15 +14,21 @@ let logoutPage;
 module.exports = {
   '@tags': ['staging'],
   before(browser) {
+    fakeEmail = `test-${chance.email()}`;
+    fakePassword = `test-${chance.sentence()}`;
     loginPage = browser.page.login();
     pageLayout = browser.page.layout();
     homePage = browser.page.homepage();
     dashboardPage = browser.page.dashboard();
     logoutPage = browser.page.logout();
     browser
-      .url(browser.globals.TARGET_PATH + '/api/nuke')
-      .pageLoaded(findRoute('homepage').path, '#homepage')
+      .pageLoaded(findRoute('homepage').path, { selector : '#homepage' })
       .deleteCookies();
+  },
+
+  after(browser){
+    browser
+      .url(browser.globals.TARGET_PATH + '/api/nuke/' + fakeEmail)
   },
 
   ['should not be able to see a the dashboard without logging in'](browser) {
@@ -31,14 +42,14 @@ module.exports = {
   ['should not be able to log in with an unknown user'](browser) {
     const nav = pageLayout.section.nav;
     nav.click('@dashboardLink');
-    loginPage.login('night.watch@ssr.com', 'nightwatch');
+    loginPage.login(fakeEmail, fakePassword);
     loginPage.expect.section('@main').to.be.visible;
     loginPage.thenDisplays('@error');
   },
 
   ['should be able to sign-up, which would then go straight to the dashboard page'](browser) {
     pageLayout.section.nav.click('@dashboardLink');
-    loginPage.signUp('night.watch@ssr.com', 'nightwatch');
+    loginPage.signUp(fakeEmail, fakePassword);
     dashboardPage.waitForElementPresent('@main', 1000);
     dashboardPage.expect.section('@main').to.be.visible;
   },
@@ -53,13 +64,13 @@ module.exports = {
 
   ['should not be able to sign-up with same details twice'](browser) {
     pageLayout.section.nav.click('@dashboardLink');
-    loginPage.signUp('night.watch@ssr.com', 'nightwatch');
+    loginPage.signUp(fakeEmail, fakePassword);
     loginPage.expect.section('@main').to.be.visible;
     loginPage.thenDisplays('@error');
   },
   ['can now log in as the previously signed up user'](browser) {
     pageLayout.section.nav.click('@dashboardLink');
-    loginPage.login('night.watch@ssr.com', 'nightwatch');
+    loginPage.login(fakeEmail, fakePassword);
     dashboardPage.waitForElementPresent('@main', 1000);
     dashboardPage.expect.section('@main').to.be.visible;
   },
@@ -72,7 +83,7 @@ module.exports = {
         secure: false,
         httpOnly: false
       })
-      .pageLoaded(findRoute('homepage').path, '#homepage')
+      .pageLoaded(findRoute('homepage').path, { selector : '#homepage' })
       .perform(()=>{
         pageLayout.section.nav.click('@dashboardLink');
       }).perform(()=>{

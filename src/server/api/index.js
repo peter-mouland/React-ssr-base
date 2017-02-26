@@ -8,11 +8,19 @@ import authCheck from '../authentication/auth-check-middleware';
 import handleError from '../middleware/handle-error';
 
 const config = require('../../config/db.js');
-const loadFixtures = require('../../../tests/config/fixtures');
+const users = require('../../../tests/config/fixtures/users');
 
 const log = debug('base:api');
 const parseBody = koaBody();
 const apiRouter = router({ prefix: '/api' });
+
+export const envCheck = () => new Promise((resolve, reject) => {
+  if (process.env.NODE_ENV === 'production') {
+    reject('Cant load fixtures as you are on \'production\'');
+  } else {
+    resolve();
+  }
+});
 
 apiRouter.use(handleError());
 
@@ -22,12 +30,13 @@ apiRouter.get('/', (ctx) => {
   ctx.response.body = { status: 'healthy' };
 });
 
-apiRouter.get('/nuke', async (ctx) => {
+apiRouter.get('/nuke/:email', async (ctx) => {
   ctx.type = 'json';
-  await loadFixtures()
-    .then(([insertedUsers]) => {
+  ctx.response.body = { };
+  await envCheck()
+    .then(() => users.nuke({ email: ctx.params.email })).then((nuked) => {
+      ctx.response.body = Object.assign(ctx.response.body, { nuked });
       ctx.status = 200;
-      ctx.response.body = { status: `nuked +  puked ${insertedUsers}` };
     }).catch((err) => {
       ctx.status = 500;
       ctx.response.body = { err };

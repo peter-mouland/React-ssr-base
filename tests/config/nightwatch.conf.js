@@ -32,17 +32,10 @@ const db = require('../../src/server/models');
 
 const startLocalServers = (done) => {
   db.connect(dbConfig.dbUri);
-  const loadFixtures = require('./fixtures');
-  loadFixtures().then(()=> {
-    const createServer = require('../../compiled/server/server');
-    openServer = createServer(assets).listen(process.env.PORT, () => {
-      console.log(`listening at http://localhost:${process.env.PORT}`);
-      done()
-    });
-  }).catch(e => {
-    console.log(e);
-    process.exit(0);
-    done();
+  const createServer = require('../../compiled/server/server');
+  openServer = createServer(assets).listen(process.env.PORT, () => {
+    console.log(`listening at http://localhost:${process.env.PORT}`);
+    done()
   });
 };
 const stopLocalServers = (done) => {
