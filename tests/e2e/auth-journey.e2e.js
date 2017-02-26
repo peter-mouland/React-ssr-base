@@ -16,7 +16,7 @@ module.exports = {
     logoutPage = browser.page.logout();
     browser
       .url(browser.globals.TARGET_PATH + '/api/nuke')
-      .pageLoaded(findRoute('homepage').path, '#homepage')
+      .pageLoaded(findRoute('homepage').path, { selector : '#homepage' })
       .deleteCookies();
   },
 
