@@ -25,21 +25,21 @@ pageLoaded.prototype.command = function pageLoadedFn(page, opts = {}) {
   const { selector, disableAnimations, cookie, done } = opts;
   const url = browser.globals.TARGET_PATH + (page || '');
   log(url);
-  // const args = [disableAnimations ? 'disable-animations' : ''];
-  // function disableAnimationFunction(className) {
-  //   document.body.className += ` ${className}`;
-  //   return document.body.className;
-  // }
+  const args = [disableAnimations ? 'disable-animations' : ''];
+  function disableAnimationFunction(className) {
+    document.body.className += ` ${className}`;
+    return document.body.className;
+  }
 
   browser
     .windowMaximize()
     .url(url)
-    // .setCookie(cookie)
-    // .url(url)
-    .waitForElementVisible(selector || 'body', 10000, ()=>  this.complete({ done }))
-    // .execute(disableAnimationFunction, args, () => {
-    //   this.complete({ done });
-    // });
+    .setCookie(cookie)
+    .url(url)
+    .waitForElementVisible(selector || 'body', 10000)
+    .execute(disableAnimationFunction, args, () => {
+      this.complete({ done });
+    });
 
   return this;
 };
