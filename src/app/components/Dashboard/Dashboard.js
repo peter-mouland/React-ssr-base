@@ -14,8 +14,8 @@ const Dashboard = ({ secretData, loading, ...props }) => (
 );
 
 Dashboard.propTypes = {
-  loading: PropTypes.string.isRequired,
-  secretData: PropTypes.boolean
+  loading: PropTypes.bool.isRequired,
+  secretData: PropTypes.string
 };
 
 export default Dashboard;

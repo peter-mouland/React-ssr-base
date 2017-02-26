@@ -58,7 +58,7 @@ function requestSignUp(user, cb) {
 class Auth {
 
   static responseCallback(res, cb) {
-    if (res.authenticated) {
+    if (res.authenticated && res.token) { // prevent undefined getting saved
       this.authenticateUser(res.token);
       if (cb) cb(false, { message: res.message });
       this.onChange(true);
@@ -97,6 +97,7 @@ class Auth {
   }
 
   static isUserAuthenticated(ctx) {
+    if (!this.getToken(ctx)) return false; // do this first to stop ie11 breaking
     try {
       return jwtDecode(this.getToken(ctx));
     } catch (e) {

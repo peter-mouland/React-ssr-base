@@ -77,7 +77,7 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { from } = this.props.location.state || '/';
+    const { from } = this.props.location.state || {};
     const { redirectToReferrer, errors, successMessage, user } = this.state;
     const redirect = redirectToReferrer ? (<Redirect to={from || '/'}/>) : null;
     const referrerMessage = from ? <ReferrerMessage from={from} /> : null;
