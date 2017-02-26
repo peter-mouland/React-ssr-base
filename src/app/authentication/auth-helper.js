@@ -12,7 +12,7 @@ function buildErrors(response) {
   return errors;
 }
 
-function sendXhr(formData, url, cb) {
+export function sendXhr(formData, url, cb) {
   const xhr = new XMLHttpRequest();
   xhr.open('post', url);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
