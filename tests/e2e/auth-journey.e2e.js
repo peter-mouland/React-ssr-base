@@ -72,7 +72,7 @@ module.exports = {
         secure: false,
         httpOnly: false
       })
-      .pageLoaded(findRoute('homepage').path, '#homepage')
+      .pageLoaded(findRoute('homepage').path, { selector : '#homepage' })
       .perform(()=>{
         pageLayout.section.nav.click('@dashboardLink');
       }).perform(()=>{
