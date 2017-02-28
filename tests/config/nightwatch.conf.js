@@ -51,6 +51,14 @@ const noop = (done) => { done(); };
 let openServer;
 
 module.exports = (function(settings) {
+  var buildString = "";
+  if (argv.sha) {
+    buildString += argv.sha
+  } else {
+    buildString += 'local ' + Date.now();
+    buildString = buildString.substring(0, buildString.length - 4);
+  }
+
   settings.test_settings.default.globals = {
     TARGET_PATH : TARGET_PATH,
     before:  needLocalServer ? startLocalServers : noop,
