@@ -2,7 +2,7 @@ const util = require('util');
 const events = require('events');
 const debug = require('debug');
 
-const log = debug('pageLoaded');
+const log = debug('base:pageLoaded');
 let browser;
 
 function pageLoaded() {

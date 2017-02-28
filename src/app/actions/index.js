@@ -9,7 +9,7 @@ export function fetchPeopleCards() {
   const cards = randomRange(1, DECK, 2);
   return {
     type: FETCH_PEOPLE_CARDS,
-    payload: json.get(`api/game/people/${cards[0]}/${cards[1]}`)
+    payload: json.get(`/api/game/people/${cards[0]}/${cards[1]}`)
   };
 }
 
@@ -17,7 +17,7 @@ export function fetchDashboardData() {
   const token = Auth.getToken();
   return {
     type: FETCH_DASHBOARD_DATA,
-    payload: json.get('api/dashboard', {
+    payload: json.get('/api/dashboard', {
       headers: token ? { Authorization: `Bearer ${token}` } : false
     })
   };

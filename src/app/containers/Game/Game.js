@@ -10,7 +10,11 @@ import Svg from '../../components/Svg/Svg';
 
 debug('base:Game');
 
-const Error = () => <p>Error Loading cards!</p>;
+const Error = ({ error }) => <div>
+  <p>Error Loading cards!</p>
+  <p>{ error.message }</p>
+</div>;
+
 const Dealing = () => <p>Loading cards....</p>;
 
 class Game extends React.Component {
@@ -59,7 +63,7 @@ class Game extends React.Component {
           <p><Svg markup={chevron} />A simple game using <a href="http://www.swapi.com" target="_blank">SWAPI</a>.</p>
         </banner>
         <button onClick={() => this.deal()}>Ask another!</button>
-        {error && <Error />}
+        {error && <Error error={error} />}
         {loading
           ? <Dealing />
           : <Question { ...{ showAnswer, answer, cards, attempt, onClick: this.setAttempt } }>
