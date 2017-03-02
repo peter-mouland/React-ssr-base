@@ -24,7 +24,7 @@ const UserType = new GraphQLObjectType({
     id: {
       type: GraphQLInt
     },
-    email:{
+    email: {
       type: GraphQLString
     },
     name: {
@@ -43,7 +43,7 @@ const UserQuery = new GraphQLObjectType({
         id: { type: GraphQLInt },
         email: { type: GraphQLString }
       },
-      resolve: function(user, args) {
+      resolve(user, args) {
         return fetchUserData({ id: args.id, email: args.email });
       }
     }

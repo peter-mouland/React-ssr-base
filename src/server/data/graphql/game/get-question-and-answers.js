@@ -1,3 +1,4 @@
+import { randomRange } from '../../../../app/utils';
 
 const getAnswer = ({ wrongCard, answerCard, answerKey }) => {
   const wrongAnswer = wrongCard[answerKey];
@@ -13,6 +14,9 @@ const getAnswer = ({ wrongCard, answerCard, answerKey }) => {
 };
 
 export default (cards) => {
+  const answerInt = randomRange(0, 1, 1)[0];
+  const factInt = randomRange(0, 7, 1)[0];
+
 
   if (!cards.length) return null;
 

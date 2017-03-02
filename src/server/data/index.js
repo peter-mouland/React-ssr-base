@@ -1,7 +1,7 @@
 const bodyparser = require('koa-bodyparser');
 const { graphql } = require('graphql');
 
-const schema = require('./graphql/schema');
+import schema, { root } from './graphql/schema';
 
 const Router = require('koa-router');
 const router = Router({ prefix: '/graphql/v1' });
@@ -23,13 +23,11 @@ router.use(bodyparser({
   }
 }));
 
-router.post('/', async function (ctx, next) {
-  await graphql(schema, ctx.request.body)
-    .then((result) => {
-    console.log(result)
-      ctx.type = 'json';
-      ctx.body = result;
-    });
+router.post('/', async (ctx, next) => {
+  await graphql(schema, ctx.request.body, root).then((result) => {
+    ctx.type = 'json';
+    ctx.body = result;
+  });
 });
 
 export default router;

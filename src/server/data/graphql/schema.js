@@ -1,9 +1,12 @@
-const { GraphQLSchema } = require('graphql/type');
+import schema, { Game } from './game';
 
-import GameQuery from './game';
+// The root provides the top-level API endpoints
+export const root = {
+  getGame(gameType, card1, card2) {
+    return new Game(gameType, card1, card2);
+  }
+};
 
-let schema = new GraphQLSchema({
-  query: GameQuery
-});
 
-module.exports = schema;
+export default schema;
+
