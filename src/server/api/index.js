@@ -3,7 +3,7 @@ import koaBody from 'koa-body';
 import debug from 'debug';
 import jwt from 'koa-jwt';
 
-import fetchCards from './fetch-cards';
+// import fetchCards from './fetch-cards';
 import authCheck from '../authentication/auth-check-middleware';
 import handleError from '../middleware/handle-error';
 
@@ -47,7 +47,7 @@ apiRouter.get('/game/:gameType(people|films)/:card1/:card2', parseBody, async (c
   const cards = [ctx.params.card1, ctx.params.card2];
   ctx.type = 'json';
   ctx.status = 200;
-  ctx.response.body = await fetchCards(ctx.params.gameType, cards);
+  ctx.response.body = '';// await fetchCards(ctx.params.gameType, cards);
 });
 
 apiRouter.use(jwt({ secret: config.jwtSecret }));
