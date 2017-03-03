@@ -17,15 +17,15 @@ export function game(state = {}, action) {
       return {
         ...state,
         loading: false,
-        cards: action.payload.cards,
-        QandA: action.payload.QandA,
+        errors: action.payload.errors,
+        hand: action.payload.data && action.payload.data.getGame,
         status: action.status
       };
     case `${actions.FETCH_PEOPLE_CARDS}_REJECTED`:
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        errors: [action.payload],
         status: action.status
       };
     default:

@@ -1,7 +1,10 @@
+import debug from 'debug';
 import { buildSchema } from 'graphql';
 
-import { randomRange } from '../../../../app/utils';
-import { swapiData } from '../../3rd-party/swapi';
+import { randomRange, json } from '../../../../app/utils';
+
+const log = debug('base:graphql/game');
+const getSwapiData = (api, id) => json.get(`http://swapi.co/api/${api}/${id}/`);
 
 const schema = buildSchema(`
   type GameCard {
@@ -39,7 +42,10 @@ const schema = buildSchema(`
 `);
 
 export class Game {
-  constructor(cards) {
+  constructor(cards = []) {
+    if (cards.length < 2) {
+      throw new Error('You needs more than 2 cards to play a game');
+    }
     const answerIndex = randomRange(0, 1, 1)[0];
     const factIndex = randomRange(0, 7, 1)[0];
     this.cards = cards;
@@ -76,35 +82,10 @@ export class Game {
     }
   }
 }
-// The root provides the top-level API endpoints
+
 export const getGame = ({ gameType, card1, card2 }) => {
-  return  Promise.all([swapiData(gameType, card1), swapiData(gameType, card2)]).then(cards => new Game(cards));
+  const promises = [getSwapiData(gameType, card1), getSwapiData(gameType, card2)];
+  return Promise.all(promises).then((cards) => new Game(cards));
 };
 
 export default schema;
-
-/* use 'fragments' to reduce explicit query
-
-POST http://localhost:3000/graphql/v1
-Content-Type application/graphql
-
- query { getGame(gameType: "people" card1: 63 card2: 50){ answerId, cards {
- birth_year
- created
- edited
- eye_color
- films
- gender
- hair_color
- height
- homeworld
- mass
- name
- skin_color
- species
- starships
- url
- vehicles }, question, answer } }
-
- */
-

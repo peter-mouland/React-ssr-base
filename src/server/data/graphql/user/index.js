@@ -3,12 +3,11 @@ const {
   GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
-  GraphQLList
 } = require('graphql/type');
 
 
-const fetchUserData = (user) => new Promise((resolve, reject) => {
-  User.find(user, (err, user) => {
+const fetchUserData = (userDetails) => new Promise((resolve, reject) => {
+  User.find(userDetails, (err, user) => {
     if (err || !user) {
       reject(err);
     } else {
