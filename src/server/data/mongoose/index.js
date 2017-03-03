@@ -3,8 +3,12 @@ const mongoose = require('mongoose');
 const debug = require('debug');
 
 const log = debug('base:models');
+let connected = false;
 
 module.exports.connect = (uri) => {
+  if (connected) return;
+  connected = true;
+
   mongoose.connect(uri);
   mongoose.Promise = global.Promise;
   console.log(uri);
@@ -29,7 +33,7 @@ module.exports.connect = (uri) => {
   });
 
   // load models
-  require('./user');
+  require('./models/user');
 };
 
 module.exports.connection = mongoose.connection;

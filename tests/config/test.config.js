@@ -2,7 +2,7 @@ require('babel-core/register')({
   only: [/src/, /tests/, /config/]
 });
 require("babel-polyfill");
-const connect = require('../../src/server/models').connect;
+const connect = require('../../src/server/data/mongoose').connect;
 const config = require('./db.json');
 require('../../src/app/authentication/local-storage');
 const jsdom = require('jsdom');

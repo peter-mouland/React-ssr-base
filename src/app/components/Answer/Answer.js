@@ -29,11 +29,11 @@ const AnswerOption = ({ answer, card }) => (
   </dl>
 );
 
-export default ({ cards, answerCard, showAnswer, ...props }) => (
+export default ({ cards, answerId, showAnswer, ...props }) => (
   !cards.length ? null : (
     <section className={`answer ${showAnswer ? 'visible' : 'hidden'}`} { ...props }>
-      <AnswerOption answer={answerCard.url === cards[0].url} card={cards[0]}/>
-      <AnswerOption answer={answerCard.url === cards[1].url} card={cards[1]}/>
+      <AnswerOption answer={answerId === cards[0].url} card={cards[0]}/>
+      <AnswerOption answer={answerId === cards[1].url} card={cards[1]}/>
     </section>
   )
 );

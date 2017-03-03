@@ -54,16 +54,21 @@ class Game extends React.Component {
   }
 
   render() {
-    const { cards = [], error, loading, QandA: { answerCard, question, answer } = {} } = this.props;
+    const {
+      errors = [], loading, hand: { cards = [], question, answer, answerId } = {}
+    } = this.props;
     const { showAnswer, attempt } = this.state;
     return (
       <div id="game">
         <banner className="header">
           <h1>Star Wars Trivia</h1>
-          <p><Svg markup={chevron} />A simple game using <a href="http://www.swapi.com" target="_blank">SWAPI</a>.</p>
+          <p>
+            <Svg markup={chevron} />
+            A simple game using <a href="http://www.swapi.com" target="_blank">SWAPI</a>.
+          </p>
         </banner>
         <button onClick={() => this.deal()}>Ask another!</button>
-        {error && <Error error={error} />}
+        {errors.map((error, i) => <Error key={`error-${i}`} error={error} />)}
         {loading
           ? <Dealing />
           : <Question { ...{ showAnswer, answer, cards, attempt, onClick: this.setAttempt } }>
@@ -71,7 +76,7 @@ class Game extends React.Component {
           </Question>
         }
         {!!cards.length && <button onClick={() => this.viewAnswer()}>View Answer</button>}
-        <Answer cards={ cards } answerCard={ answerCard } showAnswer={ showAnswer } />
+        <Answer cards={ cards } answerId={ answerId } showAnswer={ showAnswer } />
       </div>
     );
   }
@@ -79,10 +84,9 @@ class Game extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    error: state.game.error,
+    errors: state.game.errors,
     loading: state.game.loading,
-    cards: state.game.cards,
-    QandA: state.game.QandA
+    hand: state.game.hand,
   };
 }
 

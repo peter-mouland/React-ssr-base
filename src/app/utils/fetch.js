@@ -25,6 +25,15 @@ const jsonOpts = (method, data, options = {}) => ({
   data: data && JSON.stringify(data)
 });
 
+const graphQLOpts = (data) => ({
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/graphql',
+  },
+  data
+});
+
 const fetchUrl = (endpoint, opts) => {
   const url = endpoint.indexOf('//') > -1 ? endpoint : `${localUrl}${endpoint}`;
   return axios({ url, ...opts })
@@ -37,10 +46,12 @@ const fetchUrl = (endpoint, opts) => {
 };
 
 const getJSON = (url, options) => fetchUrl(url, jsonOpts('GET', null, options));
-const postJSON = (url, data) => fetchUrl(url, jsonOpts('POST', data));
+const postJSON = (url, data, options) => fetchUrl(url, jsonOpts('POST', data, options));
+const graphQL = (data) => fetchUrl('/graphql/v1', graphQLOpts(data));
 
 export const fetch = {
-  url: fetchUrl
+  url: fetchUrl,
+  graphQL
 };
 export const json = {
   get: getJSON,

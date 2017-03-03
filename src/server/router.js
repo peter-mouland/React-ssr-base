@@ -5,6 +5,7 @@ import debug from 'debug';
 import setRouterContext from './middleware/set-router-context';
 import renderApp from './middleware/render-app';
 import apiRouter from './api';
+import graphQLRouter from './data';
 import authRouter from './authentication/auth-router';
 import { DIST } from '../config/paths';
 
@@ -19,6 +20,8 @@ export function setRoutes(assets) {
 
   router
     .use(staticRoute)
+    .use(graphQLRouter.routes())
+    .use(graphQLRouter.allowedMethods())
     .use(authRouter.routes())
     .use(authRouter.allowedMethods())
     .use(apiRouter.routes())
