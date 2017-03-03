@@ -28,7 +28,7 @@ const assets = mapWebpackAssets(webpackAssets);
 
 // Connect to test DB (needed for functional tests)
 const dbConfig = require('./db.json');
-const db = require('../../src/server/models');
+const db = require('../../src/server/data/mongoose');
 
 const startLocalServers = (done) => {
   db.connect(dbConfig.dbUri);
