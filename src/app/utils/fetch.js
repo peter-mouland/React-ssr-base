@@ -25,13 +25,14 @@ const jsonOpts = (method, data, options = {}) => ({
   data: data && JSON.stringify(data)
 });
 
-const graphQLOpts = (data) => ({
+const graphQLOpts = (data, params = {}) => ({
   method: 'POST',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/graphql',
   },
-  data
+  data,
+  params
 });
 
 const fetchUrl = (endpoint, opts) => {
@@ -47,7 +48,7 @@ const fetchUrl = (endpoint, opts) => {
 
 const getJSON = (url, options) => fetchUrl(url, jsonOpts('GET', null, options));
 const postJSON = (url, data, options) => fetchUrl(url, jsonOpts('POST', data, options));
-const graphQL = (data) => fetchUrl('/graphql/v1', graphQLOpts(data));
+const graphQL = (data, variables) => fetchUrl('/graphql/v1', graphQLOpts(data, variables));
 
 export const fetch = {
   url: fetchUrl,

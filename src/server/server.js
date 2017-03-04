@@ -1,9 +1,10 @@
-import Koa from 'koa';
 import debug from 'debug';
+import Koa from 'koa';
 import compress from 'koa-compress';
 import session from 'koa-session';
 import convert from 'koa-convert';
 import passport from 'koa-passport';
+import qs from 'koa-qs';
 
 import handleError from './middleware/handle-error';
 import logger from './middleware/logger';
@@ -17,6 +18,7 @@ const server = new Koa();
 const log = debug('base:server.js');
 log('starting');
 
+qs(server);
 
 server.keys = ['Shh, its a session!'];
 server.use(convert(session({

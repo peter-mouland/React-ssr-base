@@ -21,6 +21,14 @@ class Game extends React.Component {
 
   static needs = [fetchPeopleCards];
 
+  static propTypes = {
+    hand: React.PropTypes.object
+  };
+
+  static defaultProps = {
+    hand: { }
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +41,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.cards) return;
+    if (this.props.hand.cards) return;
     this.props.fetchPeopleCards();
   }
 

@@ -1,10 +1,11 @@
 import bodyparser from 'koa-bodyparser';
-import { graphql } from 'graphql';
 import Router from 'koa-router';
+import { graphql } from 'graphql';
 
 import schema, { root } from './graphql/schema';
 
 const router = Router({ prefix: '/graphql/v1' });
+
 
 const errorHandler = async (ctx, next) => {
   try {
@@ -24,7 +25,7 @@ router.use(bodyparser({
 }));
 
 router.post('/', async (ctx) => {
-  await graphql(schema, ctx.request.body, root).then((result) => {
+  await graphql(schema, ctx.request.body, root, ctx, ctx.query).then((result) => {
     ctx.type = 'json';
     ctx.body = result;
   });

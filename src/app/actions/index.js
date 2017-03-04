@@ -4,8 +4,8 @@ import Auth from '../authentication/auth-helper';
 export const FETCH_PEOPLE_CARDS = 'FETCH_PEOPLE_CARDS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
 
-const buildQuery = (gameType, card1, card2) => `
-query { getGame(gameType: "${gameType}" card1: ${card1} card2: ${card2}){ answerId, cards { ...cardInfo }, question, answer } } 
+const getGameQuery = `
+query ($gameType: String!, $card1: Int!, $card2: Int!) { getGame(gameType: $gameType card1: $card1 card2: $card2){ answerId, cards { ...cardInfo }, question, answer } } 
  
 fragment cardInfo on GameCard {
  birth_year
@@ -32,7 +32,7 @@ export function fetchPeopleCards() {
   const cards = randomRange(1, DECK, 2);
   return {
     type: FETCH_PEOPLE_CARDS,
-    payload: fetch.graphQL(buildQuery('people', cards[0], cards[1]))
+    payload: fetch.graphQL(getGameQuery, { gameType: 'people', card1: cards[0], card2: cards[1] })
   };
 }
 
