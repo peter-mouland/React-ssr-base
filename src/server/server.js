@@ -21,7 +21,7 @@ server.use(logger());
 server.use(headers());
 server.use(pageRenderers());
 
-export default (assets, hmr) => {
+export default (assets) => {
   // if (hmr === true) {
   //   hotReload(server);
   // }
