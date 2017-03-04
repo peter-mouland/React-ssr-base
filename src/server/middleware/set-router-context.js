@@ -10,7 +10,7 @@ import { makeRoutes, getRoutesConfig } from '../../app/routes';
 
 function getMatch(routesArray, url) {
   return routesArray
-    .find((route) => matchPath(url, route.path, { exact: true, strict: false }));
+    .find((route) => matchPath(url, { path: route.path, exact: true, strict: false }));
 }
 
 async function getRouteData(routesArray, url, dispatch) {
@@ -18,7 +18,7 @@ async function getRouteData(routesArray, url, dispatch) {
   routesArray
     .filter((route) => route.component.needs)
     .forEach((route) => {
-      const match = matchPath(url, route.path, { exact: true, strict: false });
+      const match = matchPath(url, { path: route.path, exact: true, strict: false });
       if (match) {
         route.component.needs.forEach((need) => {
           const result = need(match.params);

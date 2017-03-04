@@ -4,7 +4,7 @@ machine:
   timezone:
     Europe/London
   node:
-    version: v6.6
+    version: v7.6
   java:
     version: openjdk8
 general:
