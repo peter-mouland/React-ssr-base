@@ -6,7 +6,7 @@ import handleError from './middleware/handle-error';
 import logger from './middleware/logger';
 import responseTime from './middleware/response-time';
 import pageRenderers from './middleware/page-renderers';
-import hotReload from './middleware/hot-reload';
+// import hotReload from './middleware/hot-reload';
 import headers from './middleware/headers';
 import { router, setRoutes } from './router';
 
@@ -22,9 +22,9 @@ server.use(headers());
 server.use(pageRenderers());
 
 export default (assets, hmr) => {
-  if (hmr === true) {
-    hotReload(server);
-  }
+  // if (hmr === true) {
+  //   hotReload(server);
+  // }
   setRoutes(assets);
   server.use(router.routes());
   return server;
