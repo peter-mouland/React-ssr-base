@@ -3,12 +3,12 @@ import passport from 'koa-passport';
 import { validateLoginForm, validateSignUpForm, validateSignUpResponse, validateLoginResponse } from '../../app/authentication/auth-validation';
 import localSignupStrategy from './passport/local-signup';
 import localLoginStrategy from './passport/local-login';
-import { checkUser } from './auth-check-middleware';
+import { validateUser } from './auth-check-middleware';
 import Auth from '../../app/authentication/auth-helper';
 
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser(async (userId, done) => {
-  await checkUser(userId)
+  await validateUser(userId)
     .then((user) => done(null, user))
     .catch(done);
 });
@@ -31,7 +31,7 @@ export const login = async (ctx, next) => {
     const res = validateLoginResponse(err, token, userData);
     ctx.status = res.status;
     ctx.response.body = res.body;
-    Auth.authenticateUser(token, ctx);
+    Auth.saveToken(token, ctx);
   })(ctx, next);
 };
 
@@ -58,7 +58,7 @@ export const signUp = (ctx, next) => {
       const loginResponse = validateLoginResponse(loginError, token, userData);
       ctx.status = loginResponse.status;
       ctx.response.body = loginResponse.body;
-      Auth.authenticateUser(token, ctx);
+      Auth.saveToken(token, ctx);
     })(ctx, next);
   })(ctx, next);
 };
@@ -66,7 +66,7 @@ export const signUp = (ctx, next) => {
 export const logout = (ctx, next) => {
   ctx.status = 200;
   ctx.type = 'json';
-  Auth.deauthenticateUser(ctx);
+  Auth.removeToken(ctx);
   ctx.response.body = { message: 'logged out' };
   next();
 };
@@ -74,7 +74,7 @@ export const logout = (ctx, next) => {
 export const authenticate = async (ctx, next) => {
   ctx.status = 200;
   ctx.type = 'json';
-  Auth.authenticateUser(Auth.getToken(), ctx);
+  Auth.saveToken(Auth.getToken(), ctx);
   ctx.response.body = { message: 'authenticated' };
   next();
 };

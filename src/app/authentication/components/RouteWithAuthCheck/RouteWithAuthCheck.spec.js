@@ -7,7 +7,7 @@ import Auth from '../../auth-helper';
 
 const sandbox = sinon.sandbox.create();
 
-let fakeIsUserAuthenticated;
+let fakeValidateToken;
 
 describe('RouteWithAuthCheck', () => {
 
@@ -20,13 +20,13 @@ describe('RouteWithAuthCheck', () => {
   });
 
   it('checks user is authenticated if the router requires authentication', () => {
-    fakeIsUserAuthenticated = sandbox.stub(Auth, 'isUserAuthenticated');
+    fakeValidateToken = sandbox.stub(Auth, 'validateToken');
     render(<StaticRouter><RouteWithAuthCheck component={()=> <div /> } path="/" requiresAuthentication={ true } /></StaticRouter>);
-    expect(fakeIsUserAuthenticated).to.be.calledWith();
+    expect(fakeValidateToken).to.be.calledWith();
   });
 
   it.skip('does a redirect if route requires authentication and user is not authenticated', () => {
-    fakeIsUserAuthenticated = sandbox.stub(Auth, 'isUserAuthenticated').returns(false);
+    fakeValidateToken = sandbox.stub(Auth, 'validateToken').returns(false);
     const fakeComponent = () => <div />;
     const component = render(<StaticRouter><RouteWithAuthCheck path={'/'} requiresAuthentication={ true } component={fakeComponent}/></StaticRouter>);
     expect(component.find(Redirect).length).to.equal(1);
@@ -34,7 +34,7 @@ describe('RouteWithAuthCheck', () => {
   });
 
   it('renders a component if route does require authentication and user is authenticated', () => {
-    fakeIsUserAuthenticated = sandbox.stub(Auth, 'isUserAuthenticated').returns(true);
+    fakeValidateToken = sandbox.stub(Auth, 'validateToken').returns(true);
     const fakeComponent = () => <div />;
     const component = mount(<StaticRouter><RouteWithAuthCheck path={'/'} requiresAuthentication={ true } component={fakeComponent} /></StaticRouter>);
     expect(component.find(fakeComponent).length).to.equal(1);

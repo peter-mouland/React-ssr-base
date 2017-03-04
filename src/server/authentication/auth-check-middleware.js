@@ -6,25 +6,21 @@ import Auth from '../../app/authentication/auth-helper';
 const User = mongoose.model('User');
 const log = debug('base:auth-check');
 
-const catcher = (ctx) => {
-  ctx.throw(401, 'unauthorized');
-};
+// const catcher = (ctx) => {
+//   ctx.throw(401, 'unauthorized');
+// };
 
-export const checkUser = (userId) => new Promise((resolve, reject) => {
+export const validateUser = (userId) => new Promise((resolve) => {
   User.findById(userId, (err, user) => {
-    if (err || !user) {
-      reject(err);
-    } else {
-      resolve(user);
-    }
+    resolve(user);
   });
 });
 
 export default function authCheck() {
   return (ctx, next) => Promise.resolve(ctx)
-      .then(() => Auth.isUserAuthenticated(ctx))
-      .then((user) => checkUser(user.sub))
-      .catch(() => catcher(ctx))
+      .then(() => Auth.validateToken(ctx))
+      .then((user = {}) => validateUser(user.sub))
+      .then((user) => { ctx.context = { user }; })
       .then(next);
 }
 

@@ -9,7 +9,7 @@ import Auth from '../../auth-helper';
 const log = debug('base:RouteWithAuthCheck');
 
 const RouteWithAuthCheck = ({ component: Component, requiresAuthentication, meta, ...props }) => {
-  const redirect = requiresAuthentication && !Auth.isUserAuthenticated();
+  const redirect = requiresAuthentication && !Auth.validateToken();
   log('redirect', redirect);
   return (
     <Route {...props} render={(matchProps) => (

@@ -2,6 +2,7 @@ import axios from 'axios';
 import debug from 'debug';
 
 import { localUrl } from '../utils';
+import Auth from '../authentication/auth-helper';
 
 const log = debug('base:fetch');
 
@@ -14,13 +15,12 @@ export function checkStatus(response) {
   return response;
 }
 
-const jsonOpts = (method, data, options = {}) => ({
+const jsonOpts = (method, data) => ({
   method,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     credentials: 'same-origin',
-    ...options.headers
   },
   data: data && JSON.stringify(data)
 });
@@ -36,6 +36,8 @@ const graphQLOpts = (data, params = {}) => ({
 });
 
 const fetchUrl = (endpoint, opts) => {
+  const token = Auth.getToken();
+  opts.headers = token ? { Authorization: `Bearer ${token}` } : false;
   const url = endpoint.indexOf('//') > -1 ? endpoint : `${localUrl}${endpoint}`;
   return axios({ url, ...opts })
     .then(checkStatus)

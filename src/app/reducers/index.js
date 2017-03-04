@@ -44,7 +44,7 @@ export function dashboard(state = {}, action) {
       return {
         ...state,
         loading: false,
-        secretData: action.payload.message,
+        secretData: action.payload.data && action.payload.data.getDashboard.message,
         status: action.status
       };
     case `${actions.FETCH_PEOPLE_CARDS}_REJECTED`:
