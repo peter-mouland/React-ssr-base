@@ -2,8 +2,8 @@ require('babel-core/register')({
   only: [/src/, /tests/, /config/]
 });
 require("babel-polyfill");
-const connect = require('../../src/server/data/mongoose').connect;
-const config = require('./db.json');
+const connect = require('../../src/server/api/db').connect;
+const config = require('./test-server/db.json');
 require('../../src/app/authentication/local-storage');
 const jsdom = require('jsdom');
 const hook = require('node-hook').hook;

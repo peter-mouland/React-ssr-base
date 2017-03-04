@@ -32,7 +32,7 @@ describe('reducers/index', () => {
     it('will return update state and payload if action is fulfilled', () => {
       const type = `${actions.FETCH_PEOPLE_CARDS}_FULFILLED`;
       const status = chance.integer();
-      const payload = { message: chance.sentence() };
+      const payload = { data: { getDashboard: { message: chance.sentence() } } };
       const result = reducers.game(fakeState, { type, status, payload });
       expect(result.loading).to.deep.equal(false, 'State should be updated');
       expect(result[fakeKey]).to.deep.equal(fakeValue, 'State should be loading');
@@ -55,12 +55,12 @@ describe('reducers/index', () => {
     it('will return update state and payload if action is fulfilled', () => {
       const type = `${actions.FETCH_DASHBOARD_DATA}_FULFILLED`;
       const status = chance.integer();
-      const payload = { message: chance.sentence() };
+      const payload = { data: { getDashboard: { message: chance.sentence() } } };
       const result = reducers.dashboard(fakeState, { type, status, payload });
       expect(result.loading).to.deep.equal(false, 'State should be updated');
       expect(result[fakeKey]).to.deep.equal(fakeValue, 'State should be loading');
       expect(result.status).to.deep.equal(status, 'State should be updated');
-      expect(result.secretData).to.deep.equal(payload.message, 'State should be updated');
+      expect(result.secretData).to.deep.equal(payload.data.getDashboard.message, 'State should be updated');
     });
   });
 });

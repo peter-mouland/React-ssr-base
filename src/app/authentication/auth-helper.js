@@ -62,7 +62,7 @@ class Auth {
 
   static responseCallback(res, cb) {
     if (res.authenticated && res.token) { // prevent undefined getting saved
-      this.authenticateUser(res.token);
+      this.saveToken(res.token);
       if (cb) cb(false, { message: res.message });
       this.onChange(true);
     } else {
@@ -85,31 +85,31 @@ class Auth {
   }
 
   static logout(cb) {
-    this.deauthenticateUser();
+    this.removeToken();
     if (cb) cb();
     this.onChange(false);
   }
 
   static onChange() {}
 
-  static authenticateUser(token, ctx) {
+  static saveToken(token, ctx) {
     if (ctx) {
       ctx.session.authorization = `Bearer ${token}`;
     }
     cookie.save('token', token, { path: '/' });
   }
 
-  static isUserAuthenticated(ctx) {
+  static validateToken(ctx) {
     if (!this.getToken(ctx)) return false; // do this first to stop ie11 breaking
     try {
       return jwtDecode(this.getToken(ctx));
     } catch (e) {
-      this.deauthenticateUser(ctx);
+      this.removeToken(ctx);
       return false;
     }
   }
 
-  static deauthenticateUser(ctx) {
+  static removeToken(ctx) {
     if (ctx) {
       ctx.session.authorization = false;
     }

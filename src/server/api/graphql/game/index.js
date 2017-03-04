@@ -1,12 +1,11 @@
 import debug from 'debug';
-import { buildSchema } from 'graphql';
 
 import { randomRange, json } from '../../../../app/utils';
 
 const log = debug('base:graphql/game');
 const getSwapiData = (api, id) => json.get(`http://swapi.co/api/${api}/${id}/`);
 
-const schema = buildSchema(`
+const schema = (`
   type GameCard {
     birth_year : String
     created : String
@@ -35,11 +34,11 @@ const schema = buildSchema(`
     answerId: String,
     answer: String
   }
-
-  type Query {
-    getGame(gameType: String, card1: Int, card2: Int): Game
-  }
 `);
+
+export const gameQuery = `
+  getGame(gameType: String, card1: Int, card2: Int): Game
+`;
 
 export class Game {
   constructor(cards = []) {
