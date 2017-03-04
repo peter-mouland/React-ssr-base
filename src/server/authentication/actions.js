@@ -71,7 +71,7 @@ export const logout = (ctx, next) => {
   next();
 };
 
-export const authenticate = async (ctx, next) => {
+export const authenticate = (ctx, next) => {
   ctx.status = 200;
   ctx.type = 'json';
   Auth.saveToken(Auth.getToken(), ctx);

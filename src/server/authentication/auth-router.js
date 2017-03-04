@@ -2,13 +2,10 @@
 import router from 'koa-router';
 import koaBody from 'koa-body';
 import debug from 'debug';
-import jwt from 'koa-jwt';
 
 import { login, signUp, logout, authenticate, healthStatus } from './actions';
 import authCheck from './auth-check-middleware';
 import handleError from '../middleware/handle-error';
-
-const config = require('../../config/db.js');
 
 const log = debug('base: auth');
 const parseBody = koaBody();
@@ -30,8 +27,12 @@ authRouter.post('/login', parseBody, login);
 //   })
 // });
 
-authRouter.use(jwt({ secret: config.jwtSecret }));
 authRouter.use(authCheck());
+authRouter.use((ctx) => {
+  if (!ctx.context.user) {
+    ctx.throw(401, 'unauthorized');
+  }
+});
 
 // if you can get here, you're JWT is valid
 authRouter.post('/authenticate', parseBody, authenticate);

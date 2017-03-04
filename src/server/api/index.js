@@ -1,12 +1,10 @@
 import bodyparser from 'koa-bodyparser';
 import Router from 'koa-router';
-import jwt from 'koa-jwt';
 import { graphql } from 'graphql';
 
 import schema, { root } from './graphql/schema';
 import handleError from '../middleware/handle-error';
 import authCheck from '../authentication/auth-check-middleware';
-import config from '../../config/db';
 
 const router = Router({ prefix: '/graphql/v1' });
 
@@ -24,10 +22,6 @@ router.get('/', (ctx) => {
   ctx.response.body = { status: 'healthy' };
 });
 
-router.use('/', jwt({
-  secret: config.jwtSecret,
-  passthrough: true
-}));
 router.use(authCheck());
 
 router.post('/', async (ctx) => {
