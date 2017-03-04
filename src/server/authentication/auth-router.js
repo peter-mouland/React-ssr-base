@@ -2,7 +2,9 @@
 import router from 'koa-router';
 import koaBody from 'koa-body';
 import debug from 'debug';
+import jwt from 'koa-jwt';
 
+import config from '../../config/db';
 import { login, signUp, logout, authenticate, healthStatus } from './actions';
 import authCheck from './auth-check-middleware';
 import handleError from '../middleware/handle-error';
@@ -27,6 +29,7 @@ authRouter.post('/login', parseBody, login);
 //   })
 // });
 
+authRouter.use(jwt({ secret: config.jwtSecret, passthrough: true }));
 authRouter.use(authCheck());
 authRouter.use((ctx) => {
   if (!ctx.context.user) {

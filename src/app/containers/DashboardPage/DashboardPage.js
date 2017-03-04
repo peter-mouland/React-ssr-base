@@ -13,20 +13,13 @@ class DashboardPage extends React.Component {
     secretData: PropTypes.string
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      secretData: ''
-    };
-  }
-
   componentDidMount() {
     if (this.props.secretData) return;
     this.props.fetchDashboardData();
   }
 
   render() {
-    const { secretData, loading = false, error = false } = this.props;
+    const { secretData, loading = false, error } = this.props;
     return (<Dashboard id="dashboard-page"
                        loading={loading}
                        error={error}

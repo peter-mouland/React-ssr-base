@@ -30,14 +30,15 @@ const graphQLOpts = (data, params = {}) => ({
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/graphql',
+    credentials: 'same-origin',
   },
   data,
   params
 });
 
-const fetchUrl = (endpoint, opts) => {
+const fetchUrl = (endpoint, opts = {}) => {
   const token = Auth.getToken();
-  opts.headers = token ? { Authorization: `Bearer ${token}` } : false;
+  opts.headers = Object.assign({}, opts.headers, token ? { Authorization: `Bearer ${token}` } : {});
   const url = endpoint.indexOf('//') > -1 ? endpoint : `${localUrl}${endpoint}`;
   return axios({ url, ...opts })
     .then(checkStatus)

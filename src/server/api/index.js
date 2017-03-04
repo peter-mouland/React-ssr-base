@@ -1,7 +1,9 @@
 import bodyparser from 'koa-bodyparser';
 import Router from 'koa-router';
 import { graphql } from 'graphql';
+import jwt from 'koa-jwt';
 
+import config from '../../config/db';
 import schema, { root } from './graphql/schema';
 import handleError from '../middleware/handle-error';
 import authCheck from '../authentication/auth-check-middleware';
@@ -22,14 +24,16 @@ router.get('/', (ctx) => {
   ctx.response.body = { status: 'healthy' };
 });
 
+router.use(jwt({ secret: config.jwtSecret, passthrough: true }));
 router.use(authCheck());
 
 router.post('/', async (ctx) => {
   const { request, context, query } = ctx;
-  await graphql(schema, request.body, root, context, query).then((result) => {
-    ctx.type = 'json';
-    ctx.body = result;
-  });
+  await graphql(schema, request.body, root, context, query)
+    .then((result) => {
+      ctx.type = 'json';
+      ctx.body = result;
+    });
 });
 
 export default router;
