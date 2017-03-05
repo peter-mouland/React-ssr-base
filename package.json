@@ -27,7 +27,7 @@
     "mocha": "mocha --opts ./tests/config/mocha.opts "
   },
   "engines": {
-    "node": "6.9.0",
+    "node": "6.10.0",
     "npm": "3.10.10"
   },
   "pre-commit": [
