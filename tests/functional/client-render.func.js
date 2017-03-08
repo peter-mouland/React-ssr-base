@@ -4,7 +4,7 @@ import Homepage from '../../src/app/containers/Homepage/Homepage';
 import NotFound from '../../src/app/containers/NotFound/NotFound';
 import Game from '../../src/app/containers/Game/Game';
 
-describe('Client Render', function () {
+describe.only('Client Render', function () {
   afterEach(() => {
     this.wrapper.unmount();
   });
