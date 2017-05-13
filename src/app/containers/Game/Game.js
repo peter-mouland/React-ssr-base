@@ -1,6 +1,7 @@
 import React from 'react';
-import debug from 'debug';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import debug from 'debug';
 
 import Question from '../../components/Question/Question';
 import Answer from '../../components/Answer/Answer';
@@ -22,7 +23,7 @@ class Game extends React.Component {
   static needs = [fetchPeopleCards];
 
   static propTypes = {
-    hand: React.PropTypes.object
+    hand: PropTypes.object
   };
 
   static defaultProps = {

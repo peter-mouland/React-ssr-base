@@ -5,7 +5,7 @@ require("babel-polyfill");
 const connect = require('../../src/server/api/db').connect;
 const config = require('./test-server/db.json');
 require('../../src/app/authentication/local-storage');
-const jsdom = require('jsdom');
+const { JSDOM } = require('jsdom');
 const hook = require('node-hook').hook;
 hook('.scss', (source, filename) => '');
 hook('.svg', (source, filename) => '');
@@ -14,7 +14,7 @@ hook('.svg', (source, filename) => '');
 connect(config.dbUri);
 
 // setup the simplest document possible
-const doc = jsdom.jsdom(`
+const { window } = new JSDOM(`
 <!doctype html>
 <html>
   <body>
@@ -22,20 +22,18 @@ const doc = jsdom.jsdom(`
   </body>
 </html>`);
 
-
 // get the window object out of the document and set globals for mocha
-const win = doc.defaultView;
-global.document = doc;
-global.window = win;
+global.document = window.document;
+global.window = window;
 
 // take all properties of the window object and also attach it to the mocha global object
 // from mocha-jsdom https://github.com/rstacruz/mocha-jsdom/blob/master/index.js#L80
-propagateToGlobal(win);
-function propagateToGlobal(window) {
-  for (var key in window) {
-    if (!window.hasOwnProperty(key)) continue;
+propagateToGlobal(window);
+function propagateToGlobal(win) {
+  for (var key in win) {
+    if (!win.hasOwnProperty(key)) continue;
     if (key in global) continue;
-    global[key] = window[key];
+    global[key] = win[key];
   }
 }
 

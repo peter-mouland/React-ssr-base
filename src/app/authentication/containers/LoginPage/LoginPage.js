@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Redirect from 'react-router-dom/Redirect';
 
 import Auth from '../../auth-helper';
@@ -27,7 +28,7 @@ const getAndRemoveMessage = (key) => {
 class LoginPage extends React.Component {
 
   static propTypes = {
-    location: React.PropTypes.object
+    location: PropTypes.object
   };
 
   static defaultProps = {

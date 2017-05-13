@@ -1,5 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import DocumentMeta from 'react-document-meta';
+
 import { hasWindow } from '../../app/utils';
 
 export default class Html extends React.Component {

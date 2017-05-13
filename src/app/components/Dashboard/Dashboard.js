@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Error = ({ error }) => <div>
   <p>Error Loading dashboard!</p>

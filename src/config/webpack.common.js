@@ -7,6 +7,26 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const { SRC, DIST } = require('./paths');
 
+const postCssPlugins = [cssnano({
+  autoprefixer: {
+    browsers: [
+      'safari 9',
+      'ie 10-11',
+      'last 2 Chrome versions',
+      'last 2 Firefox versions',
+      'edge 13',
+      'ios_saf 9.0-9.2',
+      'ie_mob 11',
+      'Android >= 4'
+    ],
+    cascade: false,
+    add: true,
+    remove: true
+  },
+  safe: true
+})];
+
+
 module.exports = {
   devtool: 'eval',
   cache: true,
@@ -31,31 +51,7 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.GA_KEY': JSON.stringify(process.env.GA_KEY)
     }),
-    new AssetsPlugin({ filename: 'compiled/webpack-assets.json' }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [
-          cssnano({
-            autoprefixer: {
-              browsers: [
-                'safari 9',
-                'ie 10-11',
-                'last 2 Chrome versions',
-                'last 2 Firefox versions',
-                'edge 13',
-                'ios_saf 9.0-9.2',
-                'ie_mob 11',
-                'Android >= 4'
-              ],
-              cascade: false,
-              add: true,
-              remove: true
-            },
-            safe: true
-          })
-        ]
-      }
-    })
+    new AssetsPlugin({ filename: 'compiled/webpack-assets.json' })
   ],
   resolve: {
     modules: ['node_modules', SRC],
@@ -76,7 +72,11 @@ module.exports = {
         include: [/src/],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'postcss-loader', 'sass-loader']
+          use: [
+            { loader: 'css-loader', options: { importLoaders: 1 } },
+            { loader: 'postcss-loader', options: { plugins: postCssPlugins } },
+            'sass-loader'
+          ]
         })
       },
       {
