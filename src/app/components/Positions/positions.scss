@@ -1,0 +1,21 @@
+$btn--selected: #ADFF2F;
+
+.positions__buttons {
+  float: right;
+}
+
+.positions__button {
+  margin-left: 20px;
+
+  &--selected {
+    background: $btn--selected;
+  }
+}
+
+.positions__link {
+  margin: 2px 4px;
+
+  &--selected {
+    font-weight: bold;
+  }
+}

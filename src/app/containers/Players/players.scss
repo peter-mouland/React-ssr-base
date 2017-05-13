@@ -1,0 +1,31 @@
+$row-bg: #EAEAEA;
+$row-bg--hover: #CACACA;
+
+.unknown-players__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.unknown-players__item {
+  clear: both;
+  padding: 5px;
+  transition: padding, opacity, max-height .33s ease-in-out;
+  opacity: 1;
+  max-height: 2em;
+
+  &:nth-child(even) {
+    background: $row-bg;
+  }
+
+  &:hover {
+    background: $row-bg--hover;
+  }
+
+  &--updated {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
