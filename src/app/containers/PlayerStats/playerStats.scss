@@ -1,0 +1,26 @@
+$row-bg: #EAEAEA;
+$row-bg--hover: #CACACA;
+
+.player-stats {
+  tr,
+  td,
+  th {
+    padding: 5px;
+  }
+
+  &__player {
+    height: 1.5em;
+
+    &:nth-child(even) {
+      background: $row-bg;
+    }
+
+    &:hover {
+      background: $row-bg--hover;
+    }
+  }
+
+  &__meta--stat {
+    text-align: center;
+  }
+}
