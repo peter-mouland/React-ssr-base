@@ -2,7 +2,7 @@ import { React, mount, expect } from '../config/test.helper';
 import Root, { Router } from '../../src/app/Root';
 import Homepage from '../../src/app/containers/Homepage/Homepage';
 import NotFound from '../../src/app/containers/NotFound/NotFound';
-import Game from '../../src/app/containers/Game/Game';
+import Players from '../../src/app/containers/Players/Players';
 
 describe.only('Client Render', function () {
   afterEach(() => {
@@ -23,10 +23,10 @@ describe.only('Client Render', function () {
   });
 
   describe('game', () => {
-    it('should render the game page', () => {
-      this.wrapper = mount(<Root location="/game/"/>);
-      expect(this.wrapper.find(Game).length).to.equal(1);
-      expect(this.wrapper.find('#game').length).to.equal(1);
+    it('should render the players page', () => {
+      this.wrapper = mount(<Root location="/players/"/>);
+      expect(this.wrapper.find(Players).length).to.equal(1);
+      expect(this.wrapper.find('#players').length).to.equal(1);
     });
   });
 });

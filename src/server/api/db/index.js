@@ -34,6 +34,7 @@ module.exports.connect = (uri) => {
 
   // load models
   require('./models/user');
+  require('./models/player');
 };
 
 module.exports.connection = mongoose.connection;

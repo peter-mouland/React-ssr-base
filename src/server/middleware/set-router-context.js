@@ -21,7 +21,7 @@ async function getRouteData(routesArray, url, dispatch) {
       const match = matchPath(url, { path: route.path, exact: true, strict: false });
       if (match) {
         route.component.needs.forEach((need) => {
-          const result = need(match.params);
+          const result = need(Object.keys(match.params).length > 0 ? match.params : undefined);
           needs.push(dispatch(result));
         });
       }

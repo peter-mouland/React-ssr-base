@@ -1,0 +1,4388 @@
+{
+  "Cech, Petr": {
+    "code": "1003",
+    "pos": "GK",
+    "player": "Cech, Petr",
+    "club": "Arsenal"
+  },
+  "Ospina, David": {
+    "code": "1068",
+    "pos": "GK",
+    "player": "Ospina, David",
+    "club": "Arsenal"
+  },
+  "Boruc, Artur": {
+    "code": "1015",
+    "pos": "GK",
+    "player": "Boruc, Artur",
+    "club": "Bournemouth"
+  },
+  "Federici, Adam": {
+    "code": "1019",
+    "pos": "GK",
+    "player": "Federici, Adam",
+    "club": "Bournemouth"
+  },
+  "Camp, Lee": {
+    "code": "1030",
+    "pos": "GK",
+    "player": "Camp, Lee",
+    "club": "Bournemouth"
+  },
+  "Allsop, Ryan": {
+    "code": "1085",
+    "pos": "GK",
+    "player": "Allsop, Ryan",
+    "club": "Bournemouth"
+  },
+  "Heaton, Tom": {
+    "code": "1090",
+    "pos": "GK",
+    "player": "Heaton, Tom",
+    "club": "Burnley"
+  },
+  "Robinson, Paul": {
+    "code": "1093",
+    "pos": "GK",
+    "player": "Robinson, Paul",
+    "club": "Burnley"
+  },
+  "Courtois, Thibaut": {
+    "code": "1058",
+    "pos": "GK",
+    "player": "Courtois, Thibaut",
+    "club": "Chelsea"
+  },
+  "Begovic, Asmir": {
+    "code": "1008",
+    "pos": "GK",
+    "player": "Begovic, Asmir",
+    "club": "Chelsea"
+  },
+  "Blackman, Jamal": {
+    "code": "1082",
+    "pos": "GK",
+    "player": "Blackman, Jamal",
+    "club": "Chelsea"
+  },
+  "Mandanda, Steve": {
+    "code": "1097",
+    "pos": "GK",
+    "player": "Mandanda, Steve",
+    "club": "Crystal Palace"
+  },
+  "Hennessey, Wayne": {
+    "code": "1047",
+    "pos": "GK",
+    "player": "Hennessey, Wayne",
+    "club": "Crystal Palace"
+  },
+  "Speroni, Julian": {
+    "code": "1023",
+    "pos": "GK",
+    "player": "Speroni, Julian",
+    "club": "Crystal Palace"
+  },
+  "Robles, Joel": {
+    "code": "1037",
+    "pos": "GK",
+    "player": "Robles, Joel",
+    "club": "Everton"
+  },
+  "Stekelenburg, Maarten": {
+    "code": "1098",
+    "pos": "GK",
+    "player": "Stekelenburg, Maarten",
+    "club": "Everton"
+  },
+  "McGregor, Allan": {
+    "code": "1092",
+    "pos": "GK",
+    "player": "McGregor, Allan",
+    "club": "Hull"
+  },
+  "Jakupovic, Eldin": {
+    "code": "1094",
+    "pos": "GK",
+    "player": "Jakupovic, Eldin",
+    "club": "Hull"
+  },
+  "Kuciak, Dusan": {
+    "code": "1096",
+    "pos": "GK",
+    "player": "Kuciak, Dusan",
+    "club": "Hull"
+  },
+  "Schmeichel, Kasper": {
+    "code": "1053",
+    "pos": "GK",
+    "player": "Schmeichel, Kasper",
+    "club": "Leicester City"
+  },
+  "Zieler, Ron-Robert": {
+    "code": "1089",
+    "pos": "GK",
+    "player": "Zieler, Ron-Robert",
+    "club": "Leicester City"
+  },
+  "Hamer, Ben": {
+    "code": "1055",
+    "pos": "GK",
+    "player": "Hamer, Ben",
+    "club": "Leicester City"
+  },
+  "Mignolet, Simon": {
+    "code": "1014",
+    "pos": "GK",
+    "player": "Mignolet, Simon",
+    "club": "Liverpool"
+  },
+  "Karius, Loris": {
+    "code": "1088",
+    "pos": "GK",
+    "player": "Karius, Loris",
+    "club": "Liverpool"
+  },
+  "Manninger, Alex": {
+    "code": "1101",
+    "pos": "GK",
+    "player": "Manninger, Alex",
+    "club": "Liverpool"
+  },
+  "Hart, Joe": {
+    "code": "1001",
+    "pos": "GK",
+    "player": "Hart, Joe",
+    "club": "Manchester City"
+  },
+  "Caballero, Willy": {
+    "code": "1067",
+    "pos": "GK",
+    "player": "Caballero, Willy",
+    "club": "Manchester City"
+  },
+  "de Gea, David": {
+    "code": "1002",
+    "pos": "GK",
+    "player": "de Gea, David",
+    "club": "Manchester United"
+  },
+  "Romero, Sergio": {
+    "code": "1078",
+    "pos": "GK",
+    "player": "Romero, Sergio",
+    "club": "Manchester United"
+  },
+  "Johnstone, Sam": {
+    "code": "1081",
+    "pos": "GK",
+    "player": "Johnstone, Sam",
+    "club": "Manchester United"
+  },
+  "Valdes, Victor": {
+    "code": "1099",
+    "pos": "GK",
+    "player": "Valdes, Victor",
+    "club": "Middlesbrough"
+  },
+  "Guzan, Brad": {
+    "code": "1102",
+    "pos": "GK",
+    "player": "Guzan, Brad",
+    "club": "Middlesbrough"
+  },
+  "Konstantopoulos, Dimitrios": {
+    "code": "1091",
+    "pos": "GK",
+    "player": "Konstantopoulos, Dimitrios",
+    "club": "Middlesbrough"
+  },
+  "Mejias, Tomas": {
+    "code": "1095",
+    "pos": "GK",
+    "player": "Mejias, Tomas",
+    "club": "Middlesbrough"
+  },
+  "Forster, Fraser": {
+    "code": "1069",
+    "pos": "GK",
+    "player": "Forster, Fraser",
+    "club": "Southampton"
+  },
+  "McCarthy, Alex": {
+    "code": "1077",
+    "pos": "GK",
+    "player": "McCarthy, Alex",
+    "club": "Southampton"
+  },
+  "Gazzaniga, Paulo": {
+    "code": "1045",
+    "pos": "GK",
+    "player": "Gazzaniga, Paulo",
+    "club": "Southampton"
+  },
+  "Butland, Jack": {
+    "code": "1038",
+    "pos": "GK",
+    "player": "Butland, Jack",
+    "club": "Stoke City"
+  },
+  "Given, Shay": {
+    "code": "1056",
+    "pos": "GK",
+    "player": "Given, Shay",
+    "club": "Stoke City"
+  },
+  "Haugaard, Jakob": {
+    "code": "1029",
+    "pos": "GK",
+    "player": "Haugaard, Jakob",
+    "club": "Stoke City"
+  },
+  "Mannone, Vito": {
+    "code": "1018",
+    "pos": "GK",
+    "player": "Mannone, Vito",
+    "club": "Sunderland"
+  },
+  "Pickford, Jordan": {
+    "code": "1087",
+    "pos": "GK",
+    "player": "Pickford, Jordan",
+    "club": "Sunderland"
+  },
+  "Fabianski, Lukasz": {
+    "code": "1063",
+    "pos": "GK",
+    "player": "Fabianski, Lukasz",
+    "club": "Swansea City"
+  },
+  "Nordfeldt, Kristoffer": {
+    "code": "1075",
+    "pos": "GK",
+    "player": "Nordfeldt, Kristoffer",
+    "club": "Swansea City"
+  },
+  "Birighitti, Mark": {
+    "code": "1100",
+    "pos": "GK",
+    "player": "Birighitti, Mark",
+    "club": "Swansea City"
+  },
+  "Tremmel, Gerhard": {
+    "code": "1080",
+    "pos": "GK",
+    "player": "Tremmel, Gerhard",
+    "club": "Swansea City"
+  },
+  "Lloris, Hugo": {
+    "code": "1004",
+    "pos": "GK",
+    "player": "Lloris, Hugo",
+    "club": "Tottenham Hotspur"
+  },
+  "Vorm, Michel": {
+    "code": "1011",
+    "pos": "GK",
+    "player": "Vorm, Michel",
+    "club": "Tottenham Hotspur"
+  },
+  "Gomes, Heurelho": {
+    "code": "1016",
+    "pos": "GK",
+    "player": "Gomes, Heurelho",
+    "club": "Watford"
+  },
+  "Pantilimon, Costel": {
+    "code": "1021",
+    "pos": "GK",
+    "player": "Pantilimon, Costel",
+    "club": "Watford"
+  },
+  "Arlauskis, Giedrius": {
+    "code": "1028",
+    "pos": "GK",
+    "player": "Arlauskis, Giedrius",
+    "club": "Watford"
+  },
+  "Gilmartin, Rene": {
+    "code": "1031",
+    "pos": "GK",
+    "player": "Gilmartin, Rene",
+    "club": "Watford"
+  },
+  "Foster, Ben": {
+    "code": "1012",
+    "pos": "GK",
+    "player": "Foster, Ben",
+    "club": "West Bromwich Albion"
+  },
+  "Myhill, Boaz": {
+    "code": "1034",
+    "pos": "GK",
+    "player": "Myhill, Boaz",
+    "club": "West Bromwich Albion"
+  },
+  "Adrian": {
+    "code": "1027",
+    "pos": "GK",
+    "player": "Adrian",
+    "club": "West Ham United"
+  },
+  "Randolph, Darren": {
+    "code": "1024",
+    "pos": "GK",
+    "player": "Randolph, Darren",
+    "club": "West Ham United"
+  },
+  "Spiegel, Raphael": {
+    "code": "1005",
+    "pos": "GK",
+    "player": "Spiegel, Raphael",
+    "club": "West Ham United"
+  },
+  "Koscielny, Laurent": {
+    "code": "2027",
+    "pos": "CB",
+    "player": "Koscielny, Laurent",
+    "club": "Arsenal"
+  },
+  "Mertesacker, Per": {
+    "code": "2006",
+    "pos": "CB",
+    "player": "Mertesacker, Per",
+    "club": "Arsenal"
+  },
+  "Gabriel": {
+    "code": "2273",
+    "pos": "CB",
+    "player": "Gabriel",
+    "club": "Arsenal"
+  },
+  "Holding, Rob": {
+    "code": "2362",
+    "pos": "CB",
+    "player": "Holding, Rob",
+    "club": "Arsenal"
+  },
+  "Cook, Steve": {
+    "code": "2072",
+    "pos": "CB",
+    "player": "Cook, Steve",
+    "club": "Bournemouth"
+  },
+  "Ward, Elliott": {
+    "code": "2056",
+    "pos": "CB",
+    "player": "Ward, Elliott",
+    "club": "Bournemouth"
+  },
+  "Cargill, Baily": {
+    "code": "2066",
+    "pos": "CB",
+    "player": "Cargill, Baily",
+    "club": "Bournemouth"
+  },
+  "Keane, Michael": {
+    "code": "2335",
+    "pos": "CB",
+    "player": "Keane, Michael",
+    "club": "Burnley"
+  },
+  "Tarkowski, James": {
+    "code": "2353",
+    "pos": "CB",
+    "player": "Tarkowski, James",
+    "club": "Burnley"
+  },
+  "Anderson, Tom": {
+    "code": "2348",
+    "pos": "CB",
+    "player": "Anderson, Tom",
+    "club": "Burnley"
+  },
+  "Long, Kevin": {
+    "code": "2347",
+    "pos": "CB",
+    "player": "Long, Kevin",
+    "club": "Burnley"
+  },
+  "Cahill, Gary": {
+    "code": "2022",
+    "pos": "CB",
+    "player": "Cahill, Gary",
+    "club": "Chelsea"
+  },
+  "Terry, John": {
+    "code": "2019",
+    "pos": "CB",
+    "player": "Terry, John",
+    "club": "Chelsea"
+  },
+  "Zouma, Kurt": {
+    "code": "2226",
+    "pos": "CB",
+    "player": "Zouma, Kurt",
+    "club": "Chelsea"
+  },
+  "Djilobodji, Papy": {
+    "code": "2305",
+    "pos": "CB",
+    "player": "Djilobodji, Papy",
+    "club": "Chelsea"
+  },
+  "Miazga, Matt": {
+    "code": "2318",
+    "pos": "CB",
+    "player": "Miazga, Matt",
+    "club": "Chelsea"
+  },
+  "Hector, Michael": {
+    "code": "2367",
+    "pos": "CB",
+    "player": "Hector, Michael",
+    "club": "Chelsea"
+  },
+  "Dann, Scott": {
+    "code": "2194",
+    "pos": "CB",
+    "player": "Dann, Scott",
+    "club": "Crystal Palace"
+  },
+  "Delaney, Damien": {
+    "code": "2108",
+    "pos": "CB",
+    "player": "Delaney, Damien",
+    "club": "Crystal Palace"
+  },
+  "Tomkins, James": {
+    "code": "2082",
+    "pos": "CB",
+    "player": "Tomkins, James",
+    "club": "Crystal Palace"
+  },
+  "Stones, John": {
+    "code": "2144",
+    "pos": "CB",
+    "player": "Stones, John",
+    "club": "Everton"
+  },
+  "Jagielka, Phil": {
+    "code": "2023",
+    "pos": "CB",
+    "player": "Jagielka, Phil",
+    "club": "Everton"
+  },
+  "Funes Mori, Ramiro": {
+    "code": "2304",
+    "pos": "CB",
+    "player": "Funes Mori, Ramiro",
+    "club": "Everton"
+  },
+  "Pennington, Matthew": {
+    "code": "2323",
+    "pos": "CB",
+    "player": "Pennington, Matthew",
+    "club": "Everton"
+  },
+  "Holgate, Mason": {
+    "code": "2301",
+    "pos": "CB",
+    "player": "Holgate, Mason",
+    "club": "Everton"
+  },
+  "Davies, Curtis": {
+    "code": "2328",
+    "pos": "CB",
+    "player": "Davies, Curtis",
+    "club": "Hull"
+  },
+  "Dawson, Michael": {
+    "code": "2327",
+    "pos": "CB",
+    "player": "Dawson, Michael",
+    "club": "Hull"
+  },
+  "Bruce, Alex": {
+    "code": "2337",
+    "pos": "CB",
+    "player": "Bruce, Alex",
+    "club": "Hull"
+  },
+  "Maguire, Harry": {
+    "code": "2339",
+    "pos": "CB",
+    "player": "Maguire, Harry",
+    "club": "Hull"
+  },
+  "Morgan, Wes": {
+    "code": "2216",
+    "pos": "CB",
+    "player": "Morgan, Wes",
+    "club": "Leicester City"
+  },
+  "Huth, Robert": {
+    "code": "2047",
+    "pos": "CB",
+    "player": "Huth, Robert",
+    "club": "Leicester City"
+  },
+  "Hernandez, Luis": {
+    "code": "2354",
+    "pos": "CB",
+    "player": "Hernandez, Luis",
+    "club": "Leicester City"
+  },
+  "Wasilewski, Marcin": {
+    "code": "2212",
+    "pos": "CB",
+    "player": "Wasilewski, Marcin",
+    "club": "Leicester City"
+  },
+  "Moore, Liam": {
+    "code": "2214",
+    "pos": "CB",
+    "player": "Moore, Liam",
+    "club": "Leicester City"
+  },
+  "Lovren, Dejan": {
+    "code": "2153",
+    "pos": "CB",
+    "player": "Lovren, Dejan",
+    "club": "Liverpool"
+  },
+  "Sakho, Mamadou": {
+    "code": "2176",
+    "pos": "CB",
+    "player": "Sakho, Mamadou",
+    "club": "Liverpool"
+  },
+  "Matip, Joel": {
+    "code": "2326",
+    "pos": "CB",
+    "player": "Matip, Joel",
+    "club": "Liverpool"
+  },
+  "Klavan, Ragnar": {
+    "code": "2361",
+    "pos": "CB",
+    "player": "Klavan, Ragnar",
+    "club": "Liverpool"
+  },
+  "Ilori, Tiago": {
+    "code": "2177",
+    "pos": "CB",
+    "player": "Ilori, Tiago",
+    "club": "Liverpool"
+  },
+  "Kompany, Vincent": {
+    "code": "2001",
+    "pos": "CB",
+    "player": "Kompany, Vincent",
+    "club": "Manchester City"
+  },
+  "Otamendi, Nicolas": {
+    "code": "2303",
+    "pos": "CB",
+    "player": "Otamendi, Nicolas",
+    "club": "Manchester City"
+  },
+  "Mangala, Eliaquim": {
+    "code": "2254",
+    "pos": "CB",
+    "player": "Mangala, Eliaquim",
+    "club": "Manchester City"
+  },
+  "Denayer, Jason": {
+    "code": "2299",
+    "pos": "CB",
+    "player": "Denayer, Jason",
+    "club": "Manchester City"
+  },
+  "Smalling, Chris": {
+    "code": "2038",
+    "pos": "CB",
+    "player": "Smalling, Chris",
+    "club": "Manchester United"
+  },
+  "Bailly, Eric": {
+    "code": "2325",
+    "pos": "CB",
+    "player": "Bailly, Eric",
+    "club": "Manchester United"
+  },
+  "Blind, Daley": {
+    "code": "2324",
+    "pos": "CB",
+    "player": "Blind, Daley",
+    "club": "Manchester United"
+  },
+  "Jones, Phil": {
+    "code": "2018",
+    "pos": "CB",
+    "player": "Jones, Phil",
+    "club": "Manchester United"
+  },
+  "Blackett, Tyler": {
+    "code": "2255",
+    "pos": "CB",
+    "player": "Blackett, Tyler",
+    "club": "Manchester United"
+  },
+  "McNair, Paddy": {
+    "code": "2267",
+    "pos": "CB",
+    "player": "McNair, Paddy",
+    "club": "Manchester United"
+  },
+  "Tuanzebe, Axel": {
+    "code": "2357",
+    "pos": "CB",
+    "player": "Tuanzebe, Axel",
+    "club": "Manchester United"
+  },
+  "Ayala, Daniel": {
+    "code": "2330",
+    "pos": "CB",
+    "player": "Ayala, Daniel",
+    "club": "Middlesbrough"
+  },
+  "Espinosa, Bernardo": {
+    "code": "2332",
+    "pos": "CB",
+    "player": "Espinosa, Bernardo",
+    "club": "Middlesbrough"
+  },
+  "Gibson, Ben": {
+    "code": "2344",
+    "pos": "CB",
+    "player": "Gibson, Ben",
+    "club": "Middlesbrough"
+  },
+  "Baptiste, Alex": {
+    "code": "2341",
+    "pos": "CB",
+    "player": "Baptiste, Alex",
+    "club": "Middlesbrough"
+  },
+  "Fry, Dael": {
+    "code": "2350",
+    "pos": "CB",
+    "player": "Fry, Dael",
+    "club": "Middlesbrough"
+  },
+  "van Dijk, Virgil": {
+    "code": "2306",
+    "pos": "CB",
+    "player": "van Dijk, Virgil",
+    "club": "Southampton"
+  },
+  "Fonte, Jose": {
+    "code": "2089",
+    "pos": "CB",
+    "player": "Fonte, Jose",
+    "club": "Southampton"
+  },
+  "Yoshida, Maya": {
+    "code": "2071",
+    "pos": "CB",
+    "player": "Yoshida, Maya",
+    "club": "Southampton"
+  },
+  "Gardos, Florin": {
+    "code": "2257",
+    "pos": "CB",
+    "player": "Gardos, Florin",
+    "club": "Southampton"
+  },
+  "McCarthy, Jason": {
+    "code": "2276",
+    "pos": "CB",
+    "player": "McCarthy, Jason",
+    "club": "Southampton"
+  },
+  "Shawcross, Ryan": {
+    "code": "2036",
+    "pos": "CB",
+    "player": "Shawcross, Ryan",
+    "club": "Stoke City"
+  },
+  "Wollscheid, Philipp": {
+    "code": "2271",
+    "pos": "CB",
+    "player": "Wollscheid, Philipp",
+    "club": "Stoke City"
+  },
+  "Teixeira, Dionatan": {
+    "code": "2232",
+    "pos": "CB",
+    "player": "Teixeira, Dionatan",
+    "club": "Stoke City"
+  },
+  "Kone, Lamine": {
+    "code": "2317",
+    "pos": "CB",
+    "player": "Kone, Lamine",
+    "club": "Sunderland"
+  },
+  "Kaboul, Younes": {
+    "code": "2111",
+    "pos": "CB",
+    "player": "Kaboul, Younes",
+    "club": "Sunderland"
+  },
+  "O'Shea, John": {
+    "code": "2048",
+    "pos": "CB",
+    "player": "O'Shea, John",
+    "club": "Sunderland"
+  },
+  "Williams, Ashley": {
+    "code": "2041",
+    "pos": "CB",
+    "player": "Williams, Ashley",
+    "club": "Swansea City"
+  },
+  "Fernandez, Federico": {
+    "code": "2260",
+    "pos": "CB",
+    "player": "Fernandez, Federico",
+    "club": "Swansea City"
+  },
+  "Amat, Jordi": {
+    "code": "2159",
+    "pos": "CB",
+    "player": "Amat, Jordi",
+    "club": "Swansea City"
+  },
+  "van der Hoorn, Mike": {
+    "code": "2356",
+    "pos": "CB",
+    "player": "van der Hoorn, Mike",
+    "club": "Swansea City"
+  },
+  "Bartley, Kyle": {
+    "code": "2191",
+    "pos": "CB",
+    "player": "Bartley, Kyle",
+    "club": "Swansea City"
+  },
+  "Alderweireld, Toby": {
+    "code": "2282",
+    "pos": "CB",
+    "player": "Alderweireld, Toby",
+    "club": "Tottenham Hotspur"
+  },
+  "Vertonghen, Jan": {
+    "code": "2010",
+    "pos": "CB",
+    "player": "Vertonghen, Jan",
+    "club": "Tottenham Hotspur"
+  },
+  "Wimmer, Kevin": {
+    "code": "2008",
+    "pos": "CB",
+    "player": "Wimmer, Kevin",
+    "club": "Tottenham Hotspur"
+  },
+  "Britos, Miguel": {
+    "code": "2292",
+    "pos": "CB",
+    "player": "Britos, Miguel",
+    "club": "Watford"
+  },
+  "Cathcart, Craig": {
+    "code": "2057",
+    "pos": "CB",
+    "player": "Cathcart, Craig",
+    "club": "Watford"
+  },
+  "Prodl, Sebastian": {
+    "code": "2029",
+    "pos": "CB",
+    "player": "Prodl, Sebastian",
+    "club": "Watford"
+  },
+  "Kabasele, Christian": {
+    "code": "2355",
+    "pos": "CB",
+    "player": "Kabasele, Christian",
+    "club": "Watford"
+  },
+  "Hoban, Tommie": {
+    "code": "2074",
+    "pos": "CB",
+    "player": "Hoban, Tommie",
+    "club": "Watford"
+  },
+  "Dawson, Craig": {
+    "code": "2139",
+    "pos": "CB",
+    "player": "Dawson, Craig",
+    "club": "West Bromwich Albion"
+  },
+  "Evans, Jonny": {
+    "code": "2012",
+    "pos": "CB",
+    "player": "Evans, Jonny",
+    "club": "West Bromwich Albion"
+  },
+  "McAuley, Gareth": {
+    "code": "2060",
+    "pos": "CB",
+    "player": "McAuley, Gareth",
+    "club": "West Bromwich Albion"
+  },
+  "Chester, James": {
+    "code": "2294",
+    "pos": "CB",
+    "player": "Chester, James",
+    "club": "West Bromwich Albion"
+  },
+  "Olsson, Jonas": {
+    "code": "2081",
+    "pos": "CB",
+    "player": "Olsson, Jonas",
+    "club": "West Bromwich Albion"
+  },
+  "Ogbonna, Angelo": {
+    "code": "2288",
+    "pos": "CB",
+    "player": "Ogbonna, Angelo",
+    "club": "West Ham United"
+  },
+  "Reid, Winston": {
+    "code": "2058",
+    "pos": "CB",
+    "player": "Reid, Winston",
+    "club": "West Ham United"
+  },
+  "Collins, James": {
+    "code": "2046",
+    "pos": "CB",
+    "player": "Collins, James",
+    "club": "West Ham United"
+  },
+  "Henry, Doneil": {
+    "code": "2270",
+    "pos": "CB",
+    "player": "Henry, Doneil",
+    "club": "West Ham United"
+  },
+  "Oxford, Reece": {
+    "code": "2297",
+    "pos": "CB",
+    "player": "Oxford, Reece",
+    "club": "West Ham United"
+  },
+  "Burke, Reece": {
+    "code": "2275",
+    "pos": "CB",
+    "player": "Burke, Reece",
+    "club": "West Ham United"
+  },
+  "Bellerin, Hector": {
+    "code": "2269",
+    "pos": "FB",
+    "player": "Bellerin, Hector",
+    "club": "Arsenal"
+  },
+  "Monreal, Nacho": {
+    "code": "2017",
+    "pos": "FB",
+    "player": "Monreal, Nacho",
+    "club": "Arsenal"
+  },
+  "Gibbs, Kieran": {
+    "code": "2030",
+    "pos": "FB",
+    "player": "Gibbs, Kieran",
+    "club": "Arsenal"
+  },
+  "Debuchy, Mathieu": {
+    "code": "2075",
+    "pos": "FB",
+    "player": "Debuchy, Mathieu",
+    "club": "Arsenal"
+  },
+  "Chambers, Calum": {
+    "code": "2231",
+    "pos": "FB",
+    "player": "Chambers, Calum",
+    "club": "Arsenal"
+  },
+  "Jenkinson, Carl": {
+    "code": "2043",
+    "pos": "FB",
+    "player": "Jenkinson, Carl",
+    "club": "Arsenal"
+  },
+  "Daniels, Charlie": {
+    "code": "2331",
+    "pos": "FB",
+    "player": "Daniels, Charlie",
+    "club": "Bournemouth"
+  },
+  "Ake, Nathan": {
+    "code": "2224",
+    "pos": "FB",
+    "player": "Ake, Nathan",
+    "club": "Bournemouth"
+  },
+  "Francis, Simon": {
+    "code": "2059",
+    "pos": "FB",
+    "player": "Francis, Simon",
+    "club": "Bournemouth"
+  },
+  "Mings, Tyrone": {
+    "code": "2278",
+    "pos": "FB",
+    "player": "Mings, Tyrone",
+    "club": "Bournemouth"
+  },
+  "Smith, Brad": {
+    "code": "2313",
+    "pos": "FB",
+    "player": "Smith, Brad",
+    "club": "Bournemouth"
+  },
+  "Smith, Adam": {
+    "code": "2061",
+    "pos": "FB",
+    "player": "Smith, Adam",
+    "club": "Bournemouth"
+  },
+  "Wiggins, Rhoys": {
+    "code": "2319",
+    "pos": "FB",
+    "player": "Wiggins, Rhoys",
+    "club": "Bournemouth"
+  },
+  "Mee, Ben": {
+    "code": "2336",
+    "pos": "FB",
+    "player": "Mee, Ben",
+    "club": "Burnley"
+  },
+  "Lowton, Matt": {
+    "code": "2053",
+    "pos": "FB",
+    "player": "Lowton, Matt",
+    "club": "Burnley"
+  },
+  "Ward, Stephen": {
+    "code": "2340",
+    "pos": "FB",
+    "player": "Ward, Stephen",
+    "club": "Burnley"
+  },
+  "Darikwa, Tendayi": {
+    "code": "2343",
+    "pos": "FB",
+    "player": "Darikwa, Tendayi",
+    "club": "Burnley"
+  },
+  "Lafferty, Daniel": {
+    "code": "2345",
+    "pos": "FB",
+    "player": "Lafferty, Daniel",
+    "club": "Burnley"
+  },
+  "Dummigan, Cameron": {
+    "code": "2349",
+    "pos": "FB",
+    "player": "Dummigan, Cameron",
+    "club": "Burnley"
+  },
+  "Ivanovic, Branislav": {
+    "code": "2003",
+    "pos": "FB",
+    "player": "Ivanovic, Branislav",
+    "club": "Chelsea"
+  },
+  "Azpilicueta, Cesar": {
+    "code": "2025",
+    "pos": "FB",
+    "player": "Azpilicueta, Cesar",
+    "club": "Chelsea"
+  },
+  "Aina, Ola": {
+    "code": "2364",
+    "pos": "FB",
+    "player": "Aina, Ola",
+    "club": "Chelsea"
+  },
+  "Souare, Papa": {
+    "code": "2274",
+    "pos": "FB",
+    "player": "Souare, Papa",
+    "club": "Crystal Palace"
+  },
+  "Ward, Joel": {
+    "code": "2122",
+    "pos": "FB",
+    "player": "Ward, Joel",
+    "club": "Crystal Palace"
+  },
+  "Kelly, Martin": {
+    "code": "2112",
+    "pos": "FB",
+    "player": "Kelly, Martin",
+    "club": "Crystal Palace"
+  },
+  "Fryers, Zeki": {
+    "code": "2186",
+    "pos": "FB",
+    "player": "Fryers, Zeki",
+    "club": "Crystal Palace"
+  },
+  "Hunt, Jack": {
+    "code": "2175",
+    "pos": "FB",
+    "player": "Hunt, Jack",
+    "club": "Crystal Palace"
+  },
+  "Coleman, Seamus": {
+    "code": "2151",
+    "pos": "FB",
+    "player": "Coleman, Seamus",
+    "club": "Everton"
+  },
+  "Baines, Leighton": {
+    "code": "2004",
+    "pos": "FB",
+    "player": "Baines, Leighton",
+    "club": "Everton"
+  },
+  "Galloway, Brendan": {
+    "code": "2277",
+    "pos": "FB",
+    "player": "Galloway, Brendan",
+    "club": "Everton"
+  },
+  "Browning, Tyias": {
+    "code": "2266",
+    "pos": "FB",
+    "player": "Browning, Tyias",
+    "club": "Everton"
+  },
+  "Garbutt, Luke": {
+    "code": "2240",
+    "pos": "FB",
+    "player": "Garbutt, Luke",
+    "club": "Everton"
+  },
+  "Robertson, Andrew": {
+    "code": "2329",
+    "pos": "FB",
+    "player": "Robertson, Andrew",
+    "club": "Hull"
+  },
+  "Odubajo, Moses": {
+    "code": "2338",
+    "pos": "FB",
+    "player": "Odubajo, Moses",
+    "club": "Hull"
+  },
+  "Lenihan, Brian": {
+    "code": "2351",
+    "pos": "FB",
+    "player": "Lenihan, Brian",
+    "club": "Hull"
+  },
+  "Tymon, Josh": {
+    "code": "2352",
+    "pos": "FB",
+    "player": "Tymon, Josh",
+    "club": "Hull"
+  },
+  "Fuchs, Christian": {
+    "code": "2014",
+    "pos": "FB",
+    "player": "Fuchs, Christian",
+    "club": "Leicester City"
+  },
+  "Simpson, Danny": {
+    "code": "2219",
+    "pos": "FB",
+    "player": "Simpson, Danny",
+    "club": "Leicester City"
+  },
+  "Benalouane, Yohan": {
+    "code": "2298",
+    "pos": "FB",
+    "player": "Benalouane, Yohan",
+    "club": "Leicester City"
+  },
+  "Chilwell, Benjamin": {
+    "code": "2314",
+    "pos": "FB",
+    "player": "Chilwell, Benjamin",
+    "club": "Leicester City"
+  },
+  "de Laet, Ritchie": {
+    "code": "2218",
+    "pos": "FB",
+    "player": "de Laet, Ritchie",
+    "club": "Leicester City"
+  },
+  "Clyne, Nathaniel": {
+    "code": "2055",
+    "pos": "FB",
+    "player": "Clyne, Nathaniel",
+    "club": "Liverpool"
+  },
+  "Moreno, Alberto": {
+    "code": "2259",
+    "pos": "FB",
+    "player": "Moreno, Alberto",
+    "club": "Liverpool"
+  },
+  "Flanagan, Jon": {
+    "code": "2183",
+    "pos": "FB",
+    "player": "Flanagan, Jon",
+    "club": "Liverpool"
+  },
+  "Gomez, Joe": {
+    "code": "2007",
+    "pos": "FB",
+    "player": "Gomez, Joe",
+    "club": "Liverpool"
+  },
+  "Sagna, Bacary": {
+    "code": "2024",
+    "pos": "FB",
+    "player": "Sagna, Bacary",
+    "club": "Manchester City"
+  },
+  "Clichy, Gael": {
+    "code": "2015",
+    "pos": "FB",
+    "player": "Clichy, Gael",
+    "club": "Manchester City"
+  },
+  "Kolarov, Aleksandar": {
+    "code": "2031",
+    "pos": "FB",
+    "player": "Kolarov, Aleksandar",
+    "club": "Manchester City"
+  },
+  "Zabaleta, Pablo": {
+    "code": "2011",
+    "pos": "FB",
+    "player": "Zabaleta, Pablo",
+    "club": "Manchester City"
+  },
+  "Shaw, Luke": {
+    "code": "2067",
+    "pos": "FB",
+    "player": "Shaw, Luke",
+    "club": "Manchester United"
+  },
+  "Darmian, Matteo": {
+    "code": "2287",
+    "pos": "FB",
+    "player": "Darmian, Matteo",
+    "club": "Manchester United"
+  },
+  "Valencia, Antonio": {
+    "code": "2281",
+    "pos": "FB",
+    "player": "Valencia, Antonio",
+    "club": "Manchester United"
+  },
+  "Rojo, Marcos": {
+    "code": "2261",
+    "pos": "FB",
+    "player": "Rojo, Marcos",
+    "club": "Manchester United"
+  },
+  "Borthwick-Jackson, Camero": {
+    "code": "2309",
+    "pos": "FB",
+    "player": "Borthwick-Jackson, Camero",
+    "club": "Manchester United"
+  },
+  "Fosu-Mensah, Timothy": {
+    "code": "2333",
+    "pos": "FB",
+    "player": "Fosu-Mensah, Timothy",
+    "club": "Manchester United"
+  },
+  "Riley, Joe": {
+    "code": "3419",
+    "pos": "FB",
+    "player": "Riley, Joe",
+    "club": "Manchester United"
+  },
+  "Barragan, Antonio": {
+    "code": "2360",
+    "pos": "FB",
+    "player": "Barragan, Antonio",
+    "club": "Middlesbrough"
+  },
+  "Friend, George": {
+    "code": "2334",
+    "pos": "FB",
+    "player": "Friend, George",
+    "club": "Middlesbrough"
+  },
+  "Nsue, Emilio": {
+    "code": "2342",
+    "pos": "FB",
+    "player": "Nsue, Emilio",
+    "club": "Middlesbrough"
+  },
+  "Husband, James": {
+    "code": "2346",
+    "pos": "FB",
+    "player": "Husband, James",
+    "club": "Middlesbrough"
+  },
+  "Bertrand, Ryan": {
+    "code": "2097",
+    "pos": "FB",
+    "player": "Bertrand, Ryan",
+    "club": "Southampton"
+  },
+  "Soares, Cedric": {
+    "code": "2021",
+    "pos": "FB",
+    "player": "Soares, Cedric",
+    "club": "Southampton"
+  },
+  "Targett, Matt": {
+    "code": "2248",
+    "pos": "FB",
+    "player": "Targett, Matt",
+    "club": "Southampton"
+  },
+  "Martina, Cuco": {
+    "code": "2284",
+    "pos": "FB",
+    "player": "Martina, Cuco",
+    "club": "Southampton"
+  },
+  "Pied, Jeremy": {
+    "code": "2365",
+    "pos": "FB",
+    "player": "Pied, Jeremy",
+    "club": "Southampton"
+  },
+  "Johnson, Glen": {
+    "code": "2286",
+    "pos": "FB",
+    "player": "Johnson, Glen",
+    "club": "Stoke City"
+  },
+  "Pieters, Erik": {
+    "code": "2160",
+    "pos": "FB",
+    "player": "Pieters, Erik",
+    "club": "Stoke City"
+  },
+  "Cameron, Geoff": {
+    "code": "2065",
+    "pos": "FB",
+    "player": "Cameron, Geoff",
+    "club": "Stoke City"
+  },
+  "Muniesa, Marc": {
+    "code": "2161",
+    "pos": "FB",
+    "player": "Muniesa, Marc",
+    "club": "Stoke City"
+  },
+  "Bardsley, Phil": {
+    "code": "2092",
+    "pos": "FB",
+    "player": "Bardsley, Phil",
+    "club": "Stoke City"
+  },
+  "Wilson, Marc": {
+    "code": "2084",
+    "pos": "FB",
+    "player": "Wilson, Marc",
+    "club": "Stoke City"
+  },
+  "van Aanholt, Patrick": {
+    "code": "2225",
+    "pos": "FB",
+    "player": "van Aanholt, Patrick",
+    "club": "Sunderland"
+  },
+  "Jones, Billy": {
+    "code": "2098",
+    "pos": "FB",
+    "player": "Jones, Billy",
+    "club": "Sunderland"
+  },
+  "Matthews, Adam": {
+    "code": "2285",
+    "pos": "FB",
+    "player": "Matthews, Adam",
+    "club": "Sunderland"
+  },
+  "Naughton, Kyle": {
+    "code": "2069",
+    "pos": "FB",
+    "player": "Naughton, Kyle",
+    "club": "Swansea City"
+  },
+  "Taylor, Neil": {
+    "code": "2086",
+    "pos": "FB",
+    "player": "Taylor, Neil",
+    "club": "Swansea City"
+  },
+  "Rangel, Angel": {
+    "code": "2042",
+    "pos": "FB",
+    "player": "Rangel, Angel",
+    "club": "Swansea City"
+  },
+  "Tabanou, Franck": {
+    "code": "2009",
+    "pos": "FB",
+    "player": "Tabanou, Franck",
+    "club": "Swansea City"
+  },
+  "Reid, Tyler": {
+    "code": "2358",
+    "pos": "FB",
+    "player": "Reid, Tyler",
+    "club": "Swansea City"
+  },
+  "Kingsley, Stephen": {
+    "code": "2366",
+    "pos": "FB",
+    "player": "Kingsley, Stephen",
+    "club": "Swansea City"
+  },
+  "Walker, Kyle": {
+    "code": "2020",
+    "pos": "FB",
+    "player": "Walker, Kyle",
+    "club": "Tottenham Hotspur"
+  },
+  "Rose, Danny": {
+    "code": "2152",
+    "pos": "FB",
+    "player": "Rose, Danny",
+    "club": "Tottenham Hotspur"
+  },
+  "Davies, Ben": {
+    "code": "2064",
+    "pos": "FB",
+    "player": "Davies, Ben",
+    "club": "Tottenham Hotspur"
+  },
+  "Trippier, Kieran": {
+    "code": "2205",
+    "pos": "FB",
+    "player": "Trippier, Kieran",
+    "club": "Tottenham Hotspur"
+  },
+  "Yedlin, DeAndre": {
+    "code": "2272",
+    "pos": "FB",
+    "player": "Yedlin, DeAndre",
+    "club": "Tottenham Hotspur"
+  },
+  "Nyom, Allan": {
+    "code": "2290",
+    "pos": "FB",
+    "player": "Nyom, Allan",
+    "club": "Watford"
+  },
+  "Zuniga, Juan Camilo": {
+    "code": "2359",
+    "pos": "FB",
+    "player": "Zuniga, Juan Camilo",
+    "club": "Watford"
+  },
+  "Dja Djedje, Brice": {
+    "code": "2363",
+    "pos": "FB",
+    "player": "Dja Djedje, Brice",
+    "club": "Watford"
+  },
+  "Holebas, Jose": {
+    "code": "2283",
+    "pos": "FB",
+    "player": "Holebas, Jose",
+    "club": "Watford"
+  },
+  "Paredes, Juan Carlos": {
+    "code": "2044",
+    "pos": "FB",
+    "player": "Paredes, Juan Carlos",
+    "club": "Watford"
+  },
+  "Pocognoli, Sebastien": {
+    "code": "2242",
+    "pos": "FB",
+    "player": "Pocognoli, Sebastien",
+    "club": "West Bromwich Albion"
+  },
+  "Gamboa, Cristian": {
+    "code": "2251",
+    "pos": "FB",
+    "player": "Gamboa, Cristian",
+    "club": "West Bromwich Albion"
+  },
+  "Cresswell, Aaron": {
+    "code": "2241",
+    "pos": "FB",
+    "player": "Cresswell, Aaron",
+    "club": "West Ham United"
+  },
+  "Byram, Sam": {
+    "code": "2316",
+    "pos": "FB",
+    "player": "Byram, Sam",
+    "club": "West Ham United"
+  },
+  "Hendrie, Stephen": {
+    "code": "2034",
+    "pos": "FB",
+    "player": "Hendrie, Stephen",
+    "club": "West Ham United"
+  },
+  "Ozil, Mesut": {
+    "code": "3234",
+    "pos": "CM",
+    "player": "Ozil, Mesut",
+    "club": "Arsenal"
+  },
+  "Ramsey, Aaron": {
+    "code": "3047",
+    "pos": "CM",
+    "player": "Ramsey, Aaron",
+    "club": "Arsenal"
+  },
+  "Cazorla, Santi": {
+    "code": "3004",
+    "pos": "CM",
+    "player": "Cazorla, Santi",
+    "club": "Arsenal"
+  },
+  "Xhaka, Granit": {
+    "code": "3430",
+    "pos": "CM",
+    "player": "Xhaka, Granit",
+    "club": "Arsenal"
+  },
+  "Wilshere, Jack": {
+    "code": "3034",
+    "pos": "CM",
+    "player": "Wilshere, Jack",
+    "club": "Arsenal"
+  },
+  "Elneny, Mohamed": {
+    "code": "3409",
+    "pos": "CM",
+    "player": "Elneny, Mohamed",
+    "club": "Arsenal"
+  },
+  "Coquelin, Francis": {
+    "code": "3151",
+    "pos": "CM",
+    "player": "Coquelin, Francis",
+    "club": "Arsenal"
+  },
+  "Bielik, Krystian": {
+    "code": "3342",
+    "pos": "CM",
+    "player": "Bielik, Krystian",
+    "club": "Arsenal"
+  },
+  "Gosling, Dan": {
+    "code": "3036",
+    "pos": "CM",
+    "player": "Gosling, Dan",
+    "club": "Bournemouth"
+  },
+  "Surman, Andrew": {
+    "code": "3046",
+    "pos": "CM",
+    "player": "Surman, Andrew",
+    "club": "Bournemouth"
+  },
+  "Arter, Harry": {
+    "code": "3058",
+    "pos": "CM",
+    "player": "Arter, Harry",
+    "club": "Bournemouth"
+  },
+  "Cook, Lewis": {
+    "code": "3472",
+    "pos": "CM",
+    "player": "Cook, Lewis",
+    "club": "Bournemouth"
+  },
+  "Hyndman, Emerson": {
+    "code": "3464",
+    "pos": "CM",
+    "player": "Hyndman, Emerson",
+    "club": "Bournemouth"
+  },
+  "MacDonald, Shaun": {
+    "code": "3073",
+    "pos": "CM",
+    "player": "MacDonald, Shaun",
+    "club": "Bournemouth"
+  },
+  "O'Kane, Eunan": {
+    "code": "3096",
+    "pos": "CM",
+    "player": "O'Kane, Eunan",
+    "club": "Bournemouth"
+  },
+  "Arfield, Scott": {
+    "code": "3447",
+    "pos": "CM",
+    "player": "Arfield, Scott",
+    "club": "Burnley"
+  },
+  "Jones, David": {
+    "code": "3453",
+    "pos": "CM",
+    "player": "Jones, David",
+    "club": "Burnley"
+  },
+  "Marney, Dean": {
+    "code": "3454",
+    "pos": "CM",
+    "player": "Marney, Dean",
+    "club": "Burnley"
+  },
+  "Ulvestad, Fredrik": {
+    "code": "3457",
+    "pos": "CM",
+    "player": "Ulvestad, Fredrik",
+    "club": "Burnley"
+  },
+  "Fabregas, Cesc": {
+    "code": "3265",
+    "pos": "CM",
+    "player": "Fabregas, Cesc",
+    "club": "Chelsea"
+  },
+  "Oscar": {
+    "code": "3016",
+    "pos": "CM",
+    "player": "Oscar",
+    "club": "Chelsea"
+  },
+  "Kante, N'Golo": {
+    "code": "3378",
+    "pos": "CM",
+    "player": "Kante, N'Golo",
+    "club": "Chelsea"
+  },
+  "Matic, Nemanja": {
+    "code": "3243",
+    "pos": "CM",
+    "player": "Matic, Nemanja",
+    "club": "Chelsea"
+  },
+  "Loftus-Cheek, Ruben": {
+    "code": "3346",
+    "pos": "CM",
+    "player": "Loftus-Cheek, Ruben",
+    "club": "Chelsea"
+  },
+  "van Ginkel, Marco": {
+    "code": "3359",
+    "pos": "CM",
+    "player": "van Ginkel, Marco",
+    "club": "Chelsea"
+  },
+  "Mikel, John-Obi": {
+    "code": "3112",
+    "pos": "CM",
+    "player": "Mikel, John-Obi",
+    "club": "Chelsea"
+  },
+  "Chalobah, Nathaniel": {
+    "code": "3485",
+    "pos": "CM",
+    "player": "Chalobah, Nathaniel",
+    "club": "Chelsea"
+  },
+  "Cabaye, Yohan": {
+    "code": "3360",
+    "pos": "CM",
+    "player": "Cabaye, Yohan",
+    "club": "Crystal Palace"
+  },
+  "McArthur, James": {
+    "code": "3330",
+    "pos": "CM",
+    "player": "McArthur, James",
+    "club": "Crystal Palace"
+  },
+  "Ledley, Joe": {
+    "code": "3253",
+    "pos": "CM",
+    "player": "Ledley, Joe",
+    "club": "Crystal Palace"
+  },
+  "Jedinak, Mile": {
+    "code": "3095",
+    "pos": "CM",
+    "player": "Jedinak, Mile",
+    "club": "Crystal Palace"
+  },
+  "Mutch, Jordon": {
+    "code": "3183",
+    "pos": "CM",
+    "player": "Mutch, Jordon",
+    "club": "Crystal Palace"
+  },
+  "Barkley, Ross": {
+    "code": "3149",
+    "pos": "CM",
+    "player": "Barkley, Ross",
+    "club": "Everton"
+  },
+  "McCarthy, James": {
+    "code": "3236",
+    "pos": "CM",
+    "player": "McCarthy, James",
+    "club": "Everton"
+  },
+  "Barry, Gareth": {
+    "code": "3043",
+    "pos": "CM",
+    "player": "Barry, Gareth",
+    "club": "Everton"
+  },
+  "Cleverley, Tom": {
+    "code": "3055",
+    "pos": "CM",
+    "player": "Cleverley, Tom",
+    "club": "Everton"
+  },
+  "Besic, Muhamed": {
+    "code": "3315",
+    "pos": "CM",
+    "player": "Besic, Muhamed",
+    "club": "Everton"
+  },
+  "Gibson, Darron": {
+    "code": "3088",
+    "pos": "CM",
+    "player": "Gibson, Darron",
+    "club": "Everton"
+  },
+  "Davies, Tom": {
+    "code": "3428",
+    "pos": "CM",
+    "player": "Davies, Tom",
+    "club": "Everton"
+  },
+  "Gueye, Idrissa": {
+    "code": "3483",
+    "pos": "CM",
+    "player": "Gueye, Idrissa",
+    "club": "Everton"
+  },
+  "Livermore, Jake": {
+    "code": "3437",
+    "pos": "CM",
+    "player": "Livermore, Jake",
+    "club": "Hull"
+  },
+  "Meyler, David": {
+    "code": "3440",
+    "pos": "CM",
+    "player": "Meyler, David",
+    "club": "Hull"
+  },
+  "Huddlestone, Tom": {
+    "code": "3439",
+    "pos": "CM",
+    "player": "Huddlestone, Tom",
+    "club": "Hull"
+  },
+  "Drinkwater, Daniel": {
+    "code": "3272",
+    "pos": "CM",
+    "player": "Drinkwater, Daniel",
+    "club": "Leicester City"
+  },
+  "Mendy, Nampalys": {
+    "code": "3467",
+    "pos": "CM",
+    "player": "Mendy, Nampalys",
+    "club": "Leicester City"
+  },
+  "King, Andy": {
+    "code": "3275",
+    "pos": "CM",
+    "player": "King, Andy",
+    "club": "Leicester City"
+  },
+  "Inler, Gokhan": {
+    "code": "3391",
+    "pos": "CM",
+    "player": "Inler, Gokhan",
+    "club": "Leicester City"
+  },
+  "James, Matthew": {
+    "code": "3274",
+    "pos": "CM",
+    "player": "James, Matthew",
+    "club": "Leicester City"
+  },
+  "Amartey, Daniel": {
+    "code": "3413",
+    "pos": "CM",
+    "player": "Amartey, Daniel",
+    "club": "Leicester City"
+  },
+  "Coutinho, Philippe": {
+    "code": "3017",
+    "pos": "CM",
+    "player": "Coutinho, Philippe",
+    "club": "Liverpool"
+  },
+  "Wijnaldum, Georginio": {
+    "code": "3478",
+    "pos": "CM",
+    "player": "Wijnaldum, Georginio",
+    "club": "Liverpool"
+  },
+  "Henderson, Jordan": {
+    "code": "3038",
+    "pos": "CM",
+    "player": "Henderson, Jordan",
+    "club": "Liverpool"
+  },
+  "Milner, James": {
+    "code": "3032",
+    "pos": "CM",
+    "player": "Milner, James",
+    "club": "Liverpool"
+  },
+  "Can, Emre": {
+    "code": "3288",
+    "pos": "CM",
+    "player": "Can, Emre",
+    "club": "Liverpool"
+  },
+  "Grujic, Marko": {
+    "code": "3433",
+    "pos": "CM",
+    "player": "Grujic, Marko",
+    "club": "Liverpool"
+  },
+  "Leiva, Lucas": {
+    "code": "3060",
+    "pos": "CM",
+    "player": "Leiva, Lucas",
+    "club": "Liverpool"
+  },
+  "Brannagan, Cameron": {
+    "code": "3426",
+    "pos": "CM",
+    "player": "Brannagan, Cameron",
+    "club": "Liverpool"
+  },
+  "Chirivella, Pedro": {
+    "code": "3427",
+    "pos": "CM",
+    "player": "Chirivella, Pedro",
+    "club": "Liverpool"
+  },
+  "Stewart, Kevin": {
+    "code": "3455",
+    "pos": "CM",
+    "player": "Stewart, Kevin",
+    "club": "Liverpool"
+  },
+  "Silva, David": {
+    "code": "3007",
+    "pos": "CM",
+    "player": "Silva, David",
+    "club": "Manchester City"
+  },
+  "Toure, Yaya": {
+    "code": "3005",
+    "pos": "CM",
+    "player": "Toure, Yaya",
+    "club": "Manchester City"
+  },
+  "Gundogan, Ilkay": {
+    "code": "3429",
+    "pos": "CM",
+    "player": "Gundogan, Ilkay",
+    "club": "Manchester City"
+  },
+  "Fernandinho": {
+    "code": "3018",
+    "pos": "CM",
+    "player": "Fernandinho",
+    "club": "Manchester City"
+  },
+  "Delph, Fabian": {
+    "code": "3122",
+    "pos": "CM",
+    "player": "Delph, Fabian",
+    "club": "Manchester City"
+  },
+  "Fernando": {
+    "code": "3307",
+    "pos": "CM",
+    "player": "Fernando",
+    "club": "Manchester City"
+  },
+  "Garcia, Manu": {
+    "code": "3422",
+    "pos": "CM",
+    "player": "Garcia, Manu",
+    "club": "Manchester City"
+  },
+  "Mata, Juan": {
+    "code": "3001",
+    "pos": "CM",
+    "player": "Mata, Juan",
+    "club": "Manchester United"
+  },
+  "Fellaini, Marouane": {
+    "code": "3008",
+    "pos": "CM",
+    "player": "Fellaini, Marouane",
+    "club": "Manchester United"
+  },
+  "Herrera, Ander": {
+    "code": "3308",
+    "pos": "CM",
+    "player": "Herrera, Ander",
+    "club": "Manchester United"
+  },
+  "Schweinsteiger, Bastian": {
+    "code": "3363",
+    "pos": "CM",
+    "player": "Schweinsteiger, Bastian",
+    "club": "Manchester United"
+  },
+  "Schneiderlin, Morgan": {
+    "code": "3042",
+    "pos": "CM",
+    "player": "Schneiderlin, Morgan",
+    "club": "Manchester United"
+  },
+  "Carrick, Michael": {
+    "code": "3011",
+    "pos": "CM",
+    "player": "Carrick, Michael",
+    "club": "Manchester United"
+  },
+  "Weir, James": {
+    "code": "3410",
+    "pos": "CM",
+    "player": "Weir, James",
+    "club": "Manchester United"
+  },
+  "Pogba, Paul": {
+    "code": "3481",
+    "pos": "CM",
+    "player": "Pogba, Paul",
+    "club": "Manchester United"
+  },
+  "de Roon, Marten": {
+    "code": "3470",
+    "pos": "CM",
+    "player": "de Roon, Marten",
+    "club": "Middlesbrough"
+  },
+  "Leadbitter, Grant": {
+    "code": "3446",
+    "pos": "CM",
+    "player": "Leadbitter, Grant",
+    "club": "Middlesbrough"
+  },
+  "Clayton, Adam": {
+    "code": "3448",
+    "pos": "CM",
+    "player": "Clayton, Adam",
+    "club": "Middlesbrough"
+  },
+  "Forshaw, Adam": {
+    "code": "3449",
+    "pos": "CM",
+    "player": "Forshaw, Adam",
+    "club": "Middlesbrough"
+  },
+  "De Sart, Julien": {
+    "code": "3459",
+    "pos": "CM",
+    "player": "De Sart, Julien",
+    "club": "Middlesbrough"
+  },
+  "Davis, Steven": {
+    "code": "3064",
+    "pos": "CM",
+    "player": "Davis, Steven",
+    "club": "Southampton"
+  },
+  "Ward-Prowse, James": {
+    "code": "3156",
+    "pos": "CM",
+    "player": "Ward-Prowse, James",
+    "club": "Southampton"
+  },
+  "Hojbjerg, Pierre-Emile": {
+    "code": "3474",
+    "pos": "CM",
+    "player": "Hojbjerg, Pierre-Emile",
+    "club": "Southampton"
+  },
+  "Clasie, Jordy": {
+    "code": "3367",
+    "pos": "CM",
+    "player": "Clasie, Jordy",
+    "club": "Southampton"
+  },
+  "Romeu, Oriol": {
+    "code": "3387",
+    "pos": "CM",
+    "player": "Romeu, Oriol",
+    "club": "Southampton"
+  },
+  "Reed, Harrison": {
+    "code": "3294",
+    "pos": "CM",
+    "player": "Reed, Harrison",
+    "club": "Southampton"
+  },
+  "Afellay, Ibrahim": {
+    "code": "3375",
+    "pos": "CM",
+    "player": "Afellay, Ibrahim",
+    "club": "Stoke City"
+  },
+  "Allen, Joe": {
+    "code": "3072",
+    "pos": "CM",
+    "player": "Allen, Joe",
+    "club": "Stoke City"
+  },
+  "Imbula, Giannelli": {
+    "code": "3418",
+    "pos": "CM",
+    "player": "Imbula, Giannelli",
+    "club": "Stoke City"
+  },
+  "Adam, Charlie": {
+    "code": "3086",
+    "pos": "CM",
+    "player": "Adam, Charlie",
+    "club": "Stoke City"
+  },
+  "Whelan, Glenn": {
+    "code": "3071",
+    "pos": "CM",
+    "player": "Whelan, Glenn",
+    "club": "Stoke City"
+  },
+  "Ireland, Stephen": {
+    "code": "3162",
+    "pos": "CM",
+    "player": "Ireland, Stephen",
+    "club": "Stoke City"
+  },
+  "Molina, Sergio": {
+    "code": "3381",
+    "pos": "CM",
+    "player": "Molina, Sergio",
+    "club": "Stoke City"
+  },
+  "M'Vila, Yann": {
+    "code": "3383",
+    "pos": "CM",
+    "player": "M'Vila, Yann",
+    "club": "Sunderland"
+  },
+  "Kirchhoff, Jan": {
+    "code": "3434",
+    "pos": "CM",
+    "player": "Kirchhoff, Jan",
+    "club": "Sunderland"
+  },
+  "Rodwell, Jack": {
+    "code": "3137",
+    "pos": "CM",
+    "player": "Rodwell, Jack",
+    "club": "Sunderland"
+  },
+  "Cattermole, Lee": {
+    "code": "3106",
+    "pos": "CM",
+    "player": "Cattermole, Lee",
+    "club": "Sunderland"
+  },
+  "Gomez, Jordi": {
+    "code": "3295",
+    "pos": "CM",
+    "player": "Gomez, Jordi",
+    "club": "Sunderland"
+  },
+  "Bridcutt, Liam": {
+    "code": "3249",
+    "pos": "CM",
+    "player": "Bridcutt, Liam",
+    "club": "Sunderland"
+  },
+  "Sigurdsson, Gylfi": {
+    "code": "3062",
+    "pos": "CM",
+    "player": "Sigurdsson, Gylfi",
+    "club": "Swansea City"
+  },
+  "Sung-Yueng, Ki": {
+    "code": "3101",
+    "pos": "CM",
+    "player": "Sung-Yueng, Ki",
+    "club": "Swansea City"
+  },
+  "Fer, Leroy": {
+    "code": "3417",
+    "pos": "CM",
+    "player": "Fer, Leroy",
+    "club": "Swansea City"
+  },
+  "Cork, Jack": {
+    "code": "3092",
+    "pos": "CM",
+    "player": "Cork, Jack",
+    "club": "Swansea City"
+  },
+  "Britton, Leon": {
+    "code": "3090",
+    "pos": "CM",
+    "player": "Britton, Leon",
+    "club": "Swansea City"
+  },
+  "Fulton, Jay": {
+    "code": "3341",
+    "pos": "CM",
+    "player": "Fulton, Jay",
+    "club": "Swansea City"
+  },
+  "Alli, Dele": {
+    "code": "3067",
+    "pos": "CM",
+    "player": "Alli, Dele",
+    "club": "Tottenham Hotspur"
+  },
+  "Eriksen, Christian": {
+    "code": "3230",
+    "pos": "CM",
+    "player": "Eriksen, Christian",
+    "club": "Tottenham Hotspur"
+  },
+  "Dembele, Mousa": {
+    "code": "3045",
+    "pos": "CM",
+    "player": "Dembele, Mousa",
+    "club": "Tottenham Hotspur"
+  },
+  "Wanyama, Victor": {
+    "code": "3204",
+    "pos": "CM",
+    "player": "Wanyama, Victor",
+    "club": "Tottenham Hotspur"
+  },
+  "Dier, Eric": {
+    "code": "3461",
+    "pos": "CM",
+    "player": "Dier, Eric",
+    "club": "Tottenham Hotspur"
+  },
+  "Mason, Ryan": {
+    "code": "3299",
+    "pos": "CM",
+    "player": "Mason, Ryan",
+    "club": "Tottenham Hotspur"
+  },
+  "Bentaleb, Nabil": {
+    "code": "3239",
+    "pos": "CM",
+    "player": "Bentaleb, Nabil",
+    "club": "Tottenham Hotspur"
+  },
+  "Carroll, Tom": {
+    "code": "3385",
+    "pos": "CM",
+    "player": "Carroll, Tom",
+    "club": "Tottenham Hotspur"
+  },
+  "Winks, Harry": {
+    "code": "3403",
+    "pos": "CM",
+    "player": "Winks, Harry",
+    "club": "Tottenham Hotspur"
+  },
+  "Capoue, Etienne": {
+    "code": "3221",
+    "pos": "CM",
+    "player": "Capoue, Etienne",
+    "club": "Watford"
+  },
+  "Behrami, Valon": {
+    "code": "3364",
+    "pos": "CM",
+    "player": "Behrami, Valon",
+    "club": "Watford"
+  },
+  "Suarez, Mario": {
+    "code": "3414",
+    "pos": "CM",
+    "player": "Suarez, Mario",
+    "club": "Watford"
+  },
+  "Watson, Ben": {
+    "code": "3035",
+    "pos": "CM",
+    "player": "Watson, Ben",
+    "club": "Watford"
+  },
+  "Doucoure, Abdoulaye": {
+    "code": "3476",
+    "pos": "CM",
+    "player": "Doucoure, Abdoulaye",
+    "club": "Watford"
+  },
+  "Guedioura, Adlene": {
+    "code": "3237",
+    "pos": "CM",
+    "player": "Guedioura, Adlene",
+    "club": "Watford"
+  },
+  "Murray, Sean": {
+    "code": "3065",
+    "pos": "CM",
+    "player": "Murray, Sean",
+    "club": "Watford"
+  },
+  "Fletcher, Darren": {
+    "code": "3109",
+    "pos": "CM",
+    "player": "Fletcher, Darren",
+    "club": "West Bromwich Albion"
+  },
+  "Gardner, Craig": {
+    "code": "3037",
+    "pos": "CM",
+    "player": "Gardner, Craig",
+    "club": "West Bromwich Albion"
+  },
+  "Morrison, James": {
+    "code": "3027",
+    "pos": "CM",
+    "player": "Morrison, James",
+    "club": "West Bromwich Albion"
+  },
+  "Yacob, Claudio": {
+    "code": "3119",
+    "pos": "CM",
+    "player": "Yacob, Claudio",
+    "club": "West Bromwich Albion"
+  },
+  "Lanzini, Manuel": {
+    "code": "3372",
+    "pos": "CM",
+    "player": "Lanzini, Manuel",
+    "club": "West Ham United"
+  },
+  "Noble, Mark": {
+    "code": "3069",
+    "pos": "CM",
+    "player": "Noble, Mark",
+    "club": "West Ham United"
+  },
+  "Kouyate, Cheikhou": {
+    "code": "3301",
+    "pos": "CM",
+    "player": "Kouyate, Cheikhou",
+    "club": "West Ham United"
+  },
+  "Obiang, Pedro": {
+    "code": "3049",
+    "pos": "CM",
+    "player": "Obiang, Pedro",
+    "club": "West Ham United"
+  },
+  "Nordtveit, Havard": {
+    "code": "3475",
+    "pos": "CM",
+    "player": "Nordtveit, Havard",
+    "club": "West Ham United"
+  },
+  "Poyet, Diego": {
+    "code": "3311",
+    "pos": "CM",
+    "player": "Poyet, Diego",
+    "club": "West Ham United"
+  },
+  "Cullen, Josh": {
+    "code": "3401",
+    "pos": "CM",
+    "player": "Cullen, Josh",
+    "club": "West Ham United"
+  },
+  "Sanchez, Alexis": {
+    "code": "4153",
+    "pos": "WM",
+    "player": "Sanchez, Alexis",
+    "club": "Arsenal"
+  },
+  "Walcott, Theo": {
+    "code": "3006",
+    "pos": "WM",
+    "player": "Walcott, Theo",
+    "club": "Arsenal"
+  },
+  "Iwobi, Alex": {
+    "code": "3374",
+    "pos": "WM",
+    "player": "Iwobi, Alex",
+    "club": "Arsenal"
+  },
+  "Ox-Chamberlain, Alex": {
+    "code": "3081",
+    "pos": "WM",
+    "player": "Ox-Chamberlain, Alex",
+    "club": "Arsenal"
+  },
+  "Campbell, Joel": {
+    "code": "3431",
+    "pos": "WM",
+    "player": "Campbell, Joel",
+    "club": "Arsenal"
+  },
+  "Gnabry, Serge": {
+    "code": "3173",
+    "pos": "WM",
+    "player": "Gnabry, Serge",
+    "club": "Arsenal"
+  },
+  "Reine-Adelaide, Jeff": {
+    "code": "3373",
+    "pos": "WM",
+    "player": "Reine-Adelaide, Jeff",
+    "club": "Arsenal"
+  },
+  "Gradel, Max": {
+    "code": "3379",
+    "pos": "WM",
+    "player": "Gradel, Max",
+    "club": "Bournemouth"
+  },
+  "Ibe, Jordon": {
+    "code": "3212",
+    "pos": "WM",
+    "player": "Ibe, Jordon",
+    "club": "Bournemouth"
+  },
+  "Stanislas, Junior": {
+    "code": "3260",
+    "pos": "WM",
+    "player": "Stanislas, Junior",
+    "club": "Bournemouth"
+  },
+  "Pugh, Marc": {
+    "code": "3082",
+    "pos": "WM",
+    "player": "Pugh, Marc",
+    "club": "Bournemouth"
+  },
+  "Fraser, Ryan": {
+    "code": "3066",
+    "pos": "WM",
+    "player": "Fraser, Ryan",
+    "club": "Bournemouth"
+  },
+  "Boyd, George": {
+    "code": "3441",
+    "pos": "WM",
+    "player": "Boyd, George",
+    "club": "Burnley"
+  },
+  "Gudmundsson, Johann Berg": {
+    "code": "3477",
+    "pos": "WM",
+    "player": "Gudmundsson, Johann Berg",
+    "club": "Burnley"
+  },
+  "Kightly, Michael": {
+    "code": "3452",
+    "pos": "WM",
+    "player": "Kightly, Michael",
+    "club": "Burnley"
+  },
+  "Hazard, Eden": {
+    "code": "3003",
+    "pos": "WM",
+    "player": "Hazard, Eden",
+    "club": "Chelsea"
+  },
+  "Willian": {
+    "code": "3227",
+    "pos": "WM",
+    "player": "Willian",
+    "club": "Chelsea"
+  },
+  "Pedro": {
+    "code": "3393",
+    "pos": "WM",
+    "player": "Pedro",
+    "club": "Chelsea"
+  },
+  "Cuadrado, Juan": {
+    "code": "3343",
+    "pos": "WM",
+    "player": "Cuadrado, Juan",
+    "club": "Chelsea"
+  },
+  "Traore, Bertrand": {
+    "code": "3384",
+    "pos": "WM",
+    "player": "Traore, Bertrand",
+    "club": "Chelsea"
+  },
+  "Moses, Victor": {
+    "code": "3068",
+    "pos": "WM",
+    "player": "Moses, Victor",
+    "club": "Chelsea"
+  },
+  "Atsu, Christian": {
+    "code": "3280",
+    "pos": "WM",
+    "player": "Atsu, Christian",
+    "club": "Chelsea"
+  },
+  "Kenedy": {
+    "code": "3394",
+    "pos": "WM",
+    "player": "Kenedy",
+    "club": "Chelsea"
+  },
+  "Nathan": {
+    "code": "3009",
+    "pos": "WM",
+    "player": "Nathan",
+    "club": "Chelsea"
+  },
+  "Brown, Isaiah": {
+    "code": "3347",
+    "pos": "WM",
+    "player": "Brown, Isaiah",
+    "club": "Chelsea"
+  },
+  "Bolasie, Yannick": {
+    "code": "3142",
+    "pos": "WM",
+    "player": "Bolasie, Yannick",
+    "club": "Crystal Palace"
+  },
+  "Townsend, Andros": {
+    "code": "3466",
+    "pos": "WM",
+    "player": "Townsend, Andros",
+    "club": "Crystal Palace"
+  },
+  "Zaha, Wilfried": {
+    "code": "3292",
+    "pos": "WM",
+    "player": "Zaha, Wilfried",
+    "club": "Crystal Palace"
+  },
+  "Puncheon, Jason": {
+    "code": "3078",
+    "pos": "WM",
+    "player": "Puncheon, Jason",
+    "club": "Crystal Palace"
+  },
+  "Sako, Bakary": {
+    "code": "3382",
+    "pos": "WM",
+    "player": "Sako, Bakary",
+    "club": "Crystal Palace"
+  },
+  "Chung-yong, Lee": {
+    "code": "3345",
+    "pos": "WM",
+    "player": "Chung-yong, Lee",
+    "club": "Crystal Palace"
+  },
+  "Williams, Jonny": {
+    "code": "3184",
+    "pos": "WM",
+    "player": "Williams, Jonny",
+    "club": "Crystal Palace"
+  },
+  "Kaikai, Sullay": {
+    "code": "3097",
+    "pos": "WM",
+    "player": "Kaikai, Sullay",
+    "club": "Crystal Palace"
+  },
+  "Mirallas, Kevin": {
+    "code": "3194",
+    "pos": "WM",
+    "player": "Mirallas, Kevin",
+    "club": "Everton"
+  },
+  "Deulofeu, Gerard": {
+    "code": "3351",
+    "pos": "WM",
+    "player": "Deulofeu, Gerard",
+    "club": "Everton"
+  },
+  "Lennon, Aaron": {
+    "code": "3026",
+    "pos": "WM",
+    "player": "Lennon, Aaron",
+    "club": "Everton"
+  },
+  "Oviedo, Bryan": {
+    "code": "3157",
+    "pos": "WM",
+    "player": "Oviedo, Bryan",
+    "club": "Everton"
+  },
+  "McGeady, Aiden": {
+    "code": "3242",
+    "pos": "WM",
+    "player": "McGeady, Aiden",
+    "club": "Everton"
+  },
+  "Snodgrass, Robert": {
+    "code": "3438",
+    "pos": "WM",
+    "player": "Snodgrass, Robert",
+    "club": "Hull"
+  },
+  "Clucas, Sam": {
+    "code": "3445",
+    "pos": "WM",
+    "player": "Clucas, Sam",
+    "club": "Hull"
+  },
+  "Elmohamady, Ahmed": {
+    "code": "3442",
+    "pos": "WM",
+    "player": "Elmohamady, Ahmed",
+    "club": "Hull"
+  },
+  "Maloney, Shaun": {
+    "code": "3443",
+    "pos": "WM",
+    "player": "Maloney, Shaun",
+    "club": "Hull"
+  },
+  "Mahrez, Riyad": {
+    "code": "3277",
+    "pos": "WM",
+    "player": "Mahrez, Riyad",
+    "club": "Leicester City"
+  },
+  "Albrighton, Marc": {
+    "code": "3266",
+    "pos": "WM",
+    "player": "Albrighton, Marc",
+    "club": "Leicester City"
+  },
+  "Schlupp, Jeff": {
+    "code": "3435",
+    "pos": "WM",
+    "player": "Schlupp, Jeff",
+    "club": "Leicester City"
+  },
+  "Dyer, Nathan": {
+    "code": "3041",
+    "pos": "WM",
+    "player": "Dyer, Nathan",
+    "club": "Leicester City"
+  },
+  "Gray, Demarai": {
+    "code": "3407",
+    "pos": "WM",
+    "player": "Gray, Demarai",
+    "club": "Leicester City"
+  },
+  "Kapustka, Bartosz": {
+    "code": "3484",
+    "pos": "WM",
+    "player": "Kapustka, Bartosz",
+    "club": "Leicester City"
+  },
+  "Firmino, Roberto": {
+    "code": "3350",
+    "pos": "WM",
+    "player": "Firmino, Roberto",
+    "club": "Liverpool"
+  },
+  "Mane, Sadio": {
+    "code": "3334",
+    "pos": "WM",
+    "player": "Mane, Sadio",
+    "club": "Liverpool"
+  },
+  "Lallana, Adam": {
+    "code": "3050",
+    "pos": "WM",
+    "player": "Lallana, Adam",
+    "club": "Liverpool"
+  },
+  "Markovic, Lazar": {
+    "code": "3313",
+    "pos": "WM",
+    "player": "Markovic, Lazar",
+    "club": "Liverpool"
+  },
+  "Alberto, Luis": {
+    "code": "3289",
+    "pos": "WM",
+    "player": "Alberto, Luis",
+    "club": "Liverpool"
+  },
+  "Ojo, Oluwaseyi": {
+    "code": "3423",
+    "pos": "WM",
+    "player": "Ojo, Oluwaseyi",
+    "club": "Liverpool"
+  },
+  "de Bruyne, Kevin": {
+    "code": "3397",
+    "pos": "WM",
+    "player": "de Bruyne, Kevin",
+    "club": "Manchester City"
+  },
+  "Nolito": {
+    "code": "4226",
+    "pos": "WM",
+    "player": "Nolito",
+    "club": "Manchester City"
+  },
+  "Sterling, Raheem": {
+    "code": "3093",
+    "pos": "WM",
+    "player": "Sterling, Raheem",
+    "club": "Manchester City"
+  },
+  "Nasri, Samir": {
+    "code": "3039",
+    "pos": "WM",
+    "player": "Nasri, Samir",
+    "club": "Manchester City"
+  },
+  "Navas, Jesus": {
+    "code": "3013",
+    "pos": "WM",
+    "player": "Navas, Jesus",
+    "club": "Manchester City"
+  },
+  "Zinchenko, Oleksandr": {
+    "code": "3469",
+    "pos": "WM",
+    "player": "Zinchenko, Oleksandr",
+    "club": "Manchester City"
+  },
+  "Sane, Leroy": {
+    "code": "3482",
+    "pos": "WM",
+    "player": "Sane, Leroy",
+    "club": "Manchester City"
+  },
+  "Mkhitaryan, Henrikh": {
+    "code": "3468",
+    "pos": "WM",
+    "player": "Mkhitaryan, Henrikh",
+    "club": "Manchester United"
+  },
+  "Depay, Memphis": {
+    "code": "3002",
+    "pos": "WM",
+    "player": "Depay, Memphis",
+    "club": "Manchester United"
+  },
+  "Lingard, Jesse": {
+    "code": "3291",
+    "pos": "WM",
+    "player": "Lingard, Jesse",
+    "club": "Manchester United"
+  },
+  "Januzaj, Adnan": {
+    "code": "3223",
+    "pos": "WM",
+    "player": "Januzaj, Adnan",
+    "club": "Manchester United"
+  },
+  "Young, Ashley": {
+    "code": "3040",
+    "pos": "WM",
+    "player": "Young, Ashley",
+    "club": "Manchester United"
+  },
+  "Pereira, Andreas": {
+    "code": "3404",
+    "pos": "WM",
+    "player": "Pereira, Andreas",
+    "club": "Manchester United"
+  },
+  "Downing, Stewart": {
+    "code": "3031",
+    "pos": "WM",
+    "player": "Downing, Stewart",
+    "club": "Middlesbrough"
+  },
+  "Ramirez, Gaston": {
+    "code": "3480",
+    "pos": "WM",
+    "player": "Ramirez, Gaston",
+    "club": "Middlesbrough"
+  },
+  "Fischer, Viktor": {
+    "code": "3444",
+    "pos": "WM",
+    "player": "Fischer, Viktor",
+    "club": "Middlesbrough"
+  },
+  "Adomah, Albert": {
+    "code": "3451",
+    "pos": "WM",
+    "player": "Adomah, Albert",
+    "club": "Middlesbrough"
+  },
+  "Reach, Adam": {
+    "code": "3456",
+    "pos": "WM",
+    "player": "Reach, Adam",
+    "club": "Middlesbrough"
+  },
+  "de Pena, Carlos": {
+    "code": "3458",
+    "pos": "WM",
+    "player": "de Pena, Carlos",
+    "club": "Middlesbrough"
+  },
+  "Carayol, Mustapha": {
+    "code": "3460",
+    "pos": "WM",
+    "player": "Carayol, Mustapha",
+    "club": "Middlesbrough"
+  },
+  "Tadic, Dusan": {
+    "code": "3310",
+    "pos": "WM",
+    "player": "Tadic, Dusan",
+    "club": "Southampton"
+  },
+  "Redmond, Nathan": {
+    "code": "3463",
+    "pos": "WM",
+    "player": "Redmond, Nathan",
+    "club": "Southampton"
+  },
+  "Hesketh, Jake": {
+    "code": "3336",
+    "pos": "WM",
+    "player": "Hesketh, Jake",
+    "club": "Southampton"
+  },
+  "Isgrove, Lloyd": {
+    "code": "3209",
+    "pos": "WM",
+    "player": "Isgrove, Lloyd",
+    "club": "Southampton"
+  },
+  "Arnautovic, Marko": {
+    "code": "3232",
+    "pos": "WM",
+    "player": "Arnautovic, Marko",
+    "club": "Stoke City"
+  },
+  "Shaqiri, Xherdan": {
+    "code": "3386",
+    "pos": "WM",
+    "player": "Shaqiri, Xherdan",
+    "club": "Stoke City"
+  },
+  "Walters, Jon": {
+    "code": "3354",
+    "pos": "WM",
+    "player": "Walters, Jon",
+    "club": "Stoke City"
+  },
+  "Sobhi, Ramadan": {
+    "code": "3479",
+    "pos": "WM",
+    "player": "Sobhi, Ramadan",
+    "club": "Stoke City"
+  },
+  "El Ouriachi, Moha": {
+    "code": "3365",
+    "pos": "WM",
+    "player": "El Ouriachi, Moha",
+    "club": "Stoke City"
+  },
+  "Khazri, Wahbi": {
+    "code": "3415",
+    "pos": "WM",
+    "player": "Khazri, Wahbi",
+    "club": "Sunderland"
+  },
+  "Lens, Jeremain": {
+    "code": "3368",
+    "pos": "WM",
+    "player": "Lens, Jeremain",
+    "club": "Sunderland"
+  },
+  "Larsson, Sebastian": {
+    "code": "3218",
+    "pos": "WM",
+    "player": "Larsson, Sebastian",
+    "club": "Sunderland"
+  },
+  "Buckley, Will": {
+    "code": "3319",
+    "pos": "WM",
+    "player": "Buckley, Will",
+    "club": "Sunderland"
+  },
+  "Mavrias, Charis": {
+    "code": "3226",
+    "pos": "WM",
+    "player": "Mavrias, Charis",
+    "club": "Sunderland"
+  },
+  "Ayew, Andre": {
+    "code": "3099",
+    "pos": "WM",
+    "player": "Ayew, Andre",
+    "club": "Swansea City"
+  },
+  "Montero, Jefferson": {
+    "code": "3314",
+    "pos": "WM",
+    "player": "Montero, Jefferson",
+    "club": "Swansea City"
+  },
+  "Routledge, Wayne": {
+    "code": "3029",
+    "pos": "WM",
+    "player": "Routledge, Wayne",
+    "club": "Swansea City"
+  },
+  "Barrow, Modou": {
+    "code": "3450",
+    "pos": "WM",
+    "player": "Barrow, Modou",
+    "club": "Swansea City"
+  },
+  "Heung-Min, Son": {
+    "code": "4195",
+    "pos": "WM",
+    "player": "Heung-Min, Son",
+    "club": "Tottenham Hotspur"
+  },
+  "Lamela, Erik": {
+    "code": "3229",
+    "pos": "WM",
+    "player": "Lamela, Erik",
+    "club": "Tottenham Hotspur"
+  },
+  "N'Jie, Clinton": {
+    "code": "4194",
+    "pos": "WM",
+    "player": "N'Jie, Clinton",
+    "club": "Tottenham Hotspur"
+  },
+  "Chadli, Nacer": {
+    "code": "3215",
+    "pos": "WM",
+    "player": "Chadli, Nacer",
+    "club": "Tottenham Hotspur"
+  },
+  "Onomah, Joshua": {
+    "code": "3405",
+    "pos": "WM",
+    "player": "Onomah, Joshua",
+    "club": "Tottenham Hotspur"
+  },
+  "Success, Isaac": {
+    "code": "4227",
+    "pos": "WM",
+    "player": "Success, Isaac",
+    "club": "Watford"
+  },
+  "Anya, Ikechi": {
+    "code": "3012",
+    "pos": "WM",
+    "player": "Anya, Ikechi",
+    "club": "Watford"
+  },
+  "Amrabat, Nordin": {
+    "code": "3412",
+    "pos": "WM",
+    "player": "Amrabat, Nordin",
+    "club": "Watford"
+  },
+  "McClean, James": {
+    "code": "3349",
+    "pos": "WM",
+    "player": "McClean, James",
+    "club": "West Bromwich Albion"
+  },
+  "Phillips, Matt": {
+    "code": "3471",
+    "pos": "WM",
+    "player": "Phillips, Matt",
+    "club": "West Bromwich Albion"
+  },
+  "Brunt, Chris": {
+    "code": "3054",
+    "pos": "WM",
+    "player": "Brunt, Chris",
+    "club": "West Bromwich Albion"
+  },
+  "Leko, Jonathan": {
+    "code": "3425",
+    "pos": "WM",
+    "player": "Leko, Jonathan",
+    "club": "West Bromwich Albion"
+  },
+  "McManaman, Callum": {
+    "code": "3355",
+    "pos": "WM",
+    "player": "McManaman, Callum",
+    "club": "West Bromwich Albion"
+  },
+  "Payet, Dimitri": {
+    "code": "3352",
+    "pos": "WM",
+    "player": "Payet, Dimitri",
+    "club": "West Ham United"
+  },
+  "Antonio, Michail": {
+    "code": "3399",
+    "pos": "WM",
+    "player": "Antonio, Michail",
+    "club": "West Ham United"
+  },
+  "Feghouli, Sofiane": {
+    "code": "3432",
+    "pos": "WM",
+    "player": "Feghouli, Sofiane",
+    "club": "West Ham United"
+  },
+  "Tore, Gokhan": {
+    "code": "3473",
+    "pos": "WM",
+    "player": "Tore, Gokhan",
+    "club": "West Ham United"
+  },
+  "Giroud, Olivier": {
+    "code": "4010",
+    "pos": "STR",
+    "player": "Giroud, Olivier",
+    "club": "Arsenal"
+  },
+  "Welbeck, Danny": {
+    "code": "4030",
+    "pos": "STR",
+    "player": "Welbeck, Danny",
+    "club": "Arsenal"
+  },
+  "Akpom, Chuba": {
+    "code": "4179",
+    "pos": "STR",
+    "player": "Akpom, Chuba",
+    "club": "Arsenal"
+  },
+  "Sanogo, Yaya": {
+    "code": "4080",
+    "pos": "STR",
+    "player": "Sanogo, Yaya",
+    "club": "Arsenal"
+  },
+  "Wilson, Callum": {
+    "code": "4006",
+    "pos": "STR",
+    "player": "Wilson, Callum",
+    "club": "Bournemouth"
+  },
+  "Afobe, Benik": {
+    "code": "4202",
+    "pos": "STR",
+    "player": "Afobe, Benik",
+    "club": "Bournemouth"
+  },
+  "King, Joshua": {
+    "code": "4214",
+    "pos": "STR",
+    "player": "King, Joshua",
+    "club": "Bournemouth"
+  },
+  "Grabban, Lewis": {
+    "code": "4038",
+    "pos": "STR",
+    "player": "Grabban, Lewis",
+    "club": "Bournemouth"
+  },
+  "Mousset, Lys": {
+    "code": "4225",
+    "pos": "STR",
+    "player": "Mousset, Lys",
+    "club": "Bournemouth"
+  },
+  "Rantie, Tokelo": {
+    "code": "4047",
+    "pos": "STR",
+    "player": "Rantie, Tokelo",
+    "club": "Bournemouth"
+  },
+  "Gray, Andre": {
+    "code": "4212",
+    "pos": "STR",
+    "player": "Gray, Andre",
+    "club": "Burnley"
+  },
+  "Vokes, Sam": {
+    "code": "4215",
+    "pos": "STR",
+    "player": "Vokes, Sam",
+    "club": "Burnley"
+  },
+  "Barnes, Ashley": {
+    "code": "4216",
+    "pos": "STR",
+    "player": "Barnes, Ashley",
+    "club": "Burnley"
+  },
+  "Jutkiewicz, Lukas": {
+    "code": "4217",
+    "pos": "STR",
+    "player": "Jutkiewicz, Lukas",
+    "club": "Burnley"
+  },
+  "Hennings, Rouwen": {
+    "code": "4220",
+    "pos": "STR",
+    "player": "Hennings, Rouwen",
+    "club": "Burnley"
+  },
+  "Long, Chris": {
+    "code": "4222",
+    "pos": "STR",
+    "player": "Long, Chris",
+    "club": "Burnley"
+  },
+  "Costa, Diego": {
+    "code": "4151",
+    "pos": "STR",
+    "player": "Costa, Diego",
+    "club": "Chelsea"
+  },
+  "Batshuayi, Michy": {
+    "code": "4229",
+    "pos": "STR",
+    "player": "Batshuayi, Michy",
+    "club": "Chelsea"
+  },
+  "Remy, Loic": {
+    "code": "4094",
+    "pos": "STR",
+    "player": "Remy, Loic",
+    "club": "Chelsea"
+  },
+  "Wickham, Connor": {
+    "code": "4051",
+    "pos": "STR",
+    "player": "Wickham, Connor",
+    "club": "Crystal Palace"
+  },
+  "Campbell, Fraizer": {
+    "code": "4060",
+    "pos": "STR",
+    "player": "Campbell, Fraizer",
+    "club": "Crystal Palace"
+  },
+  "Appiah, Kwesi": {
+    "code": "4053",
+    "pos": "STR",
+    "player": "Appiah, Kwesi",
+    "club": "Crystal Palace"
+  },
+  "Lukaku, Romelu": {
+    "code": "4015",
+    "pos": "STR",
+    "player": "Lukaku, Romelu",
+    "club": "Everton"
+  },
+  "Kone, Arouna": {
+    "code": "4083",
+    "pos": "STR",
+    "player": "Kone, Arouna",
+    "club": "Everton"
+  },
+  "Niasse, Oumar": {
+    "code": "4208",
+    "pos": "STR",
+    "player": "Niasse, Oumar",
+    "club": "Everton"
+  },
+  "Rodriguez, Leandro": {
+    "code": "4196",
+    "pos": "STR",
+    "player": "Rodriguez, Leandro",
+    "club": "Everton"
+  },
+  "McAleny, Conor": {
+    "code": "4134",
+    "pos": "STR",
+    "player": "McAleny, Conor",
+    "club": "Everton"
+  },
+  "Sambou, Bassala": {
+    "code": "4219",
+    "pos": "STR",
+    "player": "Sambou, Bassala",
+    "club": "Everton"
+  },
+  "Hernandez, Abel": {
+    "code": "4213",
+    "pos": "STR",
+    "player": "Hernandez, Abel",
+    "club": "Hull"
+  },
+  "Diomande, Adama": {
+    "code": "4221",
+    "pos": "STR",
+    "player": "Diomande, Adama",
+    "club": "Hull"
+  },
+  "Luer, Greg": {
+    "code": "4223",
+    "pos": "STR",
+    "player": "Luer, Greg",
+    "club": "Hull"
+  },
+  "Jahraldo-Martin, Calaum": {
+    "code": "4224",
+    "pos": "STR",
+    "player": "Jahraldo-Martin, Calaum",
+    "club": "Hull"
+  },
+  "Vardy, Jamie": {
+    "code": "4128",
+    "pos": "STR",
+    "player": "Vardy, Jamie",
+    "club": "Leicester City"
+  },
+  "Musa, Ahmed": {
+    "code": "4230",
+    "pos": "STR",
+    "player": "Musa, Ahmed",
+    "club": "Leicester City"
+  },
+  "Ulloa, Leonardo": {
+    "code": "4159",
+    "pos": "STR",
+    "player": "Ulloa, Leonardo",
+    "club": "Leicester City"
+  },
+  "Okazaki, Shinji": {
+    "code": "4182",
+    "pos": "STR",
+    "player": "Okazaki, Shinji",
+    "club": "Leicester City"
+  },
+  "Lawrence, Tom": {
+    "code": "4138",
+    "pos": "STR",
+    "player": "Lawrence, Tom",
+    "club": "Leicester City"
+  },
+  "Sturridge, Daniel": {
+    "code": "4007",
+    "pos": "STR",
+    "player": "Sturridge, Daniel",
+    "club": "Liverpool"
+  },
+  "Benteke, Christian": {
+    "code": "4008",
+    "pos": "STR",
+    "player": "Benteke, Christian",
+    "club": "Liverpool"
+  },
+  "Origi, Divock": {
+    "code": "4002",
+    "pos": "STR",
+    "player": "Origi, Divock",
+    "club": "Liverpool"
+  },
+  "Balotelli, Mario": {
+    "code": "4166",
+    "pos": "STR",
+    "player": "Balotelli, Mario",
+    "club": "Liverpool"
+  },
+  "Ings, Danny": {
+    "code": "4124",
+    "pos": "STR",
+    "player": "Ings, Danny",
+    "club": "Liverpool"
+  },
+  "Woodburn, Ben": {
+    "code": "4233",
+    "pos": "STR",
+    "player": "Woodburn, Ben",
+    "club": "Liverpool"
+  },
+  "Aguero, Sergio": {
+    "code": "4003",
+    "pos": "STR",
+    "player": "Aguero, Sergio",
+    "club": "Manchester City"
+  },
+  "Bony, Wilfried": {
+    "code": "4086",
+    "pos": "STR",
+    "player": "Bony, Wilfried",
+    "club": "Manchester City"
+  },
+  "Iheanacho, Kelechi": {
+    "code": "4187",
+    "pos": "STR",
+    "player": "Iheanacho, Kelechi",
+    "club": "Manchester City"
+  },
+  "Ibrahimovic, Zlatan": {
+    "code": "4228",
+    "pos": "STR",
+    "player": "Ibrahimovic, Zlatan",
+    "club": "Manchester United"
+  },
+  "Rashford, Marcus": {
+    "code": "4210",
+    "pos": "STR",
+    "player": "Rashford, Marcus",
+    "club": "Manchester United"
+  },
+  "Martial, Anthony": {
+    "code": "4200",
+    "pos": "WM",
+    "player": "Martial, Anthony",
+    "club": "Manchester United"
+  },
+  "Rooney, Wayne": {
+    "code": "4004",
+    "pos": "STR",
+    "player": "Rooney, Wayne",
+    "club": "Manchester United"
+  },
+  "Wilson, James": {
+    "code": "4139",
+    "pos": "STR",
+    "player": "Wilson, James",
+    "club": "Manchester United"
+  },
+  "Negredo, Alvaro": {
+    "code": "4235",
+    "pos": "STR",
+    "player": "Negredo, Alvaro",
+    "club": "Middlesbrough"
+  },
+  "Rhodes, Jordan": {
+    "code": "4211",
+    "pos": "STR",
+    "player": "Rhodes, Jordan",
+    "club": "Middlesbrough"
+  },
+  "Nugent, David": {
+    "code": "4126",
+    "pos": "STR",
+    "player": "Nugent, David",
+    "club": "Middlesbrough"
+  },
+  "Stuani, Cristhian": {
+    "code": "4218",
+    "pos": "STR",
+    "player": "Stuani, Cristhian",
+    "club": "Middlesbrough"
+  },
+  "Long, Shane": {
+    "code": "4024",
+    "pos": "STR",
+    "player": "Long, Shane",
+    "club": "Southampton"
+  },
+  "Austin, Charlie": {
+    "code": "4204",
+    "pos": "STR",
+    "player": "Austin, Charlie",
+    "club": "Southampton"
+  },
+  "Rodriguez, Jay": {
+    "code": "4025",
+    "pos": "STR",
+    "player": "Rodriguez, Jay",
+    "club": "Southampton"
+  },
+  "Gallagher, Sam": {
+    "code": "4107",
+    "pos": "STR",
+    "player": "Gallagher, Sam",
+    "club": "Southampton"
+  },
+  "Diouf, Mame Biram": {
+    "code": "4144",
+    "pos": "STR",
+    "player": "Diouf, Mame Biram",
+    "club": "Stoke City"
+  },
+  "Krkic, Bojan": {
+    "code": "4160",
+    "pos": "STR",
+    "player": "Krkic, Bojan",
+    "club": "Stoke City"
+  },
+  "Joselu": {
+    "code": "4037",
+    "pos": "STR",
+    "player": "Joselu",
+    "club": "Stoke City"
+  },
+  "Crouch, Peter": {
+    "code": "4028",
+    "pos": "STR",
+    "player": "Crouch, Peter",
+    "club": "Stoke City"
+  },
+  "Defoe, Jermain": {
+    "code": "4019",
+    "pos": "STR",
+    "player": "Defoe, Jermain",
+    "club": "Sunderland"
+  },
+  "Borini, Fabio": {
+    "code": "4040",
+    "pos": "STR",
+    "player": "Borini, Fabio",
+    "club": "Sunderland"
+  },
+  "Watmore, Duncan": {
+    "code": "3389",
+    "pos": "STR",
+    "player": "Watmore, Duncan",
+    "club": "Sunderland"
+  },
+  "Emnes, Marvin": {
+    "code": "4117",
+    "pos": "STR",
+    "player": "Emnes, Marvin",
+    "club": "Swansea City"
+  },
+  "Llorente, Fernando": {
+    "code": "4236",
+    "pos": "STR",
+    "player": "Llorente, Fernando",
+    "club": "Swansea City"
+  },
+  "Kane, Harry": {
+    "code": "4070",
+    "pos": "STR",
+    "player": "Kane, Harry",
+    "club": "Tottenham Hotspur"
+  },
+  "Janssen, Vincent": {
+    "code": "4231",
+    "pos": "STR",
+    "player": "Janssen, Vincent",
+    "club": "Tottenham Hotspur"
+  },
+  "Deeney, Troy": {
+    "code": "4011",
+    "pos": "STR",
+    "player": "Deeney, Troy",
+    "club": "Watford"
+  },
+  "Ighalo, Odion": {
+    "code": "4022",
+    "pos": "STR",
+    "player": "Ighalo, Odion",
+    "club": "Watford"
+  },
+  "Vydra, Matej": {
+    "code": "4034",
+    "pos": "STR",
+    "player": "Vydra, Matej",
+    "club": "Watford"
+  },
+  "Sinclair, Jerome": {
+    "code": "4181",
+    "pos": "STR",
+    "player": "Sinclair, Jerome",
+    "club": "Watford"
+  },
+  "Jakubiak, Alex": {
+    "code": "4055",
+    "pos": "STR",
+    "player": "Jakubiak, Alex",
+    "club": "Watford"
+  },
+  "Berahino, Saido": {
+    "code": "4103",
+    "pos": "STR",
+    "player": "Berahino, Saido",
+    "club": "Stoke City"
+  },
+  "Rondon, Salomon": {
+    "code": "4193",
+    "pos": "STR",
+    "player": "Rondon, Salomon",
+    "club": "West Bromwich Albion"
+  },
+  "Lambert, Rickie": {
+    "code": "4012",
+    "pos": "STR",
+    "player": "Lambert, Rickie",
+    "club": "West Bromwich Albion"
+  },
+  "Carroll, Andy": {
+    "code": "4017",
+    "pos": "STR",
+    "player": "Carroll, Andy",
+    "club": "West Ham United"
+  },
+  "Sakho, Diafra": {
+    "code": "4163",
+    "pos": "STR",
+    "player": "Sakho, Diafra",
+    "club": "West Ham United"
+  },
+  "Valencia, Enner": {
+    "code": "4155",
+    "pos": "STR",
+    "player": "Valencia, Enner",
+    "club": "West Ham United"
+  },
+  "Fletcher, Ashley": {
+    "code": "4234",
+    "pos": "STR",
+    "player": "Fletcher, Ashley",
+    "club": "West Ham United"
+  },
+  "Martinez, Toni": {
+    "code": "4232",
+    "pos": "STR",
+    "player": "Martinez, Toni",
+    "club": "West Ham United"
+  },
+  "Szczesny, Wojciech": {
+    "code": "1006",
+    "pos": "park",
+    "player": "Szczesny, Wojciech",
+    "club": "Arsenal"
+  },
+  "Bogdan, Adam": {
+    "code": "1010",
+    "pos": "park",
+    "player": "Bogdan, Adam",
+    "club": "Liverpool"
+  },
+  "Lindegaard, Anders": {
+    "code": "1020",
+    "pos": "park",
+    "player": "Lindegaard, Anders",
+    "club": "West Bromwich Albion"
+  },
+  "Kettings, Chris": {
+    "code": "1059",
+    "pos": "park",
+    "player": "Kettings, Chris",
+    "club": "Crystal Palace"
+  },
+  "Ward, Danny": {
+    "code": "1086",
+    "pos": "park",
+    "player": "Ward, Danny",
+    "club": "Liverpool"
+  },
+  "Pudil, Daniel": {
+    "code": "2033",
+    "pos": "park",
+    "player": "Pudil, Daniel",
+    "club": "Watford"
+  },
+  "Skrtel, Martin": {
+    "code": "2037",
+    "pos": "park",
+    "player": "Skrtel, Martin",
+    "club": "Liverpool"
+  },
+  "Juanfran": {
+    "code": "2050",
+    "pos": "park",
+    "player": "Juanfran",
+    "club": "Watford"
+  },
+  "Layun, Miguel": {
+    "code": "2051",
+    "pos": "park",
+    "player": "Layun, Miguel",
+    "club": "Watford"
+  },
+  "Angella, Gabriele": {
+    "code": "2054",
+    "pos": "park",
+    "player": "Angella, Gabriele",
+    "club": "Watford"
+  },
+  "Tiendalli, Dwight": {
+    "code": "2096",
+    "pos": "park",
+    "player": "Tiendalli, Dwight",
+    "club": "Swansea City"
+  },
+  "Richards, Ashley": {
+    "code": "2099",
+    "pos": "park",
+    "player": "Richards, Ashley",
+    "club": "Swansea City"
+  },
+  "Konchesky, Paul": {
+    "code": "2217",
+    "pos": "park",
+    "player": "Konchesky, Paul",
+    "club": "Leicester City"
+  },
+  "Coates, Sebastian": {
+    "code": "2227",
+    "pos": "park",
+    "player": "Coates, Sebastian",
+    "club": "Sunderland"
+  },
+  "O'Neil, Liam": {
+    "code": "2237",
+    "pos": "park",
+    "player": "O'Neil, Liam",
+    "club": "West Bromwich Albion"
+  },
+  "Fazio, Federico": {
+    "code": "2262",
+    "pos": "park",
+    "player": "Fazio, Federico",
+    "club": "Tottenham Hotspur"
+  },
+  "Rahman, Baba": {
+    "code": "2302",
+    "pos": "park",
+    "player": "Rahman, Baba",
+    "club": "Chelsea"
+  },
+  "Varela, Guillermo": {
+    "code": "2310",
+    "pos": "park",
+    "player": "Varela, Guillermo",
+    "club": "Manchester United"
+  },
+  "Ritchie, Matt": {
+    "code": "3056",
+    "pos": "park",
+    "player": "Ritchie, Matt",
+    "club": "Bournemouth"
+  },
+  "Fabbrini, Diego": {
+    "code": "3070",
+    "pos": "park",
+    "player": "Fabbrini, Diego",
+    "club": "Watford"
+  },
+  "Tozser, Daniel": {
+    "code": "3080",
+    "pos": "park",
+    "player": "Tozser, Daniel",
+    "club": "Watford"
+  },
+  "Smith, Connor": {
+    "code": "3094",
+    "pos": "park",
+    "player": "Smith, Connor",
+    "club": "Watford"
+  },
+  "Abdi, Almen": {
+    "code": "3098",
+    "pos": "park",
+    "player": "Abdi, Almen",
+    "club": "Watford"
+  },
+  "Giaccherini, Emanuele": {
+    "code": "3210",
+    "pos": "park",
+    "player": "Giaccherini, Emanuele",
+    "club": "Sunderland"
+  },
+  "Grimes, Matt": {
+    "code": "3338",
+    "pos": "park",
+    "player": "Grimes, Matt",
+    "club": "Swansea City"
+  },
+  "Teixeira, Joao": {
+    "code": "3366",
+    "pos": "park",
+    "player": "Teixeira, Joao",
+    "club": "Liverpool"
+  },
+  "Roberts, Patrick": {
+    "code": "3369",
+    "pos": "park",
+    "player": "Roberts, Patrick",
+    "club": "Manchester City"
+  },
+  "Pritchard, Alex": {
+    "code": "3370",
+    "pos": "park",
+    "player": "Pritchard, Alex",
+    "club": "Tottenham Hotspur"
+  },
+  "Jurado, Jose Manual": {
+    "code": "3371",
+    "pos": "park",
+    "player": "Jurado, Jose Manual",
+    "club": "Watford"
+  },
+  "Tomlin, Lee": {
+    "code": "3380",
+    "pos": "park",
+    "player": "Tomlin, Lee",
+    "club": "Bournemouth"
+  },
+  "Dodoo, Joe": {
+    "code": "3402",
+    "pos": "park",
+    "player": "Dodoo, Joe",
+    "club": "Leicester City"
+  },
+  "Rothwell, Joe": {
+    "code": "3421",
+    "pos": "park",
+    "player": "Rothwell, Joe",
+    "club": "Manchester United"
+  },
+  "Diame, Mohamed": {
+    "code": "3436",
+    "pos": "park",
+    "player": "Diame, Mohamed",
+    "club": "Hull City"
+  },
+  "Berghuis, Steven": {
+    "code": "3462",
+    "pos": "park",
+    "player": "Berghuis, Steven",
+    "club": "Watford"
+  },
+  "Mooy, Aaron": {
+    "code": "3465",
+    "pos": "park",
+    "player": "Mooy, Aaron",
+    "club": "Manchester City"
+  },
+  "Alexander-Arnold, Trent": {
+    "code": "3488",
+    "pos": "park",
+    "player": "Alexander-Arnold, Trent",
+    "club": "Liverpool"
+  },
+  "Field, Sam": {
+    "code": "3489",
+    "pos": "park",
+    "player": "Field, Sam",
+    "club": "West Bromwich Albion"
+  },
+  "Clackstone, Josh": {
+    "code": "3490",
+    "pos": "park",
+    "player": "Clackstone, Josh",
+    "club": "Hull City"
+  },
+  "Murray, Glenn": {
+    "code": "4046",
+    "pos": "park",
+    "player": "Murray, Glenn",
+    "club": "Bournemouth"
+  },
+  "Gayle, Dwight": {
+    "code": "4081",
+    "pos": "park",
+    "player": "Gayle, Dwight",
+    "club": "Crystal Palace"
+  },
+  "Gomis, Bafetimbi": {
+    "code": "4150",
+    "pos": "park",
+    "player": "Gomis, Bafetimbi",
+    "club": "Swansea City"
+  },
+  "Pelle, Graziano": {
+    "code": "4154",
+    "pos": "park",
+    "player": "Pelle, Graziano",
+    "club": "Southampton"
+  },
+  "Oulare, Obbi": {
+    "code": "4199",
+    "pos": "park",
+    "player": "Oulare, Obbi",
+    "club": "Watford"
+  },
+  "Olley, Greg": {
+    "code": "4240",
+    "pos": "park",
+    "player": "Olley, Greg",
+    "club": "Hull City"
+  },
+  "Anderson, Keshi": {
+    "code": "4241",
+    "pos": "park",
+    "player": "Anderson, Keshi",
+    "club": "Crystal Palace"
+  },
+  "Asoro, Joel": {
+    "code": "4243",
+    "pos": "park",
+    "player": "Asoro, Joel",
+    "club": "Sunderland"
+  },
+  "Bamford, Patrick": {
+    "code": "4244",
+    "pos": "STR",
+    "player": "Bamford, Patrick",
+    "club": "Chelsea"
+  },
+  "Calleri, Jonathan": {
+    "code": "4238",
+    "pos": "STR",
+    "player": "Calleri, Jonathan",
+    "club": "West Ham United"
+  },
+  "Pienaar, Steven": {
+    "code": "3493",
+    "pos": "WM",
+    "player": "Pienaar, Steven",
+    "club": "Sunderland"
+  },
+  "Baston, Borja": {
+    "code": "4237",
+    "pos": "STR",
+    "player": "Baston, Borja",
+    "club": "Swansea City"
+  },
+  "Defour, Steven": {
+    "code": "3491",
+    "pos": "CM",
+    "player": "Defour, Steven",
+    "club": "Burnley"
+  },
+  "Marin, Marko": {
+    "code": "3492",
+    "pos": "park",
+    "player": "Marin, Marko",
+    "club": "Chelsea"
+  },
+  "Gooch, Lynden": {
+    "code": "3487",
+    "pos": "CM",
+    "player": "Gooch, Lynden",
+    "club": "Sunderland"
+  },
+  "Wisdom, Andre": {
+    "code": "2375",
+    "pos": "FB",
+    "player": "Wisdom, Andre",
+    "club": "Liverpool"
+  },
+  "Fabio": {
+    "code": "2373",
+    "pos": "FB",
+    "player": "Fabio",
+    "club": "Middlesbrough"
+  },
+  "Love, Donald": {
+    "code": "2372",
+    "pos": "FB",
+    "player": "Love, Donald",
+    "club": "Sunderland"
+  },
+  "Carter-Vickers, Cameron": {
+    "code": "2371",
+    "pos": "CB",
+    "player": "Carter-Vickers, Cameron",
+    "club": "Tottenham Hotspur"
+  },
+  "Masuaku, Arthur": {
+    "code": "2369",
+    "pos": "FB",
+    "player": "Masuaku, Arthur",
+    "club": "West Ham United"
+  },
+  "Konstantopoulos, Dimitrio": {
+    "code": "1091",
+    "pos": "GK",
+    "player": "Konstantopoulos, Dimitrio",
+    "club": "Middlesbrough"
+  },
+  "Paredes, JuanCarlos": {
+    "code": "2044",
+    "pos": "FB",
+    "player": "Paredes, JuanCarlos",
+    "club": "Watford"
+  },
+  "Costa, Filippo": {
+    "code": "2300",
+    "pos": "FB",
+    "player": "Costa, Filippo",
+    "club": "Bournemouth"
+  },
+  "Zuniga, Juan": {
+    "code": "2359",
+    "pos": "FB",
+    "player": "Zuniga, Juan",
+    "club": "Watford"
+  },
+  "Adarabioyo, Tosin": {
+    "code": "2368",
+    "pos": "CB",
+    "player": "Adarabioyo, Tosin",
+    "club": "Manchester City"
+  },
+  "Sweeney, Ryan": {
+    "code": "2370",
+    "pos": "park",
+    "player": "Sweeney, Ryan",
+    "club": "Stoke City"
+  },
+  "Wilson, Kane": {
+    "code": "2374",
+    "pos": "FB",
+    "player": "Wilson, Kane",
+    "club": "West Bromwich Albion"
+  },
+  "Roberts, Tyler": {
+    "code": "3424",
+    "pos": "FB",
+    "player": "Roberts, Tyler",
+    "club": "West Bromwich Albion"
+  },
+  "Samuelsen, Martin": {
+    "code": "3486",
+    "pos": "park",
+    "player": "Samuelsen, Martin",
+    "club": "West Ham United"
+  },
+  "Bowen, Jarrod": {
+    "code": "4239",
+    "pos": "STR",
+    "player": "Bowen, Jarrod",
+    "club": "Hull City"
+  },
+  "Ladapo, Freddie": {
+    "code": "4242",
+    "pos": "STR",
+    "player": "Ladapo, Freddie",
+    "club": "Crystal Palace"
+  },
+  "McGee, Luke": {
+    "code": "1103",
+    "pos": "GK",
+    "player": "McGee, Luke",
+    "club": "Tottenham Hotspur"
+  },
+  "Bravo, Claudio": {
+    "code": "1104",
+    "pos": "GK",
+    "player": "Bravo, Claudio",
+    "club": "Manchester City"
+  },
+  "Eduardo": {
+    "code": "1105",
+    "pos": "GK",
+    "player": "Eduardo",
+    "club": "Chelsea"
+  },
+  "Maffeo, Pablo": {
+    "code": "2376",
+    "pos": "park",
+    "player": "Maffeo, Pablo",
+    "club": "Manchester City"
+  },
+  "Robson, Tom": {
+    "code": "2377",
+    "pos": "park",
+    "player": "Robson, Tom",
+    "club": "Sunderland"
+  },
+  "Robson, Josh": {
+    "code": "2378",
+    "pos": "park",
+    "player": "Robson, Josh",
+    "club": "Sunderland"
+  },
+  "Janmaat, Daryl": {
+    "code": "2379",
+    "pos": "FB",
+    "player": "Janmaat, Daryl",
+    "club": "Watford"
+  },
+  "Manquillo, Javier": {
+    "code": "2380",
+    "pos": "FB",
+    "player": "Manquillo, Javier",
+    "club": "Sunderland"
+  },
+  "O'Neill, Aiden": {
+    "code": "3495",
+    "pos": "park",
+    "player": "O'Neill, Aiden",
+    "club": "Burnley"
+  },
+  "Fernandes, Edimilson": {
+    "code": "3496",
+    "pos": "CM",
+    "player": "Fernandes, Edimilson",
+    "club": "West Ham United"
+  },
+  "Pereyra, Roberto": {
+    "code": "3494",
+    "pos": "CM",
+    "player": "Pereyra, Roberto",
+    "club": "Watford"
+  },
+  "Luiz, David": {
+    "code": "2387",
+    "pos": "CB",
+    "player": "Luiz, David",
+    "club": "Chelsea"
+  },
+  "Martins Indi, Bruno": {
+    "code": "2384",
+    "pos": "CB",
+    "player": "Martins Indi, Bruno",
+    "club": "Stoke City"
+  },
+  "Lopez, Pau": {
+    "code": "1111",
+    "pos": "GK",
+    "player": "Lopez, Pau",
+    "club": "Tottenham Hotspur"
+  },
+  "Mustafi, Shkodran": {
+    "code": "2381",
+    "pos": "CB",
+    "player": "Mustafi, Shkodran",
+    "club": "Arsenal"
+  },
+  "Alonso, Marcos": {
+    "code": "2385",
+    "pos": "FB",
+    "player": "Alonso, Marcos",
+    "club": "Chelsea"
+  },
+  "Arbeloa, Alvaro": {
+    "code": "2386",
+    "pos": "FB",
+    "player": "Arbeloa, Alvaro",
+    "club": "West Ham United"
+  },
+  "Boufal, Sofiane": {
+    "code": "3497",
+    "pos": "WM",
+    "player": "Boufal, Sofiane",
+    "club": "Southampton"
+  },
+  "N'Koudou, Georges-Kevin": {
+    "code": "3502",
+    "pos": "WM",
+    "player": "N'Koudou, Georges-Kevin",
+    "club": "Tottenham Hotspur"
+  },
+  "Sissoko, Moussa": {
+    "code": "3503",
+    "pos": "CM",
+    "player": "Sissoko, Moussa",
+    "club": "Tottenham Hotspur"
+  },
+  "Zaza, Simone": {
+    "code": "4247",
+    "pos": "STR",
+    "player": "Zaza, Simone",
+    "club": "West Ham United"
+  },
+  "Perez, Lucas": {
+    "code": "4248",
+    "pos": "STR",
+    "player": "Perez, Lucas",
+    "club": "Arsenal"
+  },
+  "Slimani, Islam": {
+    "code": "4252",
+    "pos": "STR",
+    "player": "Slimani, Islam",
+    "club": "Leicester City"
+  },
+  "Robson-Kanu, Hal": {
+    "code": "4253",
+    "pos": "STR",
+    "player": "Robson-Kanu, Hal",
+    "club": "West Bromwich Albion"
+  },
+  "Mbokani, Dieumerci": {
+    "code": "4254",
+    "pos": "STR",
+    "player": "Mbokani, Dieumerci",
+    "club": "Hull City"
+  },
+  "Hendrick, Jeff": {
+    "code": "3500",
+    "pos": "CM",
+    "player": "Hendrick, Jeff",
+    "club": "Burnley"
+  },
+  "Marshall, David": {
+    "code": "1107",
+    "pos": "GK",
+    "player": "Marshall, David",
+    "club": "Hull City"
+  },
+  "Taylor, Stuart": {
+    "code": "1106",
+    "pos": "GK",
+    "player": "Taylor, Stuart",
+    "club": "Southampton"
+  },
+  "Calvert-Lewin, Dominic": {
+    "code": "4255",
+    "pos": "park",
+    "player": "Calvert-Lewin, Dominic",
+    "club": "Everton"
+  },
+  "Hinchcliffe, Ben": {
+    "code": "4251",
+    "pos": "park",
+    "player": "Hinchcliffe, Ben",
+    "club": "Hull City"
+  },
+  "Ngoy, Julien": {
+    "code": "4250",
+    "pos": "park",
+    "player": "Ngoy, Julien",
+    "club": "Stoke City"
+  },
+  "Keane, William": {
+    "code": "4249",
+    "pos": "STR",
+    "player": "Keane, William",
+    "club": "Hull City"
+  },
+  "Okaka, Stefano": {
+    "code": "4246",
+    "pos": "STR",
+    "player": "Okaka, Stefano",
+    "club": "Watford"
+  },
+  "McBurnie, Oliver": {
+    "code": "4245",
+    "pos": "STR",
+    "player": "McBurnie, Oliver",
+    "club": "Swansea City"
+  },
+  "Henriksen, Markus": {
+    "code": "3504",
+    "pos": "CM",
+    "player": "Henriksen, Markus",
+    "club": "Hull City"
+  },
+  "Traore, Adama": {
+    "code": "3501",
+    "pos": "WM",
+    "player": "Traore, Adama",
+    "club": "Middlesbrough"
+  },
+  "Ndong, Didier": {
+    "code": "3499",
+    "pos": "CM",
+    "player": "Ndong, Didier",
+    "club": "Sunderland"
+  },
+  "Boateng, Hiram": {
+    "code": "3498",
+    "pos": "park",
+    "player": "Boateng, Hiram",
+    "club": "Crystal Palace"
+  },
+  "Mawson, Alfie": {
+    "code": "2383",
+    "pos": "CB",
+    "player": "Mawson, Alfie",
+    "club": "Swansea City"
+  },
+  "Mariappa, Adrian": {
+    "code": "2382",
+    "pos": "CB",
+    "player": "Mariappa, Adrian",
+    "club": "Watford"
+  },
+  "Grant, Lee": {
+    "code": "1110",
+    "pos": "GK",
+    "player": "Grant, Lee",
+    "club": "Stoke City"
+  },
+  "Stryjek, Maksymilian": {
+    "code": "1109",
+    "pos": "park",
+    "player": "Stryjek, Maksymilian",
+    "club": "Sunderland"
+  },
+  "Rose, Jack": {
+    "code": "1108",
+    "pos": "park",
+    "player": "Rose, Jack",
+    "club": "West Bromwich Albion"
+  },
+  "": {
+    "code": "4244",
+    "pos": "",
+    "player": "",
+    "club": "Chelsea"
+  },
+  "Mika": {
+    "code": "1112",
+    "pos": "GK",
+    "player": "Mika",
+    "club": "Sunderland"
+  },
+  "Flamini, Mathieu": {
+    "code": "3505",
+    "pos": "CM",
+    "player": "Flamini, Mathieu",
+    "club": "Crystal Palace"
+  },
+  "Keane, Will": {
+    "code": "4249",
+    "pos": "STR",
+    "player": "Keane, Will",
+    "club": "Hull City"
+  },
+  "Anichebe, Victor": {
+    "code": "4256",
+    "pos": "STR",
+    "player": "Anichebe, Victor",
+    "club": "Sunderland"
+  },
+  "Benteke, Jonathan": {
+    "code": "4257",
+    "pos": "STR",
+    "player": "Benteke, Jonathan",
+    "club": "Crystal Palace"
+  },
+  "Garcia, Aleix": {
+    "code": "3506",
+    "pos": "CM",
+    "player": "Garcia, Aleix",
+    "club": "Manchester City"
+  },
+  "Benteke Liseka, Jonathan": {
+    "code": "4257",
+    "pos": "STR",
+    "player": "Benteke Liseka, Jonathan",
+    "club": "Crystal Palace"
+  },
+  "Ejaria, Oviemuno": {
+    "code": "3507",
+    "pos": "park",
+    "player": "Ejaria, Oviemuno",
+    "club": "Liverpool"
+  },
+  "McQueen, Sam": {
+    "code": "3508",
+    "pos": "WM",
+    "player": "McQueen, Sam",
+    "club": "Southampton"
+  },
+  "Solanke, Dominic": {
+    "code": "4258",
+    "pos": "park",
+    "player": "Solanke, Dominic",
+    "club": "Chelsea"
+  },
+  "Hewelt, Mateusz": {
+    "code": "1113",
+    "pos": "park",
+    "player": "Hewelt, Mateusz",
+    "club": "Everton"
+  },
+  "Maitland-Niles, Ainsley": {
+    "code": "3509",
+    "pos": "park",
+    "player": "Maitland-Niles, Ainsley",
+    "club": "Arsenal"
+  },
+  "James, Daniel": {
+    "code": "3510",
+    "pos": "park",
+    "player": "James, Daniel",
+    "club": "Swansea City"
+  },
+  "Olomola, Olufela": {
+    "code": "4259",
+    "pos": "park",
+    "player": "Olomola, Olufela",
+    "club": "Southampton"
+  },
+  "Palmer, Alex": {
+    "code": "1114",
+    "pos": "park",
+    "player": "Palmer, Alex",
+    "club": "West Bromwich Albion"
+  },
+  "Sims, Joshua": {
+    "code": "3511",
+    "pos": "WM",
+    "player": "Sims, Joshua",
+    "club": "Southampton"
+  },
+  "Jesus, Gabriel": {
+    "code": "4260",
+    "pos": "WM",
+    "player": "Jesus, Gabriel",
+    "club": "Manchester City"
+  },
+  "Kenny, Jonjoe": {
+    "code": "2388",
+    "pos": "park",
+    "player": "Kenny, Jonjoe",
+    "club": "Everton"
+  },
+  "Stephens, Jack": {
+    "code": "2389",
+    "pos": "park",
+    "player": "Stephens, Jack",
+    "club": "Southampton"
+  },
+  "Ledger, Michael": {
+    "code": "2390",
+    "pos": "park",
+    "player": "Ledger, Michael",
+    "club": "Sunderland"
+  },
+  "Barton, Joey": {
+    "code": "3512",
+    "pos": "CM",
+    "player": "Barton, Joey",
+    "club": "Burnley"
+  },
+  "Husin, Noor": {
+    "code": "3513",
+    "pos": "park",
+    "player": "Husin, Noor",
+    "club": "Crystal Palace"
+  },
+  "Honeyman, George": {
+    "code": "3514",
+    "pos": "park",
+    "player": "Honeyman, George",
+    "club": "Sunderland"
+  },
+  "Robson, Ethan": {
+    "code": "3515",
+    "pos": "park",
+    "player": "Robson, Ethan",
+    "club": "Sunderland"
+  },
+  "Quina, Domingos": {
+    "code": "3516",
+    "pos": "park",
+    "player": "Quina, Domingos",
+    "club": "West Ham United"
+  },
+  "Embleton, Eliot": {
+    "code": "3517",
+    "pos": "park",
+    "player": "Embleton, Eliot",
+    "club": "Sunderland"
+  },
+  "Ndidi, Wilfred": {
+    "code": "3518",
+    "pos": "CM",
+    "player": "Ndidi, Wilfred",
+    "club": "Leicester City"
+  },
+  "Maja, Josh": {
+    "code": "4261",
+    "pos": "park",
+    "player": "Maja, Josh",
+    "club": "Sunderland"
+  },
+  "Folivi, Michael": {
+    "code": "4262",
+    "pos": "park",
+    "player": "Folivi, Michael",
+    "club": "Watford"
+  },
+  "Gestede, Rudy": {
+    "code": "4263",
+    "pos": "STR",
+    "player": "Gestede, Rudy",
+    "club": "Middlesbrough"
+  },
+  "Lookman, Ademola": {
+    "code": "4264",
+    "pos": "WM",
+    "player": "Lookman, Ademola",
+    "club": "Everton"
+  },
+  "Olsson, Martin": {
+    "code": "2391",
+    "pos": "FB",
+    "player": "Olsson, Martin",
+    "club": "Swansea City"
+  },
+  "Narsingh, Luciano": {
+    "code": "3519",
+    "pos": "WM",
+    "player": "Narsingh, Luciano",
+    "club": "Swansea City"
+  },
+  "Evandro": {
+    "code": "3520",
+    "pos": "CM",
+    "player": "Evandro",
+    "club": "Hull City"
+  },
+  "Lescott, Joleon": {
+    "code": "2393",
+    "pos": "CB",
+    "player": "Lescott, Joleon",
+    "club": "Sunderland"
+  },
+  "Zarate, Mauro": {
+    "code": "4265",
+    "pos": "STR",
+    "player": "Zarate, Mauro",
+    "club": "Watford"
+  },
+  "Elabdellaoui, Omar": {
+    "code": "2392",
+    "pos": "FB",
+    "player": "Elabdellaoui, Omar",
+    "club": "Hull City"
+  },
+  "Hassen, Mouez": {
+    "code": "1115",
+    "pos": "GK",
+    "player": "Hassen, Mouez",
+    "club": "Southampton"
+  },
+  "Grosicki, Kamil": {
+    "code": "3525",
+    "pos": "WM",
+    "player": "Grosicki, Kamil",
+    "club": "Hull City"
+  },
+  "Ranocchia, Andrea": {
+    "code": "2394",
+    "pos": "CB",
+    "player": "Ranocchia, Andrea",
+    "club": "Hull City"
+  },
+  "Wague, Molla": {
+    "code": "2395",
+    "pos": "CB",
+    "player": "Wague, Molla",
+    "club": "Leicester City"
+  },
+  "Westwood, Ashley": {
+    "code": "3521",
+    "pos": "CM",
+    "player": "Westwood, Ashley",
+    "club": "Burnley"
+  },
+  "Brady, Robbie": {
+    "code": "3522",
+    "pos": "WM",
+    "player": "Brady, Robbie",
+    "club": "Burnley"
+  },
+  "N'Diaye, Alfred": {
+    "code": "3524",
+    "pos": "CM",
+    "player": "N'Diaye, Alfred",
+    "club": "Hull City"
+  },
+  "Niang, M'Baye": {
+    "code": "4266",
+    "pos": "STR",
+    "player": "Niang, M'Baye",
+    "club": "Watford"
+  },
+  "Ayew, Jordan": {
+    "code": "4267",
+    "pos": "STR",
+    "player": "Ayew, Jordan",
+    "club": "Swansea City"
+  },
+  "Gabbiadini, Manolo": {
+    "code": "4268",
+    "pos": "STR",
+    "player": "Gabbiadini, Manolo",
+    "club": "Southampton"
+  },
+  "Milivojevic, Luka": {
+    "code": "3523",
+    "pos": "CM",
+    "player": "Milivojevic, Luka",
+    "club": "Crystal Palace"
+  },
+  "Caceres, Martin": {
+    "code": "2396",
+    "pos": "CB",
+    "player": "Caceres, Martin",
+    "club": "Southampton"
+  },
+  "Martinez, Emiliano": {
+    "code": "1116",
+    "pos": "GK",
+    "player": "Martinez, Emiliano",
+    "club": "Arsenal"
+  },
+  "Agyei, Daniel": {
+    "code": "4269",
+    "pos": "park",
+    "player": "Agyei, Daniel",
+    "club": "Burnley"
+  },
+  "Pereira, Dion": {
+    "code": "3526",
+    "pos": "park",
+    "player": "Pereira, Dion",
+    "club": "Watford"
+  },
+  "McTominay, Scott": {
+    "code": "3527",
+    "pos": "park",
+    "player": "McTominay, Scott",
+    "club": "Manchester United"
+  }
+}

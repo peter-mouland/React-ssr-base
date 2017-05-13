@@ -1,41 +1,20 @@
-import { randomRange, fetch } from '../utils';
+import { fetch } from '../utils';
 
-export const FETCH_PEOPLE_CARDS = 'FETCH_PEOPLE_CARDS';
+export const FETCH_PLAYERS = 'FETCH_PLAYERS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
 
-const getGameQuery = `
-query ($gameType: String!, $card1: Int!, $card2: Int!) { getGame(gameType: $gameType card1: $card1 card2: $card2){ answerId, cards { ...cardInfo }, question, answer } } 
- 
-fragment cardInfo on GameCard {
- birth_year
- created
- edited
- eye_color
- films
- gender
- hair_color
- height
- homeworld
- mass
- name
- skin_color
- species
- starships
- url
- vehicles
-}
+const getPlayersQuery = `
+query ($player: String) { getPlayers(player: $player){ code, pos, player, club } } 
 `;
 
 const getDashboardQuery = `
   query { getDashboard{ message } } 
 `;
 
-export function fetchPeopleCards() {
-  const DECK = 87;
-  const cards = randomRange(1, DECK, 2);
+export function fetchPlayers(player) {
   return {
-    type: FETCH_PEOPLE_CARDS,
-    payload: fetch.graphQL(getGameQuery, { gameType: 'people', card1: cards[0], card2: cards[1] })
+    type: FETCH_PLAYERS,
+    payload: fetch.graphQL(getPlayersQuery, player ? { player } : undefined)
   };
 }
 

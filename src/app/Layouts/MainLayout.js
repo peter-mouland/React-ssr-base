@@ -58,7 +58,7 @@ export default class MainLayout extends React.Component {
         <nav {...bem('nav')}>
           <span {...bem('nav', 'header')}>React SSR Base</span>
           <NamedLink to='homepage' {...bem('nav', 'link')} />
-          <NamedLink to="game" {...bem('nav', 'link')} />
+          <NamedLink to="players" {...bem('nav', 'link')} />
           <NamedLink to="dashboard" {...bem('nav', 'link')} />
           <MyAccount isUserAuthenticated={ isUserAuthenticated } />
         </nav>

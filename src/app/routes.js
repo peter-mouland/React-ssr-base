@@ -8,7 +8,7 @@ import debug from 'debug';
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
 import DashboardPage from './containers/DashboardPage/DashboardPage';
-import Game from './containers/Game/Game';
+import Players from './containers/Players/Players';
 import NotFound from './containers/NotFound/NotFound';
 
 import LoginPage from './authentication/containers/LoginPage/LoginPage';
@@ -42,14 +42,14 @@ export function getRoutesConfig() {
       component: Homepage
     },
     {
-      name: 'game',
-      path: '/game/',
-      label: 'Star Wars Trivia',
+      name: 'players',
+      path: '/players/',
+      label: 'Players',
       meta: {
         ...baseMetaData,
-        title: 'Star Wars Trivia',
+        title: 'Players',
       },
-      component: Game
+      component: Players
     },
     {
       name: 'logout',

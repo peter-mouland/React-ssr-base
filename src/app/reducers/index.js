@@ -6,22 +6,22 @@ import * as actions from '../actions';
 
 const log = debug('base:reducers/index');
 
-export function game(state = {}, action) {
+export function players(state = {}, action) {
   switch (action.type) {
-    case `${actions.FETCH_PEOPLE_CARDS}_PENDING`:
+    case `${actions.FETCH_PLAYERS}_PENDING`:
       return {
         ...state,
         loading: true
       };
-    case `${actions.FETCH_PEOPLE_CARDS}_FULFILLED`:
+    case `${actions.FETCH_PLAYERS}_FULFILLED`:
       return {
         ...state,
         loading: false,
         errors: action.payload.errors,
-        hand: action.payload.data && action.payload.data.getGame,
+        players: action.payload.data && action.payload.data.getPlayers,
         status: action.status
       };
-    case `${actions.FETCH_PEOPLE_CARDS}_REJECTED`:
+    case `${actions.FETCH_PLAYERS}_REJECTED`:
       return {
         ...state,
         loading: false,
@@ -47,7 +47,7 @@ export function dashboard(state = {}, action) {
         secretData: action.payload.data && action.payload.data.getDashboard.message,
         status: action.status
       };
-    case `${actions.FETCH_PEOPLE_CARDS}_REJECTED`:
+    case `${actions.FETCH_PLAYERS}_REJECTED`:
       return {
         ...state,
         loading: false,
@@ -60,7 +60,7 @@ export function dashboard(state = {}, action) {
 }
 
 export default combineReducers({
-  game,
+  players,
   dashboard,
   routing
 });
