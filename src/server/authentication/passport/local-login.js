@@ -42,7 +42,8 @@ module.exports = new PassportLocalStrategy({
       }
 
       const payload = {
-        sub: user._id
+        sub: user._id,
+        isAdmin: user.email === 'uni_nake@hotmail.com' // hardcode admin
       };
 
       // create a token string

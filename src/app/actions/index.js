@@ -1,5 +1,6 @@
 import { fetch } from '../utils';
 
+export const FETCH_TEAM = 'FETCH_TEAM';
 export const FETCH_PLAYERS = 'FETCH_PLAYERS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
 
@@ -25,10 +26,22 @@ const getDashboardQuery = `
   query { getDashboard{ message } } 
 `;
 
+const getTeamQuery = `
+  query ($manager: String) { getTeam{ message } } 
+`;
+
 export function fetchPlayers(player) {
   return {
     type: FETCH_PLAYERS,
     payload: fetch.graphQL(getPlayersQuery, player ? { player } : undefined)
+  };
+}
+
+
+export function fetchTeam(manager) {
+  return {
+    type: FETCH_TEAM,
+    payload: fetch.graphQL(getTeamQuery, manager)
   };
 }
 

@@ -1,30 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import jwtDecode from 'jwt-decode';
 
-const Error = ({ error }) => <div>
-  <p>Error Loading dashboard!</p>
-  <p>{ error.name }</p>
-  <p>{ error.message }</p>
-  <p>{ error.stack }</p>
-</div>;
+import Auth from '../../authentication/auth-helper';
+import Admin from '../../components/Admin/Admin';
 
-const Dashboard = ({ secretData, error = false, loading = false, ...props }) => (
-  <section {...props} >
-    <h2>Dashboard</h2>
-    <p>You should get access to this page only after authentication.</p>
-    {error && <Error error={error} />}
-    {
-      loading
-        ? <p>Loading...</p>
-        : <p style={{ fontSize: '16px', color: 'green' }}>{secretData}</p>
-    }
-  </section>
-);
+const Dashboard = ({ ...props }) => {
+  const token = jwtDecode(Auth.getToken());
+  const isAdmin = token.isAdmin;
 
-Dashboard.propTypes = {
-  loading: PropTypes.bool,
-  secretData: PropTypes.string,
-  error: PropTypes.object
+  return (
+    <section {...props} >
+      <h2>Dashboard</h2>
+      {isAdmin && <Admin />}
+    </section>
+  );
 };
 
 export default Dashboard;

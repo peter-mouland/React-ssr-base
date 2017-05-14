@@ -4,23 +4,16 @@ import { connect } from 'react-redux';
 import debug from 'debug';
 import bemHelper from 'react-bem-helper';
 
-import { fetchPlayers } from '../../actions';
+import { fetchTeam } from '../../actions';
 import { PositionLinks, PositionButtons } from '../../components/Positions/Positions';
-import './players.scss';
+import './my-team.scss';
 
-const bem = bemHelper({ name: 'unknown-players' });
+const bem = bemHelper({ name: 'my-team' });
 debug('base:Players');
 
-const Error = ({ error }) => <div>
-  <p>Error Loading cards!</p>
-  <p>{ error.message }</p>
-</div>;
+class MyTeam extends React.Component {
 
-const Loading = () => <p>Loading players....</p>;
-
-class Players extends React.Component {
-
-  static needs = [fetchPlayers];
+  static needs = [];
 
   static propTypes = {
     players: PropTypes.array
@@ -33,52 +26,12 @@ class Players extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: false,
-      isSaving: false,
-      playersToUpdate: {},
-      playersUpdated: {},
-      position: ''
     };
-    this.SavePlayerPositions = this.SavePlayerPositions.bind(this);
-    this.updatePosition = this.updatePosition.bind(this);
-    this.changePos = this.changePos.bind(this);
   }
 
   componentDidMount() {
-    if (this.props.players.length > 0) return;
-    this.props.fetchPlayers();
-  }
-
-  updatePosition(player, pos) {
-    this.setState({
-      playersToUpdate: {
-        ...this.state.playersToUpdate,
-        [player.player]: {
-          code: player.code,
-          pos,
-          player: player.player,
-          club: player.club
-        }
-      }
-    });
-  }
-
-  SavePlayerPositions() {
-    this.setState({
-      isSaving: true
-    });
-    // this.props.savePlayerPositions(this.state.playersToUpdate)
-    //   .then(() => {
-    //     this.setState({
-    //       isSaving: false,
-    //       playersToUpdate: {}
-    //     });
-    //   });
-  }
-
-  changePos(e, position) {
-    e.preventDefault();
-    this.setState({ position });
+    // if (this.props.players.length > 0) return;
+    // this.props.fetchPlayers();
   }
 
   render() {
@@ -132,11 +85,11 @@ function mapStateToProps(state) {
   return {
     errors: state.actionState.errors,
     loading: state.actionState.loading,
-    players: state.players.data,
+    team: state.team.data,
   };
 }
 
 export default connect(
   mapStateToProps,
-  { fetchPlayers }
-)(Players);
+  { fetchTeam }
+)(MyTeam);

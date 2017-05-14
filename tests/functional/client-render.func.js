@@ -2,7 +2,7 @@ import { React, mount, expect } from '../config/test.helper';
 import Root, { Router } from '../../src/app/Root';
 import Homepage from '../../src/app/containers/Homepage/Homepage';
 import NotFound from '../../src/app/containers/NotFound/NotFound';
-import Players from '../../src/app/containers/Players/Players';
+import Players from '../../src/app/containers/MyTeam/Players';
 
 describe.only('Client Render', function () {
   afterEach(() => {

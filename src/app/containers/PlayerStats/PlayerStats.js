@@ -10,8 +10,8 @@ import './playerStats.scss';
 
 const log = debug('footy:Homepage.js'); //eslint-disable-line
 const bem = bemHelper({ name: 'player-stats' });
-const MAX_GW  = 35;
-const GAME_WEEKS = Array.apply(null, Array(MAX_GW)).map(Number.prototype.valueOf,0);
+const MAX_GW = 35;
+const GAME_WEEKS = Array(...Array(MAX_GW)).map(Number.prototype.valueOf, 0);
 
 
 const Error = ({ error }) => <div>
@@ -118,7 +118,7 @@ class PlayerStats extends React.Component {
             ))}
             <th>
               <select onChange={this.showGW}>
-                {GAME_WEEKS.map((i, gw) => <option value={gw} key={gw}>{gw}</option>)}
+                {GAME_WEEKS.map((val, i) => <option value={i} key={i}>{i}</option>)}
               </select>
             </th>
           </tr>

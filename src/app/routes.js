@@ -8,7 +8,7 @@ import debug from 'debug';
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
 import DashboardPage from './containers/DashboardPage/DashboardPage';
-import Players from './containers/Players/Players';
+import MyTeam from './containers/MyTeam/MyTeam';
 import PlayerStats from './containers/PlayerStats/PlayerStats';
 import NotFound from './containers/NotFound/NotFound';
 
@@ -43,14 +43,14 @@ export function getRoutesConfig() {
       component: Homepage
     },
     {
-      name: 'players',
-      path: '/players/',
-      label: 'Players',
+      name: 'myTeam',
+      path: '/MyTeam/',
+      label: 'My Team',
       meta: {
         ...baseMetaData,
-        title: 'Players',
+        title: 'My Team',
       },
-      component: Players
+      component: MyTeam
     },
     {
       name: 'playerStats',

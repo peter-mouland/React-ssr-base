@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Dashboard from '../../components/Dashboard/Dashboard';
@@ -9,23 +8,13 @@ class DashboardPage extends React.Component {
 
   static needs = [fetchDashboardData];
 
-  static propTypes = {
-    loading: PropTypes.bool,
-    secretData: PropTypes.string
-  };
-
   componentDidMount() {
     if (this.props.secretData) return;
     this.props.fetchDashboardData();
   }
 
   render() {
-    const { secretData, loading = false, errors = [] } = this.props;
-    return (<Dashboard id="dashboard-page"
-                       loading={loading}
-                       error={errors[0]}
-                       secretData={secretData}
-    />);
+    return (<Dashboard id="dashboard-page" />);
   }
 }
 
