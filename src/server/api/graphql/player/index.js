@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import debug from 'debug';
 
-import calculatePoints from './calculatePoints';
+import { forPlayer } from './calculatePoints';
 
 const log = debug('base:graphql/players');
 
@@ -42,6 +42,7 @@ const schema = (`
   }
   type Point {
     change: Int
+    total: Int
     gw35: Int
     gw34: Int
     gw33: Int
@@ -107,12 +108,9 @@ export class Player {
     this.club = player.club;
   }
 
-  // get total() {
-  //   return calculatePoints(this._player, this._player.pos);
-  // }
-
   get points() {
     return {
+      total: forPlayer(this._player, this._player.pos).total,
       change: this._player.change,
       gw35: this._player.gw35,
       gw34: this._player.gw34,

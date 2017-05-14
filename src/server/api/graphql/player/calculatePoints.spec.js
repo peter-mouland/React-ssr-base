@@ -53,9 +53,9 @@ describe('calculatePoints', () => {
     });
 
     it('returns -1 points for each clean sheet', () => {
-      expect(calculatePoints.forConceeded(1, position)).to.eql(-1);
-      expect(calculatePoints.forConceeded(0, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(10, position)).to.eql(-10);
+      expect(calculatePoints.forConceded(1, position)).to.eql(-1);
+      expect(calculatePoints.forConceded(0, position)).to.eql(0);
+      expect(calculatePoints.forConceded(10, position)).to.eql(-10);
     });
   });
 
@@ -77,9 +77,9 @@ describe('calculatePoints', () => {
     });
 
     it('returns -1 points for each clean sheet', () => {
-      expect(calculatePoints.forConceeded(1, position)).to.eql(-1);
-      expect(calculatePoints.forConceeded(0, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(10, position)).to.eql(-10);
+      expect(calculatePoints.forConceded(1, position)).to.eql(-1);
+      expect(calculatePoints.forConceded(0, position)).to.eql(0);
+      expect(calculatePoints.forConceded(10, position)).to.eql(-10);
     });
   });
 
@@ -101,9 +101,9 @@ describe('calculatePoints', () => {
     });
 
     it('returns -1 points for each clean sheet', () => {
-      expect(calculatePoints.forConceeded(1, position)).to.eql(-1);
-      expect(calculatePoints.forConceeded(0, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(10, position)).to.eql(-10);
+      expect(calculatePoints.forConceded(1, position)).to.eql(-1);
+      expect(calculatePoints.forConceded(0, position)).to.eql(0);
+      expect(calculatePoints.forConceded(10, position)).to.eql(-10);
     });
   });
 
@@ -124,9 +124,9 @@ describe('calculatePoints', () => {
     });
 
     it('returns 0 points for each clean sheet', () => {
-      expect(calculatePoints.forConceeded(1, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(0, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(10, position)).to.eql(0);
+      expect(calculatePoints.forConceded(1, position)).to.eql(0);
+      expect(calculatePoints.forConceded(0, position)).to.eql(0);
+      expect(calculatePoints.forConceded(10, position)).to.eql(0);
     });
   });
 
@@ -148,9 +148,9 @@ describe('calculatePoints', () => {
     });
 
     it('returns 0 points for each clean sheet', () => {
-      expect(calculatePoints.forConceeded(1, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(0, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(10, position)).to.eql(0);
+      expect(calculatePoints.forConceded(1, position)).to.eql(0);
+      expect(calculatePoints.forConceded(0, position)).to.eql(0);
+      expect(calculatePoints.forConceded(10, position)).to.eql(0);
     });
   });
 
@@ -172,9 +172,9 @@ describe('calculatePoints', () => {
     });
 
     it('returns 0 points for each clean sheet', () => {
-      expect(calculatePoints.forConceeded(1, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(0, position)).to.eql(0);
-      expect(calculatePoints.forConceeded(10, position)).to.eql(0);
+      expect(calculatePoints.forConceded(1, position)).to.eql(0);
+      expect(calculatePoints.forConceded(0, position)).to.eql(0);
+      expect(calculatePoints.forConceded(10, position)).to.eql(0);
     });
   });
 });

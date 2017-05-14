@@ -5,7 +5,7 @@ const ASSISTS = 'asts';
 const YELLOW_CARDS = 'ycard';
 const RED_CARDS = 'rcard';
 const CLEAN_SHEETS = 'cs';
-const CONCEEDED = 'con';
+const CONCEDED = 'con';
 const SAVED_PENALTIES = 'pensv';
 
 export function forStarting(starts) { // starting a match 3 point
@@ -52,7 +52,7 @@ export function forCleanSheet(cs, position) { // 5
   return cs * multiplier;
 }
 
-export function forConceeded(ga, position) { // -1
+export function forConceded(ga, position) { // -1
   let multiplier;
   if ((position === 'FB' || position === 'CB') || position === 'GK') {
     multiplier = -1;
@@ -72,7 +72,7 @@ export function forPlayer(stats, pos) {
   const goals = forGoals(stats[GOALS], pos);
   const asts = forAssists(stats[ASSISTS], pos);
   const cs = forCleanSheet(stats[CLEAN_SHEETS], pos);
-  const con = forConceeded(stats[CONCEEDED], pos);
+  const con = forConceded(stats[CONCEDED], pos);
   const penSvd = forPenaltiesSaved(stats[SAVED_PENALTIES], pos);
   const yells = forYellowCards(stats[YELLOW_CARDS], pos);
   const reds = forRedCards(stats[RED_CARDS], pos);
@@ -81,11 +81,11 @@ export function forPlayer(stats, pos) {
     starts: stats[STARTING_XI],
     subs: stats[SUBS],
     goals: stats[GOALS],
-    asts: stats[ASSISTS],
+    assists: stats[ASSISTS],
     cs: stats[CLEAN_SHEETS],
-    con: stats[CONCEEDED],
+    con: stats[CONCEDED],
     penSvd: stats[SAVED_PENALTIES],
-    yells: stats[YELLOW_CARDS],
+    yellows: stats[YELLOW_CARDS],
     reds: stats[RED_CARDS],
     total
   };

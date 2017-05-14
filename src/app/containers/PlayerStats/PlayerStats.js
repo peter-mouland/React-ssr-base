@@ -138,7 +138,7 @@ class PlayerStats extends React.Component {
                   <td { ...bem('meta', player.pos)} >{player.pos}</td>
                   <td { ...bem('meta')} >{player.player}</td>
                   <td { ...bem('meta')} >{player.club}</td>
-                  <td { ...bem('meta')} >{player.total}</td>
+                  <td { ...bem('meta')} >{player.points.total}</td>
                   {Object.keys(player.stats).map((key, i) => (
                     <td key={i} { ...bem('meta', 'stat')} >{player.stats[key]}</td>
                   ))}
