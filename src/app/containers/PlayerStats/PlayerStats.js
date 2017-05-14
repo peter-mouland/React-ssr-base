@@ -56,18 +56,18 @@ class PlayerStats extends React.Component {
   }
 
   saveStatsSnapshot() {
-    this.props.saveStatsSnapshot(this.props.players)
+    this.props.saveStatsSnapshot(this.props.players);
   }
 
   render() {
-    const { players, errors=[], loading } = this.props;
+    const { players, errors = [], loading } = this.props;
     const { isSaving, posFilter, clubFilter } = this.state;
     const Save = (isSaving)
       ? <em>Saving ALL stats to Google... this may take a minute or two.</em>
       : <button onClick={this.saveStatsSnapshot} >Save Stats-Snapshot</button>;
 
     const clubsObj = {};
-    players.forEach(player => { clubsObj[player.club] = true; });
+    players.forEach((player) => { clubsObj[player.club] = true; });
     const clubs = Object.keys(clubsObj).sort();
 
     return (
@@ -94,14 +94,14 @@ class PlayerStats extends React.Component {
             <th>
               <select onChange={this.posFilter}>
                 <option value={''}>all</option>
-                {availablePositions.map(pos => <option value={pos} key={pos}>{pos}</option>)}
+                {availablePositions.map((pos) => <option value={pos} key={pos}>{pos}</option>)}
               </select>
             </th>
             <th></th>
             <th>
               <select onChange={this.clubFilter}>
                 <option value={''}>all</option>
-                {clubs.map(club => <option value={club} key={club}>{club}</option>)}
+                {clubs.map((club) => <option value={club} key={club}>{club}</option>)}
               </select>
             </th>
           </tr>
@@ -109,12 +109,12 @@ class PlayerStats extends React.Component {
         <tbody>
         {
           players
-            .filter(player => {
+            .filter((player) => {
               const isFiltered = (!!posFilter && posFilter !== player.pos)
                 || (!!clubFilter && clubFilter !== player.club);
               return !isFiltered;
             })
-            .map(player => (
+            .map((player) => (
               <tr key={player.code} { ...bem('player')}>
                   <td { ...bem('meta')} >{player.code}</td>
                   <td { ...bem('meta', player.pos)} >{player.pos}</td>

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import debug from 'debug';
 
 const log = debug('base:graphql/players');
@@ -165,5 +166,5 @@ export class Player {
 
 export function getPlayers({ player }) {
   const promise = player ? fetchPlayer({ player }) : fetchPlayers();
-  return promise.then((players) => players.map(player => new Player(player)));
+  return promise.then((players) => players.map((pl) => new Player(pl)));
 }

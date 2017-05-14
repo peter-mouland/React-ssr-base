@@ -10,19 +10,19 @@ export function actionState(state = {}, action) {
   const splitAction = action.type.split('_');
   const postFix = splitAction[splitAction.length - 1];
   switch (postFix) {
-    case `PENDING`:
+    case 'PENDING':
       return {
         ...state,
         loading: true
       };
-    case `FULFILLED`:
+    case 'FULFILLED':
       return {
         ...state,
         loading: false,
         errors: action.payload.errors,
         status: action.status
       };
-    case `REJECTED`:
+    case 'REJECTED':
       return {
         ...state,
         loading: false,

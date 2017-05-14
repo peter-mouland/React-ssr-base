@@ -16,9 +16,9 @@ const middleware = [
 ];
 
 
-const composeEnhancers = inBrowser && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 /* eslint-disable no-underscore-dangle */
+const composeEnhancers = (inBrowser && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+
 export default function configureStore(initialState) {
   const store = createStore(
     reducers,
