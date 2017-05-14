@@ -1,12 +1,12 @@
-const STARTING_XI = 0;
-const SUBS = 2;
-const GOALS = 3;
-const ASSISTS = 4;
-const YELLOW_CARDS = 5;
-const RED_CARDS = 6;
-const CLEAN_SHEETS = 7;
-const CONCEEDED = 8;
-const SAVED_PENALTIES = 10;
+const STARTING_XI = 'apps';
+const SUBS = 'subs';
+const GOALS = 'gls';
+const ASSISTS = 'asts';
+const YELLOW_CARDS = 'ycard';
+const RED_CARDS = 'rcard';
+const CLEAN_SHEETS = 'cs';
+const CONCEEDED = 'con';
+const SAVED_PENALTIES = 'pensv';
 
 export function forStarting(starts) { // starting a match 3 point
   return starts * 3;

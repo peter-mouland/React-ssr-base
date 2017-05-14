@@ -10,10 +10,17 @@ import './playerStats.scss';
 
 const log = debug('footy:Homepage.js'); //eslint-disable-line
 const bem = bemHelper({ name: 'player-stats' });
+const MAX_GW  = 35;
+const GAME_WEEKS = Array.apply(null, Array(MAX_GW)).map(Number.prototype.valueOf,0);
+
 
 const Error = ({ error }) => <div>
-  <p>Error Loading cards!</p>
+  <p>Error Loading players!</p>
   <p>{ error.message }</p>
+</div>;
+
+const Errors = ({ errors }) => <div>
+  {errors.map((error, i) => <Error error={error} key={i} />)}
 </div>;
 
 const Loading = () => <p>Loading players....</p>;
@@ -32,14 +39,15 @@ class PlayerStats extends React.Component {
 
   constructor(props) {
     super(props);
-    this.saveStatsSnapshot = this.saveStatsSnapshot.bind(this);
-    this.posFilter = this.posFilter.bind(this);
-    this.clubFilter = this.clubFilter.bind(this);
     this.state = {
       isSaving: false,
       posFilter: '',
-      clubFilter: ''
+      clubFilter: '',
+      gw: 0
     };
+    this.posFilter = this.posFilter.bind(this);
+    this.clubFilter = this.clubFilter.bind(this);
+    this.showGW = this.showGW.bind(this);
   }
 
   componentDidMount() {
@@ -55,29 +63,26 @@ class PlayerStats extends React.Component {
     this.setState({ clubFilter: e.target.value });
   }
 
-  saveStatsSnapshot() {
-    this.props.saveStatsSnapshot(this.props.players);
+  showGW(e) {
+    this.setState({ gw: e.target.value });
   }
 
   render() {
     const { players, errors = [], loading } = this.props;
-    const { isSaving, posFilter, clubFilter } = this.state;
-    const Save = (isSaving)
-      ? <em>Saving ALL stats to Google... this may take a minute or two.</em>
-      : <button onClick={this.saveStatsSnapshot} >Save Stats-Snapshot</button>;
-
-    const clubsObj = {};
-    players.forEach((player) => { clubsObj[player.club] = true; });
+    const { posFilter, clubFilter, gw } = this.state;
+    const clubsObj = players.reduce((prev, curr) => { prev[curr.club] = true; return prev; }, {});
     const clubs = Object.keys(clubsObj).sort();
+
+
+    if (errors.length) {
+      return <Errors errors={errors} />;
+    } else if (loading || !players.length) {
+      return <Loading />;
+    }
 
     return (
       <div { ...bem() }>
         <h2>Players Stats</h2>
-        <section>
-          { loading && <Loading /> }
-          { errors.map((error) => <Error error={error} />) }
-        </section>
-        {Save}
         <table cellPadding={0} cellSpacing={0} { ...bem('table') }>
           <thead>
           <tr { ...bem('data-header')}>
@@ -85,9 +90,12 @@ class PlayerStats extends React.Component {
             <th>position</th>
             <th>player</th>
             <th>club</th>
+            <th>total</th>
             {Object.keys(players[0].stats).map((key, i) => (
               <th key={i}>{key}</th>
             ))}
+            <th>GW</th>
+            <th></th>
           </tr>
           <tr>
             <th></th>
@@ -104,14 +112,24 @@ class PlayerStats extends React.Component {
                 {clubs.map((club) => <option value={club} key={club}>{club}</option>)}
               </select>
             </th>
+            <th></th>
+            {Object.keys(players[0].stats).map((key, i) => (
+              <th key={i}></th>
+            ))}
+            <th>
+              <select onChange={this.showGW}>
+                {GAME_WEEKS.map((i, gw) => <option value={gw} key={gw}>{gw}</option>)}
+              </select>
+            </th>
           </tr>
         </thead>
         <tbody>
         {
           players
             .filter((player) => {
-              const isFiltered = (!!posFilter && posFilter !== player.pos)
-                || (!!clubFilter && clubFilter !== player.club);
+              const isFiltered =
+                (!!posFilter && posFilter !== player.pos) ||
+                (!!clubFilter && clubFilter !== player.club);
               return !isFiltered;
             })
             .map((player) => (
@@ -120,9 +138,15 @@ class PlayerStats extends React.Component {
                   <td { ...bem('meta', player.pos)} >{player.pos}</td>
                   <td { ...bem('meta')} >{player.player}</td>
                   <td { ...bem('meta')} >{player.club}</td>
+                  <td { ...bem('meta')} >{player.total}</td>
                   {Object.keys(player.stats).map((key, i) => (
                     <td key={i} { ...bem('meta', 'stat')} >{player.stats[key]}</td>
                   ))}
+                  <td>{
+                    gw && gw > 0
+                      ? player.points[`gw${gw}`] - player.points[`gw${gw - 1}`]
+                      : ''
+                  }</td>
                 </tr>
             ))
         }

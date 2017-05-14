@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import debug from 'debug';
 
+import calculatePoints from './calculatePoints';
+
 const log = debug('base:graphql/players');
 
 const PlayersDb = require('mongoose').model('Players');
@@ -29,7 +31,7 @@ const schema = (`
   type Stat {
     apps: Int
     subs: Int
-    gls: Int
+    goals: Int
     assists: Int
     mom: Int
     cs: Int
@@ -104,6 +106,10 @@ export class Player {
     this.pos = player.pos;
     this.club = player.club;
   }
+
+  // get total() {
+  //   return calculatePoints(this._player, this._player.pos);
+  // }
 
   get points() {
     return {
