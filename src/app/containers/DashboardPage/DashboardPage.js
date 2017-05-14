@@ -20,10 +20,10 @@ class DashboardPage extends React.Component {
   }
 
   render() {
-    const { secretData, loading = false, error } = this.props;
+    const { secretData, loading = false, errors = [] } = this.props;
     return (<Dashboard id="dashboard-page"
                        loading={loading}
-                       error={error}
+                       error={errors[0]}
                        secretData={secretData}
     />);
   }
@@ -31,9 +31,9 @@ class DashboardPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    secretData: state.dashboard.secretData,
-    loading: state.dashboard.loading,
-    error: state.dashboard.error,
+    secretData: state.dashboard.data,
+    loading: state.actionState.loading,
+    error: state.actionState.errors,
   };
 }
 

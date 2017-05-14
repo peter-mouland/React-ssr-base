@@ -45,7 +45,7 @@ class Players extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.players) return;
+    if (this.props.players.length > 0) return;
     this.props.fetchPlayers();
   }
 
@@ -130,9 +130,9 @@ class Players extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    errors: state.players.errors,
-    loading: state.players.loading,
-    players: state.players.players,
+    errors: state.actionState.errors,
+    loading: state.actionState.loading,
+    players: state.players.data,
   };
 }
 

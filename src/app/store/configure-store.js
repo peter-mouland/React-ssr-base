@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
@@ -15,11 +15,17 @@ const middleware = [
   })
 ];
 
+
+const composeEnhancers = inBrowser && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+/* eslint-disable no-underscore-dangle */
 export default function configureStore(initialState) {
   const store = createStore(
     reducers,
     initialState,
-    applyMiddleware(...middleware)
+    composeEnhancers(
+      applyMiddleware(...middleware)
+    )
   );
 
   if (module.hot) {

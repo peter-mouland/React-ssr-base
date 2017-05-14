@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import bemHelper from 'react-bem-helper';
 import debug from 'debug';
@@ -21,6 +22,14 @@ class PlayerStats extends React.Component {
 
   static needs = [fetchPlayers];
 
+  static propTypes = {
+    players: PropTypes.array
+  };
+
+  static defaultProps = {
+    players: []
+  };
+
   constructor(props) {
     super(props);
     this.saveStatsSnapshot = this.saveStatsSnapshot.bind(this);
@@ -34,7 +43,7 @@ class PlayerStats extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.players) return;
+    if (this.props.players.length > 0) return;
     this.props.fetchPlayers();
   }
 
@@ -47,11 +56,7 @@ class PlayerStats extends React.Component {
   }
 
   saveStatsSnapshot() {
-    this.setState({ isSaving: true });
     this.props.saveStatsSnapshot(this.props.players)
-      .then(() => {
-        this.setState({ isSaving: false });
-      });
   }
 
   render() {
@@ -106,15 +111,15 @@ class PlayerStats extends React.Component {
           players
             .filter(player => {
               const isFiltered = (!!posFilter && posFilter !== player.pos)
-                || (!!clubFilter && clubFilter !== player.tName);
+                || (!!clubFilter && clubFilter !== player.club);
               return !isFiltered;
             })
             .map(player => (
               <tr key={player.code} { ...bem('player')}>
                   <td { ...bem('meta')} >{player.code}</td>
                   <td { ...bem('meta', player.pos)} >{player.pos}</td>
-                  <td { ...bem('meta')} >{player.fullName}</td>
-                  <td { ...bem('meta')} >{player.tName}</td>
+                  <td { ...bem('meta')} >{player.player}</td>
+                  <td { ...bem('meta')} >{player.club}</td>
                   {Object.keys(player.stats).map((key, i) => (
                     <td key={i} { ...bem('meta', 'stat')} >{player.stats[key]}</td>
                   ))}
@@ -130,9 +135,9 @@ class PlayerStats extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    errors: state.players.errors,
-    loading: state.players.loading,
-    players: state.players.players
+    errors: state.actionState.errors,
+    loading: state.actionState.loading,
+    players: state.players.data
   };
 }
 

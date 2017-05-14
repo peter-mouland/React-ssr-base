@@ -9,6 +9,7 @@ import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
 import DashboardPage from './containers/DashboardPage/DashboardPage';
 import Players from './containers/Players/Players';
+import PlayerStats from './containers/PlayerStats/PlayerStats';
 import NotFound from './containers/NotFound/NotFound';
 
 import LoginPage from './authentication/containers/LoginPage/LoginPage';
@@ -50,6 +51,16 @@ export function getRoutesConfig() {
         title: 'Players',
       },
       component: Players
+    },
+    {
+      name: 'playerStats',
+      path: '/player-stats/',
+      label: 'Player Stats',
+      meta: {
+        ...baseMetaData,
+        title: 'Player Stats',
+      },
+      component: PlayerStats
     },
     {
       name: 'logout',
