@@ -24,6 +24,7 @@
     "transform-object-rest-spread",
     "transform-object-assign",
     "transform-async-to-generator",
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    "dynamic-import-webpack"
   ]
 }
