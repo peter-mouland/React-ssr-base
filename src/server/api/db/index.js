@@ -36,6 +36,7 @@ module.exports.connect = (uri) => {
   require('./models/user');
   require('./models/player');
   require('./models/team');
+  require('./models/season');
 };
 
 module.exports.connection = mongoose.connection;

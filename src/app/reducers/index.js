@@ -46,6 +46,18 @@ export function players(state = {}, action) {
   }
 }
 
+export function seasons(state = {}, action) {
+  switch (action.type) {
+    case `${actions.FETCH_SEASONS}_FULFILLED`:
+      return {
+        ...state,
+        data: action.payload.data && action.payload.data.getSeasons,
+      };
+    default:
+      return state;
+  }
+}
+
 export function dashboard(state = {}, action) {
   switch (action.type) {
     case `${actions.FETCH_DASHBOARD_DATA}_FULFILLED`:
@@ -59,6 +71,7 @@ export function dashboard(state = {}, action) {
 }
 
 export default combineReducers({
+  seasons,
   players,
   dashboard,
   actionState,

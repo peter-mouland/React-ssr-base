@@ -1,19 +1,10 @@
 import React from 'react';
-import jwtDecode from 'jwt-decode';
 
-import Auth from '../../authentication/auth-helper';
-import Admin from '../../components/Admin/Admin';
-
-const Dashboard = ({ ...props }) => {
-  const token = jwtDecode(Auth.getToken());
-  const isAdmin = token.isAdmin;
-
-  return (
+const Dashboard = ({ ...props }) => (
     <section {...props} >
       <h2>Dashboard</h2>
-      {isAdmin && <Admin />}
+      <p>hi</p>
     </section>
   );
-};
 
 export default Dashboard;

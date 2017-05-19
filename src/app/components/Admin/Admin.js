@@ -1,35 +1,59 @@
 import React from 'react';
-import jwtDecode from 'jwt-decode';
 
 import Auth from '../../authentication/auth-helper';
 
+import './admin.scss';
+
 class Admin extends React.Component {
 
-  componentDidMount(){
-    import('datalist-polyfill'); // browser only
+  constructor(props) {
+    super(props);
+    this.state = {
+      newSeason: '',
+      isDuplicateSeason: false
+    };
+    this.showPastSeasons = this.showPastSeasons.bind(this);
+    this.addSeason = this.addSeason.bind(this);
   }
 
-  render(){
-    const token = jwtDecode(Auth.getToken());
-    const isAdmin = token.isAdmin;
+  addSeason(e) {
+    e.preventDefault();
+  }
 
-    if (!isAdmin) return <p>No Access</p>;
+  showPastSeasons(e) {
+    this.setState({
+      newSeason: e.currentTarget.value,
+      isDuplicateSeason: this.props.seasons.find((season) => season === e.currentTarget.value)
+    });
+  }
+
+  render() {
+    if (!Auth.isAdmin()) return <p>No Access</p>;
+    const { seasons, ...props } = this.props;
+    const { newSeason, isDuplicateSeason } = this.state;
 
     return (
-
-      <section {...this.props} className="admin">
+      <section {...props} className="admin">
         <h3>Admin Actions</h3>
-        <section>
-          <input list="season" />
-
-          <datalist id="season">
-            <option value="Internet Explorer" />
-            <option value="Firefox" />
-            <option value="Chrome" />
-            <option value="Opera" />
-            <option value="Safari" />
-          </datalist>
-        </section>
+        <form className="seasons" method="POST" onSubmit={this.addSeason}>
+          <input className="seasons__input"
+                 type="text"
+                 name="season"
+                 onChange={this.showPastSeasons}
+          />
+          <input className="seasons__add-button"
+                 type="submit"
+                 value="Add Season"
+                 disabled={isDuplicateSeason}
+          />
+          <ul className="seasons__list">
+            {
+              seasons
+                .filter((season) => season.contains(newSeason))
+                .map((season) => <li className="seasons__item">{season}</li>)
+            }
+          </ul>
+        </form>
 
         <ul>
           <li>Create/Edit Season</li>
@@ -70,8 +94,7 @@ class Admin extends React.Component {
         </section>
       </section>
     );
-
   }
-};
+}
 
 export default Admin;
