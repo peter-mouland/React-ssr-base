@@ -5,31 +5,40 @@
   padding: 0;
   list-style: none;
   display: flex;
+  background-color: $brand--bg;
 }
 
 .seasons__item {
-  background-color: $brand--bg;
   display: inline-block;
   padding: 0 1em;
   line-height: 3em;
+  flex-grow: 0;
 
-  &:nth-last-child(2) {
-    filter: sepia(25%);
+  &:last-child {
+    flex-grow: 1;
+    text-align: right;
   }
-
-  &:nth-last-child(3) {
-    filter: sepia(50%);
-  }
-
-  &:nth-last-child(4) {
-    filter: sepia(75%);
-  }
+  //
+  //&:nth-last-child(3) {
+  //  filter: sepia(50%);
+  //}
+  //
+  //&:nth-last-child(4) {
+  //  filter: sepia(75%);
+  //}
 }
 
 .seasons__text {
   color: $brand--font;
   font-size: 1.5em;
   padding: 0;
+  border-style: solid;
+  border-width: 2px 0;
+  border-color: transparent;
+
+  &.link--active {
+    border-color: $light;
+  }
 }
 
 .seasons__input {
@@ -39,6 +48,10 @@
   opacity: .5;
   font-size: .75rem;
   line-height: 2em;
+
+  &:focus {
+    opacity: 1;
+  }
 }
 
 .seasons__add-button {

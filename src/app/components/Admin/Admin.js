@@ -1,10 +1,25 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-import Link from 'react-router-dom/Link';
+import PropTypes from 'prop-types';
+import Route from 'react-router-dom/Route';
+
+import Toggle from '../Toggle/Toggle';
+import { SubLink } from '../../../app/routes';
 
 import './admin.scss';
 
+const selectedSeason = (match, seasons) =>
+  seasons.find((season) => season._id === match.params.id);
+
 class Admin extends React.Component {
+
+  static propTypes = {
+    seasons: PropTypes.array
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
+  }
 
   constructor(props) {
     super(props);
@@ -28,6 +43,7 @@ class Admin extends React.Component {
   render() {
     const { seasons, ...props } = this.props;
     const { isDuplicateSeason } = this.state;
+    const { router: { route: { match } } } = this.context;
 
     return (
       <section {...props} className="admin">
@@ -38,11 +54,9 @@ class Admin extends React.Component {
               seasons
                 .map((season, i) => (
                   <li className="seasons__item" key={i}>
-                    <Link to={`/admin/season/${season._id}`}
-                          className="seasons__text"
-                    >
+                    <SubLink to={`${match.path}season/${season._id}/`} className="seasons__text">
                       {season.season}
-                    </Link>
+                    </SubLink>
                   </li>
                 ))
             }
@@ -62,20 +76,24 @@ class Admin extends React.Component {
               </form>
             </li>
           </ul>
+          <Route path={`${match.path}season/:id/`} render={(matchProps) => {
+            const season = selectedSeason(matchProps.match, seasons);
+            return (
+              <div>
+                <Toggle checked={ season.isLive } id={`season-live--${season.id}`}>
+                  Season is Live?:
+                </Toggle>
+                <div>Game Week: {season.currentGW}</div>
+              </div>
+            );
+          }}/>
         </section>
         <ul>
-          <li>Create/Edit Season</li>
           <li>Create/Edit League</li>
           <li>Assign Manager to League</li>
           <li>Authorise Transfers</li>
           <li>Increment Game Week</li>
         </ul>
-        <section className="admin__season">
-          <h4>Seasons</h4>
-          <form method="post" name="admin-season">
-            <input type="text" name="new-season" /> +
-          </form>
-        </section>
         <section className="admin__league">
           <h4>Create/Edit League</h4>
           <form method="post" name="admin-league">

@@ -1,0 +1,75 @@
+@import '../../../styles/utils/colours';
+
+$off-white: #E8EAE9;
+$slightly-dark: rgba(0, 0, 0, .1);
+$v-slightly-dark: rgba(0, 0, 0, .08);
+
+.toggle {
+  display: none;
+
+  &:checked + .toggle__label .toggle__btn {
+    background: $brand--bg--light;
+
+    &::after {
+      left: 50%;
+    }
+
+    &:active {
+      box-shadow: none;
+
+      &::after {
+        margin-left: -.8em;
+      }
+    }
+  }
+}
+
+.toggle__btn {
+  outline: 0;
+  display: block;
+  width: 4em;
+  height: 2em;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  background: $grey;
+  border-radius: 2em;
+  padding: 2px;
+  transition: background-color .4s ease;
+  border: 1px solid $off-white;
+
+  &::after,
+  &::before {
+    position: relative;
+    display: block;
+    content: '';
+    box-sizing: content-box;
+    width: 50%;
+    height: 100%;
+  }
+
+  &::after {
+    left: 0;
+    border-radius: 2em;
+    background: $grey;
+    transition: left .3s cubic-bezier(.175, .885, .32, 1.275), padding .3s ease, margin .3s ease;
+    box-shadow: 0 0 0 1px $slightly-dark, 0 4px 0 $v-slightly-dark;
+  }
+
+  &::before {
+    display: none;
+  }
+
+
+  &:hover::after {
+    will-change: padding;
+  }
+
+  &:active {
+    box-shadow: inset 0 0 0 2em $off-white;
+
+    &::after {
+      padding-right: .8em;
+    }
+  }
+}

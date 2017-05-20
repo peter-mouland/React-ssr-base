@@ -116,9 +116,20 @@ export const NamedLink = ({ className, to, children, ...props }) => {
   const route = findRoute(to);
   if (!route) throw new Error(`Route to '${to}' not found`);
   return (
-    <Route path={ route.path } exact children={({ match }) => (
+    <Route path={ route.path } children={({ match }) => (
       <Link to={ route.path } { ...props } { ...bem(null, { active: match }, className) }>
         { children || route.label }
+      </Link>
+    )} />
+  );
+};
+
+export const SubLink = ({ className, to, children, ...props }) => {
+  const bem = bemHelper({ name: 'link' });
+  return (
+    <Route path={ to } children={({ match }) => (
+      <Link to={ to } { ...props } { ...bem(null, { active: match }, className) }>
+        { children }
       </Link>
     )} />
   );
