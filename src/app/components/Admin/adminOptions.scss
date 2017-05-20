@@ -1,0 +1,26 @@
+@import '../../../styles/utils/colours';
+
+.admin-options {
+  border: 4px solid  $brand--bg;
+  border-top: 0;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.admin-option {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: 3em;
+  }
+
+  &__btn {
+    flex-grow: 1;
+    text-align: right;
+  }
+
+  &__value {
+    margin-left: 1em;
+  }
+}

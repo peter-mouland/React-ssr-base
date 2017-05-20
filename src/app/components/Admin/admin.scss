@@ -1,0 +1,11 @@
+@import '../../../styles/utils/colours';
+
+.admin-btn {
+  background-color: $brand--bg--light;
+  border: 2px solid $darken;
+  color: $brand--bg--dark;
+  font-size: .8rem;
+  padding: .25em 1em;
+  cursor: pointer;
+  border-radius: 2em;
+}

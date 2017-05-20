@@ -1,12 +1,32 @@
 {
     "result_count": 1,
     "search": "2",
-    "seasons":[
+    "seasons": [
         {
             "_id": "1234",
             "isLive": true,
-            "season":"2016/2017",
-            "currentGW":26
+            "name":"2016/2017",
+            "currentGW":26,
+            "leagues": [
+              {
+                "_id": "l1234",
+                "tier": 1,
+                "name": "premiership",
+                "isLive": true
+              },
+              {
+                "_id": "l5678",
+                "tier": 2,
+                "name": "championship",
+                "isLive": true
+              },
+              {
+                "_id": "l9101",
+                "tier": 3,
+                "name": "bottom feeders",
+                "isLive": true
+              }
+            ]
         }
     ]
 }

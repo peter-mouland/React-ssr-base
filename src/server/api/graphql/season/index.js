@@ -15,11 +15,18 @@ const fetchSeasons = () => new Promise((resolve, reject) => {
 });
 
 const schema = (`
+  type League {
+    _id: String!
+    name: String
+    isLive: Boolean
+    tier: Int
+  }
   type Season {
     _id: String!
     season: String
     isLive: Boolean
     currentGW: Int
+    leagues: [League]
   }
 `);
 
