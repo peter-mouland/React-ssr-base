@@ -36,6 +36,7 @@ server.use(async (ctx, next) => {
       break;
     case ctx.request.body.includes('getSeasons') :
       const body = await getData('seasons').catch((e) => catcher(ctx, e));
+      console.log(body.seasons)
       ctx.body = { data: { getSeasons: body.seasons } };
       break;
     default :

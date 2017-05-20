@@ -1,15 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Route from 'react-router-dom/Route';
 
-import Toggle from '../Toggle/Toggle';
-import { SubLink } from '../../../app/routes';
-
-import './admin.scss';
-
-const selectedSeason = (match, seasons) =>
-  seasons.find((season) => season._id === match.params.id);
+import AdminSeasons from '../AdminSeasons/AdminSeasons';
 
 class Admin extends React.Component {
 
@@ -17,77 +10,13 @@ class Admin extends React.Component {
     seasons: PropTypes.array
   }
 
-  static contextTypes = {
-    router: PropTypes.object
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      isDuplicateSeason: false
-    };
-    this.showPastSeasons = this.showPastSeasons.bind(this);
-    this.addSeason = this.addSeason.bind(this);
-  }
-
-  addSeason(e) {
-    e.preventDefault();
-  }
-
-  showPastSeasons(e) {
-    this.setState({
-      isDuplicateSeason: this.props.seasons.find((season) => season === e.currentTarget.value)
-    });
-  }
-
   render() {
     const { seasons, ...props } = this.props;
-    const { isDuplicateSeason } = this.state;
-    const { router: { route: { match } } } = this.context;
 
     return (
       <section {...props} className="admin">
         <h3 className="sr-only">Admin Actions</h3>
-        <section className="seasons">
-          <ul className="seasons__list">
-            {
-              seasons
-                .map((season, i) => (
-                  <li className="seasons__item" key={i}>
-                    <SubLink to={`${match.path}season/${season._id}/`} className="seasons__text">
-                      {season.season}
-                    </SubLink>
-                  </li>
-                ))
-            }
-            <li className="seasons__item">
-              <form method="POST" onSubmit={this.addSeason}>
-                <input className="seasons__input seasons__text"
-                       type="text"
-                       name="season"
-                       defaultValue={'new season'}
-                       onChange={this.showPastSeasons}
-                />
-                <input className="seasons__add-button"
-                       type="submit"
-                       value="Add"
-                       disabled={isDuplicateSeason}
-                />
-              </form>
-            </li>
-          </ul>
-          <Route path={`${match.path}season/:id/`} render={(matchProps) => {
-            const season = selectedSeason(matchProps.match, seasons);
-            return (
-              <div>
-                <Toggle checked={ season.isLive } id={`season-live--${season.id}`}>
-                  Season is Live?:
-                </Toggle>
-                <div>Game Week: {season.currentGW}</div>
-              </div>
-            );
-          }}/>
-        </section>
+        <AdminSeasons seasons={ seasons } />
         <ul>
           <li>Create/Edit League</li>
           <li>Assign Manager to League</li>

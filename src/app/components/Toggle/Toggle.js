@@ -6,8 +6,8 @@ import './toggle.scss';
 const bem = bemHelper({ name: 'toggle' });
 
 export default ({ id, checked, onChange, children, className, ...props }) => (
-    <span>
-      <input { ...bem(null, 'ios', className) }
+    <span className={className || ''}>
+      <input { ...bem(null, 'ios') }
              id={ id }
              type="checkbox"
              defaultChecked={ checked }
