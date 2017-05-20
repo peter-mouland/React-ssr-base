@@ -1,6 +1,6 @@
 import router from 'koa-router';
 
-const users = require('./fixtures/users');
+const users = require('./scripts/users');
 
 const apiRouter = router({ prefix: '/api' });
 

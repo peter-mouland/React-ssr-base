@@ -37,3 +37,11 @@ function propagateToGlobal(win) {
   }
 }
 
+
+const chai = require('chai');
+const sinonChai = require("sinon-chai");
+
+// setup chai
+chai.should();
+chai.expect();
+chai.use(sinonChai);

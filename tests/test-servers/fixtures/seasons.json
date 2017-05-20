@@ -1,0 +1,12 @@
+{
+    "result_count": 1,
+    "search": "2",
+    "seasons":[
+        {
+            "_id": "1234",
+            "isLive": true,
+            "season":"2016/2017",
+            "currentGW":26
+        }
+    ]
+}

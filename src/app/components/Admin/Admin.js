@@ -49,8 +49,8 @@ class Admin extends React.Component {
           <ul className="seasons__list">
             {
               seasons
-                .filter((season) => season.contains(newSeason))
-                .map((season) => <li className="seasons__item">{season}</li>)
+                .filter((season) => season.season.includes(newSeason))
+                .map((season, i) => <li className="seasons__item" key={i}>{season.season}</li>)
             }
           </ul>
         </form>

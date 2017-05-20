@@ -5,9 +5,15 @@ require('babel-core/register')({
 require("babel-polyfill");
 const SvgLoader = require('svg-inline-loader');
 const hook = require('node-hook').hook;
+
+require('../../../src/config/environment');
+
 const webpackAssets = require('../../../compiled/webpack-assets.json');
 const mapWebpackAssets = require('../../../src/server/utils/mapWebpackAssets');
-require('../../../src/config/environment');
+const fixturesServer = require('./fixtures-server');
+const dbConfig = require('./db.json');
+const db = require('../../../src/server/api/db');
+
 
 hook('.scss', (source, filename) => ``);
 hook('.svg', (source) => {
@@ -15,10 +21,11 @@ hook('.svg', (source) => {
   return `module.exports =  ${JSON.stringify(markup)}`;
 });
 
-const dbConfig = require('./db.json');
-const db = require('../../../src/server/api/db');
-
 const assets = mapWebpackAssets(webpackAssets);
+const exit = (done = ()=>{}) => {
+  done();
+  process.exit(0);
+};
 let openServer;
 
 const startLocalServers = (done) => {
@@ -26,20 +33,30 @@ const startLocalServers = (done) => {
   const createServer = require('../../../src/server/server');
   const testDbRouter = require('./test-db-routes');
   const server = createServer(assets);
-  server.use(testDbRouter.routes());
+
+  if (process.env.FIXTURES === 'true') {
+    fixturesServer.start(done);
+  } else {
+    server.use(testDbRouter.routes());
+  }
+
   openServer = server.listen(process.env.PORT, () => {
     console.log(`Test Server Listening at http://localhost:${process.env.PORT}`);
-    done()
+    done();
   });
   return openServer
 };
+
 const stopLocalServers = (done) => {
   console.log('Closing server...');
   openServer.close(() => {
-    db.connection.close(() => {
-      done();
-      process.exit(0);
-    })
+
+    if (process.env.FIXTURES === 'true') {
+      fixturesServer.stop(() => exit(done));
+    } else {
+      db.connection.close(() => exit(done));
+    }
+
   });
 };
 

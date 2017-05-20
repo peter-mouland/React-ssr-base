@@ -6,17 +6,36 @@ import Admin from '../../components/Admin/Admin';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { fetchDashboardData, fetchSeasons } from '../../actions';
 
+const Error = ({ error }) => <div>
+  <p>Error Loading seasons!</p>
+  <p>{ error.message }</p>
+</div>;
+
+const Errors = ({ errors }) => <div>
+  {errors.map((error, i) => <Error error={error} key={i} />)}
+</div>;
+
+const Loading = () => <p>Loading seasons....</p>;
+
+
 class DashboardPage extends React.Component {
 
-  static needs = [fetchDashboardData, fetchSeasons];
+  static needs = [fetchSeasons];
 
   componentDidMount() {
-    if (this.props.dashboardData) return;
-    this.props.fetchDashboardData();
+    if (this.props.seasons) return;
+    this.props.fetchSeasons();
   }
 
   render() {
-    const { seasons } = this.props;
+    const { errors = [], loading, seasons } = this.props;
+
+    if (errors.length) {
+      return <Errors errors={errors} />;
+    } else if (loading || !seasons) {
+      return <Loading />;
+    }
+
 
     return (
       <section>
@@ -29,10 +48,9 @@ class DashboardPage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    dashboardData: state.dashboard.data,
     seasons: state.seasons.data,
     loading: state.actionState.loading,
-    error: state.actionState.errors,
+    errors: state.actionState.errors,
   };
 }
 

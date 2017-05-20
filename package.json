@@ -17,6 +17,8 @@
     "start": "node compiled/server-entry.js",
     "start:prod": "NODE_ENV=production npm run start",
     "start:dev": "nodemon src/server-entry.js",
+    "start:withFixtures": "FIXTURES=true nodemon src/server-entry.js",
+    "fixtures": "node tests/test-servers/fixtures-server.js",
     "lint": "sass-lint -v -q -c ./sass-lint.yml && eslint 'src/**/*.js'",
     "test": "npm run test:unit && npm run test:func",
     "test:unit": "npm run mocha -- 'src/**/*.spec.js'",

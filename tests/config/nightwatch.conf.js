@@ -3,7 +3,9 @@ const argv = require('yargs')
   .usage('Usage: $0 --target=[string] --sha=[string]')
   .argv;
 process.env.PORT = 3210;
-const testServer = require('./test-server/test-server-entry');
+process.env.FIXTURES_PORT = 3211;
+
+const testServer = require('../test-servers/test-server');
 
 const TARGET_PATH = argv.target || `http://localhost:${process.env.PORT}`;
 const needLocalServer = TARGET_PATH.indexOf('localhost') > -1;
