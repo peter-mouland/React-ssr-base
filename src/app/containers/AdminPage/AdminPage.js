@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Dashboard from '../../components/Dashboard/Dashboard';
-import { fetchDashboardData, fetchSeasons } from '../../actions';
+import Auth from '../../authentication/auth-helper';
+import Admin from '../../components/Admin/Admin';
+import { fetchSeasons } from '../../actions';
 
 const Error = ({ error }) => <div>
   <p>Error Loading seasons!</p>
@@ -16,7 +17,7 @@ const Errors = ({ errors }) => <div>
 const Loading = () => <p>Loading seasons....</p>;
 
 
-class DashboardPage extends React.Component {
+class AdminPage extends React.Component {
 
   static needs = [fetchSeasons];
 
@@ -37,7 +38,7 @@ class DashboardPage extends React.Component {
 
     return (
       <section>
-        <Dashboard id="dashboard-page" />
+        {Auth.isAdmin() && <Admin seasons={ seasons } />}
       </section>
     );
   }
@@ -53,5 +54,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchDashboardData, fetchSeasons }
-)(DashboardPage);
+  { fetchSeasons }
+)(AdminPage);

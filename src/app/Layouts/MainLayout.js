@@ -56,17 +56,17 @@ export default class MainLayout extends React.Component {
     return (
       <div {...bem(null, 'main')}>
         <nav {...bem('nav')}>
-          <span {...bem('nav', 'header')}>React SSR Base</span>
-          <NamedLink to='homepage' {...bem('nav', 'link')} />
+          <span {...bem('nav', 'header')}>FF</span>
           <NamedLink to="myTeam" {...bem('nav', 'link')} />
           <NamedLink to="playerStats" {...bem('nav', 'link')} />
           <NamedLink to="dashboard" {...bem('nav', 'link')} />
+          { Auth.isAdmin() ? <NamedLink to="admin" {...bem('nav', 'link')} /> : null }
           <MyAccount isUserAuthenticated={ isUserAuthenticated } />
         </nav>
-        <main className="layout__content">
+        <main {...bem('content')}>
           {children}
         </main>
-        <footer className="layout__footer">
+        <footer {...bem('footer')}>
           Hosted at <a href="http://github.com/peter-mouland/react-ssr-base">github.com/peter-mouland/react-srr-base</a>
         </footer>
       </div>

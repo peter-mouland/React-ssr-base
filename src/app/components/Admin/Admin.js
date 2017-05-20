@@ -1,6 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
-
-import Auth from '../../authentication/auth-helper';
+import Link from 'react-router-dom/Link';
 
 import './admin.scss';
 
@@ -9,7 +9,6 @@ class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newSeason: '',
       isDuplicateSeason: false
     };
     this.showPastSeasons = this.showPastSeasons.bind(this);
@@ -22,39 +21,48 @@ class Admin extends React.Component {
 
   showPastSeasons(e) {
     this.setState({
-      newSeason: e.currentTarget.value,
       isDuplicateSeason: this.props.seasons.find((season) => season === e.currentTarget.value)
     });
   }
 
   render() {
-    if (!Auth.isAdmin()) return <p>No Access</p>;
     const { seasons, ...props } = this.props;
-    const { newSeason, isDuplicateSeason } = this.state;
+    const { isDuplicateSeason } = this.state;
 
     return (
       <section {...props} className="admin">
-        <h3>Admin Actions</h3>
-        <form className="seasons" method="POST" onSubmit={this.addSeason}>
-          <input className="seasons__input"
-                 type="text"
-                 name="season"
-                 onChange={this.showPastSeasons}
-          />
-          <input className="seasons__add-button"
-                 type="submit"
-                 value="Add Season"
-                 disabled={isDuplicateSeason}
-          />
+        <h3 className="sr-only">Admin Actions</h3>
+        <section className="seasons">
           <ul className="seasons__list">
             {
               seasons
-                .filter((season) => season.season.includes(newSeason))
-                .map((season, i) => <li className="seasons__item" key={i}>{season.season}</li>)
+                .map((season, i) => (
+                  <li className="seasons__item" key={i}>
+                    <Link to={`/admin/season/${season._id}`}
+                          className="seasons__text"
+                    >
+                      {season.season}
+                    </Link>
+                  </li>
+                ))
             }
+            <li className="seasons__item">
+              <form method="POST" onSubmit={this.addSeason}>
+                <input className="seasons__input seasons__text"
+                       type="text"
+                       name="season"
+                       defaultValue={'new season'}
+                       onChange={this.showPastSeasons}
+                />
+                <input className="seasons__add-button"
+                       type="submit"
+                       value="Add"
+                       disabled={isDuplicateSeason}
+                />
+              </form>
+            </li>
           </ul>
-        </form>
-
+        </section>
         <ul>
           <li>Create/Edit Season</li>
           <li>Create/Edit League</li>

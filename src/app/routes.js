@@ -8,6 +8,7 @@ import debug from 'debug';
 import MainLayout from './Layouts/MainLayout';
 import Homepage from './containers/Homepage/Homepage';
 import DashboardPage from './containers/DashboardPage/DashboardPage';
+import AdminPage from './containers/AdminPage/AdminPage';
 import MyTeam from './containers/MyTeam/MyTeam';
 import PlayerStats from './containers/PlayerStats/PlayerStats';
 import NotFound from './containers/NotFound/NotFound';
@@ -41,6 +42,16 @@ export function getRoutesConfig() {
       },
       label: 'About SSR Base',
       component: Homepage
+    },
+    {
+      name: 'admin',
+      path: '/admin/',
+      meta: {
+        ...baseMetaData,
+        title: 'Admin'
+      },
+      label: 'Admin',
+      component: AdminPage
     },
     {
       name: 'myTeam',
