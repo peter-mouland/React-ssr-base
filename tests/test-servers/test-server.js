@@ -6,13 +6,13 @@ require("babel-polyfill");
 const SvgLoader = require('svg-inline-loader');
 const hook = require('node-hook').hook;
 
-require('../../../src/config/environment');
+require('../../src/config/environment');
 
-const webpackAssets = require('../../../compiled/webpack-assets.json');
-const mapWebpackAssets = require('../../../src/server/utils/mapWebpackAssets');
+const webpackAssets = require('../../compiled/webpack-assets.json');
+const mapWebpackAssets = require('../../src/server/utils/mapWebpackAssets');
 const fixturesServer = require('./fixtures-server');
 const dbConfig = require('./db.json');
-const db = require('../../../src/server/api/db');
+const db = require('../../src/server/api/db');
 
 
 hook('.scss', (source, filename) => ``);
@@ -30,7 +30,7 @@ let openServer;
 
 const startLocalServers = (done) => {
   db.connect(dbConfig.dbUri);
-  const createServer = require('../../../src/server/server');
+  const createServer = require('../../src/server/server');
   const testDbRouter = require('./test-db-routes');
   const server = createServer(assets);
 

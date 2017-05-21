@@ -36,8 +36,8 @@ class AdminPage extends React.Component {
     this.props.fetchSeasons();
   }
 
-  addSeason = (value) => {
-    console.log(value);
+  addSeason = (name) => {
+    this.props.addSeason(name);
   }
 
   addLeague = (value) => {
@@ -57,6 +57,8 @@ class AdminPage extends React.Component {
       return <p>You're not admin!</p>;
     }
 
+    console.log(typeof seasons);
+    console.log({ seasons });
 
     return (
       <section className="admin">
@@ -66,10 +68,11 @@ class AdminPage extends React.Component {
           const season = selectedItem(seasonMatcher.match, seasons);
           if (!season) return null;
           const leagues = season.leagues;
+
           return (
             <div>
               <SeasonAdminOptions season={season} />
-              <AdminList list={ season.leagues } path="league" secondary add={ this.addLeague } />
+              <AdminList list={ leagues } path="league" secondary add={ this.addLeague } />
               <Route path={leaguePath} render={(leagueMatcher) => {
                 const league = selectedItem(leagueMatcher.match, leagues);
                 if (!league) return null;

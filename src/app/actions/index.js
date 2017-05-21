@@ -29,15 +29,15 @@ const getDashboardQuery = `
 `;
 
 const getSeasonsQuery = `
-  query { getSeasons{ season } } 
+  query { getSeasons{ _id name currentGW isLive leagues { _id name } } } 
 `;
 
-const postSeasonsQuery = `
-  query { postSeason{ season } } 
+const addSeasonsQuery = `
+  mutation ($name: String) { addSeason(name: $name){ _id name currentGW isLive leagues { _id name } } }
 `;
 
 const getTeamQuery = `
-  query ($manager: String) { getTeam{ message } } 
+  query ($manager: String) { getTeam(manager: $manager){ team } } 
 `;
 
 export function fetchPlayers(player) {
@@ -72,7 +72,6 @@ export function fetchSeasons() {
 export function addSeason(name) {
   return {
     type: ADD_SEASON,
-    data: { name },
-    payload: fetch.graphQL(postSeasonsQuery)
+    payload: fetch.graphQL(addSeasonsQuery, { name })
   };
 }

@@ -53,6 +53,11 @@ export function seasons(state = {}, action) {
         ...state,
         data: action.payload.data && action.payload.data.getSeasons,
       };
+    case `${actions.ADD_SEASON}_FULFILLED`:
+      return {
+        ...state,
+        data: action.payload.data && action.payload.data.addSeason,
+      };
     default:
       return state;
   }
