@@ -5,6 +5,7 @@ export const FETCH_SEASONS = 'FETCH_SEASONS';
 export const FETCH_PLAYERS = 'FETCH_PLAYERS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
 export const ADD_SEASON = 'ADD_SEASON';
+export const ADD_LEAGUE = 'ADD_LEAGUE';
 
 const getPlayersQuery = `
 query ($player: String) { 
@@ -34,6 +35,10 @@ const getSeasonsQuery = `
 
 const addSeasonsQuery = `
   mutation ($name: String) { addSeason(name: $name){ _id name currentGW isLive leagues { _id name } } }
+`;
+
+const addLeaguesQuery = `
+  mutation ($seasonName: String, $name: String) { addLeague(seasonName: $seasonName, name: $name){ _id name currentGW isLive leagues { _id name } } }
 `;
 
 const getTeamQuery = `
@@ -73,5 +78,12 @@ export function addSeason(name) {
   return {
     type: ADD_SEASON,
     payload: fetch.graphQL(addSeasonsQuery, { name })
+  };
+}
+
+export function addLeague(seasonName, name) {
+  return {
+    type: ADD_LEAGUE,
+    payload: fetch.graphQL(addLeaguesQuery, { seasonName, name })
   };
 }

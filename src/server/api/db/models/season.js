@@ -14,7 +14,11 @@ const SeasonSchema = new mongoose.Schema({
     default: 0
   },
   leagues: [{
-    tier: Number,
+    _id: String,
+    tier: {
+      type: Number,
+      default: 1
+    },
     name: String,
     managers: [{
       team_id: String

@@ -7,7 +7,7 @@ import AdminList from '../../components/Admin/AdminList';
 import SeasonAdminOptions from '../../components/Admin/SeasonAdminOptions';
 import LeagueAdminOptions from '../../components/Admin/LeagueAdminOptions';
 import Auth from '../../authentication/auth-helper';
-import { fetchSeasons, addSeason } from '../../actions';
+import { fetchSeasons, addSeason, addLeague } from '../../actions';
 
 import './adminPage.scss';
 
@@ -40,8 +40,8 @@ class AdminPage extends React.Component {
     this.props.addSeason(name);
   }
 
-  addLeague = (value) => {
-    console.log(value);
+  addLeague = (seasonName, name) => {
+    this.props.addLeague(seasonName, name);
   }
 
   render() {
@@ -57,9 +57,6 @@ class AdminPage extends React.Component {
       return <p>You're not admin!</p>;
     }
 
-    console.log(typeof seasons);
-    console.log({ seasons });
-
     return (
       <section className="admin">
         <h3 className="sr-only">Admin Actions</h3>
@@ -72,7 +69,7 @@ class AdminPage extends React.Component {
           return (
             <div>
               <SeasonAdminOptions season={season} />
-              <AdminList list={ leagues } path="league" secondary add={ this.addLeague } />
+              <AdminList list={ leagues } path="league" secondary add={ (name) => this.addLeague(season.name, name) } />
               <Route path={leaguePath} render={(leagueMatcher) => {
                 const league = selectedItem(leagueMatcher.match, leagues);
                 if (!league) return null;
@@ -123,5 +120,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons, addSeason }
+  { fetchSeasons, addSeason, addLeague }
 )(AdminPage);

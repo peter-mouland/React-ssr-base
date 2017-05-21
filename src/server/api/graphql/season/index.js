@@ -6,7 +6,7 @@ const Seasons = require('mongoose').model('Season');
 
 const schema = (`
   type League {
-    _id: String!
+    _id: String
     name: String
     tier: Int
   }
@@ -19,8 +19,8 @@ const schema = (`
   }
 `);
 
-const fetchSeasons = () => new Promise((resolve, reject) => {
-  Seasons.find({}, (err, seasons) => {
+const fetchSeasons = (search = {}) => new Promise((resolve, reject) => {
+  Seasons.find(search, (err, seasons) => {
     if (err || !seasons) {
       reject(err || { message: 'no season found' });
     } else {
@@ -40,12 +40,24 @@ export const addSeason = (season) => {
   return promise.then(fetchSeasons);
 };
 
+export const addLeague = ({ seasonName, name }) => fetchSeasons({ name: seasonName })
+    .then((seasons) => {
+      const season = seasons[0];
+      season.leagues.push({ name });
+      return addSeason(season);
+    });
+
+
 export const seasonQuery = `
   getSeasons: [Season]
 `;
 
 export const seasonMutation = `
   addSeason(name: String): [Season]
+`;
+
+export const leagueMutation = `
+  addLeague(seasonName: String, name: String): [Season]
 `;
 
 export function getSeasons() {

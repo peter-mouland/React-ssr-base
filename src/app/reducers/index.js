@@ -58,6 +58,11 @@ export function seasons(state = {}, action) {
         ...state,
         data: action.payload.data && action.payload.data.addSeason,
       };
+    case `${actions.ADD_LEAGUE}_FULFILLED`:
+      return {
+        ...state,
+        data: action.payload.data && action.payload.data.addLeague,
+      };
     default:
       return state;
   }
