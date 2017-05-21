@@ -11,20 +11,17 @@
               {
                 "_id": "l1234",
                 "tier": 1,
-                "name": "premiership",
-                "isLive": true
+                "name": "premiership"
               },
               {
                 "_id": "l5678",
                 "tier": 2,
-                "name": "championship",
-                "isLive": true
+                "name": "championship"
               },
               {
                 "_id": "l9101",
                 "tier": 3,
-                "name": "bottom feeders",
-                "isLive": true
+                "name": "bottom feeders"
               }
             ]
         }

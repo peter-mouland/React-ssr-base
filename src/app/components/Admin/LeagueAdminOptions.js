@@ -2,8 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Toggle from '../Toggle/Toggle';
-
 import './adminOptions.scss';
 
 class LeagueAdminOptions extends React.Component {
@@ -16,18 +14,24 @@ class LeagueAdminOptions extends React.Component {
     const { league, ...props } = this.props;
 
     return (
-      <div className="admin-options" { ...props }>
-        <Toggle checked={ league.isLive }
-                id={`league-live--${league._id}`}
-                className="admin-option"
-        >
-          League is Live?
-        </Toggle>
+      <div className="admin-options admin-options--top" { ...props }>
         <div className="admin-option">
           Tier: <span className="admin-option__value">{league.tier}</span>
         </div>
-        <div className="admin-option admin-option__btn">
-          <button className="admin-btn">New League</button>
+        <div className="admin-option">
+          <h3>Current Players</h3>
+          <ul>
+            <li>Naked</li>
+            <li>Johnny</li>
+            <li>Jazza</li>
+          </ul>
+        </div>
+        <div className="admin-option">
+          <h3>Available Players</h3>
+          <ul>
+            <li>Nick</li>
+            <li>Olly</li>
+          </ul>
         </div>
       </div>
     );

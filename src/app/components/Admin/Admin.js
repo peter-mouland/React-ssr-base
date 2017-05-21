@@ -32,7 +32,7 @@ class Admin extends React.Component {
     return (
       <section {...props} className="admin">
         <h3 className="sr-only">Admin Actions</h3>
-        <AdminList list={ seasons } path="season" />
+        <AdminList list={ seasons } path="season" add/>
         <Route path={seasonPath} render={(seasonMatcher) => {
           const season = selectedItem(seasonMatcher.match, seasons);
           if (!season) return null;
@@ -40,12 +40,13 @@ class Admin extends React.Component {
           return (
             <div>
               <SeasonAdminOptions season={season} />
-              <AdminList list={ season.leagues } path="league" />
+              <AdminList list={ season.leagues } path="league" secondary add />
               <Route path={leaguePath} render={(leagueMatcher) => {
                 const league = selectedItem(leagueMatcher.match, leagues);
                 if (!league) return null;
                 return <LeagueAdminOptions league={league} />;
               }}/>
+              <AdminList list={ [{ name: 'teams', _id: 1 }] } path="team" secondary />
             </div>
           );
         }}/>

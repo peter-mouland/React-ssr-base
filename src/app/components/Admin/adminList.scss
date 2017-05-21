@@ -1,11 +1,15 @@
 @import '../../../styles/utils/colours';
 
 .admin-list {
-  margin: 0;
+  margin: 2px 0 0;
   padding: 0;
   list-style: none;
   display: flex;
   background-color: $brand--bg;
+
+  &--secondary {
+    font-size: .75em;
+  }
 }
 
 .admin-list__item {
@@ -29,7 +33,7 @@
   border-color: transparent;
 
   &.link--active {
-    border-color: $light;
+    border-color: $lighter;
   }
 }
 

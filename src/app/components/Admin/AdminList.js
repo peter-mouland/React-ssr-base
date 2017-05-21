@@ -14,7 +14,9 @@ export const join = (prefix, postfix) => `${prefix}/${postfix}`.replace(/\/\/\//
 class AdminList extends React.Component {
 
   static propTypes = {
-    list: PropTypes.array
+    list: PropTypes.array,
+    secondary: PropTypes.bool,
+    add: PropTypes.bool
   }
 
   static contextTypes = {
@@ -31,11 +33,11 @@ class AdminList extends React.Component {
   }
 
   render() {
-    const { list, path, ...props } = this.props;
+    const { list, path, secondary = false, add = false, ...props } = this.props;
     const { router: { route: { match } } } = this.context;
 
     return (
-      <ul { ...bem() } { ...props } >
+      <ul { ...bem(null, { secondary }) } { ...props } >
         {
           list
             .map((item, i) => (
@@ -46,19 +48,21 @@ class AdminList extends React.Component {
               </li>
             ))
         }
-        <li { ...bem('item') }>
-          <form method="POST" onSubmit={this.addItem}>
-            <input { ...bem('text') }
-                   type="text"
-                   name="season"
-                   defaultValue={'new...'}
-            />
-            <input className="admin-btn"
-                   type="submit"
-                   value="Add"
-            />
-          </form>
-        </li>
+        { add ? (
+          <li { ...bem('item') }>
+            <form method="POST" onSubmit={this.addItem}>
+              <input { ...bem('text') }
+                     type="text"
+                     name="add"
+                     defaultValue={`new ${path}` }
+              />
+              <input className="admin-btn"
+                     type="submit"
+                     value="Add"
+              />
+            </form>
+          </li>
+          ) : <li { ...bem('item') } /> }
       </ul>
     );
   }

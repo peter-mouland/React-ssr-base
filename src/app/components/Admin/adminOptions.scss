@@ -6,6 +6,10 @@
   padding: 1em;
   display: flex;
   align-items: center;
+
+  &--top {
+    align-items: flex-start;
+  }
 }
 
 .admin-option {
