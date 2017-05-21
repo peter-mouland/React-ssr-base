@@ -44,6 +44,8 @@ input.admin-list__text {
   opacity: .5;
   font-size: .75rem;
   line-height: 2em;
+  text-align: right;
+  margin-right: 1em;
 
   &:focus {
     opacity: 1;

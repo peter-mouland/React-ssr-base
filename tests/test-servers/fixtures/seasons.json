@@ -3,23 +3,29 @@
     "search": "2",
     "seasons": [
         {
-            "_id": "1234",
+            "_id": "s1",
             "isLive": true,
             "name":"2016/2017",
             "currentGW":26,
             "leagues": [
               {
-                "_id": "l1234",
+                "_id": "l1",
                 "tier": 1,
-                "name": "premiership"
+                "name": "premiership",
+                "managers": [
+                  {
+                    "_id": "m1",
+                    "team_id": "t1"
+                  }
+                ]
               },
               {
-                "_id": "l5678",
+                "_id": "l2",
                 "tier": 2,
                 "name": "championship"
               },
               {
-                "_id": "l9101",
+                "_id": "l3",
                 "tier": 3,
                 "name": "bottom feeders"
               }

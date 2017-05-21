@@ -4,6 +4,7 @@ export const FETCH_TEAM = 'FETCH_TEAM';
 export const FETCH_SEASONS = 'FETCH_SEASONS';
 export const FETCH_PLAYERS = 'FETCH_PLAYERS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
+export const ADD_SEASON = 'ADD_SEASON';
 
 const getPlayersQuery = `
 query ($player: String) { 
@@ -27,8 +28,12 @@ const getDashboardQuery = `
   query { getDashboard{ message } } 
 `;
 
-const getSeasonsdQuery = `
+const getSeasonsQuery = `
   query { getSeasons{ season } } 
+`;
+
+const postSeasonsQuery = `
+  query { postSeason{ season } } 
 `;
 
 const getTeamQuery = `
@@ -57,10 +62,17 @@ export function fetchDashboardData() {
   };
 }
 
-
 export function fetchSeasons() {
   return {
     type: FETCH_SEASONS,
-    payload: fetch.graphQL(getSeasonsdQuery)
+    payload: fetch.graphQL(getSeasonsQuery)
+  };
+}
+
+export function addSeason(name) {
+  return {
+    type: ADD_SEASON,
+    data: { name },
+    payload: fetch.graphQL(postSeasonsQuery)
   };
 }

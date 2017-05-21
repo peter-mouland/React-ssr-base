@@ -51,6 +51,7 @@ export function getRoutesConfig() {
         title: 'Admin'
       },
       label: 'Admin',
+      requiresAuthentication: true,
       component: AdminPage
     },
     {

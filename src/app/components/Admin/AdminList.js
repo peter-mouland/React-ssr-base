@@ -15,25 +15,41 @@ class AdminList extends React.Component {
 
   static propTypes = {
     list: PropTypes.array,
-    secondary: PropTypes.bool,
-    add: PropTypes.bool
+    secondary: PropTypes.bool
   }
 
   static contextTypes = {
     router: PropTypes.object
   }
 
-  constructor(props) {
-    super(props);
-    this.addItem = this.addItem.bind(this);
+  setDefaultValue = (e) => {
+    if (e.currentTarget.value === '') {
+      e.currentTarget.value = this.getDefaultValue();
+    }
   }
 
-  addItem(e) {
-    e.preventDefault();
+  clearDefaultValue = (e) => {
+    if (e.currentTarget.value === this.getDefaultValue()) {
+      e.currentTarget.value = '';
+    }
   }
+
+  updateValue = (e) => {
+    this.valueToAdd = e.currentTarget.value;
+  }
+
+  add = (e) => {
+    e.preventDefault();
+    if (this.valueToAdd) {
+      this.input.value = this.getDefaultValue();
+      this.props.add(this.valueToAdd);
+    }
+  }
+
+  getDefaultValue = () => `new ${this.props.path}`
 
   render() {
-    const { list, path, secondary = false, add = false, ...props } = this.props;
+    const { list, path, add, secondary = false, ...props } = this.props;
     const { router: { route: { match } } } = this.context;
 
     return (
@@ -50,11 +66,15 @@ class AdminList extends React.Component {
         }
         { add ? (
           <li { ...bem('item') }>
-            <form method="POST" onSubmit={this.addItem}>
+            <form method="POST" onSubmit={ this.add }>
               <input { ...bem('text') }
                      type="text"
                      name="add"
-                     defaultValue={`new ${path}` }
+                     ref={(input) => { this.input = input; } }
+                     defaultValue={ this.getDefaultValue() }
+                     onFocus={ this.clearDefaultValue }
+                     onBlur={ this.setDefaultValue }
+                     onChange={ this.updateValue }
               />
               <input className="admin-btn"
                      type="submit"

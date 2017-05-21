@@ -1,9 +1,15 @@
+/* eslint-disable no-underscore-dangle, no-console */
 import React from 'react';
 import { connect } from 'react-redux';
+import Route from 'react-router-dom/Route';
 
+import AdminList from '../../components/Admin/AdminList';
+import SeasonAdminOptions from '../../components/Admin/SeasonAdminOptions';
+import LeagueAdminOptions from '../../components/Admin/LeagueAdminOptions';
 import Auth from '../../authentication/auth-helper';
-import Admin from '../../components/Admin/Admin';
-import { fetchSeasons } from '../../actions';
+import { fetchSeasons, addSeason } from '../../actions';
+
+import './adminPage.scss';
 
 const Error = ({ error }) => <div>
   <p>Error Loading seasons!</p>
@@ -16,6 +22,10 @@ const Errors = ({ errors }) => <div>
 
 const Loading = () => <p>Loading seasons....</p>;
 
+const selectedItem = (match, items) => items.find((item) => item._id === match.params.id);
+
+export const join = (prefix, postfix) => `${prefix}/${postfix}`.replace(/\/\/\//g, '/').replace(/\/\//g, '/');
+
 
 class AdminPage extends React.Component {
 
@@ -26,19 +36,75 @@ class AdminPage extends React.Component {
     this.props.fetchSeasons();
   }
 
+  addSeason = (value) => {
+    console.log(value);
+  }
+
+  addLeague = (value) => {
+    console.log(value);
+  }
+
   render() {
-    const { errors = [], loading, seasons } = this.props;
+    const { errors = [], loading, seasons, match } = this.props;
+    const seasonPath = join(match.url, 'season/:id/');
+    const leaguePath = join(seasonPath, 'league/:id/');
 
     if (errors.length) {
       return <Errors errors={errors} />;
     } else if (loading || !seasons) {
       return <Loading />;
+    } else if (!Auth.isAdmin()) {
+      return <p>You're not admin!</p>;
     }
 
 
     return (
-      <section>
-        {Auth.isAdmin() && <Admin seasons={ seasons } />}
+      <section className="admin">
+        <h3 className="sr-only">Admin Actions</h3>
+        <AdminList list={ seasons } path="season" add={ this.addSeason } />
+        <Route path={seasonPath} render={(seasonMatcher) => {
+          const season = selectedItem(seasonMatcher.match, seasons);
+          if (!season) return null;
+          const leagues = season.leagues;
+          return (
+            <div>
+              <SeasonAdminOptions season={season} />
+              <AdminList list={ season.leagues } path="league" secondary add={ this.addLeague } />
+              <Route path={leaguePath} render={(leagueMatcher) => {
+                const league = selectedItem(leagueMatcher.match, leagues);
+                if (!league) return null;
+                return <LeagueAdminOptions league={league} />;
+              }}/>
+              <AdminList list={ [{ name: 'teams', _id: 1 }] } path="team" secondary />
+            </div>
+          );
+        }}/>
+
+
+        <ul>
+          <li>Assign Manager to League</li>
+          <li>Authorise Transfers</li>
+          <li>Increment Game Week</li>
+        </ul>
+        <section className="admin__assign-to-league">
+          <h4>Assign Manager to League</h4>
+          <form method="post" name="admin-managers">
+            <h5>League 1</h5>
+            <select name="managers-league-1" multiple></select>
+            <h5>League 2</h5>
+            <select name="managers-league-2" multiple></select>
+          </form>
+        </section>
+        <section className="admin__transfers">
+          <h4>Authorise Transfers</h4>
+        </section>
+        <section className="admin__game-week">
+          <h4>Increment Game Week</h4>
+          <p>Incrementing game week will save the current scores.</p>
+          <p>This can only be done if there are NO outstanding transfers.</p>
+          <p>Current Game Week: 32</p>
+        </section>
+
       </section>
     );
   }
@@ -54,5 +120,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons }
+  { fetchSeasons, addSeason }
 )(AdminPage);

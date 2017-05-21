@@ -124,8 +124,9 @@ class Auth {
   }
 
   static isAdmin(ctx) {
-    const token = jwtDecode(Auth.getToken(ctx));
-    return token.isAdmin;
+    const token = Auth.getToken(ctx);
+    const decodedToken = token ? jwtDecode(token) : { isAdmin: false };
+    return decodedToken.isAdmin;
   }
 
 }

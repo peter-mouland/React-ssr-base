@@ -26,10 +26,9 @@ a {
 a.button,
 input[type="submit"],
 button {
-  color: currentColor;
   background-color: #86d993;
   border: 2px solid rgba(0,0,0,.25);
-  //color: #163;
+  color: #163;
   font-size: .8rem;
   padding: .25em 1em;
   cursor: pointer;
@@ -48,4 +47,10 @@ h1, h2, h3 {
 
 .hidden {
   display:none!important;
+}
+
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

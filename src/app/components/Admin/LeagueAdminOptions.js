@@ -19,18 +19,10 @@ class LeagueAdminOptions extends React.Component {
           Tier: <span className="admin-option__value">{league.tier}</span>
         </div>
         <div className="admin-option">
-          <h3>Current Players</h3>
-          <ul>
+          <ul className="simple-list">
             <li>Naked</li>
             <li>Johnny</li>
-            <li>Jazza</li>
-          </ul>
-        </div>
-        <div className="admin-option">
-          <h3>Available Players</h3>
-          <ul>
-            <li>Nick</li>
-            <li>Olly</li>
+            <li>Jezza</li>
           </ul>
         </div>
       </div>
