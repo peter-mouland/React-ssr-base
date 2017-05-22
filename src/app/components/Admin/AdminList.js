@@ -15,7 +15,8 @@ class AdminList extends React.Component {
 
   static propTypes = {
     list: PropTypes.array,
-    secondary: PropTypes.bool
+    secondary: PropTypes.bool,
+    loading: PropTypes.bool,
   }
 
   static contextTypes = {
@@ -49,9 +50,8 @@ class AdminList extends React.Component {
   getDefaultValue = () => `new ${this.props.path}`
 
   render() {
-    const { list, path, add, secondary = false, ...props } = this.props;
+    const { list, path, add, secondary = false, loading = false, ...props } = this.props;
     const { router: { route: { match } } } = this.context;
-
     return (
       <ul { ...bem(null, { secondary }) } { ...props } >
         {
@@ -66,23 +66,26 @@ class AdminList extends React.Component {
         }
         { add ? (
           <li { ...bem('item') }>
-            <form method="POST" onSubmit={ this.add }>
-              <input { ...bem('text') }
-                     type="text"
-                     name="add"
-                     ref={(input) => { this.input = input; } }
-                     defaultValue={ this.getDefaultValue() }
-                     onFocus={ this.clearDefaultValue }
-                     onBlur={ this.setDefaultValue }
-                     onChange={ this.updateValue }
-              />
-              <input className="admin-btn"
-                     type="submit"
-                     value="Add"
-              />
-            </form>
+            { loading ?
+              <div { ...bem('text', 'saving') }>Saving...</div> :
+              <form method="POST" onSubmit={ this.add }>
+                <input { ...bem('text') }
+                       type="text"
+                       name="add"
+                       ref={(input) => { this.input = input; } }
+                       defaultValue={ this.getDefaultValue() }
+                       onFocus={ this.clearDefaultValue }
+                       onBlur={ this.setDefaultValue }
+                       onChange={ this.updateValue }
+                />
+                <input className="admin-btn"
+                       type="submit"
+                       value="Add"
+                />
+              </form>
+            }
           </li>
-          ) : <li { ...bem('item') } /> }
+        ) : <li { ...bem('item') } /> }
       </ul>
     );
   }

@@ -37,11 +37,15 @@ const graphQLOpts = (data, params = {}) => ({
   params
 });
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const fetchUrl = (endpoint, opts = {}) => {
   const token = Auth.getToken();
   opts.headers = Object.assign({}, opts.headers, token ? { Authorization: `Bearer ${token}` } : {});
   const url = endpoint.indexOf('//') > -1 ? endpoint : `${localUrl}${endpoint}`;
-  return axios({ url, ...opts })
+  return Promise.resolve()
+    // .then(() => delay(3000)) // used to help dev / testing
+    .then(() => axios({ url, ...opts }))
     .then(checkStatus)
     .then((response) => response.data)
     .catch((error) => {

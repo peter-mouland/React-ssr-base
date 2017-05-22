@@ -6,14 +6,15 @@ import * as actions from '../actions';
 
 const log = debug('base:reducers/index');
 
-export function actionState(state = {}, action) {
+export function promiseState(state = {}, action) {
   const splitAction = action.type.split('_');
-  const postFix = splitAction[splitAction.length - 1];
+  const postFix = splitAction.pop();
+  const actionType = splitAction.join('_');
   switch (postFix) {
     case 'PENDING':
       return {
         ...state,
-        loading: true
+        loading: actionType
       };
     case 'FULFILLED':
       return {
@@ -81,9 +82,9 @@ export function dashboard(state = {}, action) {
 }
 
 export default combineReducers({
+  promiseState,
   seasons,
   players,
   dashboard,
-  actionState,
   routing
 });

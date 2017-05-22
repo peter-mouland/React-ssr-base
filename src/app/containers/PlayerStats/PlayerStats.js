@@ -159,8 +159,8 @@ class PlayerStats extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    errors: state.actionState.errors,
-    loading: state.actionState.loading,
+    errors: state.promiseState.errors,
+    loading: state.promiseState.loading,
     players: state.players.data
   };
 }

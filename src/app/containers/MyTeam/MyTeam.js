@@ -83,8 +83,8 @@ class MyTeam extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    errors: state.actionState.errors,
-    loading: state.actionState.loading,
+    errors: state.promiseState.errors,
+    loading: state.promiseState.loading,
     team: state.team.data,
   };
 }

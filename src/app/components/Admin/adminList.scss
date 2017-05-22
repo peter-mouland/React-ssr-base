@@ -35,6 +35,11 @@
   &.link--active {
     border-color: $lighter;
   }
+
+  &--saving {
+    border: 0;
+    font-size: 1.25em;
+  }
 }
 
 input.admin-list__text {

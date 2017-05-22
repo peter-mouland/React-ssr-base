@@ -46,8 +46,8 @@ class DashboardPage extends React.Component {
 function mapStateToProps(state) {
   return {
     seasons: state.seasons.data,
-    loading: state.actionState.loading,
-    errors: state.actionState.errors,
+    loading: state.promiseState.loading,
+    errors: state.promiseState.errors,
   };
 }
 

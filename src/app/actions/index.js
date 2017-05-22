@@ -30,7 +30,7 @@ const getDashboardQuery = `
 `;
 
 const getSeasonsQuery = `
-  query { getSeasons{ _id name currentGW isLive leagues { _id name } } } 
+  query { getSeasons{ _id name currentGW isLive leagues { _id name tier } } } 
 `;
 
 const addSeasonsQuery = `
