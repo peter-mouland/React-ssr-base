@@ -27,8 +27,8 @@
     "mocha": "mocha --opts ./tests/config/mocha.opts "
   },
   "engines": {
-    "node": "6.10.0",
-    "npm": "3.10.10"
+    "node": "7.10.0",
+    "npm": "4.2.10"
   },
   "pre-commit": [
     "lint",
