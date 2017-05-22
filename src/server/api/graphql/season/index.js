@@ -19,7 +19,17 @@ const schema = (`
   }
 `);
 
-const fetchSeasons = (search = {}) => new Promise((resolve, reject) => {
+const getSeason = (id) => new Promise((resolve, reject) => {
+  Seasons.findById(id, (err, seasons) => {
+    if (err || !seasons) {
+      reject(err || { message: 'season not found' });
+    } else {
+      resolve(seasons);
+    }
+  });
+});
+
+export const getSeasons = (search = {}) => new Promise((resolve, reject) => {
   Seasons.find(search, (err, seasons) => {
     if (err || !seasons) {
       reject(err || { message: 'no season found' });
@@ -29,24 +39,35 @@ const fetchSeasons = (search = {}) => new Promise((resolve, reject) => {
   });
 });
 
-export const addSeason = (season) => {
+export const updateSeason = (id, seasonUpdate) => new Promise((resolve, reject) => {
+  Seasons.findByIdAndUpdate(id, seasonUpdate, { new: true }, (err, season) => {
+    if (err) { return reject(err); }
+    return resolve(season);
+  });
+});
+
+export const addSeason = ({ name }) => {
   const promise = new Promise((resolve, reject) => {
-    const newSeason = new Seasons(season);
+    const newSeason = new Seasons({ name });
     newSeason.save((err) => {
       if (err) { return reject(err); }
-      return resolve(season);
+      return resolve({ name });
     });
   });
-  return promise.then(fetchSeasons);
+  return promise.then(() => getSeasons());
 };
 
-export const addLeague = ({ seasonName, name }) => fetchSeasons({ name: seasonName })
-    .then((seasons) => {
-      const season = seasons[0];
-      season.leagues.push({ name });
-      return addSeason(season);
+export const addLeague = ({ seasonId, name }) => getSeason(seasonId)
+  .then((season) => {
+    season.leagues.push({ name });
+    return new Promise((resolve, reject) => {
+      season.save((err, updatedSeason) => {
+        if (err) return reject(err);
+        return resolve(updatedSeason);
+      });
     });
-
+  })
+  .then(() => getSeasons());
 
 export const seasonQuery = `
   getSeasons: [Season]
@@ -57,11 +78,7 @@ export const seasonMutation = `
 `;
 
 export const leagueMutation = `
-  addLeague(seasonName: String, name: String): [Season]
+  addLeague(seasonId: String, name: String): [Season]
 `;
-
-export function getSeasons() {
-  return fetchSeasons();
-}
 
 export default schema;

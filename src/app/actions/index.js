@@ -38,7 +38,7 @@ const addSeasonsQuery = `
 `;
 
 const addLeaguesQuery = `
-  mutation ($seasonName: String, $name: String) { addLeague(seasonName: $seasonName, name: $name){ _id name currentGW isLive leagues { _id name } } }
+  mutation ($seasonId: String, $name: String) { addLeague(seasonId: $seasonId, name: $name){ _id name currentGW isLive leagues { _id name } } }
 `;
 
 const getTeamQuery = `
@@ -81,9 +81,9 @@ export function addSeason(name) {
   };
 }
 
-export function addLeague(seasonName, name) {
+export function addLeague(seasonId, name) {
   return {
     type: ADD_LEAGUE,
-    payload: fetch.graphQL(addLeaguesQuery, { seasonName, name })
+    payload: fetch.graphQL(addLeaguesQuery, { seasonId, name })
   };
 }

@@ -40,8 +40,8 @@ class AdminPage extends React.Component {
     this.props.addSeason(name);
   }
 
-  addLeague = (seasonName, name) => {
-    this.props.addLeague(seasonName, name);
+  addLeague = (id, name) => {
+    this.props.addLeague(id, name);
   }
 
   render() {
@@ -69,7 +69,7 @@ class AdminPage extends React.Component {
           return (
             <div>
               <SeasonAdminOptions season={season} />
-              <AdminList list={ leagues } path="league" secondary add={ (name) => this.addLeague(season.name, name) } />
+              <AdminList list={ leagues } path="league" secondary add={ (name) => this.addLeague(season._id, name) } />
               <Route path={leaguePath} render={(leagueMatcher) => {
                 const league = selectedItem(leagueMatcher.match, leagues);
                 if (!league) return null;
