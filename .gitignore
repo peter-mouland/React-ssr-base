@@ -10,5 +10,5 @@ compiled
 tests_output
 webpack-stats.json
 vendor-manifest.json
-mongodb
+mongodb/*
 tests_screenshots
