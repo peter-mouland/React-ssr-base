@@ -25,20 +25,35 @@ query ($player: String) {
 } 
 `;
 
+const leagueFragment = `
+fragment leagueInfo on League {
+ _id name tier
+}`;
+
+const seasonFragment = `
+${leagueFragment}
+fragment seasonInfo on Season {
+ _id name currentGW isLive leagues { ...leagueInfo }
+}
+`;
+
 const getDashboardQuery = `
   query { getDashboard{ message } } 
 `;
 
 const getSeasonsQuery = `
-  query { getSeasons{ _id name currentGW isLive leagues { _id name tier } } } 
+  ${seasonFragment}
+  query { getSeasons{ ...seasonInfo } }
 `;
 
 const addSeasonsQuery = `
-  mutation ($name: String) { addSeason(name: $name){ _id name currentGW isLive leagues { _id name } } }
+  ${seasonFragment}
+  mutation ($name: String) { addSeason(name: $name){ ...seasonInfo } }
 `;
 
 const addLeaguesQuery = `
-  mutation ($seasonId: String, $name: String) { addLeague(seasonId: $seasonId, name: $name){ _id name currentGW isLive leagues { _id name } } }
+  ${seasonFragment}
+  mutation ($seasonId: String, $name: String) { addLeague(seasonId: $seasonId, name: $name){ ...seasonInfo } }
 `;
 
 const getTeamQuery = `
