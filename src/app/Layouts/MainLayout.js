@@ -62,10 +62,10 @@ export default class MainLayout extends React.Component {
           <NamedLink to="dashboard" {...bem('nav', 'link')} />
           <MyAccount isUserAuthenticated={ isUserAuthenticated } />
         </nav>
-        <main className="layout__content">
+        <main {...bem('content')}>
           {children}
         </main>
-        <footer className="layout__footer">
+        <footer {...bem('footer')}>
           Hosted at <a href="http://github.com/peter-mouland/react-ssr-base">github.com/peter-mouland/react-srr-base</a>
         </footer>
       </div>

@@ -13,18 +13,31 @@ $col2-width: 66% !default;
 
 .layout__nav {
   padding: 0 2.25%;
-  height: $nav-height;
+  min-height: $nav-height;
+  display: flex;
+  align-items: center;
 }
 
-.layout__nav-header {
+.layout__nav--header {
   margin-right: 10px;
-  border-right: 6px double currentColor;
-  padding-right: 10px;
+  padding: 10px;
+  background-color: $brand--bg;
+  color: $brand--font;
 }
 
-.layout__nav-link {
+.layout__nav--link {
   margin: 0 6px;
-  line-height: 2em;
+  line-height: 1.25em;
+  font-family: 'Roboto Slab', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $secondary--font;
+  padding: .5em;
+  text-align: center;
+  border-style: solid;
+  border-width: 2px 0;
+  border-color: transparent;
 
   &:first-of-type {
     margin-left: 0;
@@ -32,6 +45,11 @@ $col2-width: 66% !default;
 
   &:last-of-type {
     margin-right: 0;
+  }
+
+  &.link--active {
+    color: $brand--bg;
+    border-color: $brand--bg;
   }
 }
 
@@ -54,5 +72,6 @@ $col2-width: 66% !default;
 }
 
 .my-account {
-  float: right;
+  text-align: right;
+  flex-grow: 1;
 }

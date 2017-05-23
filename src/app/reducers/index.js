@@ -44,6 +44,7 @@ export function dashboard(state = {}, action) {
       return {
         ...state,
         loading: false,
+        errors: action.payload.errors,
         secretData: action.payload.data && action.payload.data.getDashboard.message,
         status: action.status
       };
@@ -51,7 +52,7 @@ export function dashboard(state = {}, action) {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        errors: [action.payload],
         status: action.status
       };
     default:

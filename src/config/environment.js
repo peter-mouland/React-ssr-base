@@ -1,17 +1,25 @@
 const debug = require('debug');
 
-const setEnvs = {};
+const config = {};
 const setEnvDefault = (key, val) => {
   if (!process.env[key]) {
     process.env[key] = val;
   }
-  setEnvs[key] = process.env[key];
+  config[key] = process.env[key];
 };
 
 setEnvDefault('DEBUG', 'base:*');
 setEnvDefault('PORT', 3000);
+setEnvDefault('FIXTURES', 'false');
+setEnvDefault('FIXTURES_PORT', 3001);
 setEnvDefault('MONGODB_URI', 'mongodb://localhost/react_app');
 setEnvDefault('JWT_SECRET', 'a secret phrase!!');
+
+const graphQlUrl = config.FIXTURES === 'true'
+  ? `http://localhost:${config.FIXTURES_PORT}/graphql`
+  : '/graphql/v1';
+
+setEnvDefault('GRAPHQL_URL', graphQlUrl);
 
 debug.enable(process.env.DEBUG);
 const log = debug('base: Environment:');
@@ -20,6 +28,7 @@ const log = debug('base: Environment:');
 if (!process.env.GA_KEY) { setEnvDefault('GA_KEY', 'development'); }
 if (!process.env.NODE_ENV) { setEnvDefault('NODE_ENV', 'development'); }
 
-log(setEnvs);
+log(config);
 
-module.exports = setEnvs;
+module.exports = config;
+module.exports.getVar = (key) => process.env[key];

@@ -19,7 +19,7 @@ const App = (
 );
 
 try {
-  System.import('./app/utils/analytics').then((analytics) => analytics.init());
+  import('./app/utils/analytics').then((analytics) => analytics.init());
   ReactDOM.render(App, rootEl);
   if (module.hot) {
     module.hot.accept('./app/Root', () => {

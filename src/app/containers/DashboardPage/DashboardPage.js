@@ -5,12 +5,23 @@ import { connect } from 'react-redux';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { fetchDashboardData } from '../../actions';
 
+const Error = ({ error }) => <div>
+  <p>Error Loading seasons!</p>
+  <p>{ error.message }</p>
+</div>;
+
+const Errors = ({ errors }) => <div>
+  {errors.map((error, i) => <Error error={error} key={i} />)}
+</div>;
+
+const Loading = () => <p>Loading seasons....</p>;
+
+
 class DashboardPage extends React.Component {
 
   static needs = [fetchDashboardData];
 
   static propTypes = {
-    loading: PropTypes.bool,
     secretData: PropTypes.string
   };
 
@@ -20,12 +31,15 @@ class DashboardPage extends React.Component {
   }
 
   render() {
-    const { secretData, loading = false, error } = this.props;
-    return (<Dashboard id="dashboard-page"
-                       loading={loading}
-                       error={error}
-                       secretData={secretData}
-    />);
+    const { errors = [], loading, secretData } = this.props;
+
+    if (errors.length) {
+      return <Errors errors={errors} />;
+    } else if (loading || !secretData) {
+      return <Loading />;
+    }
+
+    return (<Dashboard id="dashboard-page" secretData={secretData} />);
   }
 }
 
@@ -33,7 +47,7 @@ function mapStateToProps(state) {
   return {
     secretData: state.dashboard.secretData,
     loading: state.dashboard.loading,
-    error: state.dashboard.error,
+    errors: state.dashboard.errors,
   };
 }
 

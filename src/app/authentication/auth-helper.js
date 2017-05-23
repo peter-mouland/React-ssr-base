@@ -123,6 +123,12 @@ class Auth {
       : cookie.load('token', { path: '/' });
   }
 
+  static isAdmin(ctx) {
+    const token = Auth.getToken(ctx);
+    const decodedToken = token ? jwtDecode(token) : { isAdmin: false };
+    return decodedToken.isAdmin;
+  }
+
 }
 
 export default Auth;

@@ -2,6 +2,7 @@ import axios from 'axios';
 import debug from 'debug';
 
 import { localUrl } from '../utils';
+import { getVar } from '../../config/environment';
 import Auth from '../authentication/auth-helper';
 
 const log = debug('base:fetch');
@@ -51,7 +52,7 @@ const fetchUrl = (endpoint, opts = {}) => {
 
 const getJSON = (url, options) => fetchUrl(url, jsonOpts('GET', null, options));
 const postJSON = (url, data, options) => fetchUrl(url, jsonOpts('POST', data, options));
-const graphQL = (data, variables) => fetchUrl('/graphql/v1', graphQLOpts(data, variables));
+const graphQL = (data, variables) => fetchUrl(getVar('GRAPHQL_URL'), graphQLOpts(data, variables));
 
 export const fetch = {
   url: fetchUrl,

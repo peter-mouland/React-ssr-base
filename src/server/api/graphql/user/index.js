@@ -1,3 +1,7 @@
+import debug from 'debug';
+
+const log = debug('base:graphql/User');
+
 const User = require('mongoose').model('User');
 
 const fetchUserData = (userDetails) => new Promise((resolve, reject) => {
@@ -23,6 +27,5 @@ export const userQuery = `
 `;
 
 export const getUser = ({ email, id }) => fetchUserData({ _id: id, email });
-
 
 export default schema;
