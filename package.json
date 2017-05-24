@@ -93,6 +93,7 @@
     "progress-bar-webpack-plugin": "^1.9.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-addons-perf": "^15.4.2",
     "react-bem-helper": "^1.4.1",
     "react-cookie": "^1.0.4",
     "react-document-meta": "^2.1.2",

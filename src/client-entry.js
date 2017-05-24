@@ -4,6 +4,7 @@ import debug from 'debug';
 
 import HmrContainer from './app/containers/HmrContainer/HmrContainer';
 import Root from './app/Root';
+import './app/utils/perfTools';
 import './styles/app.scss';
 
 debug.enable(process.env.DEBUG);
