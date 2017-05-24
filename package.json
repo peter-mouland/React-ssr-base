@@ -10,6 +10,7 @@
     "players-to-db": "babel-node ./scripts/insertStatsFromJson.js",
     "mongo": "mongod  --dbpath mongodb",
     "build": "rm -rf compiled && npm run compile:server && npm run compile && node scripts/copyAssets.js",
+    "build:prod": "rm -rf compiled && npm run compile:server && npm run compile:prod && node scripts/copyAssets.js",
     "compile": "webpack --config src/config/webpack.config.prod.js -p",
     "compile:prod": "NODE_ENV=production npm run compile",
     "compile:dev": "webpack --config src/config/webpack.config.dev.js",

@@ -37,7 +37,9 @@ const graphQLOpts = (data, params = {}) => ({
   params
 });
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms) => ( // eslint-disable-line no-unused-vars
+  new Promise((resolve) => setTimeout(resolve, ms))
+);
 
 const fetchUrl = (endpoint, opts = {}) => {
   const token = Auth.getToken();

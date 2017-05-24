@@ -11,7 +11,7 @@ class ManagerAdminOptions extends React.Component {
   }
 
   render() {
-    const {  addManager, loading, ...props } = this.props;
+    const { addManager, ...props } = this.props;
 
     return (
       <div className="admin-options" { ...props }>
