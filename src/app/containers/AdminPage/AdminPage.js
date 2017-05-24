@@ -9,7 +9,7 @@ import LeagueAdminOptions from '../../components/Admin/LeagueAdminOptions';
 import ManagerAdminOptions from '../../components/Admin/ManagerAdminOptions';
 import Auth from '../../authentication/auth-helper';
 import {
-  fetchSeasons, addSeason, addLeague, addManager, ADD_SEASON, ADD_LEAGUE, ADD_MANAGER
+  fetchSeasons, addSeason, addLeague, addUserAndAssignToLeague, ADD_SEASON, ADD_LEAGUE, ADD_USER
 } from '../../actions';
 
 import './adminPage.scss';
@@ -46,15 +46,15 @@ class AdminPage extends React.Component {
     this.props.addLeague(seasonId, name);
   }
 
-  addManager = (seasonId, name) => {
-    this.props.addManager(seasonId, name);
+  addUserAndAssignToLeague = (seasonId, form) => {
+    this.props.addUserAndAssignToLeague(seasonId, form.leagueId, form.name, form.email);
   }
 
   render() {
     const { errors = [], loading, seasons, match } = this.props;
     const addingSeason = loading === ADD_SEASON;
     const addingLeague = loading === ADD_LEAGUE;
-    const addingManager = loading === ADD_MANAGER;
+    const addingManager = loading === ADD_USER;
     const seasonPath = join(match.url, 'season/:id/');
     const leaguePath = join(seasonPath, 'league/:id/');
     const managersPath = join(seasonPath, 'managers');
@@ -100,8 +100,9 @@ class AdminPage extends React.Component {
               />
               <Route path={managersPath} render={(managersMatcher) => {
                 if (!managersMatcher.match) return null;
-                return <ManagerAdminOptions addManager={ this.addManager }
+                return <ManagerAdminOptions add={ (form) => this.addUserAndAssignToLeague(season._id, form) }
                                             loading={ addingManager }
+                                            leagues={ leagues }
                         />;
               }}/>
             </div>
@@ -148,5 +149,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons, addSeason, addLeague, addManager }
+  { fetchSeasons, addSeason, addLeague, addUserAndAssignToLeague }
 )(AdminPage);

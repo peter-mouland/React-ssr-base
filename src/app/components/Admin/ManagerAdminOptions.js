@@ -10,8 +10,19 @@ class ManagerAdminOptions extends React.Component {
     loading: PropTypes.bool,
   }
 
+  inputs = {};
+
+  add = (e) => {
+    e.preventDefault();
+    this.props.add({
+      name: this.inputs.name.value,
+      email: this.inputs.email.value,
+      leagueId: this.inputs.leagueId.value,
+    });
+  };
+
   render() {
-    const { addManager, ...props } = this.props;
+    const { leagues, add, loading, ...props } = this.props;
 
     return (
       <div className="admin-options" { ...props }>
@@ -24,14 +35,32 @@ class ManagerAdminOptions extends React.Component {
         </div>
 
         <div className="admin-option admin-option__btn">
-          <form method="post" onSubmit={addManager}>
+          <form method="post" onSubmit={ this.add }>
             <div>
-              <label htmlFor="manager-name">Name:</label>
-              <input id="manager-name" name="manager-name"/>
+              <label htmlFor="user-name" required>Name:</label>
+              <input id="user-name"
+                     name="user-name"
+                     ref={(input) => { this.inputs.name = input; }}
+              />
             </div>
             <div>
-              <label htmlFor="manager-email">email:</label>
-              <input id="manager-email" name="manager-email"/>
+              <label htmlFor="user-email" required>Email:</label>
+              <input id="user-email"
+                     name="user-email"
+                     ref={(input) => { this.inputs.email = input; }}
+              />
+            </div>
+            <div>
+              <label htmlFor="user-league">League:</label>
+              <select id="user-league"
+                      name="user-league"
+                      ref={(input) => { this.inputs.leagueId = input; }}
+              >
+                <option value="" />
+                {leagues.map((league) => (
+                  <option value={ league._id } key={ league._id }>{ league.name }</option>
+                ))}
+              </select>
             </div>
 
             <input className="admin-btn" type="submit" value="Add Manager"/>

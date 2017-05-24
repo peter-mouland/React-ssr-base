@@ -1,3 +1,4 @@
+// https://docs.mongodb.com/manual/tutorial/model-tree-structures-with-parent-references/
 const mongoose = require('mongoose');
 
 const SeasonSchema = new mongoose.Schema({
@@ -25,8 +26,11 @@ const SeasonSchema = new mongoose.Schema({
       default: 1
     },
     name: String,
-    managers: [{
-      team_id: String
+    users: [{
+      teamId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+      }
     }]
   }]
 });

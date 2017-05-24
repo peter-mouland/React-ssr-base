@@ -2,30 +2,9 @@
 import debug from 'debug';
 
 import { forPlayer } from './calculatePoints';
+import { findPlayers, findPlayer } from '../../db/player/player.actions';
 
 const log = debug('base:graphql/players');
-
-const PlayersDb = require('mongoose').model('Players');
-
-const fetchPlayers = () => new Promise((resolve, reject) => {
-  PlayersDb.find({}, (err, players) => {
-    if (err || !players) {
-      reject(err || { message: 'no player found' });
-    } else {
-      resolve(players);
-    }
-  });
-});
-
-const fetchPlayer = (playerDetails) => new Promise((resolve, reject) => {
-  PlayersDb.findOne(playerDetails, (err, user) => {
-    if (err || !user) {
-      reject(err || { message: 'no player found' });
-    } else {
-      resolve(user);
-    }
-  });
-});
 
 const schema = (`
   type Stat {
@@ -169,6 +148,6 @@ export class Player {
 
 
 export function getPlayers({ player }) {
-  const promise = player ? fetchPlayer({ player }) : fetchPlayers();
+  const promise = player ? findPlayer({ player }) : findPlayers();
   return promise.then((players) => players.map((pl) => new Player(pl)));
 }

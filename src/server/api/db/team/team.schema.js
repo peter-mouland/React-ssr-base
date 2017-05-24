@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
 
-const PlayerSchema = new mongoose.Schema({
+const TeamSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  manager: {
-    type: String,
-    index: { unique: true }
+  seasonId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Season'
   },
-  season: String,
-  league: String,
+  name: String,
   gw: Number,
   points: Number,
   gk: Number,
@@ -40,4 +39,4 @@ const PlayerSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Team', PlayerSchema);
+module.exports = mongoose.model('Teams', TeamSchema);

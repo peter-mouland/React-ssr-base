@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-const User = require('mongoose').model('User');
 const PassportLocalStrategy = require('passport-local').Strategy;
+
+const { saveNewUser } = require('../../api/db/user/user.actions');
 
 module.exports = new PassportLocalStrategy({
   usernameField: 'email',
@@ -10,13 +11,9 @@ module.exports = new PassportLocalStrategy({
 }, (req, email, password, done) => {
   const userData = {
     email: email.trim(),
-    password: password.trim()
+    password: password.trim(),
+    mustChangePassword: false
   };
 
-  const newUser = new User(userData);
-  newUser.save((err) => {
-    if (err) { return done(err); }
-
-    return done(null);
-  });
+  saveNewUser(userData).then(done);
 });

@@ -8,6 +8,10 @@ const UserSchema = new mongoose.Schema({
     index: { unique: true }
   },
   password: String,
+  mustChangePassword: {
+    type: Boolean,
+    default: false
+  },
   name: String
 });
 

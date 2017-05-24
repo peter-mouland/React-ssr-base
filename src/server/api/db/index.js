@@ -33,10 +33,10 @@ module.exports.connect = (uri) => {
   });
 
   // load models
-  require('./models/user');
-  require('./models/player');
-  require('./models/team');
-  require('./models/season');
+  require('./user/user.schema');
+  require('./player/player.schema');
+  require('./team/team.schema');
+  require('./season/season.schema');
 };
 
 module.exports.connection = mongoose.connection;
