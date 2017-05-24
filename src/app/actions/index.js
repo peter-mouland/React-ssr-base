@@ -6,6 +6,7 @@ export const FETCH_PLAYERS = 'FETCH_PLAYERS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
 export const ADD_SEASON = 'ADD_SEASON';
 export const ADD_LEAGUE = 'ADD_LEAGUE';
+export const ADD_MANAGER = 'ADD_MANAGER';
 
 const getPlayersQuery = `
 query ($player: String) { 
@@ -46,6 +47,10 @@ const getSeasonsQuery = `
   query { getSeasons{ ...seasonInfo } }
 `;
 
+const getTeamQuery = `
+  query ($manager: String) { getTeam(manager: $manager){ team } } 
+`;
+
 const addSeasonsQuery = `
   ${seasonFragment}
   mutation ($name: String) { addSeason(name: $name){ ...seasonInfo } }
@@ -56,8 +61,8 @@ const addLeaguesQuery = `
   mutation ($seasonId: String, $name: String) { addLeague(seasonId: $seasonId, name: $name){ ...seasonInfo } }
 `;
 
-const getTeamQuery = `
-  query ($manager: String) { getTeam(manager: $manager){ team } } 
+const addManagerQuery = `
+  mutation ($seasonId: String, $name: String) { addManager(seasonId: $seasonId, name: $name){ _id name  } }
 `;
 
 export function fetchPlayers(player) {
@@ -100,5 +105,13 @@ export function addLeague(seasonId, name) {
   return {
     type: ADD_LEAGUE,
     payload: fetch.graphQL(addLeaguesQuery, { seasonId, name })
+  };
+}
+
+
+export function addManager(seasonId, name) {
+  return {
+    type: ADD_MANAGER,
+    payload: fetch.graphQL(addManagerQuery, { seasonId, name })
   };
 }

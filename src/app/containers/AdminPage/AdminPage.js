@@ -6,8 +6,11 @@ import Route from 'react-router-dom/Route';
 import AdminList from '../../components/Admin/AdminList';
 import SeasonAdminOptions from '../../components/Admin/SeasonAdminOptions';
 import LeagueAdminOptions from '../../components/Admin/LeagueAdminOptions';
+import ManagerAdminOptions from '../../components/Admin/ManagerAdminOptions';
 import Auth from '../../authentication/auth-helper';
-import { fetchSeasons, addSeason, addLeague, ADD_SEASON, ADD_LEAGUE } from '../../actions';
+import {
+  fetchSeasons, addSeason, addLeague, addManager, ADD_SEASON, ADD_LEAGUE, ADD_MANAGER
+} from '../../actions';
 
 import './adminPage.scss';
 
@@ -39,16 +42,22 @@ class AdminPage extends React.Component {
     this.props.addSeason(name);
   }
 
-  addLeague = (id, name) => {
-    this.props.addLeague(id, name);
+  addLeague = (seasonId, name) => {
+    this.props.addLeague(seasonId, name);
+  }
+
+  addManager = (seasonId, name) => {
+    this.props.addManager(seasonId, name);
   }
 
   render() {
     const { errors = [], loading, seasons, match } = this.props;
     const addingSeason = loading === ADD_SEASON;
     const addingLeague = loading === ADD_LEAGUE;
+    const addingManager = loading === ADD_MANAGER;
     const seasonPath = join(match.url, 'season/:id/');
     const leaguePath = join(seasonPath, 'league/:id/');
+    const managersPath = join(seasonPath, 'managers');
 
     if (errors.length) {
       return <Errors errors={errors} />;
@@ -85,7 +94,16 @@ class AdminPage extends React.Component {
                 if (!league) return null;
                 return <LeagueAdminOptions league={league} />;
               }}/>
-              <AdminList list={ [{ name: 'teams', _id: 1 }] } path="team" secondary />
+              <AdminList list={ [{ name: 'Managers' }] }
+                         path="managers"
+                         secondary
+              />
+              <Route path={managersPath} render={(managersMatcher) => {
+                if (!managersMatcher.match) return null;
+                return <ManagerAdminOptions addManager={ this.addManager }
+                                            loading={ addingManager }
+                        />;
+              }}/>
             </div>
           );
         }}/>
@@ -130,5 +148,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons, addSeason, addLeague }
+  { fetchSeasons, addSeason, addLeague, addManager }
 )(AdminPage);

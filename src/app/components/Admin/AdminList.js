@@ -9,7 +9,9 @@ import './adminList.scss';
 
 const bem = bemHelper({ name: 'admin-list' });
 
-export const join = (prefix, postfix) => `${prefix}/${postfix}`.replace(/\/\/\//g, '/').replace(/\/\//g, '/');
+export const join = (prefix, path, id) => (
+  `${prefix}/${path}/${id || ''}/`.replace(/\/\/\//g, '/').replace(/\/\//g, '/')
+);
 
 class AdminList extends React.Component {
 
@@ -58,7 +60,7 @@ class AdminList extends React.Component {
           list
             .map((item, i) => (
               <li { ...bem('item') } key={i}>
-                <SubLink { ...bem('text') } to={join(match.url, `${path}/${item._id}/`)}>
+                <SubLink { ...bem('text') } to={join(match.url, path, item._id)}>
                   {item.name}
                 </SubLink>
               </li>
