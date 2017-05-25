@@ -24,16 +24,13 @@ export const findSeasons = (search = {}) => new Promise((resolve, reject) => {
   });
 });
 
-export const saveNewSeason = ({ name }) => {
-  const promise = new Promise((resolve, reject) => {
+export const saveNewSeason = ({ name }) => new Promise((resolve, reject) => {
     const newSeason = new Seasons({ name });
     newSeason.save((err, season) => {
       if (err) { return reject(err); }
       return resolve(season);
     });
   });
-  return promise.then(() => findSeasons());
-};
 
 export const updateSeasonById = (id, seasonUpdate) => new Promise((resolve, reject) => {
   Seasons.findByIdAndUpdate(id, seasonUpdate, { new: true }, (err, season) => {
@@ -43,6 +40,6 @@ export const updateSeasonById = (id, seasonUpdate) => new Promise((resolve, reje
 });
 
 export const saveNewLeague = ({ seasonId, name }) => (
-  updateSeasonById(seasonId, { $push: { leagues: { name } } }).then(() => findSeasons())
+  updateSeasonById(seasonId, { $push: { leagues: { name } } })
 );
 

@@ -57,12 +57,20 @@ export function seasons(state = {}, action) {
     case `${actions.ADD_SEASON}_FULFILLED`:
       return {
         ...state,
-        data: action.payload.data && action.payload.data.addSeason,
+        data: [
+          ...state.data,
+          action.payload.data && action.payload.data.addSeason
+        ],
+        seasonAdded: action.payload.data && action.payload.data.addSeason,
       };
     case `${actions.ADD_LEAGUE}_FULFILLED`:
       return {
         ...state,
-        data: action.payload.data && action.payload.data.addLeague,
+        data: [
+          ...state.data,
+          action.payload.data && action.payload.data.addSeason
+        ],
+        leagueAdded: action.payload.data && action.payload.data.addLeague,
       };
     default:
       return state;
