@@ -7,12 +7,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     index: { unique: true }
   },
+  name: String,
   password: String,
   mustChangePassword: {
     type: Boolean,
     default: false
-  },
-  name: String
+  }
 });
 
 

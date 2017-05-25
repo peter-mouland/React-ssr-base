@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import debug from 'debug';
+
 const Players = require('mongoose').model('Players');
 
 const log = debug('base:graphql/players');
-
 
 export const findPlayers = () => new Promise((resolve, reject) => {
   Players.find({}, (err, players) => {

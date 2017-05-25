@@ -24,6 +24,17 @@ export const findSeasons = (search = {}) => new Promise((resolve, reject) => {
   });
 });
 
+export const saveNewSeason = ({ name }) => {
+  const promise = new Promise((resolve, reject) => {
+    const newSeason = new Seasons({ name });
+    newSeason.save((err, season) => {
+      if (err) { return reject(err); }
+      return resolve(season);
+    });
+  });
+  return promise.then(() => findSeasons());
+};
+
 export const updateSeasonById = (id, seasonUpdate) => new Promise((resolve, reject) => {
   Seasons.findByIdAndUpdate(id, seasonUpdate, { new: true }, (err, season) => {
     if (err) { return reject(err); }
@@ -31,25 +42,7 @@ export const updateSeasonById = (id, seasonUpdate) => new Promise((resolve, reje
   });
 });
 
-export const saveNewSeason = ({ name }) => {
-  const promise = new Promise((resolve, reject) => {
-    const newSeason = new Seasons({ name });
-    newSeason.save((err) => {
-      if (err) { return reject(err); }
-      return resolve({ name });
-    });
-  });
-  return promise.then(() => findSeasons());
-};
+export const saveNewLeague = ({ seasonId, name }) => (
+  updateSeasonById(seasonId, { $push: { leagues: { name } } }).then(() => findSeasons())
+);
 
-export const saveNewLeague = ({ seasonId, name }) => findSeasonById(seasonId)
-  .then((season) => {
-    season.leagues.push({ name, users: [] });
-    return new Promise((resolve, reject) => {
-      season.save((err, updatedSeason) => {
-        if (err) return reject(err);
-        return resolve(updatedSeason);
-      });
-    });
-  })
-  .then(() => findSeasons());

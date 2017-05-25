@@ -1,13 +1,13 @@
 import { buildSchema } from 'graphql';
 
 // maybe use babel-plugin-import-glob  in the future
-import playersSchema, { getPlayers, playerQuery } from './player';
+import playersSchema, { getPlayers, playerQuery } from './playerStats';
 import seasonsSchema, {
-  getSeasons, addSeason, addLeague,
-  seasonQuery, seasonMutation, leagueMutation
-} from './season';
-import userSchema, { getUser, addUserAndAssignToLeague, userQuery, userMutation } from './user';
+  getSeasons, addSeason, addLeague, addUser,
+  seasonQuery, seasonMutation, leagueMutation, addUserMutation
+} from './admin';
 import dashboardSchema, { getDashboard, dashboardQuery } from './dashboard';
+import userSchema from './user';
 
 // The root provides the top-level API endpoints
 export const root = {
@@ -15,28 +15,26 @@ export const root = {
   getSeasons,
   addSeason,
   addLeague,
-  addUserAndAssignToLeague,
-  getUser,
+  addUser,
   getDashboard,
 };
 
 export default buildSchema(`
+  ${userSchema}
   ${playersSchema}
   ${seasonsSchema}
-  ${userSchema}
   ${dashboardSchema}
   
   type Query {
     ${playerQuery}
     ${seasonQuery}
-    ${userQuery}
     ${dashboardQuery}
   }
   
   type Mutation {
-    ${userMutation}
     ${seasonMutation}
     ${leagueMutation}
+    ${addUserMutation}
   }
 `);
 

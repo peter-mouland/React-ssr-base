@@ -2,14 +2,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Route from 'react-router-dom/Route';
+// import Redirect from 'react-router-dom/Redirect';
 
 import AdminList from '../../components/Admin/AdminList';
+import AddUser from '../../components/Admin/AddUser';
+import AdminForm from '../../components/Admin/AdminForm';
 import SeasonAdminOptions from '../../components/Admin/SeasonAdminOptions';
 import LeagueAdminOptions from '../../components/Admin/LeagueAdminOptions';
 import ManagerAdminOptions from '../../components/Admin/ManagerAdminOptions';
 import Auth from '../../authentication/auth-helper';
 import {
-  fetchSeasons, addSeason, addLeague, addUserAndAssignToLeague, ADD_SEASON, ADD_LEAGUE, ADD_USER
+  fetchSeasons, addSeason, addLeague, addUser, ADD_SEASON, ADD_LEAGUE, ADD_USER
 } from '../../actions';
 
 import './adminPage.scss';
@@ -46,20 +49,25 @@ class AdminPage extends React.Component {
     this.props.addLeague(seasonId, name);
   }
 
-  addUserAndAssignToLeague = (seasonId, form) => {
-    this.props.addUserAndAssignToLeague(seasonId, form.leagueId, form.name, form.email);
+  addUser = (seasonId, form) => {
+    this.props.addUser(seasonId, form.leagueId, form.name, form.email);
   }
 
   render() {
-    const { errors = [], loading, seasons, match } = this.props;
+    const { errors = [], loading, seasons, match, seasonAdded, leagueAdded } = this.props;
+
     const addingSeason = loading === ADD_SEASON;
     const addingLeague = loading === ADD_LEAGUE;
-    const addingManager = loading === ADD_USER;
+    const addingUser = loading === ADD_USER;
     const seasonPath = join(match.url, 'season/:id/');
     const leaguePath = join(seasonPath, 'league/:id/');
     const managersPath = join(seasonPath, 'managers');
 
-    if (errors.length) {
+    if (seasonAdded) {
+      // return <Redirect to={ seasonPath.replace(':id', seasonAdded._id )} />
+    } else if (leagueAdded) {
+      // return <Redirect to={ leaguePath.replace(':id', leagueAdded._id )} />
+    } else if (errors.length) {
       return <Errors errors={errors} />;
     } else if (!seasons) {
       return <Loading />;
@@ -72,9 +80,11 @@ class AdminPage extends React.Component {
         <h3 className="sr-only">Admin Actions</h3>
         <AdminList list={ seasons }
                    path="season"
-                   add={ this.addSeason }
-                   loading={ addingSeason }
-        />
+        >
+          <AdminForm add={ this.addSeason }
+                     type="Season"
+                     loading={ addingSeason } />
+        </AdminList>
         <Route path={seasonPath} render={(seasonMatcher) => {
           const season = selectedItem(seasonMatcher.match, seasons);
           if (!season) return null;
@@ -84,15 +94,24 @@ class AdminPage extends React.Component {
             <div>
               <SeasonAdminOptions season={season} />
               <AdminList list={ leagues }
-                         path="league"
+                         path="League"
                          secondary
-                         add={ (name) => this.addLeague(season._id, name) }
-                         loading={ addingLeague }
-              />
+              >
+                <AdminForm add={ (name) => this.addLeague(season._id, name) }
+                           type="league"
+                           loading={ addingLeague } />
+              </AdminList>
               <Route path={leaguePath} render={(leagueMatcher) => {
                 const league = selectedItem(leagueMatcher.match, leagues);
                 if (!league) return null;
-                return <LeagueAdminOptions league={league} />;
+                return (
+                  <LeagueAdminOptions league={league}>
+                    <AddUser add={ (form) => this.addUser(season._id, form) }
+                             loading={ addingUser }
+                             leagueId={ league._id }
+                    />
+                  </LeagueAdminOptions>
+                );
               }}/>
               <AdminList list={ [{ name: 'Managers' }] }
                          path="managers"
@@ -100,10 +119,7 @@ class AdminPage extends React.Component {
               />
               <Route path={managersPath} render={(managersMatcher) => {
                 if (!managersMatcher.match) return null;
-                return <ManagerAdminOptions add={ (form) => this.addUserAndAssignToLeague(season._id, form) }
-                                            loading={ addingManager }
-                                            leagues={ leagues }
-                        />;
+                return <ManagerAdminOptions />;
               }}/>
             </div>
           );
@@ -142,6 +158,8 @@ class AdminPage extends React.Component {
 function mapStateToProps(state) {
   return {
     seasons: state.seasons.data,
+    // seasonAdded: state.seasons.seasonAdded,
+    // leagueAdded: state.seasons.leagueAdded,
     loading: state.promiseState.loading,
     errors: state.promiseState.errors,
   };
@@ -149,5 +167,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons, addSeason, addLeague, addUserAndAssignToLeague }
+  { fetchSeasons, addSeason, addLeague, addUser }
 )(AdminPage);

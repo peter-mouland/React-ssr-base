@@ -11,7 +11,7 @@ class LeagueAdminOptions extends React.Component {
   }
 
   render() {
-    const { league, ...props } = this.props;
+    const { league, children, ...props } = this.props;
 
     return (
       <div className="admin-options admin-options--top" { ...props }>
@@ -24,6 +24,9 @@ class LeagueAdminOptions extends React.Component {
             <li>Johnny</li>
             <li>Jezza</li>
           </ul>
+        </div>
+        <div className="admin-option admin-option__btn">
+          { children }
         </div>
       </div>
     );

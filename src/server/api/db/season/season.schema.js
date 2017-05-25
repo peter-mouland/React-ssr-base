@@ -25,13 +25,7 @@ const SeasonSchema = new mongoose.Schema({
       type: Number,
       default: 1
     },
-    name: String,
-    users: [{
-      teamId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    }]
+    name: String
   }]
 });
 

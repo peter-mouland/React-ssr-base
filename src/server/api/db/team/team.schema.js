@@ -1,41 +1,60 @@
 const mongoose = require('mongoose');
 
-const TeamSchema = new mongoose.Schema({
-  userId: {
+const PlayerType = {
+  id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  seasonId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Season'
+    ref: 'Player'
   },
   name: String,
-  gw: Number,
-  points: Number,
-  gk: Number,
-  gkPoints: Number,
-  cb1: Number,
-  cb1Points: Number,
-  cb2: Number,
-  cb2Points: Number,
-  fb1: Number,
-  fb1Points: Number,
-  fb2: Number,
-  fb2Points: Number,
-  cm1: Number,
-  cm1Points: Number,
-  cm2: Number,
-  cm2Points: Number,
-  wm1: Number,
-  wm1Points: Number,
-  wm2: Number,
-  wm2Points: Number,
-  fwd1: Number,
-  fwd1Points: Number,
-  fwd2: Number,
-  fwd2Points: Number,
-  sub: Number,
-  subPoints: Number,
+  club: String,
+  gwPoints: Number,
+  totalPoints: Number
+};
+
+const TeamSchema = new mongoose.Schema({
+  user: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    name: String
+  },
+  season: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Season'
+    },
+    name: String
+  },
+  league: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
+    name: String
+  },
+  name: String,
+  gw: {
+    points: Number,
+    transfersRequested: Number,
+    transfersMade: Number
+  },
+  total: {
+    points: Number,
+    transfersRequested: Number,
+    transfersMade: Number
+  },
+  gk: PlayerType,
+  cb1: PlayerType,
+  cb2: PlayerType,
+  fb1: PlayerType,
+  fb2: PlayerType,
+  cm1: PlayerType,
+  cm2: PlayerType,
+  wm1: PlayerType,
+  wm2: PlayerType,
+  fwd1: PlayerType,
+  fwd2: PlayerType,
+  sub: PlayerType,
 });
 
 

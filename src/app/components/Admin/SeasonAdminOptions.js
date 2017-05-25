@@ -13,7 +13,7 @@ class SeasonAdminOptions extends React.Component {
   }
 
   render() {
-    const { season, ...props } = this.props;
+    const { season, children, ...props } = this.props;
 
     return (
       <div className="admin-options" { ...props }>
@@ -27,7 +27,7 @@ class SeasonAdminOptions extends React.Component {
           Game Week: <span className="admin-option__value">{season.currentGW}</span>
         </div>
         <div className="admin-option admin-option__btn">
-          <button className="admin-btn">New Game Week</button>
+          {children}
         </div>
       </div>
     );

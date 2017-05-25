@@ -28,13 +28,13 @@ query ($player: String) {
 
 const leagueFragment = `
 fragment leagueInfo on League {
- _id name tier users { userId }
+  _id name tier
 }`;
 
 const seasonFragment = `
 ${leagueFragment}
 fragment seasonInfo on Season {
- _id name currentGW isLive leagues { ...leagueInfo }
+  _id name currentGW isLive leagues { ...leagueInfo }
 }
 `;
 
@@ -51,19 +51,19 @@ const getTeamQuery = `
   query ($manager: String) { getTeam(manager: $manager){ team } } 
 `;
 
-const addSeasonsQuery = `
+const addSeasonsMutation = `
   ${seasonFragment}
   mutation ($name: String) { addSeason(name: $name){ ...seasonInfo } }
 `;
 
-const addLeaguesQuery = `
+const addLeaguesMutation = `
   ${seasonFragment}
   mutation ($seasonId: String, $name: String) { addLeague(seasonId: $seasonId, name: $name){ ...seasonInfo } }
 `;
 
-const addUserAndAssignToLeagueMutation = `
+const addUserMutation = `
   mutation ($seasonId: String, $leagueId: String, $name: String, $email: String) { 
-    addUserAndAssignToLeague(seasonId: $seasonId, leagueId: $leagueId, name: $name, email: $email){ _id name email  } 
+    addUser(seasonId: $seasonId, leagueId: $leagueId, name: $name, email: $email){ _id name email  } 
   }
 `;
 
@@ -98,22 +98,20 @@ export function fetchSeasons() {
 export function addSeason(name) {
   return {
     type: ADD_SEASON,
-    payload: fetch.graphQL(addSeasonsQuery, { name })
+    payload: fetch.graphQL(addSeasonsMutation, { name })
   };
 }
 
 export function addLeague(seasonId, name) {
   return {
     type: ADD_LEAGUE,
-    payload: fetch.graphQL(addLeaguesQuery, { seasonId, name })
+    payload: fetch.graphQL(addLeaguesMutation, { seasonId, name })
   };
 }
 
-export function addUserAndAssignToLeague(seasonId, leagueId, name, email) {
-  console.log('action');
-  console.log({ seasonId, leagueId, name, email });
+export function addUser(seasonId, leagueId, name, email) {
   return {
     type: ADD_USER,
-    payload: fetch.graphQL(addUserAndAssignToLeagueMutation, { seasonId, leagueId, name, email })
+    payload: fetch.graphQL(addUserMutation, { seasonId, leagueId, name, email })
   };
 }
