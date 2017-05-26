@@ -3,7 +3,7 @@ import debug from 'debug';
 
 const Players = require('mongoose').model('Players');
 
-const log = debug('base:graphql/players');
+const log = debug('base:db/player.actions');
 
 export const findPlayers = () => new Promise((resolve, reject) => {
   Players.find({}, (err, players) => {

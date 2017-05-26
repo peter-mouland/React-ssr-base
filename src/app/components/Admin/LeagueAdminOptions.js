@@ -11,7 +11,7 @@ class LeagueAdminOptions extends React.Component {
   }
 
   render() {
-    const { league, children, ...props } = this.props;
+    const { league, teams, children, ...props } = this.props;
 
     return (
       <div className="admin-options admin-options--top" { ...props }>
@@ -20,9 +20,7 @@ class LeagueAdminOptions extends React.Component {
         </div>
         <div className="admin-option">
           <ul className="simple-list">
-            <li>Naked</li>
-            <li>Johnny</li>
-            <li>Jezza</li>
+            {teams.map((team) => <li key={team.id}>{team.name}<span className="user">{team.user.name}</span></li>)}
           </ul>
         </div>
         <div className="admin-option admin-option__btn">

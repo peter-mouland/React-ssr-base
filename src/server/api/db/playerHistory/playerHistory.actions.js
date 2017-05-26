@@ -3,7 +3,7 @@ import debug from 'debug';
 
 const Players = require('mongoose').model('PlayerHistory');
 
-const log = debug('base:db/actions/PlayerHistory');
+const log = debug('base:db/PlayerHistory.action');
 
 export const findPlayerHistory = (playerDetails = {}) => new Promise((resolve, reject) => {
   const fn = Object.keys(playerDetails).length > 0 ? 'find' : 'findOne';

@@ -11,7 +11,7 @@ import LeagueAdminOptions from '../../components/Admin/LeagueAdminOptions';
 import ManagerAdminOptions from '../../components/Admin/ManagerAdminOptions';
 import Auth from '../../authentication/auth-helper';
 import {
-  fetchSeasons, addSeason, addLeague, addUser, ADD_SEASON, ADD_LEAGUE, ADD_USER
+  fetchSeasons, fetchTeams, addSeason, addLeague, addUser, ADD_SEASON, ADD_LEAGUE, ADD_USER
 } from '../../actions';
 
 import './adminPage.scss';
@@ -33,7 +33,7 @@ export const join = (prefix, postfix) => `${prefix}/${postfix}`.replace(/\/\/\//
 
 class AdminPage extends React.Component {
 
-  static needs = [fetchSeasons];
+  static needs = [fetchSeasons, fetchTeams];
 
   componentDidMount() {
     if (this.props.seasons) return;
@@ -53,7 +53,7 @@ class AdminPage extends React.Component {
   }
 
   render() {
-    const { errors = [], loading, seasons, match } = this.props;
+    const { errors = [], teamErrors = [], loading, seasons, teams = [], match } = this.props;
     const addingSeason = loading === ADD_SEASON;
     const addingLeague = loading === ADD_LEAGUE;
     const addingUser = loading === ADD_USER;
@@ -63,6 +63,8 @@ class AdminPage extends React.Component {
 
     if (errors.length) {
       return <Errors errors={errors} />;
+    } else if (teamErrors.length) {
+      return <Errors errors={teamErrors} />;
     } else if (!seasons) {
       return <Loading />;
     } else if (!Auth.isAdmin()) {
@@ -98,8 +100,9 @@ class AdminPage extends React.Component {
               <Route path={leaguePath} render={(leagueMatcher) => {
                 const league = selectedItem(leagueMatcher.match, leagues, 'leagueId');
                 if (!league) return null;
+                const leagueTeams = teams.filter((team) => team.league.id === league._id);
                 return (
-                  <LeagueAdminOptions league={league}>
+                  <LeagueAdminOptions league={league} teams={ leagueTeams }>
                     <AddUser add={ (form) => this.addUser(season._id, form) }
                              loading={ addingUser }
                              leagueId={ league._id }
@@ -152,6 +155,8 @@ class AdminPage extends React.Component {
 function mapStateToProps(state) {
   return {
     seasons: state.seasons.data,
+    teams: state.teams.data,
+    teamErrors: state.teams.errors,
     seasonAdded: state.seasons.seasonAdded,
     leagueAdded: state.seasons.leagueAdded,
     loading: state.promiseState.loading,
@@ -161,5 +166,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons, addSeason, addLeague, addUser }
+  { fetchSeasons, fetchTeams, addSeason, addLeague, addUser }
 )(AdminPage);

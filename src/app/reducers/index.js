@@ -80,6 +80,19 @@ export function seasons(state = {}, action) {
   }
 }
 
+export function teams(state = {}, action) {
+  switch (action.type) {
+    case `${actions.FETCH_TEAMS}_FULFILLED`:
+      return {
+        ...state,
+        errors: action.payload.errors,
+        data: action.payload.data && action.payload.data.getTeams,
+      };
+    default:
+      return state;
+  }
+}
+
 export function dashboard(state = {}, action) {
   switch (action.type) {
     case `${actions.FETCH_DASHBOARD_DATA}_FULFILLED`:
@@ -95,6 +108,7 @@ export function dashboard(state = {}, action) {
 export default combineReducers({
   promiseState,
   seasons,
+  teams,
   players,
   dashboard,
   routing

@@ -1,6 +1,6 @@
 import debug from 'debug';
 
-const log = debug('base:graphql/seasons');
+const log = debug('base:db/season.actions');
 
 const Seasons = require('mongoose').model('Season');
 

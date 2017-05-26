@@ -1,6 +1,6 @@
 import { fetch } from '../utils';
 
-export const FETCH_TEAM = 'FETCH_TEAM';
+export const FETCH_TEAMS = 'FETCH_TEAMS';
 export const FETCH_SEASONS = 'FETCH_SEASONS';
 export const FETCH_PLAYERS = 'FETCH_PLAYERS';
 export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
@@ -48,7 +48,7 @@ const getSeasonsQuery = `
 `;
 
 const getTeamQuery = `
-  query ($manager: String) { getTeam(manager: $manager){ team } } 
+  query { getTeams{ user { id name } season { id name } league { id name } name } } 
 `;
 
 const addSeasonsMutation = `
@@ -74,9 +74,9 @@ export function fetchPlayers(player) {
   };
 }
 
-export function fetchTeam(manager) {
+export function fetchTeams(manager) {
   return {
-    type: FETCH_TEAM,
+    type: FETCH_TEAMS,
     payload: fetch.graphQL(getTeamQuery, manager)
   };
 }

@@ -20,15 +20,15 @@ const details = {
   gameWeekStats: stats
 };
 
-const PlayerSchema = new mongoose.Schema({
+const mongooseSchema = {
   name: {
     type: String,
     index: { unique: true }
   },
   details,
   totalStats: stats,
-});
+}
 
 
-module.exports = mongoose.model('Players', PlayerSchema);
+module.exports = mongoose.model('Players', new mongoose.Schema(mongooseSchema));
 module.exports.details = details;

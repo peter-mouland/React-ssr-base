@@ -2,11 +2,22 @@
 import debug from 'debug';
 import { findSeasons, findSeasonById, saveNewLeague, saveNewSeason } from '../../db/season/season.actions';
 import { saveNewUser } from '../../db/user/user.actions';
-import { saveNewTeam } from '../../db/team/team.actions';
+import { saveNewTeam, findTeams } from '../../db/team/team.actions';
 
 const log = debug('base:graphql/admin');
 
 const schema = (`
+  type MinDetail {
+    id: String
+    name: String
+  }
+  type Team {
+    _id: String
+    name: String
+    user: MinDetail
+    season: MinDetail
+    league: MinDetail
+  }
   type League {
     _id: String
     name: String
@@ -39,6 +50,9 @@ export const addUser = ({ seasonId, leagueId, name, email }) => {
     .then(() => user);
 };
 
+
+export const getTeams = findTeams;
+export const teamQuery = 'getTeams: [Team]';
 
 export const getSeasons = findSeasons;
 export const seasonQuery = 'getSeasons: [Season]';
