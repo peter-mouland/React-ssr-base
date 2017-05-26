@@ -7,14 +7,23 @@ $brand--bg--dark: #163;
 $secondary--bg: #fff;
 $secondary--font: #777;
 
+$brand--alt: #3399FF;
+$brand--alt--light: #77bbff;
+
+
 $white: #fff;
 $darkGrey: #ccc;
 $grey: #fbfbfb;
 $black: #000;
 
+$error--bg: rgba(150, 0, 0, .75);
+$error--font: rgb(255, 80, 80);
+
 $light: rgba(255, 255, 255, 0.85);
 $lighter: rgba(255, 255, 255, 0.5);
 $lighten: rgba(255, 255, 255, 0.25);
-$dark: rgba(0, 0, 0, 0.85);
+$slighten: rgba(255, 255, 255, 0.1);
+$dark: rgba(0, 0, 0, 0.75);
 $darker: rgba(0, 0, 0, 0.5);
 $darken: rgba(0, 0, 0, 0.25);
+$sdarken: rgba(0, 0, 0, 0.1);

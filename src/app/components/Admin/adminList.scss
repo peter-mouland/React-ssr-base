@@ -34,6 +34,11 @@
 
   &.link--active {
     border-color: $lighter;
+
+    &:hover {
+      text-decoration: none;
+      border-color: $light;
+    }
   }
 
   &--saving {

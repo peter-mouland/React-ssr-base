@@ -3,6 +3,7 @@ var fs = require("fs-extra");
 
 [ "src/**/*.json",
   "src/**/*.svg",
+  "src/**/*.jpg",
   "src/app/**/*.scss"
 ].forEach(globStr => {
   glob(globStr, {}, function (er, files) {

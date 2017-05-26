@@ -13,12 +13,13 @@ class MyAccount extends React.Component {
   render() {
     const bem = bemHelper({ name: 'my-account' });
     const { className, isUserAuthenticated, ...props } = this.props;
+    const linkClass =  bem('link')
     const loggedOut = (
       <span>
-        <NamedLink to="login" />
+        <NamedLink to="login" {...linkClass} />
       </span>
     );
-    const loggedIn = <NamedLink to="logout" />;
+    const loggedIn = <NamedLink to="logout" {...linkClass} />;
     return (
       <div {...bem(null, null, className)} { ...props } >
         { isUserAuthenticated
@@ -57,9 +58,9 @@ export default class MainLayout extends React.Component {
       <div {...bem(null, 'main')}>
         <nav {...bem('nav')}>
           <span {...bem('nav', 'header')}>FF</span>
-          <NamedLink to="playerStats" {...bem('nav', 'link')} />
-          <NamedLink to="dashboard" {...bem('nav', 'link')} />
-          { Auth.isAdmin() ? <NamedLink to="admin" {...bem('nav', 'link')} /> : null }
+          <NamedLink to="playerStats" {...bem('nav-link')} />
+          <NamedLink to="dashboard" {...bem('nav-link')} />
+          { Auth.isAdmin() ? <NamedLink to="admin" {...bem('nav-link')} /> : null }
           <MyAccount isUserAuthenticated={ isUserAuthenticated } />
         </nav>
         <main {...bem('content')}>

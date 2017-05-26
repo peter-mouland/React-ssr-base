@@ -14,3 +14,27 @@
   width: 1px;
   overflow: hidden;
 }
+
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.label--secondary {
+  color: $secondary--font;
+  font-size: 0.8em;
+}
+
+.message {
+  margin: 1em auto;
+  text-align: left;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 0 20px #282f32;
+  color: white;
+
+  &--referrer {
+    background: rgba(150, 0, 0, .75);
+  }
+}

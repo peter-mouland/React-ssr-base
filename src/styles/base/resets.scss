@@ -1,3 +1,5 @@
+@import "../utils/colours";
+
 *,
 *:after,
 *:before {
@@ -12,6 +14,8 @@ body {
   margin: 0;
   color: #444;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-image: url('/stadium-small.jpg');
+  background-size: 1600px;
 }
 
 a {
@@ -26,8 +30,8 @@ a {
 a.button,
 input[type="submit"],
 button {
-  background-color: #86d993;
-  border: 2px solid rgba(0,0,0,.25);
+  background-color: $brand--bg--light;
+  border: 2px solid $darken;
   color: #163;
   font-size: .8rem;
   padding: .25em 1em;
@@ -36,8 +40,9 @@ button {
   transition: all 0.15s ease-in;
 
   &:hover {
-    border: 2px solid rgba(0, 0, 0, 0.25);
+    border: 2px solid $darken;
     background-color: rgba(0, 0, 0, 0.2);
+    color: $white;
   }
 }
 
@@ -47,10 +52,4 @@ h1, h2, h3 {
 
 .hidden {
   display:none!important;
-}
-
-.simple-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }

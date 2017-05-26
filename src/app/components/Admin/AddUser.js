@@ -31,6 +31,7 @@ class AddUser extends React.Component {
             <label htmlFor="user-name" required>Name:</label>
             <input id="user-name"
                    name="user-name"
+                   autoComplete="off"
                    ref={(input) => { this.inputs.name = input; }}
             />
           </div>
@@ -38,6 +39,7 @@ class AddUser extends React.Component {
             <label htmlFor="user-email" required>Email:</label>
             <input id="user-email"
                    name="user-email"
+                   autoComplete="off"
                    ref={(input) => { this.inputs.email = input; }}
             />
           </div>

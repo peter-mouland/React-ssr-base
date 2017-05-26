@@ -1,18 +1,161 @@
-$darkgreen: #006400;
-$darkred: #8B0000;
+@import '../../../../styles/utils/colours';
+
+$page-bg: #282F32;
+$light-gray: #999;
+$curve: linear;
 
 .form {
-  &__success {
-    color: $darkgreen;
+  //width: 85%;
+  margin: 5em auto;
+  text-align: left;
+  background: $dark;
+  padding: 2em;
+  border-radius: 2em;
+  box-shadow: 0 0 20px $darker;
+  position: relative;
+
+  .bg {
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-image: url('/stadium-small.jpg');
+    background-size: 1600px;
+    filter: blur(5px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-position-x: -14px;
+    background-position-y: -206px;
   }
 
-  &__error {
-    color: $darkred;
+  .field-group {
+    display: block;
+    margin-bottom: .875em;
+    position: relative;
+  }
+
+  fieldset {
+    border-radius: .5em;
+    padding: 2em;
+  }
+
+  legend {
+    color:  $white;
+  }
+
+  label {
+    display: block;
+    text-align: left;
+    color: $white;
+    font-weight: 400;
+    font-size: 1em;
+    left: 0;
+    top: 1em;
+    cursor: text;
+
+    &.animated-label {
+      opacity: 1;
+      transition: opacity .2s, font-size .2s, top .2s;
+      position: absolute;
+      font-size: 1.2em;
+    }
+  }
+
+
+  .field__error:empty {
+    display: none;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    width: 100%;
+    padding: 1em 0 12px;
+    background: none;
+    color: $white;
+    font-size: 1.2em;
+    font-weight: 400;
+    border: 0;
+    border-bottom: 1px solid $light-gray;
+
+    &:focus {
+      outline-color: transparent;
+      outline-style: none;
+
+      + label {
+        font-size: .875em;
+        top: 0;
+        opacity: .5;
+      }
+
+      + label + .separator {
+        transform: scaleX(1) translateY(-2px);
+        opacity: 1;
+      }
+    }
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    &:not(:placeholder-shown):not(:focus) + * {
+      top: 0;
+      font-size: .875em;
+      opacity: .5;
+    }
+
+    &:placeholder-shown:not(:focus) + * {
+      font-size: 150%;
+    }
+  }
+
+  input[type='submit'] {
+    padding: .5em 1em;
+    font-size: 1.2em;
+    border-radius: .5em;
+    border: 2px solid $brand--bg--light;
+    color: $brand--bg;
+    background-color: transparent;
+
+    &:hover {
+      color: $brand--bg;
+      border: 2px solid $brand--bg;
+      box-shadow: 0 0 5px $brand--bg--light;
+    }
   }
 }
 
-.field {
-  &__error {
-    color: $darkred;
-  }
+.form__error {
+  background: $error--bg;
+  color: $white;
+  padding: .5em;
+  margin: -1em -2em 1em;
+}
+
+.field__error {
+  color: $error--font;
+  position: absolute;
+  top: 2em;
+  right: 0;
+  text-shadow: 0 0 18px $black;
+  margin: 0;
+}
+
+.separator {
+  height: 3px;
+  width: 100%;
+  background: $brand--bg;
+  display: block;
+  transform: scaleX(0) translateY(-2px);
+  transform-origin: 50%;
+  opacity: 0;
+  transition: transform .15s $curve,  opacity .15s $curve;
+}
+
+
+.form__bottom {
+  margin-top: 1.25em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

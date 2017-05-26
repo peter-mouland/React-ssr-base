@@ -47,6 +47,7 @@ class AdminList extends React.Component {
         <input { ...bem('text') }
                type="text"
                name="add"
+               autoComplete="off"
                ref={(input) => { this.input = input; } }
                defaultValue={ this.getDefaultValue() }
                onFocus={ this.clearDefaultValue }

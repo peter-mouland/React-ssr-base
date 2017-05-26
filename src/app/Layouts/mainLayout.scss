@@ -1,7 +1,7 @@
 @import '../../styles/utils/colours';
 @import '../../styles/utils/mixins';
 
-$nav-height: 2em;
+$nav-height: 3.75em;
 $footer-height: 2em;
 $content-height: calc(100vh - #{$nav-height + $footer-height});
 $col1-width: 33% !default;
@@ -16,23 +16,24 @@ $col2-width: 66% !default;
   min-height: $nav-height;
   display: flex;
   align-items: center;
+  background: $darker;
 }
 
 .layout__nav--header {
-  margin-right: 10px;
-  padding: 10px;
+  margin-right: 1em;
+  padding: 1.3em;
   background-color: $brand--bg;
   color: $brand--font;
 }
 
-.layout__nav--link {
+.layout__nav-link {
   margin: 0 6px;
   line-height: 1.25em;
   font-family: 'Roboto Slab', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: $secondary--font;
+  color: $brand--font;
   padding: .5em;
   text-align: center;
   border-style: solid;
@@ -74,4 +75,8 @@ $col2-width: 66% !default;
 .my-account {
   text-align: right;
   flex-grow: 1;
+
+  &__link {
+    color: $white;
+  }
 }

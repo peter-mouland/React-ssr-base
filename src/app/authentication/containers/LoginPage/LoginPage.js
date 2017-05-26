@@ -8,7 +8,7 @@ import localStorage from '../../local-storage';
 
 const actions = { signUp: 'signUp', login: 'login', default: 'login' };
 const ReferrerMessage = ({ from }) => (
-  <p>
+  <p className="message message--referrer">
     You must log in to view the page at
     <code>{from.pathname}</code>
   </p>
