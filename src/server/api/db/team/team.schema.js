@@ -29,6 +29,7 @@ const TeamSchema = new mongoose.Schema({
   league: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
+      ref: 'Season.leagues'
     },
     name: String
   },

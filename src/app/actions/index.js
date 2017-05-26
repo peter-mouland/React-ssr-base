@@ -70,8 +70,8 @@ const addLeaguesMutation = `
 
 const addUserMutation = `
   ${teamFragment}
-  mutation ($seasonId: String, $name: String, $email: String) { 
-    addUser(seasonId: $seasonId, name: $name, email: $email){ ...teamInfo  } 
+  mutation ($seasonId: String, $leagueId: String, $name: String, $email: String) { 
+    addUser(seasonId: $seasonId, leagueId: $leagueId, name: $name, email: $email){ ...teamInfo  } 
   }
 `;
 
@@ -117,10 +117,10 @@ export function addLeague(seasonId, name) {
   };
 }
 
-export function addUser(seasonId, name, email) {
+export function addUser(seasonId, userDetails) {
   return {
     type: ADD_USER,
     seasonId,
-    payload: fetch.graphQL(addUserMutation, { seasonId, name, email })
+    payload: fetch.graphQL(addUserMutation, { seasonId, ...userDetails })
   };
 }

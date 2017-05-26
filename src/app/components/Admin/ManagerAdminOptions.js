@@ -10,9 +10,8 @@ class ManagerAdminOptions extends React.Component {
     return (
       <div className="admin-options" { ...props }>
         <div className="admin-option">
-          Managers :
               <ul className="simple-list">
-                { teams.map((team) => <li key={team._id}>{team.name}<span className="user">{team.user.name}</span></li>) }
+                { teams.map((team) => <li key={team._id}>{team.name}<span className="user">{team.user.name}</span><span className="league">{team.league.name}</span></li>) }
               </ul>
         </div>
         <div className="admin-option admin-option__btn">

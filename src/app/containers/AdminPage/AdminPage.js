@@ -49,7 +49,7 @@ class AdminPage extends React.Component {
   }
 
   addUser = (seasonId, form) => {
-    this.props.addUser(seasonId, form.name, form.email);
+    this.props.addUser(seasonId, form);
   }
 
   render() {
@@ -73,7 +73,7 @@ class AdminPage extends React.Component {
 
     return (
       <section className="admin">
-        <h3 >Admin Actions</h3>
+        <h3 className="sr-only">Admin Actions</h3>
         <AdminList list={ seasons }
                    path="season"
         >
@@ -117,6 +117,7 @@ class AdminPage extends React.Component {
                   <ManagerAdminOptions teams={ teams }>
                     <AddUser add={(form) => this.addUser(season._id, form)}
                              loading={ addingUser }
+                             leagues={ leagues }
                     />
                   </ManagerAdminOptions>
                 );
@@ -125,24 +126,11 @@ class AdminPage extends React.Component {
           );
         }}/>
 
-
+        <h3>Todo:</h3>
         <ul>
-          <li>Assign Manager to League</li>
           <li>Authorise Transfers</li>
           <li>Increment Game Week</li>
         </ul>
-        <section className="admin__assign-to-league">
-          <h4>Assign Manager to League</h4>
-          <form method="post" name="admin-managers">
-            <h5>League 1</h5>
-            <select name="managers-league-1" multiple></select>
-            <h5>League 2</h5>
-            <select name="managers-league-2" multiple></select>
-          </form>
-        </section>
-        <section className="admin__transfers">
-          <h4>Authorise Transfers</h4>
-        </section>
         <section className="admin__game-week">
           <h4>Increment Game Week</h4>
           <p>Incrementing game week will save the current scores.</p>

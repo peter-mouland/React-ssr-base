@@ -17,12 +17,13 @@ class AddUser extends React.Component {
     e.preventDefault();
     this.props.add({
       name: this.inputs.name.value,
-      email: this.inputs.email.value
+      email: this.inputs.email.value,
+      leagueId: this.inputs.league.value
     });
   };
 
   render() {
-    const { loading } = this.props;
+    const { loading, leagues = [] } = this.props;
     return (loading ?
         <div { ...bem('text', 'saving') }>Saving...</div> :
         <form method="post" onSubmit={ this.add }>
@@ -39,6 +40,17 @@ class AddUser extends React.Component {
                    name="user-email"
                    ref={(input) => { this.inputs.email = input; }}
             />
+          </div>
+          <div>
+            <label htmlFor="user-league" required>Assign to League:</label>
+            <select id="user-league"
+                   name="user-league"
+                   ref={(input) => { this.inputs.league = input; }}
+            >
+              {leagues.map((league) =>
+                <option key={league._id} value={league._id}>{league.name}</option>
+              )}
+            </select>
           </div>
           <input className="admin-btn" type="submit" value="Add New User"/>
         </form>
