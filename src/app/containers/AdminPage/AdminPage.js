@@ -1,9 +1,7 @@
 /* eslint-disable no-underscore-dangle, no-console */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Route from 'react-router-dom/Route';
-import Redirect from 'react-router-dom/Redirect';
 
 import AdminList from '../../components/Admin/AdminList';
 import AddUser from '../../components/Admin/AddUser';
@@ -29,17 +27,13 @@ const Errors = ({ errors }) => <div>
 
 const Loading = () => <p>Loading seasons....</p>;
 
-const selectedItem = (match, items) => items.find((item) => item._id === match.params.id);
+const selectedItem = (match, items, key) => items.find((item) => item._id === match.params[key]);
 
 export const join = (prefix, postfix) => `${prefix}/${postfix}`.replace(/\/\/\//g, '/').replace(/\/\//g, '/');
 
 class AdminPage extends React.Component {
 
   static needs = [fetchSeasons];
-
-  static contextTypes = {
-    router: PropTypes.object
-  }
 
   componentDidMount() {
     if (this.props.seasons) return;
@@ -59,21 +53,15 @@ class AdminPage extends React.Component {
   }
 
   render() {
-    const { errors = [], loading, seasons, match, seasonAdded, leagueAdded } = this.props;
-    const { router: { route: { location: { pathname } } } } = this.context;
-
+    const { errors = [], loading, seasons, match } = this.props;
     const addingSeason = loading === ADD_SEASON;
     const addingLeague = loading === ADD_LEAGUE;
     const addingUser = loading === ADD_USER;
-    const seasonPath = join(match.url, 'season/:id/');
-    const leaguePath = join(seasonPath, 'league/:id/');
+    const seasonPath = join(match.url, 'season/:seasonId/');
+    const leaguePath = join(seasonPath, 'league/:leagueId/');
     const managersPath = join(seasonPath, 'managers');
 
-    if (seasonAdded && !pathname.includes(seasonAdded._id)) {
-      return <Redirect to={ seasonPath.replace(':id', seasonAdded._id )} />
-    } else if (leagueAdded && !pathname.includes(leagueAdded._id)) {
-      // return <Redirect to={ leaguePath.replace(':id', leagueAdded._id )} />
-    } else if (errors.length) {
+    if (errors.length) {
       return <Errors errors={errors} />;
     } else if (!seasons) {
       return <Loading />;
@@ -92,7 +80,7 @@ class AdminPage extends React.Component {
                      loading={ addingSeason } />
         </AdminList>
         <Route path={seasonPath} render={(seasonRoute) => {
-          const season = selectedItem(seasonRoute.match, seasons);
+          const season = selectedItem(seasonRoute.match, seasons, 'seasonId');
           if (!season) return null;
           const leagues = season.leagues;
 
@@ -100,7 +88,7 @@ class AdminPage extends React.Component {
             <div>
               <SeasonAdminOptions season={season} />
               <AdminList list={ leagues }
-                         path="League"
+                         path="league"
                          secondary
               >
                 <AdminForm add={ (name) => this.addLeague(season._id, name) }
@@ -108,7 +96,7 @@ class AdminPage extends React.Component {
                            loading={ addingLeague } />
               </AdminList>
               <Route path={leaguePath} render={(leagueMatcher) => {
-                const league = selectedItem(leagueMatcher.match, leagues);
+                const league = selectedItem(leagueMatcher.match, leagues, 'leagueId');
                 if (!league) return null;
                 return (
                   <LeagueAdminOptions league={league}>

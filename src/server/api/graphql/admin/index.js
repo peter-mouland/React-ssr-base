@@ -4,7 +4,7 @@ import { findSeasons, findSeasonById, saveNewLeague, saveNewSeason } from '../..
 import { saveNewUser } from '../../db/user/user.actions';
 import { saveNewTeam } from '../../db/team/team.actions';
 
-const log = debug('base:graphql/seasons');
+const log = debug('base:graphql/admin');
 
 const schema = (`
   type League {
@@ -47,7 +47,7 @@ export const addSeason = saveNewSeason;
 export const seasonMutation = 'addSeason(name: String): Season';
 
 export const addLeague = saveNewLeague;
-export const leagueMutation = 'addLeague(seasonId: String, name: String): Season';
+export const leagueMutation = 'addLeague(seasonId: String, name: String): League';
 
 export const addUserMutation = 'addUser(seasonId: String, leagueId: String, email: String, name: String): User';
 

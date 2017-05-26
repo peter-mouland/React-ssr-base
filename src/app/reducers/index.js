@@ -47,7 +47,18 @@ export function players(state = {}, action) {
   }
 }
 
+const addLeagueToState = (state, seasonId, newLeague) => {
+  const newState = {
+    ...state
+  };
+  const season = newState.data.find((ssn) => ssn.id === seasonId);
+  season.leagues.push(newLeague);
+  return newState;
+};
+
 export function seasons(state = {}, action) {
+  const newSeason = action.payload && action.payload.data && action.payload.data.addSeason;
+  const newLeague = action.payload && action.payload.data && action.payload.data.addLeague;
   switch (action.type) {
     case `${actions.FETCH_SEASONS}_FULFILLED`:
       return {
@@ -59,19 +70,11 @@ export function seasons(state = {}, action) {
         ...state,
         data: [
           ...state.data,
-          action.payload.data && action.payload.data.addSeason
-        ],
-        seasonAdded: action.payload.data && action.payload.data.addSeason,
+          newSeason
+        ]
       };
     case `${actions.ADD_LEAGUE}_FULFILLED`:
-      return {
-        ...state,
-        data: [
-          ...state.data,
-          action.payload.data && action.payload.data.addSeason
-        ],
-        leagueAdded: action.payload.data && action.payload.data.addLeague,
-      };
+      return addLeagueToState(state, action.seasonId, newLeague);
     default:
       return state;
   }

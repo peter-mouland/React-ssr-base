@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 const SeasonSchema = new mongoose.Schema({
   name: {
     type: String,
-    index: { unique: true }
+    index: {
+      unique: true,
+      required: true
+    }
   },
   isLive: {
     type: Boolean,
@@ -21,11 +24,14 @@ const SeasonSchema = new mongoose.Schema({
       required: true,
       auto: true,
     },
+    name: {
+      type: String,
+      index: { unique: true }
+    },
     tier: {
       type: Number,
       default: 1
-    },
-    name: String
+    }
   }]
 });
 
