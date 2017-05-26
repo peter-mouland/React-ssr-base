@@ -49,7 +49,7 @@ class AdminPage extends React.Component {
   }
 
   addUser = (seasonId, form) => {
-    this.props.addUser(seasonId, form.leagueId, form.name, form.email);
+    this.props.addUser(seasonId, form.name, form.email);
   }
 
   render() {
@@ -103,10 +103,7 @@ class AdminPage extends React.Component {
                 const leagueTeams = teams.filter((team) => team.league.id === league._id);
                 return (
                   <LeagueAdminOptions league={league} teams={ leagueTeams }>
-                    <AddUser add={ (form) => this.addUser(season._id, form) }
-                             loading={ addingUser }
-                             leagueId={ league._id }
-                    />
+                    {/* assign user to league */}
                   </LeagueAdminOptions>
                 );
               }}/>
@@ -116,7 +113,13 @@ class AdminPage extends React.Component {
               />
               <Route path={managersPath} render={(managersMatcher) => {
                 if (!managersMatcher.match) return null;
-                return <ManagerAdminOptions />;
+                return (
+                  <ManagerAdminOptions teams={ teams }>
+                    <AddUser add={(form) => this.addUser(season._id, form)}
+                             loading={ addingUser }
+                    />
+                  </ManagerAdminOptions>
+                );
               }}/>
             </div>
           );

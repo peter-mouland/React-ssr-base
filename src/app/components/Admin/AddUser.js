@@ -17,8 +17,7 @@ class AddUser extends React.Component {
     e.preventDefault();
     this.props.add({
       name: this.inputs.name.value,
-      email: this.inputs.email.value,
-      leagueId: this.props.leagueId,
+      email: this.inputs.email.value
     });
   };
 
@@ -41,7 +40,7 @@ class AddUser extends React.Component {
                    ref={(input) => { this.inputs.email = input; }}
             />
           </div>
-          <input className="admin-btn" type="submit" value="Add Manager"/>
+          <input className="admin-btn" type="submit" value="Add New User"/>
         </form>
 
     );

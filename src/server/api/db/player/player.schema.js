@@ -27,7 +27,7 @@ const mongooseSchema = {
   },
   details,
   totalStats: stats,
-}
+};
 
 
 module.exports = mongoose.model('Players', new mongoose.Schema(mongooseSchema));

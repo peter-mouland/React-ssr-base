@@ -81,12 +81,22 @@ export function seasons(state = {}, action) {
 }
 
 export function teams(state = {}, action) {
+  const newUser = action.payload && action.payload.data && action.payload.data.addUser;
   switch (action.type) {
     case `${actions.FETCH_TEAMS}_FULFILLED`:
       return {
         ...state,
         errors: action.payload.errors,
         data: action.payload.data && action.payload.data.getTeams,
+      };
+    case `${actions.ADD_USER}_FULFILLED`:
+      return {
+        ...state,
+        errors: action.payload.errors,
+        data: [
+          ...state.data,
+          newUser
+        ],
       };
     default:
       return state;

@@ -20,7 +20,7 @@ class LeagueAdminOptions extends React.Component {
         </div>
         <div className="admin-option">
           <ul className="simple-list">
-            {teams.map((team) => <li key={team.id}>{team.name}<span className="user">{team.user.name}</span></li>)}
+            { teams.map((team) => <li key={team._id}>{team.name}<span className="user">{team.user.name}</span></li>) }
           </ul>
         </div>
         <div className="admin-option admin-option__btn">

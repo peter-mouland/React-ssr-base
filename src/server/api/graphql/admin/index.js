@@ -32,22 +32,17 @@ const schema = (`
   }
 `);
 
-export const addUser = ({ seasonId, leagueId, name, email }) => {
+export const addUser = ({ seasonId, name, email }) => {
   let user;
   return saveNewUser({ name, email })
     .then((userInserted) => {
       user = userInserted;
       return findSeasonById(seasonId);
     })
-    .then((season) => {
-      const league = season.leagues.find((lge) => lge.id === leagueId);
-      return saveNewTeam({
-        user: { id: user._id, name: user.name },
-        season: { id: season._id, name: season.name },
-        league: { id: league._id, name: league.name }
-      });
-    })
-    .then(() => user);
+    .then((season) => saveNewTeam({
+      user: { id: user._id, name: user.name },
+      season: { id: season._id, name: season.name },
+    }))
 };
 
 
@@ -63,6 +58,6 @@ export const seasonMutation = 'addSeason(name: String): Season';
 export const addLeague = saveNewLeague;
 export const leagueMutation = 'addLeague(seasonId: String, name: String): League';
 
-export const addUserMutation = 'addUser(seasonId: String, leagueId: String, email: String, name: String): User';
+export const addUserMutation = 'addUser(seasonId: String, email: String, name: String): Team';
 
 export default schema;

@@ -31,6 +31,12 @@ fragment leagueInfo on League {
   _id name tier
 }`;
 
+
+const teamFragment = `
+fragment teamInfo on Team {
+  _id user { id name } season { id name } league { id name } name
+}`;
+
 const seasonFragment = `
 ${leagueFragment}
 fragment seasonInfo on Season {
@@ -48,7 +54,8 @@ const getSeasonsQuery = `
 `;
 
 const getTeamQuery = `
-  query { getTeams{ user { id name } season { id name } league { id name } name } } 
+  ${teamFragment}
+  query { getTeams{ ...teamInfo } } 
 `;
 
 const addSeasonsMutation = `
@@ -62,8 +69,9 @@ const addLeaguesMutation = `
 `;
 
 const addUserMutation = `
-  mutation ($seasonId: String, $leagueId: String, $name: String, $email: String) { 
-    addUser(seasonId: $seasonId, leagueId: $leagueId, name: $name, email: $email){ _id name email  } 
+  ${teamFragment}
+  mutation ($seasonId: String, $name: String, $email: String) { 
+    addUser(seasonId: $seasonId, name: $name, email: $email){ ...teamInfo  } 
   }
 `;
 
@@ -109,10 +117,10 @@ export function addLeague(seasonId, name) {
   };
 }
 
-export function addUser(seasonId, leagueId, name, email) {
+export function addUser(seasonId, name, email) {
   return {
     type: ADD_USER,
     seasonId,
-    payload: fetch.graphQL(addUserMutation, { seasonId, leagueId, name, email })
+    payload: fetch.graphQL(addUserMutation, { seasonId, name, email })
   };
 }

@@ -6,18 +6,15 @@ import './adminOptions.scss';
 class ManagerAdminOptions extends React.Component {
 
   render() {
-    const { children, ...props } = this.props;
-
+    const { children, teams, ...props } = this.props;
     return (
       <div className="admin-options" { ...props }>
         <div className="admin-option">
           Managers :
+              <ul className="simple-list">
+                { teams.map((team) => <li key={team._id}>{team.name}<span className="user">{team.user.name}</span></li>) }
+              </ul>
         </div>
-
-        <div className="admin-option">
-          League:
-        </div>
-
         <div className="admin-option admin-option__btn">
           { children }
         </div>
