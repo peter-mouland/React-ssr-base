@@ -3,6 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import bemHelper from 'react-bem-helper';
 
+import Svg from '../Svg/Svg';
+import football from '../../../assets/football.svg';
+
 import './adminList.scss';
 
 const bem = bemHelper({ name: 'admin-list' });
@@ -42,7 +45,7 @@ class AdminList extends React.Component {
   render() {
     const { loading = false } = this.props;
     return (loading ?
-      <div { ...bem('text', 'saving') }>Saving...</div> :
+      <div { ...bem('text', 'saving') }><Svg markup={football} /> Saving...</div> :
       <form method="POST" onSubmit={ this.add }>
         <input { ...bem('text') }
                type="text"

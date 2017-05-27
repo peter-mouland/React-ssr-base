@@ -1,10 +1,18 @@
 import passport from 'koa-passport';
+import debug from 'debug';
 
-import { validateLoginForm, validateSignUpForm, validateSignUpResponse, validateLoginResponse } from '../../app/authentication/auth-validation';
+
+import {
+  validateLoginForm, validateSignUpForm, validateUpdatePassword,
+  validateSignUpResponse, validateLoginResponse
+} from '../../app/authentication/auth-validation';
 import localSignupStrategy from './passport/local-signup';
 import localLoginStrategy from './passport/local-login';
+import localUdpateStrategy from './passport/local-update';
 import { validateUser } from './auth-check-middleware';
 import Auth from '../../app/authentication/auth-helper';
+
+const log = debug('base:auth/actions');
 
 passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser(async (userId, done) => {
@@ -14,6 +22,7 @@ passport.deserializeUser(async (userId, done) => {
 });
 passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
+passport.use('local-update', localUdpateStrategy);
 
 export const login = async (ctx, next) => {
   ctx.type = 'json';
@@ -48,6 +57,34 @@ export const signUp = (ctx, next) => {
     return Promise.resolve(ctx);
   }
   return passport.authenticate('local-signup', (signUpError) => {
+    const signUpResponse = validateSignUpResponse(signUpError);
+    if (signUpResponse.status !== 200) {
+      ctx.status = signUpResponse.status;
+      ctx.response.body = signUpResponse.body;
+      return Promise.resolve(ctx);
+    }
+    return passport.authenticate('local-login', (loginError, token, userData) => {
+      const loginResponse = validateLoginResponse(loginError, token, userData);
+      ctx.status = loginResponse.status;
+      ctx.response.body = loginResponse.body;
+      Auth.saveToken(token, ctx);
+    })(ctx, next);
+  })(ctx, next);
+};
+
+export const updatePassword = (ctx, next) => {
+  ctx.type = 'json';
+  const validationResult = validateUpdatePassword(ctx.request.body);
+  if (!validationResult.success) {
+    ctx.status = 400;
+    ctx.response.body = {
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors
+    };
+    return Promise.resolve(ctx);
+  }
+  return passport.authenticate('local-update', (signUpError) => {
     const signUpResponse = validateSignUpResponse(signUpError);
     if (signUpResponse.status !== 200) {
       ctx.status = signUpResponse.status;

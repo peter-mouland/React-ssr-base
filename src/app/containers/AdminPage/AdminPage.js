@@ -36,8 +36,12 @@ class AdminPage extends React.Component {
   static needs = [fetchSeasons, fetchTeams];
 
   componentDidMount() {
-    if (this.props.seasons) return;
-    this.props.fetchSeasons();
+    if (!this.props.seasons) {
+      this.props.fetchSeasons();
+    }
+    if (!this.props.teams) {
+      this.props.fetchTeams();
+    }
   }
 
   addSeason = (name) => {
@@ -73,6 +77,7 @@ class AdminPage extends React.Component {
 
     return (
       <section className="admin">
+        <div className="bg" />
         <h3 className="sr-only">Admin Actions</h3>
         <AdminList list={ seasons }
                    path="season"

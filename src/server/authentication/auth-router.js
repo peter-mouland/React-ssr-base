@@ -5,7 +5,7 @@ import debug from 'debug';
 import jwt from 'koa-jwt';
 
 import config from '../../config/db';
-import { login, signUp, logout, authenticate, healthStatus } from './actions';
+import { login, signUp, logout, updatePassword, authenticate, healthStatus } from './actions';
 import authCheck from './auth-check-middleware';
 import handleError from '../middleware/handle-error';
 
@@ -18,6 +18,7 @@ authRouter.get('/', healthStatus);
 authRouter.post('/logout', parseBody, logout);
 authRouter.post('/signup', parseBody, signUp);
 authRouter.post('/login', parseBody, login);
+authRouter.post('/updatePassword', parseBody, updatePassword);
 
 // move to standard server router
 // authRouter.post('/nojs-login', parseBody, async (ctx, next) => {

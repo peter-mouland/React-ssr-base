@@ -3,6 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import bemHelper from 'react-bem-helper';
 
+import Svg from '../Svg/Svg';
+import football from '../../../assets/football.svg';
+
 const bem = bemHelper({ name: 'admin-list' });
 
 class AddUser extends React.Component {
@@ -25,7 +28,7 @@ class AddUser extends React.Component {
   render() {
     const { loading, leagues = [] } = this.props;
     return (loading ?
-        <div { ...bem('text', 'saving') }>Saving...</div> :
+        <div { ...bem('text', 'saving') }><Svg markup={football} /> Saving...</div> :
         <form method="post" onSubmit={ this.add }>
           <div>
             <label htmlFor="user-name" required>Name:</label>

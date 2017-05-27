@@ -2,7 +2,9 @@ import cookie from 'react-cookie';
 import debug from 'debug';
 import jwtDecode from 'jwt-decode';
 
-import { validateLoginForm, validateSignUpForm } from './auth-validation';
+import {
+  validateLoginForm, validateSignUpForm, validateUpdatePassword
+} from './auth-validation';
 
 const log = debug('base:Auth');
 
@@ -44,6 +46,19 @@ function requestLogin(user, cb) {
   }
 }
 
+function requestUpdatePassword(user, cb) {
+  const validationResult = validateUpdatePassword(user);
+  if (!validationResult.success) {
+    const errors = buildErrors(validationResult);
+    cb({ errors });
+  } else {
+    const email = encodeURIComponent(user.email);
+    const password = encodeURIComponent(user.password);
+    const formData = `email=${email}&password=${password}`;
+    sendXhr(formData, '/auth/updatePassword', cb);
+  }
+}
+
 function requestSignUp(user, cb) {
   const validationResult = validateSignUpForm(user);
   if (!validationResult.success) {
@@ -78,6 +93,14 @@ class Auth {
       return;
     }
     requestLogin(user, (res) => this.responseCallback(res, cb));
+  }
+
+  static updatePassword(password, cb) {
+    const user = {
+      ...Auth.user(),
+      password
+    };
+    requestUpdatePassword(user, (res) => this.responseCallback(res, cb));
   }
 
   static signUp(user, cb) {
@@ -129,6 +152,11 @@ class Auth {
     return decodedToken.isAdmin;
   }
 
+  static user(ctx) {
+    const token = Auth.getToken(ctx);
+    const decodedToken = token ? jwtDecode(token) : {};
+    return decodedToken;
+  }
 }
 
 export default Auth;

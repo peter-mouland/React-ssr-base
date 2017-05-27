@@ -9,6 +9,7 @@
   }
 }
 
+.bg,
 body {
   padding: 0;
   margin: 0;
@@ -17,6 +18,27 @@ body {
   background-image: url('/stadium-small.jpg');
   background-size: 1600px;
 }
+
+.bg {
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  filter: blur(3px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-position-x: -14px;
+  background-position-y: -143px;
+
+  .with-message & {
+    background-position-y: -206px;
+  }
+
+  .admin & {
+    background-position-y: -79px;
+  }
+}
+
 
 a {
   color: #4682B4;

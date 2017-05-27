@@ -19,7 +19,7 @@ export const text = {
   loginForm: {
     errors: {
       email: 'Please provide your email address.',
-      password: 'Please provide your password.',
+      password: 'Please provide your password (has at least 8 characters).',
       message: 'Check the form for errors.'
     }
   },
@@ -69,6 +69,28 @@ export function validateSignUpForm(payload) {
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
+
+export function validateUpdatePassword(payload) {
+  const errors = {};
+  let isFormValid = true;
+  let message = '';
+
+  if (!payload || payload.password.trim().length < 8) {
+    isFormValid = false;
+    errors.password = text.signUpForm.errors.password;
+  }
+
+  if (!isFormValid) {
+    message = text.signUpForm.errors.message;
+  }
+
+  return {
+    success: isFormValid,
+    message,
+    errors
+  };
+}
+
 export function validateLoginForm(payload) {
   const errors = {};
   let isFormValid = true;

@@ -46,7 +46,7 @@ const fetchUrl = (endpoint, opts = {}) => {
   opts.headers = Object.assign({}, opts.headers, token ? { Authorization: `Bearer ${token}` } : {});
   const url = endpoint.indexOf('//') > -1 ? endpoint : `${localUrl}${endpoint}`;
   return Promise.resolve()
-    // .then(() => delay(3000)) // used to help dev / testing
+    .then(() => delay(3000)) // used to help dev / testing
     .then(() => axios({ url, ...opts }))
     .then(checkStatus)
     .then((response) => response.data)

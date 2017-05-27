@@ -44,8 +44,22 @@
   &--saving {
     border: 0;
     font-size: 1.25em;
+
+    svg {
+      animation: spin 4s linear infinite;
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      left: -34px;
+      top: 20%;
+
+      path {
+        fill: $white;
+      }
+    }
   }
 }
+
 
 input.admin-list__text {
   background: transparent;

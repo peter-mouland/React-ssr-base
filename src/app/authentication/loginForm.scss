@@ -1,4 +1,4 @@
-@import '../../../../styles/utils/colours';
+@import '../../styles/utils/colours';
 
 $page-bg: #282F32;
 $light-gray: #999;
@@ -14,20 +14,6 @@ $curve: linear;
   box-shadow: 0 0 20px $darker;
   position: relative;
 
-  .bg {
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background-image: url('/stadium-small.jpg');
-    background-size: 1600px;
-    filter: blur(5px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-position-x: -14px;
-    background-position-y: -206px;
-  }
-
   .field-group {
     display: block;
     margin-bottom: .875em;
@@ -37,8 +23,11 @@ $curve: linear;
   fieldset {
     border-radius: .5em;
     padding: 2em;
+    margin-top: 0;
+    margin-bottom: .5em;
   }
 
+  &__text,
   legend {
     color:  $white;
   }
@@ -51,9 +40,9 @@ $curve: linear;
     font-size: 1em;
     left: 0;
     top: 1em;
-    cursor: text;
 
     &.animated-label {
+      cursor: text;
       opacity: 1;
       transition: opacity .2s, font-size .2s, top .2s;
       position: absolute;
@@ -128,7 +117,7 @@ $curve: linear;
 .form__error {
   background: $error--bg;
   color: $white;
-  padding: .5em;
+  padding: .5em 2em;
   margin: -1em -2em 1em;
 }
 

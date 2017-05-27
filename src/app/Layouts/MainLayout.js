@@ -3,6 +3,7 @@ import bemHelper from 'react-bem-helper';
 import debug from 'debug';
 
 import Auth from '../authentication/auth-helper';
+import ChangePassword from '../authentication/containers/ChangePasswordPage/ChangePasswordPage';
 import { NamedLink } from '../routes';
 import './mainLayout.scss';
 
@@ -13,13 +14,16 @@ class MyAccount extends React.Component {
   render() {
     const bem = bemHelper({ name: 'my-account' });
     const { className, isUserAuthenticated, ...props } = this.props;
-    const linkClass =  bem('link')
+    const linkClass = bem('link');
     const loggedOut = (
       <span>
         <NamedLink to="login" {...linkClass} />
       </span>
     );
-    const loggedIn = <NamedLink to="logout" {...linkClass} />;
+    const loggedIn = <span>
+      Hey <NamedLink to="profile" {...linkClass}>{Auth.user().name}</NamedLink>;
+      <NamedLink to="logout" {...linkClass} />
+    </span>;
     return (
       <div {...bem(null, null, className)} { ...props } >
         { isUserAuthenticated
@@ -64,7 +68,7 @@ export default class MainLayout extends React.Component {
           <MyAccount isUserAuthenticated={ isUserAuthenticated } />
         </nav>
         <main {...bem('content')}>
-          {children}
+          { Auth.user().mustChangePassword ? <ChangePassword /> : children}
         </main>
         <footer {...bem('footer')}>
           Hosted at <a href="http://github.com/peter-mouland/react-ssr-base">github.com/peter-mouland/react-srr-base</a>

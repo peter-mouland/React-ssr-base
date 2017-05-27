@@ -1,5 +1,11 @@
 @import '../../../styles/utils/colours';
 
+.admin {
+  background: $dark;
+  margin: 1em 0;
+  position: relative;
+}
+
 .admin-btn {
   background-color: $brand--bg--light;
   border: 2px solid $darken;

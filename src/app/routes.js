@@ -85,6 +85,17 @@ export function getRoutesConfig() {
       component: LogOut
     },
     {
+      name: 'profile',
+      path: '/profile/',
+      label: 'Profile',
+      meta: {
+        ...baseMetaData,
+        title: 'profile',
+      },
+      requiresAuthentication: true,
+      component: <p>Hey profile!</p>
+    },
+    {
       name: 'login',
       path: '/login/',
       label: 'Login',

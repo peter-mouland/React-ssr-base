@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './loginForm.scss';
+import '../../loginForm.scss';
 
 const LoginForm = ({
   onSubmit,
@@ -14,16 +14,37 @@ const LoginForm = ({
     <form action="/nojs-login" onSubmit={onSubmit} method="post" className="form">
       <div className="bg" />
       <fieldset>
-        <legend>Login or Create and Account</legend>
-
+        <legend>Login</legend>
 
         {successMessage && <p className="form__success">{successMessage}</p>}
         {errors.summary && <p className="form__error">{errors.summary}</p>}
+
+        <input type="hidden" name="action" value={actions.login} />
+
+        <div className="field-group hidden">
+          <label><input type="radio"
+                        name="action"
+                        value={actions.login}
+                        defaultChecked={actions.default === actions.login}
+                        onChange={onChange}
+          /> I am an existing User</label>
+        </div>
+
+        <div className="field-group hidden">
+          <label><input type="radio"
+                        name="action"
+                        value={actions.signUp}
+                        defaultChecked={actions.default === actions.signUp}
+                        onChange={onChange}
+          /> I'm new here, please create an account!</label>
+          <span className="separator"> </span>
+        </div>
 
         <div className="field-group">
           <input
             type="email"
             name="email"
+            id="email"
             placeholder="email"
             onChange={onChange}
             value={user.email}
@@ -37,6 +58,7 @@ const LoginForm = ({
           <input
             type="password"
             name="password"
+            id="password"
             placeholder="password"
             onChange={onChange}
             value={user.password}
@@ -45,28 +67,6 @@ const LoginForm = ({
           <span className="separator"> </span>
           <p className="field__error">{errors.password}</p>
         </div>
-
-        <div className="field-group">
-          <label><input
-            type="radio"
-            name="action"
-            value={actions.login}
-            defaultChecked={actions.default === actions.login}
-            onChange={onChange}
-          /> I am an existing User</label>
-        </div>
-
-        <div className="field-group">
-          <label><input
-            type="radio"
-            name="action"
-            value={actions.signUp}
-            defaultChecked={actions.default === actions.signUp}
-            onChange={onChange}
-          /> This is my first time, I don't have a password!</label>
-          <span className="separator"> </span>
-        </div>
-
         <div className="field form__bottom">
           <input type="submit" className="form__action" value="Log In" />
         </div>

@@ -34,7 +34,7 @@ const schema = (`
 
 export const addUser = ({ seasonId, leagueId, name, email }) => {
   let user;
-  return saveNewUser({ name, email })
+  return saveNewUser({ name, email, password: 'password123' })
     .then((userInserted) => {
       user = userInserted;
       return findSeasonById(seasonId);

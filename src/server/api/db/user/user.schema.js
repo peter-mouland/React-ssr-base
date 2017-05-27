@@ -7,6 +7,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     index: { unique: true }
   },
+  salt: String,
+  tmpToken: String,
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
   name: String,
   password: String,
   mustChangePassword: {
@@ -26,6 +32,20 @@ UserSchema.methods.comparePassword = function comparePassword(password, callback
   bcrypt.compare(password, this.password, callback);
 };
 
+UserSchema.methods.hashPassword = function hasPassword(password, callback) {
+  bcrypt.genSalt((saltError, salt) => {
+    if (saltError) {
+      return callback(saltError);
+    }
+    return bcrypt.hash(password, salt, (hashError, hash) => {
+      if (hashError) {
+        return callback(hashError);
+      }
+
+      return callback(null, { hash, salt });
+    });
+  });
+};
 
 /**
  * The pre-save hook method.
@@ -36,18 +56,11 @@ UserSchema.pre('save', function saveHook(next) {
   // proceed further only if the password is modified or the user is new
   if (!user.isModified('password')) return next();
 
-
-  return bcrypt.genSalt((saltError, salt) => {
-    if (saltError) { return next(saltError); }
-
-    return bcrypt.hash(user.password, salt, (hashError, hash) => {
-      if (hashError) { return next(hashError); }
-
-      // replace a password string with hash value
-      user.password = hash;
-
-      return next();
-    });
+  return user.hashPassword(user.password, (passwordErr, password) => {
+    if (passwordErr) next(passwordErr);
+    user.password = password.hash;
+    user.salt = password.salt;
+    return next();
   });
 });
 

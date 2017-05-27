@@ -1,4 +1,5 @@
 @import "base/resets";
+@import "utils/adnimations";
 
 .icon--chevron {
   height: 12px;
@@ -34,7 +35,13 @@
   box-shadow: 0 0 20px #282f32;
   color: white;
 
-  &--referrer {
+  &--success {
+    background: rgba(0, 143, 91, 0.75);
+  }
+  &--warning {
+    background: rgba(200, 150, 0, .75);
+  }
+  &--error {
     background: rgba(150, 0, 0, .75);
   }
 }
