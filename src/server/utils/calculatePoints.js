@@ -4,6 +4,7 @@ const GOALS = 'gls';
 const ASSISTS = 'asts';
 const YELLOW_CARDS = 'ycard';
 const RED_CARDS = 'rcard';
+const MAN_OF_MATCH = 'mom';
 const CLEAN_SHEETS = 'cs';
 const CONCEDED = 'con';
 const SAVED_PENALTIES = 'pensv';
@@ -62,41 +63,36 @@ export function forConceded(ga, position) { // -1
   return parseInt(ga * multiplier, 10);
 }
 
-function forPenaltiesSaved(ps) { // -1
+function forPenaltiesSaved(ps) {
   return ps * 5;
+}
+function forMOM() {
+  return 0;
 }
 
 export function forPlayer(stats, pos) {
-  const starts = forStarting(stats[STARTING_XI], pos);
+  const apps = forStarting(stats[STARTING_XI], pos);
   const subs = forSub(stats[SUBS], pos);
-  const goals = forGoals(stats[GOALS], pos);
+  const gls = forGoals(stats[GOALS], pos);
   const asts = forAssists(stats[ASSISTS], pos);
+  const mom = forMOM(stats[MAN_OF_MATCH], pos);
   const cs = forCleanSheet(stats[CLEAN_SHEETS], pos);
   const con = forConceded(stats[CONCEDED], pos);
-  const penSvd = forPenaltiesSaved(stats[SAVED_PENALTIES], pos);
-  const yells = forYellowCards(stats[YELLOW_CARDS], pos);
-  const reds = forRedCards(stats[RED_CARDS], pos);
-  const total = goals + yells + reds + starts + subs + asts + cs + con + penSvd;
+  const pensv = forPenaltiesSaved(stats[SAVED_PENALTIES], pos);
+  const ycard = forYellowCards(stats[YELLOW_CARDS], pos);
+  const rcard = forRedCards(stats[RED_CARDS], pos);
+  const total = mom + gls + ycard + rcard + apps + subs + asts + cs + con + pensv;
   return {
-    starts: stats[STARTING_XI],
-    subs: stats[SUBS],
-    goals: stats[GOALS],
-    assists: stats[ASSISTS],
-    cs: stats[CLEAN_SHEETS],
-    con: stats[CONCEDED],
-    penSvd: stats[SAVED_PENALTIES],
-    yellows: stats[YELLOW_CARDS],
-    reds: stats[RED_CARDS],
+    apps,
+    subs,
+    gls,
+    asts,
+    mom,
+    cs,
+    con,
+    pensv,
+    ycard,
+    rcard,
     total
   };
-}
-
-export default function forPlayers(players) {
-  return players.map((player) => {
-    const ffPoints = forPlayer(player, player.pos);
-    return {
-      ...player,
-      ffPoints
-    };
-  });
 }

@@ -32,7 +32,7 @@ module.exports = new PassportLocalStrategy({
       return done(error);
     }
 
-    user.hashPassword(userData.password, (passwordErr, passwordObj) => {
+    return user.hashPassword(userData.password, (passwordErr, passwordObj) => {
       const payload = {
         email: userData.email,
         password: passwordObj.hash,

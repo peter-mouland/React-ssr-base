@@ -13,11 +13,9 @@ const stats = {
   rcard: Number,
 };
 
-const details = {
-  pos: String,
-  club: String,
-  isNew: Boolean,
-  gameWeekStats: stats
+const points = {
+  ...stats,
+  total: Number
 };
 
 const mongooseSchema = {
@@ -25,10 +23,21 @@ const mongooseSchema = {
     type: String,
     index: { unique: true }
   },
-  details,
-  totalStats: stats,
+  code: Number,
+  pos: String,
+  club: String,
+  new: Boolean,
+  gameWeek: {
+    stats,
+    points
+  },
+  total: {
+    stats,
+    points
+  },
+  pointsChange: Number
 };
 
 
 module.exports = mongoose.model('Players', new mongoose.Schema(mongooseSchema));
-module.exports.details = details;
+module.exports.mongooseSchema = mongooseSchema;

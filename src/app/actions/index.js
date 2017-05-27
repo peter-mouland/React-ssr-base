@@ -11,16 +11,22 @@ export const ADD_USER = 'ADD_USER';
 const getPlayersQuery = `
 query ($player: String) { 
   getPlayers(player: $player){ 
-    code pos player club
-    stats { 
-      apps subs goals assists mom cs con penSvd yellows reds 
+    code pos name club
+    gameWeek {
+      stats { 
+        apps subs gls asts mom cs con pensv ycard rcard 
+      }
+      points {
+        apps subs gls asts mom cs con pensv ycard rcard total
+      }
     }
-    points { 
-      total
-      gw0 gw1 gw2 gw3 gw4 gw5 gw6 gw7 gw8 gw9 
-      gw10 gw11 gw12 gw13 gw14 gw15 gw16 gw17 gw18 gw19 
-      gw20 gw21 gw22 gw23 gw24 gw25 gw26 gw27 gw28 gw29
-      gw30 gw31 gw32 gw33 gw34 gw35
+    total {
+      stats { 
+        apps subs gls asts mom cs con pensv ycard rcard 
+      }
+      points {
+        apps subs gls asts mom cs con pensv ycard rcard total
+      }
     }
  }
 } 

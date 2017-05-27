@@ -9,9 +9,10 @@ import AdminForm from '../../components/Admin/AdminForm';
 import SeasonAdminOptions from '../../components/Admin/SeasonAdminOptions';
 import LeagueAdminOptions from '../../components/Admin/LeagueAdminOptions';
 import ManagerAdminOptions from '../../components/Admin/ManagerAdminOptions';
+import PlayerAdminOptions from '../../components/Admin/PlayerAdminOptions';
 import Auth from '../../authentication/auth-helper';
 import {
-  fetchSeasons, fetchTeams, addSeason, addLeague, addUser, ADD_SEASON, ADD_LEAGUE, ADD_USER
+  fetchSeasons, fetchTeams, fetchPlayers, addSeason, addLeague, addUser, ADD_SEASON, ADD_LEAGUE, ADD_USER
 } from '../../actions';
 
 import './adminPage.scss';
@@ -29,7 +30,8 @@ const Loading = () => <p>Loading seasons....</p>;
 
 const selectedItem = (match, items, key) => items.find((item) => item._id === match.params[key]);
 
-export const join = (prefix, postfix) => `${prefix}/${postfix}`.replace(/\/\/\//g, '/').replace(/\/\//g, '/');
+export const join = (prefix, postfix) =>
+  `${prefix}/${postfix}`.replace(/\/\/\//g, '/').replace(/\/\//g, '/');
 
 class AdminPage extends React.Component {
 
@@ -41,6 +43,9 @@ class AdminPage extends React.Component {
     }
     if (!this.props.teams) {
       this.props.fetchTeams();
+    }
+    if (!this.props.players) {
+      this.props.fetchPlayers();
     }
   }
 
@@ -57,13 +62,16 @@ class AdminPage extends React.Component {
   }
 
   render() {
-    const { errors = [], teamErrors = [], loading, seasons, teams = [], match } = this.props;
+    const {
+      errors = [], teamErrors = [], loading, seasons, players = [], teams = [], match
+    } = this.props;
     const addingSeason = loading === ADD_SEASON;
     const addingLeague = loading === ADD_LEAGUE;
     const addingUser = loading === ADD_USER;
     const seasonPath = join(match.url, 'season/:seasonId/');
     const leaguePath = join(seasonPath, 'league/:leagueId/');
     const managersPath = join(seasonPath, 'managers');
+    const playersPath = join(seasonPath, 'players');
 
     if (errors.length) {
       return <Errors errors={errors} />;
@@ -93,7 +101,9 @@ class AdminPage extends React.Component {
 
           return (
             <div>
-              <SeasonAdminOptions season={season} />
+              <SeasonAdminOptions season={season} >
+                <p>compare ff players to Sky Sports players</p>
+              </SeasonAdminOptions>
               <AdminList list={ leagues }
                          path="league"
                          secondary
@@ -127,6 +137,16 @@ class AdminPage extends React.Component {
                   </ManagerAdminOptions>
                 );
               }}/>
+              <AdminList list={ [{ name: 'Players' }] }
+                         path="players"
+                         secondary
+              />
+              <Route path={playersPath} render={(playersMatcher) => {
+                if (!playersMatcher.match) return null;
+                return (
+                  <PlayerAdminOptions players={ players } />
+                );
+              }}/>
             </div>
           );
         }}/>
@@ -152,6 +172,7 @@ function mapStateToProps(state) {
   return {
     seasons: state.seasons.data,
     teams: state.teams.data,
+    players: state.players.data,
     teamErrors: state.teams.errors,
     seasonAdded: state.seasons.seasonAdded,
     leagueAdded: state.seasons.leagueAdded,
@@ -162,5 +183,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons, fetchTeams, addSeason, addLeague, addUser }
+  { fetchSeasons, fetchTeams, fetchPlayers, addSeason, addLeague, addUser }
 )(AdminPage);

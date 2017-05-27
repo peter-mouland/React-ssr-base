@@ -1,11 +1,7 @@
 #!/usr/bin/env node
-import debug from 'debug';
-
 import GoogleSpreadsheet from './lib/google-sheets';
 import creds from './lib/google-sheets/google-generated-creds.json';
 import json from './lib/json';
-
-const log = debug('footy:retrieve-player-positions');
 
 const createJsonObj = (item) => {
   delete item._xml;
@@ -22,16 +18,18 @@ const createJsonObj = (item) => {
   };
 };
 
-const spreadsheet = new GoogleSpreadsheet('1HkXbfjAXr7FB2mN8kTcIRI6Camxlo6hgjwhP47y3EC4', creds);
-
 function extractGameWeek(week){
+  const spreadsheet = new GoogleSpreadsheet('1HkXbfjAXr7FB2mN8kTcIRI6Camxlo6hgjwhP47y3EC4', creds);
   const playerListSheet = spreadsheet.getWorksheet(`GW${week}`);
   playerListSheet
     .toJson(createJsonObj)
-    .then((jsonData) => json.save(jsonData, `scripts/stats-GW${week}.json`))
-    .then(() => log('done.'))
-    .catch(e => log(e));
+    .then((jsonData) => json.save(jsonData, `scripts/2016-2017/stats-GW${week}.json`))
+    .then(() => console.log('done.'))
+    .catch(e => console.log(e));
 
 }
 
-extractGameWeek(25);
+for (var i=1;i<27;i++){
+  console.log('retrieving gw ' + i);
+  extractGameWeek(i);
+}

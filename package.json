@@ -5,8 +5,7 @@
   "main": "src/server-entry.js",
   "scripts": {
     "postinstall": "npm run build",
-    "ffjson-to-db": "babel-node ./scripts/insertPlayersFromJson.js",
-    "retrieve-players": "babel-node ./scripts/retrieve-players.js",
+    "//retrieve-players": "babel-node ./scripts/retrieve-players.js",
     "players-to-db": "babel-node ./scripts/insertStatsFromJson.js",
     "mongo": "mongod  --dbpath mongodb",
     "build": "rm -rf compiled && npm run compile:server && npm run compile && node scripts/copyAssets.js",
