@@ -14,7 +14,7 @@ import Auth from '../../authentication/auth-helper';
 import {
   fetchSeasons, fetchTeams, fetchPlayers,
   addSeason, addLeague, addUser, updatePlayers,
-  ADD_SEASON, ADD_LEAGUE, ADD_USER
+  ADD_SEASON, ADD_LEAGUE, ADD_USER, UPDATE_PLAYERS
 } from '../../actions';
 
 import './adminPage.scss';
@@ -64,7 +64,7 @@ class AdminPage extends React.Component {
   }
 
   updatePlayers = (updates) => {
-    this.props.updatePlayers(updates);
+    this.props.updatePlayers({ updates: updates });
   }
 
   render() {
@@ -74,6 +74,7 @@ class AdminPage extends React.Component {
     const addingSeason = loading === ADD_SEASON;
     const addingLeague = loading === ADD_LEAGUE;
     const addingUser = loading === ADD_USER;
+    const updatingPlayer = loading === UPDATE_PLAYERS;
     const seasonPath = join(match.url, 'season/:seasonId/');
     const leaguePath = join(seasonPath, 'league/:leagueId/');
     const managersPath = join(seasonPath, 'managers');
@@ -151,7 +152,8 @@ class AdminPage extends React.Component {
                 if (!players.length) return <p>Loading</p>;
                 return (
                   <PlayerAdminOptions players={ players }
-                                      update={ this.updatePlayers }
+                                      saving={ updatingPlayer }
+                                      saveUpdates={ this.updatePlayers }
                   />
                 );
               }}/>

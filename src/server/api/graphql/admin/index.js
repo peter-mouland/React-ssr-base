@@ -38,6 +38,19 @@ const schema = (`
     pos: String
     club: String
   }
+  type Update { 
+    id: String!
+    code: String
+    name: String
+    pos: String
+    club: String
+  }
+  input Updates {
+    club: String
+    name: String
+    pos: String
+    id: String
+  }
 `);
 
 export const addUser = ({ seasonId, leagueId, name, email }) => {
@@ -73,6 +86,6 @@ export const leagueMutation = 'addLeague(seasonId: String, name: String): League
 export const addUserMutation = 'addUser(seasonId: String, leagueId: String, email: String, name: String): Team';
 
 export const updatePlayers = updateMultiplePlayers;
-export const updatePlayersMutation = 'updatePlayers(players: String): [Player]';
+export const updatePlayersMutation = 'updatePlayers(updates: [Updates]): [Update]';
 
 export default schema;

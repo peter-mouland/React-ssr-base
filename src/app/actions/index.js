@@ -81,7 +81,9 @@ const addSeasonsMutation = `
 
 const addLeaguesMutation = `
   ${leagueFragment}
-  mutation ($seasonId: String, $name: String) { addLeague(seasonId: $seasonId, name: $name){ ...leagueInfo } }
+  mutation ($seasonId: String, $name: String) { 
+    addLeague(seasonId: $seasonId, name: $name){ ...leagueInfo } 
+  }
 `;
 
 const addUserMutation = `
@@ -92,9 +94,8 @@ const addUserMutation = `
 `;
 
 const updatePlayersMutation = `
-  ${teamFragment}
-  mutation ($players: Object) { 
-    updatePlayers(players: $players){ ...playerInfo  } 
+  mutation ($updates: [Updates]) { 
+    updatePlayers(updates: $updates){ id code pos name club }   
   }
 `;
 
@@ -149,9 +150,9 @@ export function addUser(seasonId, userDetails) {
   };
 }
 
-export function updatePlayers(players) {
+export function updatePlayers(updates) {
   return {
     type: UPDATE_PLAYERS,
-    payload: fetch.graphQL(updatePlayersMutation, players)
+    payload: fetch.graphQL(updatePlayersMutation, updates)
   };
 }

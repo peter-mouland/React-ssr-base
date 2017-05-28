@@ -6,6 +6,40 @@ import * as actions from '../actions';
 
 const log = debug('base:reducers/index');
 
+const addLeagueToState = (state, seasonId, newLeague) => {
+  const newState = {
+    ...state
+  };
+  const season = newState.data.find((ssn) => ssn.id === seasonId);
+  season.leagues.push(newLeague);
+  return newState;
+};
+
+function clean(obj) {
+  const newObj = {};
+
+  Object.keys(obj).forEach((key) => {
+    const val = obj[key];
+    if (!val) return;
+    newObj[key] = val;
+  });
+
+  return newObj;
+}
+
+const updatePlayersData = (state, action) => {
+  const players = [ ...state.data ];
+  const updates = action.payload.data && action.payload.data.updatePlayers;
+  updates.forEach(update => {
+    players.find((player, i) => {
+      if (player._id === update.id) {
+        players[i] = { ...player, ...clean(update) }
+      }
+    });
+  });
+  return players;
+};
+
 export function promiseState(state = {}, action) {
   const splitAction = action.type.split('_');
   const postFix = splitAction.pop();
@@ -42,19 +76,15 @@ export function players(state = {}, action) {
         ...state,
         data: action.payload.data && action.payload.data.getPlayers,
       };
+    case `${actions.UPDATE_PLAYERS}_FULFILLED`:
+      return {
+        ...state,
+        data: updatePlayersData(state, action)
+      };
     default:
       return state;
   }
 }
-
-const addLeagueToState = (state, seasonId, newLeague) => {
-  const newState = {
-    ...state
-  };
-  const season = newState.data.find((ssn) => ssn.id === seasonId);
-  season.leagues.push(newLeague);
-  return newState;
-};
 
 export function seasons(state = {}, action) {
   const newSeason = action.payload && action.payload.data && action.payload.data.addSeason;

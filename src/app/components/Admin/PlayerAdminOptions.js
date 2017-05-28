@@ -22,26 +22,31 @@ const Highlight = ({ player, update, detail }) => update[detail]
   ? <em className="text--warning">{update[detail]}</em>
   : <span>{player[detail]}</span>;
 
-const DraftUpdates = ({ players, updates, save }) => {
+const flattenUpdates = (updates) => (Object.keys(updates)).map(id => ({
+  ...updates[id],
+  id
+}));
+
+const DraftUpdates = ({ players, updates, saveUpdates }) => {
   return <div className="updates">
     {(Object.keys(updates)).map(id => {
       const update = updates[id];
       const player = players.find(player => player._id === id);
       return (
-        <div>
+        <div key={ id }>
           Update {player.name}:
           <ul>
             {(Object.keys(update))
               .filter(detail => ['pos','club','name'].includes(detail))
               .map(detail => (
-                <li>{player[detail]} to {update[detail]}</li>
+                <li key={detail}>{player[detail]} to {update[detail]}</li>
               ))
             }
           </ul>
         </div>
       )}
     )}
-    <button onClick={save}>Save Updates</button>
+    <button onClick={ () => saveUpdates(flattenUpdates(updates)) }>Save Updates</button>
   </div>
 };
 
@@ -117,7 +122,7 @@ class PlayerAdminOptions extends React.Component {
   }
 
   render() {
-    const { children, players, ...props } = this.props;
+    const { children, players, saveUpdates, saving, ...props } = this.props;
     const { posFilter, clubFilter, playersToUpdate } = this.state;
     const clubs = this.clubs;
     return (
@@ -210,10 +215,17 @@ class PlayerAdminOptions extends React.Component {
 
         </div>
         <div className="admin-option">
-          <h2>Draft Updates</h2>
-          { players && (Object.keys(playersToUpdate)).length > 0
-            ? <DraftUpdates updates={ playersToUpdate } players={ players } saveUpates={()=>{}} />
-            : <em>none</em>
+          <h2>Updates</h2>
+          { saving
+            ? <p>Saving</p>
+            : players && (Object.keys(playersToUpdate)).length > 0
+              ? <DraftUpdates updates={ playersToUpdate }
+                              players={ players }
+                              saveUpdates={ (updates) => {
+                                saveUpdates(updates);
+                                this.setState({ playersToUpdate : {}});
+                              }} />
+              : <em>none</em>
           }
         </div>
         <div className="admin-option admin-option__btn">
