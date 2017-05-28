@@ -7,36 +7,37 @@ export const FETCH_DASHBOARD_DATA = 'FETCH_DASHBOARD_DATA';
 export const ADD_SEASON = 'ADD_SEASON';
 export const ADD_LEAGUE = 'ADD_LEAGUE';
 export const ADD_USER = 'ADD_USER';
+export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
 
-const getPlayersQuery = `
-query ($player: String) { 
-  getPlayers(player: $player){ 
-    _id code pos name club
-    gameWeek {
-      stats { 
-        apps subs gls asts mom cs con pensv ycard rcard 
-      }
-      points {
-        apps subs gls asts mom cs con pensv ycard rcard total
-      }
+const playerStatsFragment = `
+fragment playerStatsInfo on Player {
+  gameWeek {
+    stats { 
+      apps subs gls asts mom cs con pensv ycard rcard 
     }
-    total {
-      stats { 
-        apps subs gls asts mom cs con pensv ycard rcard 
-      }
-      points {
-        apps subs gls asts mom cs con pensv ycard rcard total
-      }
+    points {
+      apps subs gls asts mom cs con pensv ycard rcard total
     }
- }
-} 
-`;
+  }
+  total {
+    stats { 
+      apps subs gls asts mom cs con pensv ycard rcard 
+    }
+    points {
+      apps subs gls asts mom cs con pensv ycard rcard total
+    }
+  }
+}`;
+
+const playerFragment = `
+fragment playerInfo on Player {
+  _id code pos name club
+}`;
 
 const leagueFragment = `
 fragment leagueInfo on League {
   _id name tier
 }`;
-
 
 const teamFragment = `
 fragment teamInfo on Team {
@@ -48,6 +49,15 @@ ${leagueFragment}
 fragment seasonInfo on Season {
   _id name currentGW isLive leagues { ...leagueInfo }
 }
+`;
+
+const getPlayersQuery = `
+${playerFragment}
+query ($player: String) { 
+  getPlayers(player: $player){ 
+    ...playerInfo
+ }
+} 
 `;
 
 const getDashboardQuery = `
@@ -78,6 +88,13 @@ const addUserMutation = `
   ${teamFragment}
   mutation ($seasonId: String, $leagueId: String, $name: String, $email: String) { 
     addUser(seasonId: $seasonId, leagueId: $leagueId, name: $name, email: $email){ ...teamInfo  } 
+  }
+`;
+
+const updatePlayersMutation = `
+  ${teamFragment}
+  mutation ($players: Object) { 
+    updatePlayers(players: $players){ ...playerInfo  } 
   }
 `;
 
@@ -119,6 +136,7 @@ export function addSeason(name) {
 export function addLeague(seasonId, name) {
   return {
     type: ADD_LEAGUE,
+    seasonId,
     payload: fetch.graphQL(addLeaguesMutation, { seasonId, name })
   };
 }
@@ -128,5 +146,12 @@ export function addUser(seasonId, userDetails) {
     type: ADD_USER,
     seasonId,
     payload: fetch.graphQL(addUserMutation, { seasonId, ...userDetails })
+  };
+}
+
+export function updatePlayers(players) {
+  return {
+    type: UPDATE_PLAYERS,
+    payload: fetch.graphQL(updatePlayersMutation, players)
   };
 }

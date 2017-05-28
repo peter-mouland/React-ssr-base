@@ -3,8 +3,9 @@ import { buildSchema } from 'graphql';
 // maybe use babel-plugin-import-glob  in the future
 import playersSchema, { getPlayers, playerQuery } from './playerStats';
 import seasonsSchema, {
-  getSeasons, getTeams, addSeason, addLeague, addUser,
-  seasonQuery, teamQuery, seasonMutation, leagueMutation, addUserMutation
+  getSeasons, getTeams, addSeason, addLeague, addUser, updatePlayers,
+  seasonQuery, teamQuery,
+  seasonMutation, leagueMutation, addUserMutation, updatePlayersMutation
 } from './admin';
 import dashboardSchema, { getDashboard, dashboardQuery } from './dashboard';
 import userSchema from './user';
@@ -17,6 +18,7 @@ export const root = {
   addSeason,
   addLeague,
   addUser,
+  updatePlayers,
   getDashboard,
 };
 
@@ -37,6 +39,7 @@ export default buildSchema(`
     ${seasonMutation}
     ${leagueMutation}
     ${addUserMutation}
+    ${updatePlayersMutation}
   }
 `);
 

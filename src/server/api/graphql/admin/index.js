@@ -2,6 +2,7 @@
 import debug from 'debug';
 import { findSeasons, findSeasonById, saveNewLeague, saveNewSeason } from '../../db/season/season.actions';
 import { saveNewUser } from '../../db/user/user.actions';
+import { updateMultiplePlayers } from '../../db/player/player.actions';
 import { saveNewTeam, findTeams } from '../../db/team/team.actions';
 
 const log = debug('base:graphql/admin');
@@ -29,6 +30,13 @@ const schema = (`
     isLive: Boolean
     currentGW: Int
     leagues: [League]
+  }
+  type Player {
+    _id: String!
+    code: String
+    name: String
+    pos: String
+    club: String
   }
 `);
 
@@ -63,5 +71,8 @@ export const addLeague = saveNewLeague;
 export const leagueMutation = 'addLeague(seasonId: String, name: String): League';
 
 export const addUserMutation = 'addUser(seasonId: String, leagueId: String, email: String, name: String): Team';
+
+export const updatePlayers = updateMultiplePlayers;
+export const updatePlayersMutation = 'updatePlayers(players: String): [Player]';
 
 export default schema;

@@ -19,8 +19,31 @@ const Selector = ({ onChange, defaultValue, options }) => (
 );
 
 const Highlight = ({ player, update, detail }) => update[detail]
-  ? <em className="message--warning">{update[detail]}</em>
+  ? <em className="text--warning">{update[detail]}</em>
   : <span>{player[detail]}</span>;
+
+const DraftUpdates = ({ players, updates, save }) => {
+  return <div className="updates">
+    {(Object.keys(updates)).map(id => {
+      const update = updates[id];
+      const player = players.find(player => player._id === id);
+      return (
+        <div>
+          Update {player.name}:
+          <ul>
+            {(Object.keys(update))
+              .filter(detail => ['pos','club','name'].includes(detail))
+              .map(detail => (
+                <li>{player[detail]} to {update[detail]}</li>
+              ))
+            }
+          </ul>
+        </div>
+      )}
+    )}
+    <button onClick={save}>Save Updates</button>
+  </div>
+};
 
 class PlayerAdminOptions extends React.Component {
 
@@ -135,7 +158,7 @@ class PlayerAdminOptions extends React.Component {
                     (!!clubFilter && clubFilter !== player.club);
                   return !isFiltered;
                 })
-                .map((player) => {
+                .map((player, i) => {
                   const update = playersToUpdate[player._id] || {};
                   const pos = update.pos || player.pos;
                   const name = update.name || player.name;
@@ -185,6 +208,13 @@ class PlayerAdminOptions extends React.Component {
             </tbody>
           </table>
 
+        </div>
+        <div className="admin-option">
+          <h2>Draft Updates</h2>
+          { players && (Object.keys(playersToUpdate)).length > 0
+            ? <DraftUpdates updates={ playersToUpdate } players={ players } saveUpates={()=>{}} />
+            : <em>none</em>
+          }
         </div>
         <div className="admin-option admin-option__btn">
           { children }

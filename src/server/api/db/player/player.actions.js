@@ -24,3 +24,13 @@ export const findPlayer = (playerDetails) => new Promise((resolve, reject) => {
     }
   });
 });
+
+export const updateMultiplePlayers = (playerUpdates) => new Promise((resolve, reject) => {
+  Players.findOne(playerUpdates, (err, user) => {
+    if (err || !user) {
+      reject(err || { message: 'no player found' });
+    } else {
+      resolve(user);
+    }
+  });
+});

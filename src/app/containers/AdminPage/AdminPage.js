@@ -13,7 +13,7 @@ import PlayerAdminOptions from '../../components/Admin/PlayerAdminOptions';
 import Auth from '../../authentication/auth-helper';
 import {
   fetchSeasons, fetchTeams, fetchPlayers,
-  addSeason, addLeague, addUser,
+  addSeason, addLeague, addUser, updatePlayers,
   ADD_SEASON, ADD_LEAGUE, ADD_USER
 } from '../../actions';
 
@@ -63,6 +63,10 @@ class AdminPage extends React.Component {
     this.props.addUser(seasonId, form);
   }
 
+  updatePlayers = (updates) => {
+    this.props.updatePlayers(updates);
+  }
+
   render() {
     const {
       errors = [], teamErrors = [], loading, seasons, players = [], teams = [], match
@@ -100,7 +104,6 @@ class AdminPage extends React.Component {
           const season = selectedItem(seasonRoute.match, seasons, 'seasonId');
           if (!season) return null;
           const leagues = season.leagues;
-
           return (
             <div>
               <SeasonAdminOptions season={season} >
@@ -131,7 +134,7 @@ class AdminPage extends React.Component {
               <Route path={managersPath} render={(managersMatcher) => {
                 if (!managersMatcher.match) return null;
                 return (
-                  <ManagerAdminOptions teams={ teams }>
+                  <ManagerAdminOptions teams={ teams.filter(team => team.season.id === season._id) }>
                     <AddUser add={(form) => this.addUser(season._id, form)}
                              loading={ addingUser }
                              leagues={ leagues }
@@ -147,7 +150,9 @@ class AdminPage extends React.Component {
                 if (!playersMatcher.match) return null;
                 if (!players.length) return <p>Loading</p>;
                 return (
-                  <PlayerAdminOptions players={ players } />
+                  <PlayerAdminOptions players={ players }
+                                      update={ this.updatePlayers }
+                  />
                 );
               }}/>
             </div>
@@ -186,5 +191,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchSeasons, fetchTeams, fetchPlayers, addSeason, addLeague, addUser }
+  { fetchSeasons, fetchTeams, fetchPlayers, addSeason, addLeague, addUser, updatePlayers }
 )(AdminPage);
