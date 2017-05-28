@@ -11,7 +11,7 @@ export const ADD_USER = 'ADD_USER';
 const getPlayersQuery = `
 query ($player: String) { 
   getPlayers(player: $player){ 
-    code pos name club
+    _id code pos name club
     gameWeek {
       stats { 
         apps subs gls asts mom cs con pensv ycard rcard 

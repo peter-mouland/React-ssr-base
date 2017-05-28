@@ -12,7 +12,9 @@ import ManagerAdminOptions from '../../components/Admin/ManagerAdminOptions';
 import PlayerAdminOptions from '../../components/Admin/PlayerAdminOptions';
 import Auth from '../../authentication/auth-helper';
 import {
-  fetchSeasons, fetchTeams, fetchPlayers, addSeason, addLeague, addUser, ADD_SEASON, ADD_LEAGUE, ADD_USER
+  fetchSeasons, fetchTeams, fetchPlayers,
+  addSeason, addLeague, addUser,
+  ADD_SEASON, ADD_LEAGUE, ADD_USER
 } from '../../actions';
 
 import './adminPage.scss';
@@ -143,6 +145,7 @@ class AdminPage extends React.Component {
               />
               <Route path={playersPath} render={(playersMatcher) => {
                 if (!playersMatcher.match) return null;
+                if (!players.length) return <p>Loading</p>;
                 return (
                   <PlayerAdminOptions players={ players } />
                 );

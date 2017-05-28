@@ -45,3 +45,15 @@
     background: rgba(150, 0, 0, .75);
   }
 }
+
+.text {
+   &--success {
+     color: rgba(0, 143, 91, 0.75);
+   }
+   &--warning {
+     color: rgba(200, 150, 0, .75);
+   }
+   &--error {
+     color: rgba(150, 0, 0, .75);
+   }
+ }

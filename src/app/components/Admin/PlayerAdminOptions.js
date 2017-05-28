@@ -9,6 +9,19 @@ import './adminOptions.scss';
 
 const bem = bemHelper({ name: 'player-stats' });
 
+const Selector = ({ onChange, defaultValue, options }) => (
+  <select onChange={onChange} defaultValue={defaultValue}>
+    <option value={''}>all</option>
+    {options.map((item) => (
+      <option value={ item } key={ item }>{ item }</option>
+    ))}
+  </select>
+);
+
+const Highlight = ({ player, update, detail }) => update[detail]
+  ? <em className="message--warning">{update[detail]}</em>
+  : <span>{player[detail]}</span>;
+
 class PlayerAdminOptions extends React.Component {
 
   static propTypes = {
@@ -19,15 +32,35 @@ class PlayerAdminOptions extends React.Component {
     players: []
   };
 
+  clubs = [];
+
   constructor(props) {
     super(props);
+    this.posFilter = this.posFilter.bind(this);
+    this.clubFilter = this.clubFilter.bind(this);
+    this.setClubs(props);
     this.state = {
       isSaving: false,
       posFilter: '',
-      clubFilter: '',
+      clubFilter: this.clubs[0],
+      playersToUpdate: {}
     };
-    this.posFilter = this.posFilter.bind(this);
-    this.clubFilter = this.clubFilter.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setClubs(nextProps);
+  }
+
+  saveToState(e, player, detail) {
+    const existingPlayerUpdate = this.state.playersToUpdate[player._id];
+    const playersToUpdate = {
+      ...this.state.playersToUpdate,
+      [player._id]: {
+        ...existingPlayerUpdate,
+        [detail]: e.currentTarget.value
+      }
+    };
+    this.setState({ playersToUpdate });
   }
 
   posFilter(e) {
@@ -38,12 +71,32 @@ class PlayerAdminOptions extends React.Component {
     this.setState({ clubFilter: e.target.value });
   }
 
+  setClubs(props) {
+    this.clubs = (props.players.length) ? this.getClubs(props.players) : [];
+  }
+
+  getClubs(players) {
+    const clubs = new Set();
+    players.forEach((player) => clubs.add(player.club));
+    return [...clubs.keys()].sort();
+  }
+
+  showUpdater(e, player, detail) {
+    const reset = {
+      showPosUpdater: null,
+      showNameUpdater: null,
+      showClubUpdater: null
+    };
+    this.setState({
+      ...reset,
+      [`show${detail}Updater`]: player._id
+    });
+  }
+
   render() {
     const { children, players, ...props } = this.props;
-    const { posFilter, clubFilter } = this.state;
-    const clubsObj = players.reduce((prev, curr) => { prev[curr.club] = true; return prev; }, {});
-    const clubs = Object.keys(clubsObj).sort();
-
+    const { posFilter, clubFilter, playersToUpdate } = this.state;
+    const clubs = this.clubs;
     return (
       <div className="admin-options" { ...props }>
         <div className="admin-option">
@@ -59,17 +112,17 @@ class PlayerAdminOptions extends React.Component {
             <tr>
               <th></th>
               <th>
-                <select onChange={this.posFilter}>
-                  <option value={''}>all</option>
-                  {availablePositions.map((pos) => <option value={pos} key={pos}>{pos}</option>)}
-                </select>
+                <Selector onChange={ this.posFilter }
+                          defaultValue={ posFilter }
+                          options={ availablePositions }
+                />
               </th>
               <th></th>
               <th>
-                <select onChange={this.clubFilter}>
-                  <option value={''}>all</option>
-                  {clubs.map((club) => <option value={club} key={club}>{club}</option>)}
-                </select>
+                <Selector onChange={ this.clubFilter }
+                          defaultValue={ clubFilter }
+                          options={ clubs }
+                />
               </th>
             </tr>
             </thead>
@@ -82,14 +135,52 @@ class PlayerAdminOptions extends React.Component {
                     (!!clubFilter && clubFilter !== player.club);
                   return !isFiltered;
                 })
-                .map((player) => (
-                  <tr key={player.code} { ...bem('player')}>
-                    <td { ...bem('meta')} >{player.code}</td>
-                    <td { ...bem('meta', player.pos)} >{player.pos}</td>
-                    <td { ...bem('meta')} >{player.name}</td>
-                    <td { ...bem('meta')} >{player.club}</td>
-                  </tr>
-                ))
+                .map((player) => {
+                  const update = playersToUpdate[player._id] || {};
+                  const pos = update.pos || player.pos;
+                  const name = update.name || player.name;
+                  const club = update.club || player.club;
+
+                  return (
+                    <tr key={player.code} { ...bem('player')}>
+                      <td { ...bem('meta')}>{player.code}</td>
+                      <td { ...bem('meta', player.pos)}
+                          onMouseOver={ (e) => this.showUpdater(e, player, 'Pos') }
+                      >
+                        {
+                          this.state.showPosUpdater === player._id
+                          ? <Selector onChange={ (e) => this.saveToState(e, player, 'pos') }
+                                      defaultValue={ pos }
+                                      options={ availablePositions } />
+                          : <Highlight player={ player } update={ update } detail="pos"/>
+                        }
+                      </td>
+                      <td { ...bem('meta')}
+                          onMouseOver={ (e) => this.showUpdater(e, player, 'Name') }
+                      >
+                        {
+                          this.state.showNameUpdater === player._id
+                            ? <input type="text"
+                                     onChange={ (e) => this.saveToState(e, player, 'name') }
+                                     defaultValue={ name } />
+                            : <Highlight player={ player } update={ update } detail="name"/>
+                        }
+                      </td>
+                      <td { ...bem('meta')}
+                          onMouseOver={ (e) => this.showUpdater(e, player, 'Club') }
+                      >
+                        {
+                          this.state.showClubUpdater === player._id
+                            ? <Selector onChange={ (e) => this.saveToState(e, player, 'club') }
+                                        defaultValue={ club }
+                                        options={ this.clubs } />
+                            : <Highlight player={ player } update={ update } detail="club"/>
+                        }
+                      </td>
+                      <td { ...bem('action')} ></td>
+                    </tr>
+                  );
+                })
             }
             </tbody>
           </table>
