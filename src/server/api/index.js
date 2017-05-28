@@ -28,12 +28,18 @@ router.use(jwt({ secret: config.jwtSecret, passthrough: true }));
 router.use(authCheck());
 
 router.post('/', async (ctx) => {
-  const { request, context, query } = ctx;
-  await graphql(schema, request.body, root, context, query)
-    .then((result) => {
-      ctx.type = 'json';
-      ctx.body = result;
-    });
+  const { request, context } = ctx;
+  try {
+    const requestString = JSON.parse(request.body);
+    await graphql(schema, requestString.query, root, context, requestString.variables)
+      .then((result) => {
+        ctx.type = 'json';
+        ctx.body = result;
+      });
+  } catch(e) {
+    ctx.status = 500;
+    ctx.response.body = { error: e };
+  }
 });
 
 export default router;

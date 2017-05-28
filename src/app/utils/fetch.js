@@ -26,16 +26,17 @@ const jsonOpts = (method, data) => ({
   data: data && JSON.stringify(data)
 });
 
-const graphQLOpts = (data, params = {}) => ({
-  method: 'POST',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/graphql',
-    credentials: 'same-origin',
-  },
-  data,
-  params
-});
+const graphQLOpts = (query, variables = {}) => {
+  return ({
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/graphql',
+      credentials: 'same-origin',
+    },
+    data: JSON.stringify({ query, variables })
+  })
+};
 
 const delay = (ms) => ( // eslint-disable-line no-unused-vars
   new Promise((resolve) => setTimeout(resolve, ms))
@@ -58,7 +59,7 @@ const fetchUrl = (endpoint, opts = {}) => {
 
 const getJSON = (url, options) => fetchUrl(url, jsonOpts('GET', null, options));
 const postJSON = (url, data, options) => fetchUrl(url, jsonOpts('POST', data, options));
-const graphQL = (data, variables) => fetchUrl(getVar('GRAPHQL_URL'), graphQLOpts(data, variables));
+const graphQL = (query, variables) => fetchUrl(getVar('GRAPHQL_URL'), graphQLOpts(query, variables));
 
 export const fetch = {
   url: fetchUrl,
