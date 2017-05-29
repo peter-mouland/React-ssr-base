@@ -6,8 +6,9 @@ import bemHelper from 'react-bem-helper';
 import { availablePositions } from '../../components/Positions/Positions';
 
 import './adminOptions.scss';
+import './playerAdminOptions.scss';
 
-const bem = bemHelper({ name: 'player-stats' });
+const bem = bemHelper({ name: 'player-admin' });
 
 const Selector = ({ onChange, defaultValue, options }) => (
   <select onChange={onChange} defaultValue={defaultValue}>
@@ -18,9 +19,9 @@ const Selector = ({ onChange, defaultValue, options }) => (
   </select>
 );
 
-const Highlight = ({ player, update, detail }) => update[detail]
-  ? <em className="text--warning">{update[detail]}</em>
-  : <span>{player[detail]}</span>;
+const Highlight = ({ player, update, detail, className }) => update[detail]
+  ? <em { ...bem(null,null,["text--warning", className])}>{update[detail]}</em>
+  : <span className={ className }>{player[detail]}</span>;
 
 const flattenUpdates = (updates) => (Object.keys(updates)).map(id => ({
   ...updates[id],
@@ -66,6 +67,7 @@ class PlayerAdminOptions extends React.Component {
     super(props);
     this.posFilter = this.posFilter.bind(this);
     this.clubFilter = this.clubFilter.bind(this);
+    this.nameFilter = this.nameFilter.bind(this);
     this.setClubs(props);
     this.state = {
       isSaving: false,
@@ -99,6 +101,10 @@ class PlayerAdminOptions extends React.Component {
     this.setState({ clubFilter: e.target.value });
   }
 
+  nameFilter(e) {
+    this.setState({ nameFilter: e.target.value.toLowerCase().trim() });
+  }
+
   setClubs(props) {
     this.clubs = (props.players.length) ? this.getClubs(props.players) : [];
   }
@@ -123,13 +129,13 @@ class PlayerAdminOptions extends React.Component {
 
   render() {
     const { children, players, saveUpdates, saving, ...props } = this.props;
-    const { posFilter, clubFilter, playersToUpdate } = this.state;
+    const { posFilter, clubFilter, nameFilter, playersToUpdate } = this.state;
     const clubs = this.clubs;
     return (
       <div className="admin-options" { ...props }>
-        <div className="admin-option">
+        <div { ...bem(null, null, "admin-option" ) }>
 
-          <table cellPadding={0} cellSpacing={0} { ...bem('table') }>
+          <table cellPadding={0} cellSpacing={0} { ...bem('data-table') }>
             <thead>
             <tr { ...bem('data-header')}>
               <th>code</th>
@@ -137,7 +143,7 @@ class PlayerAdminOptions extends React.Component {
               <th>player</th>
               <th>club</th>
             </tr>
-            <tr>
+            <tr {...bem('data-filter')}>
               <th></th>
               <th>
                 <Selector onChange={ this.posFilter }
@@ -145,7 +151,7 @@ class PlayerAdminOptions extends React.Component {
                           options={ availablePositions }
                 />
               </th>
-              <th></th>
+              <th><input type="search" onChange={ this.nameFilter } defaultValue="" /></th>
               <th>
                 <Selector onChange={ this.clubFilter }
                           defaultValue={ clubFilter }
@@ -159,6 +165,7 @@ class PlayerAdminOptions extends React.Component {
               players
                 .filter((player) => {
                   const isFiltered =
+                    (!!nameFilter && !player.name.toLowerCase().includes(nameFilter)) ||
                     (!!posFilter && posFilter !== player.pos) ||
                     (!!clubFilter && clubFilter !== player.club);
                   return !isFiltered;
@@ -172,37 +179,40 @@ class PlayerAdminOptions extends React.Component {
                   return (
                     <tr key={player.code} { ...bem('player')}>
                       <td { ...bem('meta')}>{player.code}</td>
-                      <td { ...bem('meta', player.pos)}
+                      <td { ...bem('meta')}
                           onMouseOver={ (e) => this.showUpdater(e, player, 'Pos') }
+                          onClick={ (e) => this.showUpdater(e, player, 'Pos') }
                       >
                         {
                           this.state.showPosUpdater === player._id
                           ? <Selector onChange={ (e) => this.saveToState(e, player, 'pos') }
                                       defaultValue={ pos }
                                       options={ availablePositions } />
-                          : <Highlight player={ player } update={ update } detail="pos"/>
+                          : <Highlight player={ player } update={ update } detail="pos" { ...bem('editable', 'select') }/>
                         }
                       </td>
                       <td { ...bem('meta')}
                           onMouseOver={ (e) => this.showUpdater(e, player, 'Name') }
+                          onClick={ (e) => this.showUpdater(e, player, 'Name') }
                       >
                         {
                           this.state.showNameUpdater === player._id
                             ? <input type="text"
                                      onChange={ (e) => this.saveToState(e, player, 'name') }
                                      defaultValue={ name } />
-                            : <Highlight player={ player } update={ update } detail="name"/>
+                            : <Highlight player={ player } update={ update } detail="name" { ...bem('editable') }/>
                         }
                       </td>
                       <td { ...bem('meta')}
                           onMouseOver={ (e) => this.showUpdater(e, player, 'Club') }
+                          onClick={ (e) => this.showUpdater(e, player, 'Club') }
                       >
                         {
                           this.state.showClubUpdater === player._id
                             ? <Selector onChange={ (e) => this.saveToState(e, player, 'club') }
                                         defaultValue={ club }
                                         options={ this.clubs } />
-                            : <Highlight player={ player } update={ update } detail="club"/>
+                            : <Highlight player={ player } update={ update } detail="club" { ...bem('editable', 'select') }/>
                         }
                       </td>
                       <td { ...bem('action')} ></td>

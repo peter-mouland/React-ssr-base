@@ -1,0 +1,49 @@
+@import '../../../styles/utils/colours';
+
+$row-bg: #EAEAEA;
+$row-bg--hover: #CACACA;
+
+.player-admin {
+  tr,
+  td,
+  th {
+    padding: 5px;
+  }
+
+  &__player {
+    height: calc(2em + 10px);
+
+    &:nth-child(even) {
+      background: $row-bg;
+    }
+
+    &:hover {
+      background: $row-bg--hover;
+    }
+  }
+
+  &__meta--stat {
+    text-align: center;
+  }
+  select,
+  input {
+    margin: 0;
+    width: auto;
+  }
+  &__data-filter {
+    select,
+    input {
+      border-color: $black;
+    }
+  }
+  &__player {
+  }
+  &__editable {
+    padding: 5px calc(1px + 1em);
+    font-family: sans-serif;
+
+    &--select {
+      padding-left: 9px;
+    }
+  }
+}

@@ -30,10 +30,12 @@ class AddUser extends React.Component {
     return (loading ?
         <div { ...bem('text', 'saving') }><Svg markup={football} /> Saving...</div> :
         <form method="post" onSubmit={ this.add }>
+          <small><em>All new users are added with the password <code>password123</code></em></small>
           <div>
             <label htmlFor="user-name" required>Name:</label>
             <input id="user-name"
                    name="user-name"
+                   type="text"
                    autoComplete="off"
                    ref={(input) => { this.inputs.name = input; }}
             />
@@ -42,12 +44,13 @@ class AddUser extends React.Component {
             <label htmlFor="user-email" required>Email:</label>
             <input id="user-email"
                    name="user-email"
+                   type="email"
                    autoComplete="off"
                    ref={(input) => { this.inputs.email = input; }}
             />
           </div>
           <div>
-            <label htmlFor="user-league" required>Assign to League:</label>
+            <label htmlFor="user-league" required>League:</label>
             <select id="user-league"
                    name="user-league"
                    ref={(input) => { this.inputs.league = input; }}

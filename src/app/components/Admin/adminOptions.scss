@@ -5,7 +5,7 @@
   border-top: 0;
   padding: 1em;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 
   &--top {
     align-items: flex-start;
@@ -26,5 +26,22 @@
 
   &__value {
     margin-left: 1em;
+  }
+
+  select,
+  input {
+    height: 2em;
+    line-height: 2em;
+    border-radius: 1em;
+    border: 1px solid $brand--bg;
+    padding: 0 1em;
+    margin: 0.25em;
+    font-size: 1em;
+    font-family: sans-serif;
+    width: 12em;
+
+    &[type="submit"] {
+      height: auto;
+    }
   }
 }
