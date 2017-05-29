@@ -3,7 +3,7 @@
 $row-bg: #EAEAEA;
 $row-bg--hover: #CACACA;
 
-.player-admin {
+.player-table {
   tr,
   td,
   th {
@@ -11,7 +11,7 @@ $row-bg--hover: #CACACA;
   }
 
   &__player {
-    height: calc(2em + 10px);
+    height: 2em;
 
     &:nth-child(even) {
       background: $row-bg;
@@ -25,25 +25,52 @@ $row-bg--hover: #CACACA;
   &__meta--stat {
     text-align: center;
   }
+
   select,
   input {
+    height: 2em;
+    line-height: 2em;
+    border-radius: 1em;
+    border: 1px solid $brand;
+    padding: 0 1em;
+    font-size: 1em;
+    font-family: sans-serif;
     margin: 0;
     width: auto;
-  }
-  &__data-filter {
-    select,
-    input {
-      border-color: $black;
+
+    &[type='submit'] {
+      height: auto;
     }
   }
-  &__player {
-  }
+
   &__editable {
     padding: 5px calc(1px + 1em);
     font-family: sans-serif;
 
     &--select {
       padding-left: 9px;
+    }
+  }
+}
+
+.player-table--my-team {
+  th {
+    select,
+    input {
+      font-size: .7em;
+    }
+  }
+}
+
+.player-table--admin {
+  &__player {
+    height: calc(2em + 10px);
+  }
+
+  &__data-filter {
+    select,
+    input {
+      border-color: $black;
     }
   }
 }

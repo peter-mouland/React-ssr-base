@@ -1,9 +1,10 @@
-@import "../utils/colours";
+@import '../utils/colours';
 
 *,
-*:after,
-*:before {
+*::after,
+*::before {
   box-sizing: border-box;
+
   &::selection {
     background: none;
   }
@@ -13,7 +14,7 @@
 body {
   padding: 0;
   margin: 0;
-  color: #444;
+  color: $text;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-image: url('/stadium-small.jpg');
   background-size: 1600px;
@@ -27,7 +28,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-position-x: -14px;
+  background-position-x: -18px;
   background-position-y: -143px;
 
   .with-message & {
@@ -35,7 +36,7 @@ body {
   }
 
   .admin & {
-    background-position-y: -79px;
+    background-position-y: -137px;
   }
 }
 
@@ -50,26 +51,38 @@ a {
 }
 
 a.button,
-input[type="submit"],
+input[type='submit'],
 button {
-  background-color: $brand--bg--light;
+  background-color: $brand--light;
   border: 2px solid $darken;
   color: #163;
   font-size: .8rem;
   padding: .25em 1em;
   cursor: pointer;
   border-radius: 2em;
-  transition: all 0.15s ease-in;
+  transition: color .15s ease-in, background-color .15s ease-in;
 
-  &:hover {
-    border: 2px solid $darken;
-    background-color: rgba(0, 0, 0, 0.2);
+  &:not(:disabled):hover {
+    background-color: $sdarken;
     color: $white;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: $text--light;
+    color: $lighter;
   }
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-top: 0;
+}
+
+h1 {
+  background-color: $light;
+  padding: .25em .5em;
 }
 
 .hidden {

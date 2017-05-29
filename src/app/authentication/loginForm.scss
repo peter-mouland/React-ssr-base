@@ -102,27 +102,27 @@ $curve: linear;
     padding: .5em 1em;
     font-size: 1.2em;
     border-radius: .5em;
-    border: 2px solid $brand--bg--light;
-    color: $brand--bg;
+    border: 2px solid $brand--light;
+    color: $brand;
     background-color: transparent;
 
     &:hover {
-      color: $brand--bg;
-      border: 2px solid $brand--bg;
-      box-shadow: 0 0 5px $brand--bg--light;
+      color: $brand;
+      border: 2px solid $brand;
+      box-shadow: 0 0 5px $brand--light;
     }
   }
 }
 
 .form__error {
-  background: $error--bg;
+  background: $error;
   color: $white;
   padding: .5em 2em;
   margin: -1em -2em 1em;
 }
 
 .field__error {
-  color: $error--font;
+  color: $error--light;
   position: absolute;
   top: 2em;
   right: 0;
@@ -133,7 +133,7 @@ $curve: linear;
 .separator {
   height: 3px;
   width: 100%;
-  background: $brand--bg;
+  background: $brand;
   display: block;
   transform: scaleX(0) translateY(-2px);
   transform-origin: 50%;

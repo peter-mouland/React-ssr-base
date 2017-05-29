@@ -1,27 +1,29 @@
 $medium: 768px !default;
 $large: 1120px !default;
-$maxSmallWidth: $medium - 1 !default;
-$maxMediumWidth: $large - 1 !default;
+$max-small-width: $medium - 1 !default;
+$max-medium-width: $large - 1 !default;
 
 
 @mixin clearfix {
-  &:before, &:after {
-    content: " ";
+  &::before,
+  &::after {
+    content: '';
     display: table;
   }
-  &:after {
+
+  &::after {
     clear: both;
   }
 }
 
 @mixin small-only {
-  @media screen and (max-width: $maxSmallWidth) {
+  @media screen and (max-width: $max-small-width) {
     @content;
   }
 }
 
 @mixin medium-only {
-  @media screen and (min-width: $medium) and (max-width:$maxMediumWidth) {
+  @media screen and (min-width: $medium) and (max-width: $max-medium-width) {
     @content;
   }
 }

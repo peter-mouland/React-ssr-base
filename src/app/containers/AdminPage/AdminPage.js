@@ -64,7 +64,7 @@ class AdminPage extends React.Component {
   }
 
   updatePlayers = (updates) => {
-    this.props.updatePlayers({ updates: updates });
+    this.props.updatePlayers({ updates });
   }
 
   render() {
@@ -91,89 +91,93 @@ class AdminPage extends React.Component {
     }
 
     return (
-      <section className="admin">
-        <div className="bg" />
-        <h3 className="sr-only">Admin Actions</h3>
-        <AdminList list={ seasons }
-                   path="season"
-        >
-          <AdminForm add={ this.addSeason }
-                     type="Season"
-                     loading={ addingSeason } />
-        </AdminList>
-        <Route path={seasonPath} render={(seasonRoute) => {
-          const season = selectedItem(seasonRoute.match, seasons, 'seasonId');
-          if (!season) return null;
-          const leagues = season.leagues;
-          return (
-            <div>
-              <SeasonAdminOptions season={season} >
-                <p>compare ff players to Sky Sports players</p>
-              </SeasonAdminOptions>
-              <AdminList list={ leagues }
-                         path="league"
-                         secondary
-              >
-                <AdminForm add={ (name) => this.addLeague(season._id, name) }
-                           type="league"
-                           loading={ addingLeague } />
-              </AdminList>
-              <Route path={leaguePath} render={(leagueMatcher) => {
-                const league = selectedItem(leagueMatcher.match, leagues, 'leagueId');
-                if (!league) return null;
-                const leagueTeams = teams.filter((team) => team.league.id === league._id);
-                return (
-                  <LeagueAdminOptions league={league} teams={ leagueTeams }>
-                    {/* assign user to league */}
-                  </LeagueAdminOptions>
-                );
-              }}/>
-              <AdminList list={ [{ name: 'Managers' }] }
-                         path="managers"
-                         secondary
-              />
-              <Route path={managersPath} render={(managersMatcher) => {
-                if (!managersMatcher.match) return null;
-                return (
-                  <ManagerAdminOptions teams={ teams.filter(team => team.season.id === season._id) }>
-                    <AddUser add={(form) => this.addUser(season._id, form)}
-                             loading={ addingUser }
-                             leagues={ leagues }
+      <div className="admin">
+        <h1 >Admin</h1>
+        <div className="admin__panels">
+          <div className="bg" />
+
+          <AdminList list={ seasons }
+                     path="season"
+          >
+            <AdminForm add={ this.addSeason }
+                       type="Season"
+                       loading={ addingSeason } />
+          </AdminList>
+          <Route path={seasonPath} render={(seasonRoute) => {
+            const season = selectedItem(seasonRoute.match, seasons, 'seasonId');
+            if (!season) return null;
+            const leagues = season.leagues;
+            const seasonsTeams = teams.filter((team) => team.season.id === season._id);
+            return (
+              <div>
+                <SeasonAdminOptions season={season} >
+                  <p>compare ff players to Sky Sports players</p>
+                </SeasonAdminOptions>
+                <AdminList list={ leagues }
+                           path="league"
+                           secondary
+                >
+                  <AdminForm add={ (name) => this.addLeague(season._id, name) }
+                             type="league"
+                             loading={ addingLeague } />
+                </AdminList>
+                <Route path={leaguePath} render={(leagueMatcher) => {
+                  const league = selectedItem(leagueMatcher.match, leagues, 'leagueId');
+                  if (!league) return null;
+                  const leagueTeams = teams.filter((team) => team.league.id === league._id);
+                  return (
+                    <LeagueAdminOptions league={league} teams={ leagueTeams }>
+                      {/* assign user to league */}
+                    </LeagueAdminOptions>
+                  );
+                }}/>
+                <AdminList list={ [{ name: 'Managers' }] }
+                           path="managers"
+                           secondary
+                />
+                <Route path={managersPath} render={(managersMatcher) => {
+                  if (!managersMatcher.match) return null;
+                  return (
+                    <ManagerAdminOptions teams={ seasonsTeams }>
+                      <AddUser add={(form) => this.addUser(season._id, form)}
+                               loading={ addingUser }
+                               leagues={ leagues }
+                      />
+                    </ManagerAdminOptions>
+                  );
+                }}/>
+                <AdminList list={ [{ name: 'Players' }] }
+                           path="players"
+                           secondary
+                />
+                <Route path={playersPath} render={(playersMatcher) => {
+                  if (!playersMatcher.match) return null;
+                  if (!players.length) return <p>Loading</p>;
+                  return (
+                    <PlayerAdminOptions players={ players }
+                                        saving={ updatingPlayer }
+                                        saveUpdates={ this.updatePlayers }
                     />
-                  </ManagerAdminOptions>
-                );
-              }}/>
-              <AdminList list={ [{ name: 'Players' }] }
-                         path="players"
-                         secondary
-              />
-              <Route path={playersPath} render={(playersMatcher) => {
-                if (!playersMatcher.match) return null;
-                if (!players.length) return <p>Loading</p>;
-                return (
-                  <PlayerAdminOptions players={ players }
-                                      saving={ updatingPlayer }
-                                      saveUpdates={ this.updatePlayers }
-                  />
-                );
-              }}/>
-            </div>
-          );
-        }}/>
+                  );
+                }}/>
+              </div>
+            );
+          }}/>
 
-        <h3>Todo:</h3>
-        <ul>
-          <li>Authorise Transfers</li>
-          <li>Increment Game Week</li>
-        </ul>
-        <section className="admin__game-week">
-          <h4>Increment Game Week</h4>
-          <p>Incrementing game week will save the current scores.</p>
-          <p>This can only be done if there are NO outstanding transfers.</p>
-          <p>Current Game Week: 32</p>
-        </section>
-
-      </section>
+          <h3>Todo:</h3>
+          <ul>
+            <li>admin can view user teams</li>
+            <li>admin can save/edit user teams</li>
+            <li>admin can run points against current teams</li>
+            <li>admin can Increment Game Week</li>
+            <li>admin view all teams for exporting</li>
+            <li>admin view all players with stats + points for exporting</li>
+            <li>users save team without breaking rules</li>
+            <li>users can add players to transfer list</li>
+            <li>admin can Authorise Transfers</li>
+          </ul>
+        </div>
+      </div>
     );
   }
 }

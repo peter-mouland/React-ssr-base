@@ -6,7 +6,7 @@ import bemHelper from 'react-bem-helper';
 import { availablePositions } from '../../components/Positions/Positions';
 
 import './adminOptions.scss';
-import './playerAdminOptions.scss';
+import '../PlayerTable/playerTable.scss';
 
 const bem = bemHelper({ name: 'player-admin' });
 
@@ -19,37 +19,37 @@ const Selector = ({ onChange, defaultValue, options }) => (
   </select>
 );
 
+// eslint-disable-next-line no-confusing-arrow
 const Highlight = ({ player, update, detail, className }) => update[detail]
-  ? <em { ...bem(null,null,["text--warning", className])}>{update[detail]}</em>
-  : <span className={ className }>{player[detail]}</span>;
+    ? <em { ...bem(null, null, ['text--warning', className])}>{update[detail]}</em>
+    : <span className={ className }>{player[detail]}</span>;
 
-const flattenUpdates = (updates) => (Object.keys(updates)).map(id => ({
+const flattenUpdates = (updates) => (Object.keys(updates)).map((id) => ({
   ...updates[id],
   id
 }));
 
-const DraftUpdates = ({ players, updates, saveUpdates }) => {
-  return <div className="updates">
-    {(Object.keys(updates)).map(id => {
+const DraftUpdates = ({ players, updates, saveUpdates }) => <div className="updates">
+    {(Object.keys(updates)).map((id) => {
       const update = updates[id];
-      const player = players.find(player => player._id === id);
+      const player = players.find((ply) => ply._id === id);
       return (
         <div key={ id }>
           Update {player.name}:
           <ul>
             {(Object.keys(update))
-              .filter(detail => ['pos','club','name'].includes(detail))
-              .map(detail => (
+              .filter((detail) => ['pos', 'club', 'name'].includes(detail))
+              .map((detail) => (
                 <li key={detail}>{player[detail]} to {update[detail]}</li>
               ))
             }
           </ul>
         </div>
-      )}
+      );
+    }
     )}
     <button onClick={ () => saveUpdates(flattenUpdates(updates)) }>Save Updates</button>
-  </div>
-};
+  </div>;
 
 class PlayerAdminOptions extends React.Component {
 
@@ -71,6 +71,7 @@ class PlayerAdminOptions extends React.Component {
     this.setClubs(props);
     this.state = {
       isSaving: false,
+      nameFilter: '',
       posFilter: '',
       clubFilter: this.clubs[0],
       playersToUpdate: {}
@@ -133,7 +134,7 @@ class PlayerAdminOptions extends React.Component {
     const clubs = this.clubs;
     return (
       <div className="admin-options" { ...props }>
-        <div { ...bem(null, null, "admin-option" ) }>
+        <div { ...bem(null, 'admin', 'admin-option') }>
 
           <table cellPadding={0} cellSpacing={0} { ...bem('data-table') }>
             <thead>
@@ -170,7 +171,7 @@ class PlayerAdminOptions extends React.Component {
                     (!!clubFilter && clubFilter !== player.club);
                   return !isFiltered;
                 })
-                .map((player, i) => {
+                .map((player) => {
                   const update = playersToUpdate[player._id] || {};
                   const pos = update.pos || player.pos;
                   const name = update.name || player.name;
@@ -226,14 +227,13 @@ class PlayerAdminOptions extends React.Component {
         </div>
         <div className="admin-option">
           <h2>Updates</h2>
-          { saving
-            ? <p>Saving</p>
-            : players && (Object.keys(playersToUpdate)).length > 0
+          { saving ? <p>Saving</p> : null }
+          { !saving && players && (Object.keys(playersToUpdate)).length > 0
               ? <DraftUpdates updates={ playersToUpdate }
                               players={ players }
                               saveUpdates={ (updates) => {
                                 saveUpdates(updates);
-                                this.setState({ playersToUpdate : {}});
+                                this.setState({ playersToUpdate: {} });
                               }} />
               : <em>none</em>
           }

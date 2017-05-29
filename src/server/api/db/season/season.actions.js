@@ -13,7 +13,8 @@ export const saveNewSeason = ({ name }) => {
   return newSeason.save();
 };
 
-export const updateSeasonById = (id, seasonUpdate) => Seasons.findByIdAndUpdate(id, seasonUpdate, { new: true }).exec();
+export const updateSeasonById = (id, seasonUpdate) =>
+  Seasons.findByIdAndUpdate(id, seasonUpdate, { new: true }).exec();
 
 export const saveNewLeague = ({ seasonId, name }) => (
   updateSeasonById(seasonId, { $push: { leagues: { name } } })

@@ -9,25 +9,25 @@ export const ADD_LEAGUE = 'ADD_LEAGUE';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
 
-const playerStatsFragment = `
-fragment playerStatsInfo on Player {
-  gameWeek {
-    stats { 
-      apps subs gls asts mom cs con pensv ycard rcard 
-    }
-    points {
-      apps subs gls asts mom cs con pensv ycard rcard total
-    }
-  }
-  total {
-    stats { 
-      apps subs gls asts mom cs con pensv ycard rcard 
-    }
-    points {
-      apps subs gls asts mom cs con pensv ycard rcard total
-    }
-  }
-}`;
+// const playerStatsFragment = `
+// fragment playerStatsInfo on Player {
+//  gameWeek {
+//    stats {
+//      apps subs gls asts mom cs con pensv ycard rcard
+//    }
+//    points {
+//      apps subs gls asts mom cs con pensv ycard rcard total
+//    }
+//  }
+//  total {
+//    stats {
+//      apps subs gls asts mom cs con pensv ycard rcard
+//    }
+//    points {
+//      apps subs gls asts mom cs con pensv ycard rcard total
+//    }
+//  }
+// }`;
 
 const playerFragment = `
 fragment playerInfo on Player {

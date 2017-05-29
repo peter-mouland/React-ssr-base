@@ -19,7 +19,7 @@ class ChangePasswordPage extends React.Component {
 
   processForm(event) {
     event.preventDefault();
-    Auth.updatePassword(this.inputs.password.value, (errors, res) => {
+    Auth.updatePassword(this.inputs.password.value, (errors) => {
       const { location } = this.props;
       if (errors) {
         this.setState({ errors });

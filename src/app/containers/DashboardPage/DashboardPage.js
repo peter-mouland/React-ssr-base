@@ -36,9 +36,7 @@ class DashboardPage extends React.Component {
 
 
     return (
-      <section>
-        <Dashboard id="dashboard-page" />
-      </section>
+      <Dashboard id="dashboard-page" />
     );
   }
 }

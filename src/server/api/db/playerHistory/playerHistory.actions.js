@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, import/prefer-default-export */
 import debug from 'debug';
 
 const Players = require('mongoose').model('PlayerHistory');

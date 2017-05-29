@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Dashboard = ({ ...props }) => (
-    <section {...props} >
-      <h2>Dashboard</h2>
+    <div {...props} >
+      <h1>Dashboard</h1>
       <p>hi</p>
-    </section>
+    </div>
   );
 
 export default Dashboard;

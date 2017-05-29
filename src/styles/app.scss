@@ -1,5 +1,5 @@
-@import "base/resets";
-@import "utils/adnimations";
+@import 'base/resets';
+@import 'utils/adnimations';
 
 .icon--chevron {
   height: 12px;
@@ -23,8 +23,8 @@
 }
 
 .label--secondary {
-  color: $secondary--font;
-  font-size: 0.8em;
+  color: $text--light;
+  font-size: .8em;
 }
 
 .message {
@@ -33,27 +33,31 @@
   padding: 1em;
   border-radius: 1em;
   box-shadow: 0 0 20px #282f32;
-  color: white;
+  color: $white;
 
   &--success {
-    background: rgba(0, 143, 91, 0.75);
+    background: $success;
   }
+
   &--warning {
-    background: rgba(200, 150, 0, .75);
+    background: $warning;
   }
+
   &--error {
-    background: rgba(150, 0, 0, .75);
+    background: $error;
   }
 }
 
 .text {
-   &--success {
-     color: rgba(0, 143, 91, 0.75);
-   }
-   &--warning {
-     color: rgba(200, 150, 0, .75);
-   }
-   &--error {
-     color: rgba(150, 0, 0, .75);
-   }
- }
+  &--success {
+    color: $success;
+  }
+
+  &--warning {
+    color: $warning;
+  }
+
+  &--error {
+    color: $error;
+  }
+}

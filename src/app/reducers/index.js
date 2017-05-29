@@ -28,16 +28,17 @@ function clean(obj) {
 }
 
 const updatePlayersData = (state, action) => {
-  const players = [ ...state.data ];
+  const allPlayers = [...state.data];
   const updates = action.payload.data && action.payload.data.updatePlayers;
-  updates.forEach(update => {
-    players.find((player, i) => {
-      if (player._id === update.id) {
-        players[i] = { ...player, ...clean(update) }
+  updates.forEach((update) => {
+    const cleanUpdate = clean(update);
+    allPlayers.find((player, i) => { // eslint-disable-line array-callback-return
+      if (player._id === update.id) { // eslint-disable-line no-underscore-dangle
+        allPlayers[i] = { ...player, ...cleanUpdate };
       }
     });
   });
-  return players;
+  return allPlayers;
 };
 
 export function promiseState(state = {}, action) {

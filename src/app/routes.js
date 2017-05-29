@@ -52,7 +52,7 @@ export function getRoutesConfig() {
       },
       label: 'Admin',
       requiresAuthentication: true,
-      component: AdminPage
+      component: AdminPage,
     },
     {
       name: 'myTeam',
@@ -62,7 +62,8 @@ export function getRoutesConfig() {
         ...baseMetaData,
         title: 'My Team',
       },
-      component: MyTeam
+      component: MyTeam,
+      requiresAuthentication: true,
     },
     {
       name: 'playerStats',

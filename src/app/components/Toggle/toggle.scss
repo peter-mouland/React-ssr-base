@@ -8,7 +8,7 @@ $v-slightly-dark: rgba(0, 0, 0, .08);
   display: none;
 
   &:checked + .toggle__label .toggle__btn {
-    background: $brand--bg--light;
+    background: $brand--light;
 
     &::after {
       left: 50%;

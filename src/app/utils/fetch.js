@@ -26,17 +26,15 @@ const jsonOpts = (method, data) => ({
   data: data && JSON.stringify(data)
 });
 
-const graphQLOpts = (query, variables = {}) => {
-  return ({
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/graphql',
-      credentials: 'same-origin',
-    },
-    data: JSON.stringify({ query, variables })
-  })
-};
+const graphQLOpts = (query, variables = {}) => ({
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/graphql',
+    credentials: 'same-origin',
+  },
+  data: JSON.stringify({ query, variables })
+});
 
 const delay = (ms) => ( // eslint-disable-line no-unused-vars
   new Promise((resolve) => setTimeout(resolve, ms))

@@ -26,11 +26,11 @@ export const findPlayer = (playerDetails) => new Promise((resolve, reject) => {
 });
 
 export const updateMultiplePlayers = ({ updates }) => {
-  const bulkUpdate = updates.map(update => ({
-      updateOne: {
-        filter: { _id: update.id }, update
-      },
-    })
+  const bulkUpdate = updates.map((update) => ({
+    updateOne: {
+      filter: { _id: update.id }, update
+    },
+  })
   );
-  return Players.bulkWrite(bulkUpdate).then((result) => (updates));
+  return Players.bulkWrite(bulkUpdate).then(() => (updates));
 };

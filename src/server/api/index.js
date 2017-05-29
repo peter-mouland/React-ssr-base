@@ -36,7 +36,7 @@ router.post('/', async (ctx) => {
         ctx.type = 'json';
         ctx.body = result;
       });
-  } catch(e) {
+  } catch (e) {
     ctx.status = 500;
     ctx.response.body = { error: e };
   }

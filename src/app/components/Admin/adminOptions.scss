@@ -1,7 +1,7 @@
 @import '../../../styles/utils/colours';
 
 .admin-options {
-  border: 4px solid  $brand--bg;
+  border: 4px solid $brand;
   border-top: 0;
   padding: 1em;
   display: flex;
@@ -33,14 +33,14 @@
     height: 2em;
     line-height: 2em;
     border-radius: 1em;
-    border: 1px solid $brand--bg;
-    padding: 0 1em;
-    margin: 0.25em;
+    border: 1px solid $brand;
+    padding:  1em;
+    margin: .25em;
     font-size: 1em;
     font-family: sans-serif;
     width: 12em;
 
-    &[type="submit"] {
+    &[type='submit'] {
       height: auto;
     }
   }

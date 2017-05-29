@@ -1,31 +1,126 @@
-$row-bg: #EAEAEA;
-$row-bg--hover: #CACACA;
+@import '../../../styles/utils/colours';
 
-.unknown-players__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.my-team {
+
+  &__panels {
+    display: flex;
+  }
+
+  &__formation,
+  &__player-selection {
+    position: relative;
+    width: 50%;
+  }
+
+  &__formation {
+    margin: 0 1em 0 0;
+  }
+
+  &__player-selection {
+    background: $light;
+    padding: .25em;
+  }
+
+  &__squad,
+  &__field {
+    position: absolute;
+    display: block;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    padding: 150% 0 0;
+  }
+
+  &__squad {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  &__position {
+    position: relative;
+    display: inline-block;
+    height: 17vw;
+    font-weight: bold;
+    float: left;
+
+    &--cb,
+    &--cm,
+    &--str {
+      transform: translateY(-7.5vw);
+    }
+
+    &--left {
+      transform: translateX(2.5vw);
+    }
+
+    &--right {
+      transform: translateX(-2.5vw);
+    }
+
+    &--gk {
+      width: 100%;
+    }
+
+    &--cb,
+    &--fb,
+    &--cm,
+    &--wm {
+      width: 25%;
+    }
+
+    &--str,
+    &--str {
+      width: 50%;
+    }
+
+    &--sub {
+      position: absolute;
+      left: 0;
+      top: 36%;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      background: $lighter;
+      width: 5vw;
+      height: 5vw;
+      border-radius: 50%;
+      border: 3px solid $brand--dark;
+      margin: 0 auto;
+    }
+  }
 }
 
-.unknown-players__item {
-  clear: both;
-  padding: 5px;
-  transition: padding, opacity, max-height .33s ease-in-out;
-  opacity: 1;
-  max-height: 2em;
+.field-icon {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  &:nth-child(even) {
-    background: $row-bg;
+  &__pitch {
+    fill: $brand;
+  }
+}
+
+.position {
+  &__label {
+    position: absolute;
+    top: calc(2.5em + 2.5vw - .5em); // player-height + circle-height/2 - font-height/2
+    text-align: center;
+    width: 100%;
+    opacity: .9;
+    font-weight: normal;
+    text-transform: uppercase;
   }
 
-  &:hover {
-    background: $row-bg--hover;
-  }
-
-  &--updated {
-    opacity: 0;
-    max-height: 0;
-    padding: 0;
-    overflow: hidden;
+  &__player {
+    min-height: 2.5em;
+    text-shadow: 0 0 4px $light;
+    width: 100px;
+    margin: 0 auto;
   }
 }
