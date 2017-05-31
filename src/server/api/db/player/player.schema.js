@@ -23,7 +23,6 @@ const mongooseSchema = {
     type: String,
     index: { unique: true }
   },
-  externalId: Number,
   code: Number,
   pos: String,
   club: String,

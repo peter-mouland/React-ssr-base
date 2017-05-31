@@ -63,8 +63,8 @@ class AdminPage extends React.Component {
     this.props.addUser(seasonId, form);
   }
 
-  updatePlayers = (updates) => {
-    this.props.updatePlayers({ updates });
+  updatePlayers = (playerUpdates) => {
+    this.props.updatePlayers({ playerUpdates });
   }
 
   render() {

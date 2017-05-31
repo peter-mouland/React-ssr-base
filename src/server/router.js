@@ -4,7 +4,7 @@ import debug from 'debug';
 
 import setRouterContext from './middleware/set-router-context';
 import renderApp from './middleware/render-app';
-import graphQLRouter from './api';
+import graphQLRouter from './api/api-router';
 import authRouter from './authentication/auth-router';
 import { DIST, ASSETS } from '../config/paths';
 

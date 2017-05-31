@@ -9,33 +9,40 @@
   &__formation,
   &__player-selection {
     position: relative;
-    width: 50%;
   }
 
   &__formation {
     margin: 0 1em 0 0;
+    width: calc(45% - 1em);
   }
 
   &__player-selection {
     background: $light;
     padding: .25em;
+    width: calc(55% + 1em);
   }
 
   &__squad,
   &__field {
-    position: absolute;
     display: block;
     height: auto;
     width: 100%;
     overflow: hidden;
-    padding: 150% 0 0;
   }
 
   &__squad {
+    position: absolute;
+    top: 0;
     margin: 0;
     padding: 0;
     list-style: none;
     text-align: center;
+    font-size: 1.66vw;
+  }
+
+  &__field {
+    position: relative;
+    padding: 152% 0 0;
   }
 
   &__position {
@@ -92,6 +99,10 @@
       margin: 0 auto;
     }
   }
+  button {
+    z-index: 1;
+    position: relative;
+  }
 }
 
 .field-icon {
@@ -120,7 +131,6 @@
   &__player {
     min-height: 2.5em;
     text-shadow: 0 0 4px $light;
-    width: 100px;
     margin: 0 auto;
   }
 }

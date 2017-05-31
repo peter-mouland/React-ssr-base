@@ -102,13 +102,13 @@ $curve: linear;
     padding: .5em 1em;
     font-size: 1.2em;
     border-radius: .5em;
-    border: 2px solid $brand--light;
+    border: 1px solid $brand--light;
     color: $brand;
     background-color: transparent;
 
     &:hover {
       color: $brand;
-      border: 2px solid $brand;
+      border-color: $brand;
       box-shadow: 0 0 5px $brand--light;
     }
   }

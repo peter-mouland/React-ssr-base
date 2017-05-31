@@ -8,6 +8,7 @@ export const ADD_SEASON = 'ADD_SEASON';
 export const ADD_LEAGUE = 'ADD_LEAGUE';
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
+export const UPDATE_TEAM = 'UPDATE_TEAM';
 
 // const playerStatsFragment = `
 // fragment playerStatsInfo on Player {
@@ -94,8 +95,14 @@ const addUserMutation = `
 `;
 
 const updatePlayersMutation = `
-  mutation ($updates: [Updates]) { 
-    updatePlayers(updates: $updates){ id code pos name club }   
+  mutation ($playerUpdates: [PlayerUpdates]) { 
+    updatePlayers(playerUpdates: $playerUpdates){ id code pos name club }   
+  }
+`;
+
+const updateTeamMutation = `
+  mutation ($teamUpdate: TeamUpdate) { 
+    updateTeam(teamUpdate: $teamUpdate){ id code pos name club }   
   }
 `;
 
@@ -150,9 +157,16 @@ export function addUser(seasonId, userDetails) {
   };
 }
 
-export function updatePlayers(updates) {
+export function updatePlayers(playerUpdates) {
   return {
     type: UPDATE_PLAYERS,
-    payload: fetch.graphQL(updatePlayersMutation, updates)
+    payload: fetch.graphQL(updatePlayersMutation, playerUpdates)
+  };
+}
+
+export function updateTeam(team) {
+  return {
+    type: UPDATE_TEAM,
+    payload: fetch.graphQL(updateTeamMutation, team)
   };
 }

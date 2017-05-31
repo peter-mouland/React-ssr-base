@@ -4,7 +4,8 @@ import { graphql } from 'graphql';
 import jwt from 'koa-jwt';
 
 import config from '../../config/db';
-import schema, { root } from './graphql/schema';
+import schema from './graphql.schema';
+import root from './graphql.root';
 import handleError from '../middleware/handle-error';
 import authCheck from '../authentication/auth-check-middleware';
 

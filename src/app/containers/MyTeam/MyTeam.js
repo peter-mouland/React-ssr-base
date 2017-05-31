@@ -8,13 +8,24 @@ import PlayerTable from '../../components/PlayerTable/PlayerTable';
 import Svg from '../../components/Svg/Svg';
 import field from '../../../assets/field.svg';
 import {
-  fetchTeams, fetchPlayers,
+  fetchTeams, fetchPlayers, updateTeam,
 } from '../../actions';
 
 import './my-team.scss';
 
 const bem = bemHelper({ name: 'my-team' });
 debug('base:myteam');
+
+const Error = ({ error }) => <div>
+  <p>Error Loading seasons!</p>
+  <p>{ error.message }</p>
+</div>;
+
+const Errors = ({ errors }) => <div>
+  {errors.map((error, i) => <Error error={error} key={i} />)}
+</div>;
+
+const Loading = () => <p>Loading seasons....</p>;
 
 class MyTeam extends React.Component {
 
@@ -26,6 +37,8 @@ class MyTeam extends React.Component {
   static defaultProps = {
     players: [],
     teams: [],
+    loading: false,
+    errors: []
   };
 
   constructor(props) {
@@ -56,6 +69,10 @@ class MyTeam extends React.Component {
     });
   }
 
+  saveTeam = () => {
+    this.props.updateTeam(this.state.team);
+  }
+
   choosePos = (pos, leftOrRight = '') => {
     this.setState({
       selectedPosition: pos,
@@ -78,8 +95,14 @@ class MyTeam extends React.Component {
   }
 
   render() {
-    const { players } = this.props;
+    const { players, loading, errors } = this.props;
     const { selectedPosition } = this.state;
+
+    if (errors.length) {
+      return <Errors errors={errors} />;
+    } else if (loading) {
+      return <Loading />;
+    }
 
     return (
       <div { ...bem() } id="my-team">
@@ -101,6 +124,7 @@ class MyTeam extends React.Component {
               {this.squadPlayer('str', 'right')}
               {this.squadPlayer('sub')}
             </ul>
+            <button onClick={ this.saveTeam }>Save Team</button>
           </section>
           <section { ...bem('player-selection') }>
             <PlayerTable players={ players }
@@ -126,5 +150,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchTeams, fetchPlayers }
+  { fetchTeams, fetchPlayers, updateTeam }
 )(MyTeam);

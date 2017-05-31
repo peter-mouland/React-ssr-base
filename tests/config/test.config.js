@@ -3,7 +3,7 @@ require('babel-core/register')({
 });
 require("babel-polyfill");
 const connect = require('../../src/server/api/db').connect;
-const config = require('./test-server/db.json');
+const config = require('../test-servers/db.json');
 require('../../src/app/authentication/local-storage');
 const { JSDOM } = require('jsdom');
 const hook = require('node-hook').hook;

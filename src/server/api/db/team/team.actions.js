@@ -11,3 +11,5 @@ export const saveNewTeam = (teamData) => {
 };
 
 export const findTeams = (search = {}) => Team.find(search).exec();
+
+export const updateTeam = (team) => team;
