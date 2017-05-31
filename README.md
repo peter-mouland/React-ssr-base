@@ -43,3 +43,27 @@ The purpose of these tests is to ensure that the vital part of the app has been 
 
 These tests will use `BrowserStack` to run all tests tagged up as `production` against a single browser.
 
+##Debugging Node files via Chrome Dev Tools
+
+To enable Node debugging in Chrome, you have to do the following as it's still an experimental feature:
+
+- Open the chrome://flags/#enable-devtools-experiments URL
+- Enable the Developer Tools experiments flag
+- Relaunch Chrome
+- Open DevTools Setting -> Experiments tab (it started being visible after the reload)
+- Press "SHIFT" 6 times to show the hidden experiments
+- Check the "Node debugging" checkbox
+- Open/close DevTools
+
+
+
+When calling npm start, the server runs node with the `--inspect` argument.
+This mode allows you to debug server side node code via Chrome dev tools and you'll see something similar to the following in your terminal output
+
+`To start debugging, open the following URL in Chrome: chrome-devtools://devtools/remote/serve_file/...`
+
+- Open `about:inspect` in Chrome and click the 'Open dedicated DevTools for Node' link
+- You'll now see a dedicated DevTools window for your node session.
+
+- Protip the folder structure in the node devtools window can be a little un-intuitive at first, easiest thing to do is press `ctrl+p` to find the file you want and then `reveal in navigator` to see where that file is in the devtools folder structure.
+
