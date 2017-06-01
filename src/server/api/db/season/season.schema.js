@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 
 const SeasonSchema = new mongoose.Schema({
+  dateCreated: { type: Date, default: Date.now },
   name: {
     type: String,
     index: {

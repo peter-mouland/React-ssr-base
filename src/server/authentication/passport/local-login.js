@@ -1,9 +1,11 @@
 /* eslint-disable no-underscore-dangle */
+const debug = require('debug');
 const jwt = require('jsonwebtoken');
 const User = require('mongoose').model('User');
 const PassportLocalStrategy = require('passport-local').Strategy;
 const config = require('../../../config/db.js');
 
+const log = debug('base:local-login');
 
 /**
  * Return the Passport Local Strategy object.
@@ -40,6 +42,8 @@ module.exports = new PassportLocalStrategy({
 
         return done(error);
       }
+
+      log({ user });
 
       const payload = {
         sub: user._id,

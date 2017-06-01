@@ -21,7 +21,7 @@ const LoginForm = ({
 
         <input type="hidden" name="action" value={actions.login} />
 
-        <div className="field-group hidden">
+        <div className="field-group">
           <label><input type="radio"
                         name="action"
                         value={actions.login}
@@ -30,7 +30,7 @@ const LoginForm = ({
           /> I am an existing User</label>
         </div>
 
-        <div className="field-group hidden">
+        <div className="field-group">
           <label><input type="radio"
                         name="action"
                         value={actions.signUp}

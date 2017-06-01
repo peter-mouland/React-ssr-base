@@ -19,6 +19,7 @@ const points = {
 };
 
 const mongooseSchema = {
+  dateCreated: { type: Date, default: Date.now },
   name: {
     type: String,
     index: { unique: true }
@@ -39,5 +40,5 @@ const mongooseSchema = {
 };
 
 
-module.exports = mongoose.model('Players', new mongoose.Schema(mongooseSchema));
+module.exports = mongoose.model('Player', new mongoose.Schema(mongooseSchema));
 module.exports.mongooseSchema = mongooseSchema;

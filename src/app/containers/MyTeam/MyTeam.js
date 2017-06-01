@@ -8,7 +8,7 @@ import PlayerTable from '../../components/PlayerTable/PlayerTable';
 import Svg from '../../components/Svg/Svg';
 import field from '../../../assets/field.svg';
 import {
-  fetchTeams, fetchPlayers, updateTeam,
+  fetchTeam, fetchPlayers, updateTeam,
 } from '../../actions';
 
 import './my-team.scss';
@@ -29,14 +29,16 @@ const Loading = () => <p>Loading seasons....</p>;
 
 class MyTeam extends React.Component {
 
+  static needs = [fetchTeam, fetchPlayers];
+
   static propTypes = {
-    teams: PropTypes.array,
+    team: PropTypes.object,
     players: PropTypes.array,
   };
 
   static defaultProps = {
     players: [],
-    teams: [],
+    team: undefined,
     loading: false,
     errors: []
   };
@@ -47,13 +49,13 @@ class MyTeam extends React.Component {
       isSaving: false,
       selectedPosition: '',
       selectedLeftOrRight: '',
-      team: {},
+      updatedTeam: {},
     };
   }
 
   componentDidMount() {
-    if (!this.props.teams.length) {
-      this.props.fetchTeams();
+    if (!this.props.team) {
+      this.props.fetchTeam();
     }
     if (!this.props.players.length) {
       this.props.fetchPlayers();
@@ -62,15 +64,16 @@ class MyTeam extends React.Component {
 
   selectPlayer = (player) => {
     this.setState({
-      team: {
-        ...this.state.team,
+      updatedTeam: {
+        ...this.props.team,
+        ...this.state.updatedTeam,
         [this.state.selectedPosition + this.state.selectedLeftOrRight]: player
       }
     });
-  }
+  };
 
   saveTeam = () => {
-    this.props.updateTeam(this.state.team);
+    this.props.updateTeam(this.state.updatedTeam);
   }
 
   choosePos = (pos, leftOrRight = '') => {
@@ -81,8 +84,8 @@ class MyTeam extends React.Component {
   };
 
   squadPlayer = (pos, leftOrRight = '') => {
-    const { team, selectedPosition, selectedLeftOrRight } = this.state;
-    const player = team[pos + leftOrRight];
+    const { updatedTeam, selectedPosition, selectedLeftOrRight } = this.state;
+    const player = updatedTeam[pos + leftOrRight];
     const isSelected = selectedPosition === pos && selectedLeftOrRight === leftOrRight;
     return (
       <li { ...bem('position', pos, { 'text--warning': isSelected }) } onClick={ () => this.choosePos(pos, leftOrRight)}>
@@ -141,7 +144,7 @@ class MyTeam extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    teams: state.teams.data,
+    team: state.teams.data,
     players: state.players.data,
     loading: state.promiseState.loading,
     errors: state.promiseState.errors,
@@ -150,5 +153,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchTeams, fetchPlayers, updateTeam }
+  { fetchTeam, fetchPlayers, updateTeam }
 )(MyTeam);

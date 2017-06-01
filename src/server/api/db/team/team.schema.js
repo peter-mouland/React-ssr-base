@@ -12,6 +12,7 @@ const PlayerType = {
 };
 
 const TeamSchema = new mongoose.Schema({
+  dateCreated: { type: Date, default: Date.now },
   user: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -59,4 +60,4 @@ const TeamSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Teams', TeamSchema);
+module.exports = mongoose.model('Team', TeamSchema);

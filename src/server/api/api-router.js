@@ -4,6 +4,7 @@ import { graphql } from 'graphql';
 import jwt from 'koa-jwt';
 
 import config from '../../config/db';
+import * as queries from './graphql.queries';
 import schema from './graphql.schema';
 import root from './graphql.root';
 import handleError from '../middleware/handle-error';
@@ -32,7 +33,7 @@ router.post('/', async (ctx) => {
   const { request, context } = ctx;
   try {
     const requestString = JSON.parse(request.body);
-    await graphql(schema, requestString.query, root, context, requestString.variables)
+    await graphql(schema, queries[requestString.query], root, context, requestString.variables)
       .then((result) => {
         ctx.type = 'json';
         ctx.body = result;

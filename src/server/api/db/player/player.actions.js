@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import debug from 'debug';
 
-const Players = require('mongoose').model('Players');
+const Players = require('mongoose').model('Player');
 
 const log = debug('base:db/player.actions');
 
