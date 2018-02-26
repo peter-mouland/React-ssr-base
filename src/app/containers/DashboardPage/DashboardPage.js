@@ -6,7 +6,6 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 import { fetchDashboardData } from '../../actions';
 
 class DashboardPage extends React.Component {
-
   static needs = [fetchDashboardData];
 
   static propTypes = {

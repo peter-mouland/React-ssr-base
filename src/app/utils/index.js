@@ -15,7 +15,7 @@ export const isBrowser = typeof navigator !== 'undefined'
 
 const getLocalUrl = () => {
   if (isBrowser) {
-    const location = window.location;
+    const { location } = window;
     if (!location.origin) { // Some browsers (mainly IE) does not have this property
       location.origin = `${location.protocol}//${location.hostname}${location.port
         ? (`:${location.port}`)

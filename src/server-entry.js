@@ -1,8 +1,8 @@
 require('babel-polyfill');
-const hook = require('node-hook').hook;
+const { hook } = require('node-hook');
 const SvgLoader = require('svg-inline-loader');
 
-const connect = require('./server/api/db').connect;
+const { connect } = require('./server/api/db');
 const config = require('./config/db.js');
 const webpackAssets = require('../compiled/webpack-assets.json'); // eslint-disable-line import/no-unresolved
 const mapWebpackAssets = require('./server/utils/mapWebpackAssets');

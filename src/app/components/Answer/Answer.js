@@ -29,7 +29,9 @@ const AnswerOption = ({ answer, card }) => (
   </dl>
 );
 
-export default ({ cards, answerId, showAnswer, ...props }) => (
+export default ({
+  cards, answerId, showAnswer, ...props
+}) => (
   !cards.length ? null : (
     <section className={`answer ${showAnswer ? 'visible' : 'hidden'}`} { ...props }>
       <AnswerOption answer={answerId === cards[0].url} card={cards[0]}/>

@@ -18,7 +18,7 @@ export function sendXhr(formData, url, cb) {
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
   xhr.responseType = 'json';
   xhr.addEventListener('load', () => {
-    const response = xhr.response;
+    const { response } = xhr;
     // JSON.parse needed for ie11.
     const jsonResponse = (typeof response === 'string') ? JSON.parse(response) : response;
     if (xhr.status === 200) {
@@ -59,7 +59,6 @@ function requestSignUp(user, cb) {
 
 
 class Auth {
-
   static responseCallback(res, cb) {
     if (res.authenticated && res.token) { // prevent undefined getting saved
       this.saveToken(res.token);
@@ -122,7 +121,6 @@ class Auth {
       ? authHeader.split(' ')[1]
       : cookie.load('token', { path: '/' });
   }
-
 }
 
 export default Auth;

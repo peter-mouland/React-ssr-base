@@ -19,7 +19,6 @@ const Error = ({ error }) => <div>
 const Dealing = () => <p>Loading cards....</p>;
 
 class Game extends React.Component {
-
   static needs = [fetchPeopleCards];
 
   static propTypes = {
@@ -64,7 +63,9 @@ class Game extends React.Component {
 
   render() {
     const {
-      errors = [], loading, hand: { cards = [], question, answer, answerId } = {}
+      errors = [], loading, hand: {
+        cards = [], question, answer, answerId
+      } = {}
     } = this.props;
     const { showAnswer, attempt } = this.state;
     return (
@@ -80,7 +81,9 @@ class Game extends React.Component {
         {errors.map((error, i) => <Error key={`error-${i}`} error={error} />)}
         {loading
           ? <Dealing />
-          : <Question { ...{ showAnswer, answer, cards, attempt, onClick: this.setAttempt } }>
+          : <Question { ...{
+ showAnswer, answer, cards, attempt, onClick: this.setAttempt
+} }>
             {question}
           </Question>
         }

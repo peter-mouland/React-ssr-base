@@ -13,7 +13,9 @@ export default class Html extends React.Component {
   };
 
   render() {
-    const { initialState, scripts, stylesheets, markup } = this.props;
+    const {
+      initialState, scripts, stylesheets, markup
+    } = this.props;
     return (
       <html lang="en">
       <head>

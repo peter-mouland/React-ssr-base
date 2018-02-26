@@ -13,10 +13,10 @@ log('Client environment', process.env);
 
 const rootEl = document.getElementById('html');
 const App = (
-   <HmrContainer>
-     <Root />
-   </HmrContainer>
- );
+  <HmrContainer>
+    <Root />
+  </HmrContainer>
+);
 
 try {
   // System.import('./app/utils/analytics').then((analytics) => analytics.init());

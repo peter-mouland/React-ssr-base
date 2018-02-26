@@ -38,9 +38,9 @@ const graphQLOpts = (data, params = {}) => ({
 
 const fetchUrl = (endpoint, opts = {}) => {
   const token = Auth.getToken();
-  opts.headers = Object.assign({}, opts.headers, token ? { Authorization: `Bearer ${token}` } : {});
+  const headers = Object.assign({}, opts.headers, token ? { Authorization: `Bearer ${token}` } : {});
   const url = endpoint.indexOf('//') > -1 ? endpoint : `${localUrl}${endpoint}`;
-  return axios({ url, ...opts })
+  return axios({ url, ...{ ...opts, headers } })
     .then(checkStatus)
     .then((response) => response.data)
     .catch((error) => {

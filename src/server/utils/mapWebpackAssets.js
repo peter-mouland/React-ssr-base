@@ -2,8 +2,7 @@
 export default function mapWebpackAssets(assetsObj) {
   const assets = { javascript: [], styles: [] };
   Object.keys(assetsObj).forEach((key) => {
-    const js = assetsObj[key].js;
-    const css = assetsObj[key].css;
+    const { js, css } = assetsObj[key];
     if (js && key === 'vendor') {
       assets.javascript.unshift(js);
     } else if (js) {

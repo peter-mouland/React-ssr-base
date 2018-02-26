@@ -52,7 +52,7 @@ export function validateSignUpForm(payload) {
   }
 
   if (!isFormValid) {
-    message = text.signUpForm.errors.message;
+    message = text.signUpForm.errors.message; // eslint-disable-line prefer-destructuring
   }
 
   return {
@@ -85,7 +85,7 @@ export function validateLoginForm(payload) {
   }
 
   if (!isFormValid) {
-    message = text.loginForm.errors.message;
+    message = text.loginForm.errors.message; // eslint-disable-line prefer-destructuring
   }
 
   return {

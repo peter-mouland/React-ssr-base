@@ -26,7 +26,6 @@ const getAndRemoveMessage = (key) => {
 };
 
 class LoginPage extends React.Component {
-
   static propTypes = {
     location: PropTypes.object
   };
@@ -71,7 +70,7 @@ class LoginPage extends React.Component {
 
   changeUser(event) {
     const field = event.target.name;
-    const user = this.state.user;
+    const { user } = this.state;
     user[field] = event.target.value;
 
     this.setState({ user });
@@ -79,7 +78,9 @@ class LoginPage extends React.Component {
 
   render() {
     const { from } = this.props.location.state || {};
-    const { redirectToReferrer, errors, successMessage, user } = this.state;
+    const {
+      redirectToReferrer, errors, successMessage, user
+    } = this.state;
     const redirect = redirectToReferrer ? (<Redirect to={from || '/'}/>) : null;
     const referrerMessage = from ? <ReferrerMessage from={from} /> : null;
     const form = (

@@ -16,7 +16,7 @@ export const validateUser = (ctx) => new Promise((resolve) => {
 
 export default function authCheck() {
   return (ctx, next) => Promise.resolve(ctx)
-      .then(validateUser)
-      .then(next);
+    .then(validateUser)
+    .then(next);
 }
 

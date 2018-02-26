@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Svg extends React.Component {
-
   static propTypes = {
     markup: PropTypes.string.isRequired
   };

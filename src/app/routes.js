@@ -89,7 +89,9 @@ export function getRoutesConfig() {
 export const findRoute = (to) => getRoutesConfig().find((rt) => rt.name === to);
 
 // test this active link and route matching
-export const NamedLink = ({ className, to, children, ...props }) => {
+export const NamedLink = ({
+  className, to, children, ...props
+}) => {
   const bem = bemHelper({ name: 'link' });
   const route = findRoute(to);
   if (!route) throw new Error(`Route to '${to}' not found`);

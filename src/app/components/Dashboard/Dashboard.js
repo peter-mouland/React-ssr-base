@@ -8,7 +8,9 @@ const Error = ({ error }) => <div>
   <p>{ error.stack }</p>
 </div>;
 
-const Dashboard = ({ secretData, error = false, loading = false, ...props }) => (
+const Dashboard = ({
+  secretData, error = false, loading = false, ...props
+}) => (
   <section {...props} >
     <h2>Dashboard</h2>
     <p>You should get access to this page only after authentication.</p>

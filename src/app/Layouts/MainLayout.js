@@ -9,7 +9,6 @@ import './mainLayout.scss';
 const log = debug('base:mainLayout');
 
 class MyAccount extends React.Component {
-
   render() {
     const bem = bemHelper({ name: 'my-account' });
     const { className, isUserAuthenticated, ...props } = this.props;
@@ -31,7 +30,6 @@ class MyAccount extends React.Component {
 }
 
 export default class MainLayout extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {

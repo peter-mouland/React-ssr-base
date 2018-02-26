@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 function storageMock() {
   const storage = {};
 

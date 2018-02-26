@@ -1,4 +1,3 @@
-require('./environment');
 const { SRC } = require('./paths');
 const defaultConfig = require('./webpack.common');
 
@@ -9,7 +8,5 @@ const prodConfig = Object.assign({}, defaultConfig, {
     vendor: [`${SRC}/vendor.js`]
   }
 });
-
-console.log({ prodConfig });
 
 module.exports = prodConfig;
