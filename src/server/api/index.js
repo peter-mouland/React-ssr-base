@@ -29,6 +29,7 @@ router.use(authCheck());
 
 router.post('/', async (ctx) => {
   const { request, context, query } = ctx;
+
   await graphql(schema, request.body, root, context, query)
     .then((result) => {
       ctx.type = 'json';

@@ -1,35 +1,12 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
-const cssnano = require('cssnano');
 const Visualizer = require('webpack-visualizer-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const { SRC, DIST } = require('./paths');
 
-const postCssPlugins = [cssnano({
-  autoprefixer: {
-    browsers: [
-      'safari 9',
-      'ie 10-11',
-      'last 2 Chrome versions',
-      'last 2 Firefox versions',
-      'edge 13',
-      'ios_saf 9.0-9.2',
-      'ie_mob 11',
-      'Android >= 4'
-    ],
-    cascade: false,
-    add: true,
-    remove: true
-  },
-  safe: true
-})];
-
-
 module.exports = {
-  devtool: 'eval',
-  cache: true,
   context: SRC,
   output: {
     path: DIST,
@@ -38,13 +15,10 @@ module.exports = {
   },
   plugins: [
     new ProgressBarPlugin(),
-    new webpack.HashedModuleIdsPlugin(),
     new Visualizer({
       filename: '../webpack-stats.html'
     }),
-    new webpack.optimize.CommonsChunkPlugin({ names: ['vendor'], minChunks: Infinity }),
-    new ExtractTextPlugin('[name]-[hash].css'),
-    new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       'process.env.PORT': JSON.stringify(process.env.PORT),
       'process.env.DEBUG': JSON.stringify(process.env.DEBUG),
@@ -68,15 +42,11 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         include: [/src/],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [
-            { loader: 'css-loader', options: { importLoaders: 1 } },
-            { loader: 'postcss-loader', options: { plugins: postCssPlugins } },
-            'sass-loader'
-          ]
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
       },
       {

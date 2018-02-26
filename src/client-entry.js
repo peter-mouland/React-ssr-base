@@ -13,13 +13,13 @@ log('Client environment', process.env);
 
 const rootEl = document.getElementById('html');
 const App = (
-  <HmrContainer>
-    <Root />
-  </HmrContainer>
-);
+   <HmrContainer>
+     <Root />
+   </HmrContainer>
+ );
 
 try {
-  System.import('./app/utils/analytics').then((analytics) => analytics.init());
+  // System.import('./app/utils/analytics').then((analytics) => analytics.init());
   ReactDOM.render(App, rootEl);
   if (module.hot) {
     module.hot.accept('./app/Root', () => {
